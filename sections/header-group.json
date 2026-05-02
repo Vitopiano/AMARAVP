@@ -14,10 +14,17 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_YNPgLe": {
+          "type": "announcement",
+          "settings": {
+            "text": "· Hecho en Colombia, con precisión italiana",
+            "link": ""
+          }
+        },
         "a03b5515-776a-4538-9cc0-9defdff5c007": {
           "type": "announcement",
           "settings": {
-            "text": "Slow Fashion Store · Hecho en Colombia, con precisión italiana",
+            "text": "Slow Fashion Store",
             "link": ""
           }
         },
@@ -30,6 +37,7 @@
         }
       },
       "block_order": [
+        "announcement_YNPgLe",
         "a03b5515-776a-4538-9cc0-9defdff5c007",
         "9cb827b1-06e8-4378-8611-1e903c1f608e"
       ],
@@ -46,7 +54,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-25.png",
+        "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-26.png",
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
