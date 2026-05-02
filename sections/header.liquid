@@ -262,6 +262,18 @@
         {%- endcase -%}
       {%- endfor -%}
 
+      {%- if section.settings.isotipo_image != blank -%}
+        <a href="{{ routes.root_url }}" class="header__isotipo-link" aria-label="{{ shop.name }}">
+          {{- section.settings.isotipo_image | image_url: width: 80 | image_tag:
+            class: 'header__isotipo-img',
+            width: 36,
+            height: 36,
+            alt: shop.name,
+            loading: 'eager'
+          -}}
+        </a>
+      {%- endif -%}
+
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
           {% if cart == empty %}
             <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span>
@@ -444,6 +456,11 @@
   "class": "section-header",
   "max_blocks": 3,
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "isotipo_image",
+      "label": "Isotipo (ícono derecho del header)"
+    },
     {
       "type": "select",
       "id": "logo_position",

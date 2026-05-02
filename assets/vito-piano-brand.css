@@ -3,7 +3,7 @@
 /* Override Shopify's default fonts with Vito Piano typefaces */
 :root {
   --font-body-family: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-heading-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-heading-family: 'Decofast', 'Bricolage Grotesque', system-ui, sans-serif;
   --font-body-weight: 300;
   --font-heading-weight: 400;
 }
@@ -17,7 +17,7 @@
   --vp-gris-calido: #F0EDE8;
   --vp-negro-suave: #1C1C1A;
 
-  --vp-font-headline: 'Bricolage Grotesque', 'Georgia', serif;
+  --vp-font-headline: 'Decofast', 'Bricolage Grotesque', 'Georgia', serif;
   --vp-font-body: 'Bricolage Grotesque', system-ui, sans-serif;
   --vp-font-mono: 'Chivo Mono', 'Courier New', monospace;
 
@@ -417,4 +417,224 @@ h1, h2, h3, .h1, .h2, .h3 {
   border-radius: 0;
   font-family: var(--vp-font-mono);
   letter-spacing: var(--vp-letter-spacing-normal);
+}
+
+/* ============================================
+   DECOFAST — Tipografía de impacto en headings
+   ============================================ */
+
+h1, h2, .h0, .h1, .h2 {
+  font-family: var(--vp-font-headline);
+}
+
+.banner__content .banner__heading,
+.banner__content h2,
+.banner__content .h0,
+.rich-text__heading,
+.card__heading,
+.collection__title,
+.featured-collection__title {
+  font-family: var(--vp-font-headline);
+}
+
+/* ============================================
+   WHATSAPP — Botón flotante
+   ============================================ */
+
+.vp-wa-fab {
+  position: fixed;
+  bottom: 2.4rem;
+  right: 2.4rem;
+  z-index: 9998;
+  width: 5.6rem;
+  height: 5.6rem;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.vp-wa-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.vp-wa-fab svg {
+  width: 3rem;
+  height: 3rem;
+  fill: #ffffff;
+}
+
+@media screen and (max-width: 749px) {
+  .vp-wa-fab {
+    bottom: 7.2rem;
+    right: 1.4rem;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .vp-wa-fab svg {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
+/* ============================================
+   HEADER — Isotipo a la derecha
+   ============================================ */
+
+.header__isotipo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8rem;
+  flex-shrink: 0;
+}
+
+.header__isotipo-img {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: contain;
+  display: block;
+}
+
+@media screen and (min-width: 990px) {
+  .header__isotipo-img {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}
+
+/* ============================================
+   FOOTER — Dois tonos estilo Loro Piana
+   ============================================ */
+
+/* Bottom strip: crema con VP verde — separado del bloque principal */
+.footer__content-bottom {
+  background-color: var(--vp-crema) !important;
+  color: var(--vp-negro-suave) !important;
+  border-top: 1px solid rgba(12, 68, 51, 0.18);
+}
+
+.footer__content-bottom a,
+.footer__content-bottom p,
+.footer__content-bottom span,
+.footer__content-bottom small {
+  color: var(--vp-negro-suave) !important;
+}
+
+.footer__content-bottom a:hover {
+  color: var(--vp-verde-botella) !important;
+  text-decoration: underline;
+}
+
+/* Footer payment icons en crema */
+.footer__payment {
+  filter: invert(0.1);
+  opacity: 0.65;
+}
+
+/* Copyright line */
+.footer__copyright {
+  font-family: var(--vp-font-mono);
+  font-size: 1.0rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+  color: rgba(28, 28, 26, 0.45) !important;
+}
+
+/* ============================================
+   MOBILE — Mejoras de interfaz
+   ============================================ */
+
+@media screen and (max-width: 749px) {
+  /* Títulos más compactos pero legibles */
+  .h0 {
+    font-size: clamp(3.2rem, 9vw, 5.6rem);
+    line-height: 1.08;
+  }
+
+  .h1 {
+    font-size: clamp(2.6rem, 7vw, 4rem);
+  }
+
+  /* Product cards — información más clara */
+  .card__information {
+    padding: 1.2rem 0 0.4rem;
+  }
+
+  .card__heading {
+    font-size: 1.4rem;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+  }
+
+  .price__regular,
+  .price-item {
+    font-size: 1.4rem;
+  }
+
+  /* Botones con tap target mínimo 44px */
+  .button {
+    min-height: 4.4rem;
+    padding: 1.2rem 2rem;
+  }
+
+  /* Rich text en mobile */
+  .rich-text__heading {
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    line-height: 1.1;
+  }
+
+  /* Announcement bar legible */
+  .announcement-bar__message {
+    font-size: 1.1rem;
+  }
+
+  /* Breadcrumbs — Chivo Mono pequeño */
+  .breadcrumb__item {
+    font-family: var(--vp-font-mono);
+    font-size: 1.0rem;
+    letter-spacing: var(--vp-letter-spacing-wide);
+    text-transform: uppercase;
+  }
+
+  /* Variant pills más grandes para touch */
+  .swatch-input__input + .swatch-input__label,
+  .variant-input-wrapper .variant__button-label {
+    min-width: 4.4rem;
+    min-height: 4.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Section padding reducido en mobile */
+  .shopify-section .section-full-width,
+  .shopify-section {
+    --page-width-padding: 1.6rem;
+  }
+}
+
+/* ============================================
+   MOBILE — Header con logo izquierdo
+   ============================================ */
+
+@media screen and (max-width: 989px) {
+  /* Asegurar que el logo se vea bien en mobile-left */
+  .header--mobile-center .header__heading {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Logo no demasiado grande en mobile */
+  .header__heading-logo {
+    max-height: 3.6rem;
+    width: auto !important;
+  }
 }

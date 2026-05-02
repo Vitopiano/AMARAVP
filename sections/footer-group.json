@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 /*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
@@ -7,6 +9,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
+>>>>>>> 3dd0ce2f46a81d4e43d04bae6ffa66d0a4367e84
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -17,13 +20,19 @@
         "6df3aef3-6003-42c8-aa02-589798e8e4a1": {
           "type": "text",
           "settings": {
+<<<<<<< HEAD
             "heading": "Contáctanos",
             "subtext": "<p>El Chicó · Bogotá, Colombia<\/p><p>info.vitopiano@gmail.com<\/p><p>WhatsApp: +579151143<\/p>"
+=======
+            "heading": "VITO PIANO",
+            "subtext": "<p>ITA & COL                           <br/>Slow Fashion Store</p><p></p><p>info.vitopiano@gmail.com<br/><a href=\"https://wa.me/3189151143\" target=\"_blank\" title=\"https://wa.me/3189151143\">(+57) 318 915 1143</a></p><p></p><p></p><p></p>"
+>>>>>>> 3dd0ce2f46a81d4e43d04bae6ffa66d0a4367e84
           }
         },
         "footer-0": {
           "type": "link_list",
           "settings": {
+<<<<<<< HEAD
             "heading": "Políticas",
             "menu": "footer"
           }
