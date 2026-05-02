@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -26,10 +35,16 @@
             "image_width": 200,
             "alignment": "center"
           }
+=======
+            "heading": "",
+            "menu": "footer"
+          }
+>>>>>>> 3dd0ce2f46a81d4e43d04bae6ffa66d0a4367e84
         }
       },
       "block_order": [
         "6df3aef3-6003-42c8-aa02-589798e8e4a1",
+<<<<<<< HEAD
         "footer-0",
         "e6eedd27-6f08-4501-8c99-4a4acabc4ab1"
       ],
@@ -38,16 +53,36 @@
         "newsletter_enable": true,
         "newsletter_heading": "Únete al mundo Vito Piano",
         "enable_follow_on_shop": false,
+=======
+        "footer-0"
+      ],
+      "settings": {
+        "color_scheme": "background-2",
+        "newsletter_enable": true,
+        "newsletter_heading": "Newsletter",
+        "enable_follow_on_shop": true,
+>>>>>>> 3dd0ce2f46a81d4e43d04bae6ffa66d0a4367e84
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": false,
         "margin_top": 0,
+<<<<<<< HEAD
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": ["footer"]
+=======
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+>>>>>>> 3dd0ce2f46a81d4e43d04bae6ffa66d0a4367e84
 }
