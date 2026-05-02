@@ -41,34 +41,19 @@ h1, h2, h3, .h1, .h2, .h3 {
   text-transform: uppercase;
 }
 
-/* Announcement bar - Full width limpio*/
-
-/* Fondo full width */
+/* Announcement bar - estructura correcta */
 .announcement-bar {
   width: 100%;
   position: relative;
-}
-
-/* Contenido centrado como antes */
-.announcement-bar .page-width {
-  max-width: 1200px; /* mismo ancho que tu footer */
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-/* Altura y centrado vertical */
-.announcement-bar__message {
-  padding: 1rem 0;
-  text-align: center;
-}
-.announcement-bar {
   background-color: var(--vp-verde-botella);
   color: var(--vp-azul-hielo);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono);
   font-size: 1.2rem;
+  overflow: hidden; /* 👈 clave para que el grid no se corte */
 }
+
+/* GRID FULL WIDTH */
 .announcement-bar::before {
   content: "";
   position: absolute;
@@ -78,10 +63,30 @@ h1, h2, h3, .h1, .h2, .h3 {
     linear-gradient(rgba(197, 234, 255, 0.075) 1px, transparent 1px),
     linear-gradient(90deg, rgba(197, 234, 255, 0.06) 1px, transparent 1px);
 
-  background-size: 32px 32px; /* más fino que el footer */
+  background-size: 32px 32px;
+  
   pointer-events: none;
   z-index: 0;
 }
+
+/* CONTENIDO ENCIMA DEL GRID */
+.announcement-bar .page-width {
+  position: relative; /* 👈 esto faltaba */
+  z-index: 1;         /* 👈 sube el contenido encima del grid */
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* TEXTO CENTRADO */
+.announcement-bar__message {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* COLOR TEXTO */
 .announcement-bar__message,
 .announcement-bar__message a,
 .announcement__link {
@@ -560,34 +565,68 @@ h1, h2, .h0, .h1, .h2 {
    WHATSAPP — Botón flotante
    ============================================ */
 
+/* ============================================
+   WHATSAPP — Glass Button Ultra Minimal
+   ============================================ */
+
 .vp-wa-fab {
   position: fixed;
   bottom: 2.4rem;
   right: 2.4rem;
   z-index: 9998;
+
   width: 5.6rem;
   height: 5.6rem;
-  background: #25D366;
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* 🎯 Glass effect */
+  background: color-mix(in srgb, var(--vp-verde-botella) 20%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* 🎯 Borde elegante */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* 🎯 Sombra suave (no pesada) */
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
   text-decoration: none;
+
+  transition: all 0.25s ease;
 }
 
-.vp-wa-fab:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
+/* Ícono */
 .vp-wa-fab svg {
-  width: 3rem;
-  height: 3rem;
-  fill: #ffffff;
+  width: 2.6rem;
+  height: 2.6rem;
+  fill: white;
+  opacity: 0.92;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+/* Hover — más sólido y presente */
+.vp-wa-fab:hover {
+  transform: translateY(-2px) scale(1.05);
+
+  background: color-mix(in srgb, var(--vp-verde-botella) 35%, transparent);
+
+  box-shadow: 
+    0 8px 28px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.vp-wa-fab:hover svg {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Mobile */
 @media screen and (max-width: 749px) {
   .vp-wa-fab {
     bottom: 7.2rem;
@@ -597,8 +636,8 @@ h1, h2, .h0, .h1, .h2 {
   }
 
   .vp-wa-fab svg {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 }
 
