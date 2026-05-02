@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "el-sastre": {
+      "type": "vito-el-sastre",
+      "settings": {}
+    }
+  },
+  "order": ["el-sastre"]
+}

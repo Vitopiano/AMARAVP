@@ -1,0 +1,309 @@
+<style>
+  /* ============================================
+     MANIFIESTO — Layout editorial
+  ============================================ */
+
+  .vm-page {
+    background: var(--vp-crema, #FCF9F5);
+  }
+
+  /* HERO — verde botella con cuadrícula */
+  .vm-hero {
+    background-color: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 8rem 2.4rem 7rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vm-hero__eyebrow {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.65);
+    margin: 0 0 3.2rem;
+    display: block;
+  }
+
+  .vm-hero__headline {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(4rem, 9vw, 8.8rem);
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #FCF9F5;
+    margin: 0 auto;
+    max-width: 14ch;
+    text-transform: uppercase;
+  }
+
+  .vm-hero__rule {
+    width: 3.2rem;
+    height: 1px;
+    background: rgba(197, 234, 255, 0.30);
+    margin: 4rem auto 0;
+    border: none;
+  }
+
+  /* CUERPO — columna editorial centrada */
+  .vm-body {
+    max-width: 68ch;
+    margin: 0 auto;
+    padding: 6.4rem 2.4rem;
+  }
+
+  .vm-body p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.75;
+    color: rgba(28, 28, 26, 0.78);
+    margin: 0 0 2rem;
+  }
+
+  .vm-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Separador de secciones */
+  .vm-divider {
+    width: 4rem;
+    height: 1px;
+    background: rgba(12, 68, 51, 0.18);
+    border: none;
+    margin: 5.6rem auto;
+  }
+
+  /* Pull quote — frase de impacto */
+  .vm-pull {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    line-height: 1.2;
+    color: #0C4433;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    text-align: center;
+    padding: 3.2rem 0;
+    border-top: 1px solid rgba(12, 68, 51, 0.12);
+    border-bottom: 1px solid rgba(12, 68, 51, 0.12);
+    margin: 4.8rem 0;
+  }
+
+  /* Título de sección */
+  .vm-section-heading {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #0C4433;
+    letter-spacing: 0.02em;
+    margin: 0 0 2.8rem;
+  }
+
+  /* COMPROMISOS — bloque oscuro */
+  .vm-compromisos {
+    background: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 7.2rem 2.4rem;
+  }
+
+  .vm-compromisos__inner {
+    max-width: 68ch;
+    margin: 0 auto;
+  }
+
+  .vm-compromisos__label {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.55);
+    margin: 0 0 4.8rem;
+    display: block;
+  }
+
+  .vm-compromisos__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+
+  .vm-compromisos__item {
+    border-top: 1px solid rgba(252, 249, 245, 0.10);
+    padding: 3.2rem 0;
+  }
+
+  .vm-compromisos__item:last-child {
+    border-bottom: 1px solid rgba(252, 249, 245, 0.10);
+  }
+
+  .vm-compromisos__title {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #FCF9F5;
+    margin: 0 0 0.8rem;
+    display: block;
+  }
+
+  .vm-compromisos__desc {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.65;
+    color: rgba(252, 249, 245, 0.60);
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vm-compromisos__list {
+      grid-template-columns: 1fr 1fr;
+      gap: 0 4.8rem;
+    }
+
+    .vm-compromisos__item:nth-child(1),
+    .vm-compromisos__item:nth-child(2) {
+      border-top: 1px solid rgba(252, 249, 245, 0.10);
+    }
+
+    .vm-compromisos__item:nth-child(3),
+    .vm-compromisos__item:nth-child(4) {
+      border-bottom: 1px solid rgba(252, 249, 245, 0.10);
+      border-top: 1px solid rgba(252, 249, 245, 0.10);
+    }
+  }
+
+  /* CIERRE — firma editorial */
+  .vm-cierre {
+    max-width: 52ch;
+    margin: 0 auto;
+    padding: 6.4rem 2.4rem 8rem;
+    text-align: center;
+  }
+
+  .vm-cierre p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.75;
+    color: rgba(28, 28, 26, 0.70);
+    margin: 0 0 2.4rem;
+  }
+
+  .vm-cierre__piano {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 1;
+    color: rgba(12, 68, 51, 0.07);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin: 3.2rem 0;
+    user-select: none;
+  }
+
+  .vm-cierre__firma {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: rgba(28, 28, 26, 0.45);
+    margin: 0 0 0.4rem;
+  }
+
+  .vm-cierre__tagline {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.35);
+    margin: 0;
+  }
+</style>
+
+<div class="vm-page">
+
+  <!-- HERO -->
+  <div class="vm-hero">
+    <span class="vm-hero__eyebrow">Manifiesto · Vito Piano</span>
+    <h1 class="vm-hero__headline">En defensa de lo que dura</h1>
+    <hr class="vm-hero__rule">
+  </div>
+
+  <!-- SECCIÓN 1: Provocación -->
+  <div class="vm-body">
+    <p>Vivimos en la era del exceso rápido.</p>
+    <p>Colecciones que nacen y mueren en semanas. Prendas que se usan tres veces y se descartan. Descuentos que llegan antes de que la tela haya terminado de respirar.</p>
+    <p>Entendemos la lógica. La velocidad vende. El volumen escala. La inmediatez seduce.</p>
+
+    <blockquote class="vm-pull">
+      Pero hay algo que la velocidad no puede fabricar: carácter.
+    </blockquote>
+
+    <!-- SECCIÓN 2: Slow Made -->
+    <h2 class="vm-section-heading">Slow Made no es una etiqueta.<br>Es una decisión.</h2>
+
+    <p>Significa que cada prenda Vito Piano tarda lo que tiene que tardar en nacer. Que los materiales se eligen por sus propiedades reales, no por su precio de lista. Que las manos que cosen son artesanas con oficio, no líneas de producción bajo presión.</p>
+    <p>Significa que cuando te pones un Torricelli —nuestro primer pantalón— estás vistiendo algo que alguien pensó, cortó y terminó con atención. No con prisa.</p>
+  </div>
+
+  <!-- COMPROMISOS -->
+  <div class="vm-compromisos">
+    <div class="vm-compromisos__inner">
+      <span class="vm-compromisos__label">Nuestros compromisos</span>
+      <ul class="vm-compromisos__list">
+        <li class="vm-compromisos__item">
+          <span class="vm-compromisos__title">Producción local</span>
+          <p class="vm-compromisos__desc">Cada prenda se hace en Colombia. Con estándares que no negociamos y con artesanos a quienes conocemos por su nombre.</p>
+        </li>
+        <li class="vm-compromisos__item">
+          <span class="vm-compromisos__title">Materiales con propósito</span>
+          <p class="vm-compromisos__desc">Trabajamos con fibras naturales seleccionadas por cómo se comportan en el cuerpo y en el tiempo: lanas, linos, algodones. Nada que envejezca mal.</p>
+        </li>
+        <li class="vm-compromisos__item">
+          <span class="vm-compromisos__title">Piezas atemporales</span>
+          <p class="vm-compromisos__desc">No diseñamos para una temporada. Diseñamos para años. Si dentro de cinco años tu blazer Pasolini sigue siendo la chaqueta que eliges para lo que importa, lo hicimos bien.</p>
+        </li>
+        <li class="vm-compromisos__item">
+          <span class="vm-compromisos__title">Tallas reales</span>
+          <p class="vm-compromisos__desc">Nuestros patrones respetan la proporcionalidad del cuerpo latinoamericano. No adaptamos tallas europeas. Construimos las nuestras.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="vm-cierre">
+    <p>No necesitamos que estés en contra de nada.</p>
+    <p>Solo te invitamos a elegir diferente. A preguntarte, antes de comprar, si esta prenda va a durar. Si fue hecha con intención. Si le vas a hacer honor.</p>
+    <p>Hay algo que el nombre de esta marca guarda en silencio.</p>
+    <p>En italiano, <em>piano</em> no es solo un instrumento. Es una instrucción: <em>despacio</em>. Con atención. Sin prisa.</p>
+    <p>Eso es Vito Piano. Un sastre que hace las cosas como siempre se debieron hacer.</p>
+    <p>El resto lo hace la ropa.</p>
+
+    <span class="vm-cierre__piano" aria-hidden="true">piano</span>
+
+    <p class="vm-cierre__firma">— Vito Piano</p>
+    <p class="vm-cierre__tagline">Piano piano. · Despacio, despacio.</p>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Manifiesto Vito Piano",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Manifiesto Vito Piano"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,288 @@
+<style>
+  /* ============================================
+     EL SASTRE — Layout editorial narrativo
+  ============================================ */
+
+  .vs-page {
+    background: #FCF9F5;
+  }
+
+  /* HERO — apertura narrativa, crema */
+  .vs-hero {
+    padding: 9.6rem 2.4rem 7.2rem;
+    text-align: center;
+    background: #FCF9F5;
+    border-bottom: 1px solid rgba(12, 68, 51, 0.08);
+  }
+
+  .vs-hero__chapter {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.40);
+    display: block;
+    margin-bottom: 3.6rem;
+  }
+
+  .vs-hero__opening {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(2.8rem, 6vw, 5.6rem);
+    line-height: 1.12;
+    font-weight: 400;
+    color: #0C4433;
+    font-style: italic;
+    max-width: 18ch;
+    margin: 0 auto 4rem;
+    letter-spacing: 0.01em;
+  }
+
+  .vs-hero__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.35);
+  }
+
+  .vs-hero__location::before,
+  .vs-hero__location::after {
+    content: "";
+    display: block;
+    width: 2.4rem;
+    height: 1px;
+    background: rgba(12, 68, 51, 0.20);
+  }
+
+  /* CUERPO NARRATIVO */
+  .vs-body {
+    max-width: 62ch;
+    margin: 0 auto;
+    padding: 6.4rem 2.4rem;
+  }
+
+  .vs-body p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.78;
+    color: rgba(28, 28, 26, 0.75);
+    margin: 0 0 2.2rem;
+  }
+
+  .vs-body p em {
+    color: #0C4433;
+    font-style: italic;
+  }
+
+  .vs-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Separador geográfico entre capítulos */
+  .vs-chapter-break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5.6rem 2.4rem;
+    position: relative;
+  }
+
+  .vs-chapter-break__line {
+    flex: 1;
+    max-width: 8rem;
+    height: 1px;
+    background: rgba(12, 68, 51, 0.15);
+  }
+
+  .vs-chapter-break__place {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.40);
+    white-space: nowrap;
+  }
+
+  /* Pull quote */
+  .vs-pull {
+    border-left: 2px solid #0C4433;
+    padding: 0.4rem 0 0.4rem 2.8rem;
+    margin: 4.8rem 0;
+  }
+
+  .vs-pull p {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    line-height: 1.3;
+    color: #0C4433;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    margin: 0 !important;
+    font-style: italic;
+  }
+
+  /* BLOQUE VERDE — Lo que hacemos */
+  .vs-dark {
+    background: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 7.2rem 2.4rem;
+  }
+
+  .vs-dark__inner {
+    max-width: 62ch;
+    margin: 0 auto;
+  }
+
+  .vs-dark__label {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.50);
+    display: block;
+    margin-bottom: 3.2rem;
+  }
+
+  .vs-dark__heading {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #FCF9F5;
+    letter-spacing: 0.02em;
+    margin: 0 0 3.2rem;
+  }
+
+  .vs-dark p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.70;
+    color: rgba(252, 249, 245, 0.62);
+    margin: 0 0 2rem;
+  }
+
+  .vs-dark p em {
+    color: rgba(252, 249, 245, 0.88);
+    font-style: italic;
+  }
+
+  .vs-dark p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* CIERRE — bienvenida */
+  .vs-cierre {
+    max-width: 48ch;
+    margin: 0 auto;
+    padding: 8rem 2.4rem 10rem;
+    text-align: center;
+  }
+
+  .vs-cierre p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.75;
+    color: rgba(28, 28, 26, 0.68);
+    margin: 0 0 2.4rem;
+  }
+
+  .vs-cierre__bienvenido {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(4rem, 10vw, 7.2rem);
+    line-height: 1;
+    font-weight: 400;
+    color: #0C4433;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 4.8rem;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 749px) {
+    .vs-hero {
+      padding: 6.4rem 2.4rem 5.6rem;
+    }
+
+    .vs-pull {
+      padding-left: 2rem;
+    }
+
+    .vs-dark {
+      padding: 5.6rem 2.4rem;
+    }
+  }
+</style>
+
+<div class="vs-page">
+
+  <!-- HERO: apertura como primera línea de novela -->
+  <div class="vs-hero">
+    <span class="vs-hero__chapter">El Sastre · Nuestra Historia</span>
+    <h1 class="vs-hero__opening">Había una vez<br>un sastre en Varese.</h1>
+    <span class="vs-hero__location">Varese, Italia</span>
+  </div>
+
+  <!-- CAPÍTULO 1: El origen -->
+  <div class="vs-body">
+    <p>No era un sastre cualquiera. Era el tipo de hombre que pasa horas ajustando un hombro antes de coser, que elige el forro por cómo cae y no por cuánto cuesta, que cree —con la convicción de los que han visto pasar décadas— que una prenda bien hecha es la forma más silenciosa de decir algo importante.</p>
+
+    <div class="vs-pull">
+      <p>En Varese aprendió lo que los italianos saben desde siempre: que las cosas buenas se hacen <em>piano piano</em>. Despacio. Sin atajos.</p>
+    </div>
+
+    <p>Ese fue siempre su modo de trabajar. Y eventualmente, su nombre.</p>
+  </div>
+
+  <!-- SEPARADOR: cambio geográfico -->
+  <div class="vs-chapter-break">
+    <div class="vs-chapter-break__line"></div>
+    <span class="vs-chapter-break__place">Bogotá · 2010</span>
+    <div class="vs-chapter-break__line"></div>
+  </div>
+
+  <!-- CAPÍTULO 2: Colombia -->
+  <div class="vs-body" style="padding-top: 0;">
+    <p>Llegó a Bogotá. No de vacaciones. Llegó para quedarse.</p>
+    <p>Trajo consigo lo que no cabe en maletas: una manera de entender el oficio. La idea de que confeccionar ropa es, antes que nada, un acto de respeto — hacia quien la va a vestir, hacia quien la hace, hacia los materiales que la componen.</p>
+    <p>En Colombia encontró algo que Italia ya no le daba con tanta facilidad: urgencia creativa, manos expertas dispuestas a aprender, y una tierra generosa en texturas, colores y carácter.</p>
+    <p>Así nació Vito Piano. No como marca. Como conversación entre dos culturas que tienen más en común de lo que parece: el orgullo de hacer bien las cosas, la desconfianza saludable hacia lo masivo, y la convicción de que lo bello y lo duradero no están reñidos.</p>
+  </div>
+
+  <!-- LO QUE HACEMOS — bloque verde -->
+  <div class="vs-dark">
+    <div class="vs-dark__inner">
+      <span class="vs-dark__label">Lo que hacemos</span>
+      <h2 class="vs-dark__heading">Prendas para quienes entienden que la ropa dice algo, de todas formas.</h2>
+      <p>Cada pieza nace con un nombre. Un nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
+      <p>Trabajamos con materiales seleccionados, producción local de calidad, y el tiempo que cada prenda necesita para existir bien.</p>
+      <p><em>No somos moda rápida. No queremos serlo.</em></p>
+    </div>
+  </div>
+
+  <!-- CIERRE: comunidad y bienvenida -->
+  <div class="vs-cierre">
+    <p>Vito Piano es para quien elige con cuidado. Para el profesional que distingue entre lo que se ve y lo que se siente. Para quien prefiere tener menos y mejor.</p>
+    <p>Si llegaste aquí, probablemente ya sabes de lo que hablamos.</p>
+    <span class="vs-cierre__bienvenido">Bienvenido.</span>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "El Sastre — Nuestra Historia",
+  "settings": [],
+  "presets": [
+    {
+      "name": "El Sastre — Nuestra Historia"
+    }
+  ]
+}
+{% endschema %}
