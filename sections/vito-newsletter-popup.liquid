@@ -5,16 +5,16 @@
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(12, 68, 51, 0.78);
+    background: rgba(12, 68, 51, 0.80);
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
   }
 
   .vp-popup-overlay.is-active {
     display: flex;
-    animation: vpFadeIn 0.35s ease forwards;
+    animation: vpFadeIn 0.4s ease forwards;
   }
 
   @keyframes vpFadeIn {
@@ -24,16 +24,16 @@
 
   .vp-popup {
     background: #FCF9F5;
-    max-width: 56rem;
+    max-width: 58rem;
     width: 100%;
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
-    animation: vpSlideUp 0.35s ease forwards;
+    animation: vpSlideUp 0.4s ease forwards;
   }
 
   @keyframes vpSlideUp {
-    from { transform: translateY(2rem); opacity: 0; }
+    from { transform: translateY(2.4rem); opacity: 0; }
     to   { transform: translateY(0); opacity: 1; }
   }
 
@@ -51,9 +51,9 @@
     border: none;
     cursor: pointer;
     font-size: 2.2rem;
-    color: rba(252, 249, 245, 0.65);
+    color: rgba(252, 249, 245, 0.55);
     line-height: 1;
-    z-index: 2;
+    z-index: 10;
     width: 3.2rem;
     height: 3.2rem;
     display: flex;
@@ -73,44 +73,72 @@
     padding: 4.8rem 3.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    min-height: 28rem;
+  }
+
+  /* Marca de agua — logo */
+  .vp-popup__watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .vp-popup__watermark-img {
+    width: 100%;
+    height: auto;
+    opacity: 0.09;
+    object-fit: contain;
+    display: block;
+    filter: brightness(10);
+  }
+
+  .vp-popup__left-content {
+    position: relative;
+    z-index: 1;
   }
 
   .vp-popup__eyebrow {
     font-family: 'Chivo Mono', monospace;
-    font-size: 1.0rem;
-    letter-spacing: 0.16em;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #431424);
-    margin: 0 0 1.4rem;
+    color: rgba(197, 234, 255, 0.75);
+    margin: 0 0 1.2rem;
   }
 
   .vp-popup__heading {
-    font-size: 3.8rem;
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: 3.2rem;
     line-height: 1.05;
     font-weight: 400;
     color: #FCF9F5;
     margin: 0 0 1.6rem;
-    letter-spacing: 0.04em
-    text-transform: uppercase;
-  }
-
-  .vp-popup__discount {
-    display: block;
-    font-family: 'Chivo Mono', monospace;
-    font-size: 5rem;
-    font-weight: 300;
-    color: #E25027;
-    line-height: 1;
-    margin-bottom: 1.6rem;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.04em;
   }
 
   .vp-popup__subtext {
-    font-size: 1.3rem;
-    color: rgba(252, 249, 245, 0.65);
+    font-size: 1.35rem;
+    color: rgba(252, 249, 245, 0.70);
     margin: 0;
     line-height: 1.65;
+  }
+
+  .vp-popup__offer {
+    font-family: 'Chivo Mono', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.60);
+    margin: 2rem 0 0;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(252, 249, 245, 0.10);
   }
 
   /* --- Panel derecho: crema --- */
@@ -124,26 +152,26 @@
 
   .vp-popup__form-title {
     font-family: 'Chivo Mono', monospace;
-    font-size: 1.0rem;
-    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #431424);
+    color: rgba(12, 68, 51, 0.45);
     margin: 0 0 2.4rem;
   }
 
   .vp-popup__field {
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
   }
 
   .vp-popup__input,
   .vp-popup__select {
     width: 100%;
-    border: 1px solid #431424;
+    border: 1px solid rgba(12, 68, 51, 0.30);
     background: transparent;
     padding: 1.2rem 1.4rem;
     font-size: 1.4rem;
     border-radius: 0;
-    color: #431424;
+    color: #1C1C1A;
     font-family: 'Chivo Mono', monospace;
     letter-spacing: 0.03em;
     outline: none;
@@ -153,17 +181,21 @@
     box-sizing: border-box;
   }
 
+  .vp-popup__input::placeholder {
+    color: rgba(28, 28, 26, 0.35);
+  }
+
   .vp-popup__input:focus,
   .vp-popup__select:focus {
-    border-color: #431424;
+    border-color: #0C4433;
   }
 
   .vp-popup__birthday-label {
     font-family: 'Chivo Mono', monospace;
-    font-size: 1.0rem;
-    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: #431424;
+    color: rgba(12, 68, 51, 0.45);
     margin: 0 0 0.8rem;
     display: block;
   }
@@ -172,7 +204,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2.8rem;
   }
 
   .vp-popup__submit {
@@ -180,15 +212,15 @@
     background: #0C4433;
     color: #FCF9F5;
     border: none;
-    padding: 1.4rem 2rem;
+    padding: 1.5rem 2rem;
     font-family: 'Chivo Mono', monospace;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.25s;
     border-radius: 0;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.6rem;
   }
 
   .vp-popup__submit:hover {
@@ -197,9 +229,9 @@
 
   .vp-popup__disclaimer {
     font-size: 1.0rem;
-    color: rgba(28, 28, 26, 0.4);
+    color: rgba(28, 28, 26, 0.35);
     margin: 0;
-    line-height: 1.55;
+    line-height: 1.6;
     font-family: 'Chivo Mono', monospace;
   }
 
@@ -219,15 +251,16 @@
 
   .vp-popup__error {
     color: #E25027;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: 'Chivo Mono', monospace;
-    margin: 0.6rem 0 0;
+    margin: 0.5rem 0 0;
     display: block;
   }
 
   @media screen and (max-width: 749px) {
     .vp-popup__left {
-      padding: 4rem 2.4rem 2.8rem;
+      padding: 3.6rem 2.4rem 2.8rem;
+      min-height: 22rem;
     }
 
     .vp-popup__right {
@@ -235,24 +268,37 @@
     }
 
     .vp-popup__heading {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
     }
 
-    .vp-popup__discount {
-      font-size: 4rem;
+    .vp-popup__watermark {
+      font-size: clamp(4.5rem, 22vw, 7rem);
     }
   }
 </style>
 
 <div id="vp-popup-overlay" class="vp-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="vp-popup-heading">
   <div class="vp-popup">
-    <button class="vp-popup__close" id="vp-popup-close" aria-label="Cerrar popup">&#215;</button>
+    <button class="vp-popup__close" id="vp-popup-close" aria-label="Cerrar">&#215;</button>
 
     <div class="vp-popup__left">
-      <p class="vp-popup__eyebrow">{{ section.settings.eyebrow }}</p>
-      <h2 class="vp-popup__heading" id="vp-popup-heading">{{ section.settings.heading }}</h2>
-      <span class="vp-popup__discount">{{ section.settings.discount_badge }}</span>
-      <p class="vp-popup__subtext">{{ section.settings.subtext }}</p>
+      {%- if settings.logo != blank -%}
+        <div class="vp-popup__watermark" aria-hidden="true">
+          {{ settings.logo | image_url: width: 800 | image_tag:
+            alt: '',
+            loading: 'lazy',
+            class: 'vp-popup__watermark-img'
+          }}
+        </div>
+      {%- endif -%}
+      <div class="vp-popup__left-content">
+        <p class="vp-popup__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="vp-popup__heading" id="vp-popup-heading">{{ section.settings.heading }}</h2>
+        <p class="vp-popup__subtext">{{ section.settings.subtext }}</p>
+        {%- if section.settings.offer_line != blank -%}
+          <p class="vp-popup__offer">{{ section.settings.offer_line }}</p>
+        {%- endif -%}
+      </div>
     </div>
 
     <div class="vp-popup__right">
@@ -265,7 +311,9 @@
             <p>{{ section.settings.success_message }}</p>
           </div>
         {%- else -%}
-          <p class="vp-popup__form-title">{{ section.settings.form_title }}</p>
+          {%- if section.settings.form_title != blank -%}
+            <p class="vp-popup__form-title">{{ section.settings.form_title }}</p>
+          {%- endif -%}
 
           <div class="vp-popup__field">
             <input
@@ -391,7 +439,6 @@
     }
   });
 
-  /* Marcar como visto si el form fue enviado exitosamente */
   {%- if form.posted_successfully? -%}
   try { localStorage.setItem('vp_popup_v1', String(Date.now())); } catch (e) {}
   {%- endif -%}
@@ -421,7 +468,7 @@
     },
     {
       "type": "header",
-      "content": "Contenido"
+      "content": "Panel izquierdo"
     },
     {
       "type": "text",
@@ -436,16 +483,16 @@
       "default": "Vito Piano"
     },
     {
-      "type": "text",
-      "id": "discount_badge",
-      "label": "Oferta destacada",
-      "default": "10% OFF"
-    },
-    {
       "type": "textarea",
       "id": "subtext",
       "label": "Subtexto",
-      "default": "En tu primera compra. Suscríbete y únete a un círculo de hombres y mujeres que visten con propósito."
+      "default": "Únete al círculo de hombres y mujeres que visten con propósito."
+    },
+    {
+      "type": "text",
+      "id": "offer_line",
+      "label": "Línea de oferta (opcional)",
+      "default": "Como bienvenida, un 10% en tu primera prenda."
     },
     {
       "type": "header",
@@ -454,8 +501,8 @@
     {
       "type": "text",
       "id": "form_title",
-      "label": "Título del formulario",
-      "default": "Ingresa tus datos"
+      "label": "Título del formulario (dejar vacío para ocultar)",
+      "default": ""
     },
     {
       "type": "text",
@@ -479,19 +526,19 @@
       "type": "text",
       "id": "button_label",
       "label": "Texto del botón",
-      "default": "Suscribirme y obtener 10%"
+      "default": "Unirme al mundo Vito Piano"
     },
     {
       "type": "textarea",
       "id": "disclaimer",
       "label": "Aviso legal",
-      "default": "Al suscribirte aceptas recibir comunicaciones de Vito Piano. Puedes darte de baja en cualquier momento."
+      "default": "Al suscribirte aceptas recibir comunicaciones de Vito Piano. Puedes darte de baja cuando quieras."
     },
     {
       "type": "text",
       "id": "success_message",
       "label": "Mensaje de éxito",
-      "default": "¡Bienvenido! Revisa tu correo — tu código de 10% estará esperándote."
+      "default": "Bienvenido. Revisa tu correo — tu 10% te espera."
     }
   ],
   "presets": [
