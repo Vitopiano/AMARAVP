@@ -242,6 +242,42 @@ h1, h2, h3, .h1, .h2, .h3 {
   text-transform: uppercase;
 }
 
+/* Links dentro del footer verde: todos en crema, no naranja */
+.footer.color-inverse a,
+.footer.color-inverse .footer__list-social-link,
+.footer.color-inverse .footer__list a {
+  color: rgba(252, 249, 245, 0.80) !important;
+  text-decoration: none;
+}
+
+.footer.color-inverse a:hover,
+.footer.color-inverse .footer__list a:hover {
+  color: var(--vp-crema) !important;
+  text-decoration: underline;
+}
+
+/* Headings del footer (VITO PIANO, Políticas) en crema */
+.footer.color-inverse .footer__heading {
+  color: var(--vp-crema) !important;
+}
+
+/* Newsletter heading */
+.footer.color-inverse .newsletter__heading {
+  color: var(--vp-crema) !important;
+}
+
+/* Input del newsletter */
+.footer.color-inverse .newsletter-form__button {
+  background: var(--vp-crema);
+  color: var(--vp-verde-botella);
+  border-color: var(--vp-crema);
+}
+
+/* Ícono de Instagram / social */
+.footer.color-inverse .list-social__link svg {
+  fill: var(--vp-crema) !important;
+}
+
 /* ============================================
    HOMEPAGE — Hero
    ============================================ */
