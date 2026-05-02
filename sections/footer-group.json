@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "heading": "VITO PIANO",
-            "subtext": "<p>ITA & COL · <br/>Slow Fashion<br/>Store</p><p>info.vitopiano@gmail.com</p><p><a href=\"https://wa.me/573189151143\" target=\"_blank\" title=\"WhatsApp Vito Piano\">(+57) 318 915 1143</a></p>"
+            "subtext": "<p>ITA & COL · Slow Fashion Store</p><p>info.vitopiano@gmail.com</p><p><a href=\"https://wa.me/573189151143\" target=\"_blank\" title=\"WhatsApp Vito Piano\">(+57) 318 915 1143</a></p>"
           }
         },
         "footer-0": {
@@ -41,17 +41,13 @@
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
-        "payment_enable": true,
+        "payment_enable": false,
         "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "vito-footer-brand-bar": {
-      "type": "vito-footer-brand-bar",
-      "settings": {}
     }
   },
-  "order": ["footer", "vito-footer-brand-bar"]
+  "order": ["footer"]
 }

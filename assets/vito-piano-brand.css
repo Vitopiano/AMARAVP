@@ -588,41 +588,37 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   FOOTER — Dois tonos estilo Loro Piana
+   FOOTER — Bottom bar estilo Loro Piana
    ============================================ */
 
-/* Bottom strip: crema con VP verde — separado del bloque principal */
+/* Strip crema debajo del bloque verde — un solo corte limpio */
 .footer__content-bottom {
-  background-color: var(--vp-crema) !important;
-  color: var(--vp-negro-suave) !important;
-  border-top: 1px solid rgba(12, 68, 51, 0.18);
+  background: var(--vp-crema) !important;
+  border-top: none !important;
+  padding-top: 3.2rem !important;
+  padding-bottom: 3.2rem !important;
 }
 
-.footer__content-bottom a,
-.footer__content-bottom p,
-.footer__content-bottom span,
-.footer__content-bottom small {
-  color: var(--vp-negro-suave) !important;
+/* Copyright: Chivo Mono, uppercase, muted verde */
+.footer__copyright,
+.footer__copyright small,
+.footer__copyright .copyright__content {
+  font-family: var(--vp-font-mono) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(12, 68, 51, 0.45) !important;
 }
 
-.footer__content-bottom a:hover {
-  color: var(--vp-verde-botella) !important;
-  text-decoration: underline;
+/* Ocultar "Tecnología de Shopify" / "Powered by Shopify" */
+.footer__copyright .shopify-link,
+.footer__copyright a[href*="shopify.com"] {
+  display: none !important;
 }
 
-/* Footer payment icons en crema */
-.footer__payment {
-  filter: invert(0.1);
-  opacity: 0.65;
-}
-
-/* Copyright line */
-.footer__copyright {
-  font-family: var(--vp-font-mono);
-  font-size: 1.0rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-  color: rgba(28, 28, 26, 0.45) !important;
+/* Ocultar lista de políticas del bottom si está activa */
+.footer__content-bottom .policies-list {
+  display: none !important;
 }
 
 /* ============================================
