@@ -12,7 +12,7 @@
     "image_banner": {
       "type": "image-banner",
       "settings": {
-        "image": "shopify://shop_images/VP_Social_media_Banner_Facebook.jpg",
+        "image": "shopify://shop_images/VP_Social_media_Post_1080x1350-10.jpg",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "bottom-center",
