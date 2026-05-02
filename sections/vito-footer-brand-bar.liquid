@@ -1,0 +1,71 @@
+<div class="vp-footer-brand">
+  <div class="vp-footer-brand__inner page-width">
+    <div class="vp-footer-brand__logo-wrap">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 400 | image_tag:
+          class: 'vp-footer-brand__logo',
+          alt: shop.name,
+          width: 200,
+          loading: 'lazy'
+        }}
+      {%- else -%}
+        <span class="vp-footer-brand__name">{{ shop.name }}</span>
+      {%- endif -%}
+    </div>
+    <p class="vp-footer-brand__tagline">© {{ 'now' | date: '%Y' }} Vito Piano — Hecho en Colombia, con alma italiana.</p>
+  </div>
+</div>
+
+<style>
+  .vp-footer-brand {
+    background: #FCF9F5;
+    padding: 3.2rem 0 3.6rem;
+    text-align: center;
+    border-top: 1px solid rgba(12, 68, 51, 0.12);
+  }
+
+  .vp-footer-brand__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .vp-footer-brand__logo {
+    max-height: 5.6rem;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .vp-footer-brand__name {
+    font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.08em;
+    color: #0C4433;
+  }
+
+  .vp-footer-brand__tagline {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.45);
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer — Barra de marca",
+  "settings": [],
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "presets": [
+    {
+      "name": "Footer — Barra de marca"
+    }
+  ]
+}
+{% endschema %}
