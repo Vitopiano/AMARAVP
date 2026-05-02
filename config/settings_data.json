@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/VP_Logo_Logo_Principal-02.png",
+    "logo": "shopify://shop_images/VP_Logo_Logo_Principal-04.png",
     "logo_width": 300,
     "favicon": "shopify://shop_images/VP_Social_media_Profile-02.jpg",
     "type_header_font": "bricolage_grotesque_n4",
@@ -266,7 +266,7 @@
         "settings": {
           "background": "#0c4433",
           "background_gradient": "",
-          "text": "#fcf9f5",
+          "text": "#c5eaff",
           "button": "#fcf9f5",
           "button_label": "#0c4433",
           "secondary_button_label": "#fcf9f5",
