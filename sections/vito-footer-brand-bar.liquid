@@ -1,57 +1,65 @@
-<div class="vp-footer-brand">
-  <div class="vp-footer-brand__inner page-width">
-    <div class="vp-footer-brand__logo-wrap">
-      {%- if settings.logo != blank -%}
-        {{ settings.logo | image_url: width: 400 | image_tag:
-          class: 'vp-footer-brand__logo',
-          alt: shop.name,
-          width: 200,
-          loading: 'lazy'
+<div class="vp-fbbar-outer">
+  <div class="vp-fbbar page-width">
+    {%- if settings.logo != blank -%}
+      <div class="vp-fbbar__watermark" aria-hidden="true">
+        {{ settings.logo | image_url: width: 900 | image_tag:
+          alt: '',
+          loading: 'lazy',
+          class: 'vp-fbbar__watermark-img'
         }}
-      {%- else -%}
-        <span class="vp-footer-brand__name">{{ shop.name }}</span>
-      {%- endif -%}
-    </div>
-    <p class="vp-footer-brand__tagline">© {{ 'now' | date: '%Y' }} Vito Piano — Hecho en Colombia, con alma italiana.</p>
+      </div>
+    {%- endif -%}
+    <p class="vp-fbbar__copy">© {{ 'now' | date: '%Y' }} Vito Piano — Hecho en Colombia, con alma italiana.</p>
   </div>
 </div>
 
 <style>
-  .vp-footer-brand {
-    background: #FCF9F5;
-    padding: 3.2rem 0 3.6rem;
+  .vp-fbbar-outer {
+    background: #F7F2EB;
+    padding: 2.4rem 1.6rem 3.2rem;
+    border-top: 1px solid rgba(12, 68, 51, 0.10);
+  }
+
+  .vp-fbbar {
+    position: relative;
+    overflow: hidden;
+    background: #EDE8DF;
+    border: 1px solid rgba(12, 68, 51, 0.13);
+    padding: 5.6rem 2rem 4.8rem;
     text-align: center;
-    border-top: 1px solid rgba(12, 68, 51, 0.12);
-  }
-
-  .vp-footer-brand__inner {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 1.6rem;
+    justify-content: center;
   }
 
-  .vp-footer-brand__logo {
-    max-height: 5.6rem;
-    width: auto;
+  .vp-fbbar__watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .vp-fbbar__watermark-img {
+    width: 62%;
+    max-width: 420px;
+    height: auto;
+    opacity: 0.07;
     object-fit: contain;
     display: block;
   }
 
-  .vp-footer-brand__name {
-    font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
-    font-size: 2.4rem;
-    letter-spacing: 0.08em;
-    color: #0C4433;
-  }
-
-  .vp-footer-brand__tagline {
+  .vp-fbbar__copy {
     font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 1.0rem;
-    letter-spacing: 0.12em;
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(12, 68, 51, 0.45);
+    color: rgba(12, 68, 51, 0.5);
     margin: 0;
+    position: relative;
+    z-index: 1;
   }
 </style>
 
