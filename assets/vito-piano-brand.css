@@ -44,10 +44,16 @@ h1, h2, h3, .h1, .h2, .h3 {
 /* Announcement bar */
 .announcement-bar {
   background-color: var(--vp-verde-botella);
-  color: var(--vp-crema);
+  color: var(--vp-azul-hielo);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono);
   font-size: 1.1rem;
+}
+
+.announcement-bar__message,
+.announcement-bar__message a,
+.announcement__link {
+  color: var(--vp-azul-hielo) !important;
 }
 
 /* Buttons — elegante, sin border-radius */
@@ -187,6 +193,42 @@ h1, h2, h3, .h1, .h2, .h3 {
   font-size: 1.2rem;
   text-transform: uppercase;
   font-family: var(--vp-font-mono);
+}
+
+/* ============================================
+   COLOR INVERSE — texto azul cielo sobre fondo verde
+   ============================================ */
+
+/* Nav links del header */
+.color-inverse .header__menu-item > span,
+.color-inverse .header__active-menu-item,
+.color-inverse .header__menu-item .header__menu-item-label {
+  color: var(--vp-azul-hielo) !important;
+}
+
+/* Hover sobre nav links */
+.color-inverse .header__menu-item:hover > span {
+  color: #ffffff !important;
+}
+
+/* Iconos del header (search, cuenta, carrito) */
+.color-inverse .header__icon svg {
+  fill: var(--vp-azul-hielo) !important;
+}
+
+.color-inverse .header__icon:hover svg {
+  fill: #ffffff !important;
+}
+
+/* Dropdown links del menú */
+.color-inverse .list-menu__item--link {
+  color: var(--vp-azul-hielo) !important;
+}
+
+/* Logo texto (fallback cuando no hay imagen) */
+.color-inverse .header__heading-link,
+.color-inverse .header__heading {
+  color: var(--vp-azul-hielo) !important;
 }
 
 /* ============================================
@@ -621,18 +663,37 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   MOBILE — Header con logo izquierdo
+   MOBILE — Header layout
    ============================================ */
 
-@media screen and (max-width: 989px) {
-  /* Asegurar que el logo se vea bien en mobile-left */
+@media screen and (max-width: 749px) {
+  /* Ocultar isotipo en móvil — el espacio es muy ajustado */
+  .header__isotipo-link {
+    display: none !important;
+  }
+
+  /* Logo centrado en móvil: limitar ancho para no chocar con iconos */
+  .header__heading-logo {
+    max-height: 3.2rem !important;
+    max-width: 14rem !important;
+    width: auto !important;
+    object-fit: contain;
+  }
+
+  /* Asegurar que el centro absoluto no se desborde sobre los iconos */
   .header--mobile-center .header__heading {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    max-width: calc(100% - 12rem);
   }
 
-  /* Logo no demasiado grande en mobile */
+  .header--mobile-center .header__heading-logo-wrapper {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
   .header__heading-logo {
     max-height: 3.6rem;
     width: auto !important;
