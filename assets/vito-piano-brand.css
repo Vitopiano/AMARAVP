@@ -1,12 +1,6 @@
-/* Vito Piano — Brand Tokens & Premium Homepage */
-
-/* Override Shopify's default fonts with Vito Piano typefaces */
-:root {
-  --font-body-family: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-heading-family: 'Decofast', 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body-weight: 300;
-  --font-heading-weight: 400;
-}
+/* ============================================
+   VITO PIANO — CORE TOKENS
+   ============================================ */
 
 :root {
   --vp-verde-botella: #0C4433;
@@ -17,665 +11,109 @@
   --vp-gris-calido: #F0EDE8;
   --vp-negro-suave: #1C1C1A;
 
-  --vp-font-headline: 'Decofast', 'Bricolage Grotesque', 'Georgia', serif;
-  --vp-font-body: 'Bricolage Grotesque', system-ui, sans-serif;
-  --vp-font-mono: 'Chivo Mono', 'Courier New', monospace;
+  --vp-font-headline: 'Decofast', serif;
+  --vp-font-body: 'Bricolage Grotesque', sans-serif;
+  --vp-font-mono: 'Chivo Mono', monospace;
 
   --vp-letter-spacing-wide: 0.12em;
   --vp-letter-spacing-normal: 0.04em;
-  --vp-transition: 0.3s ease;
 }
 
-/* Typography refinements */
-h1, h2, h3, .h1, .h2, .h3 {
+/* ============================================
+   BASE TYPOGRAPHY
+   ============================================ */
+
+body {
+  font-family: var(--vp-font-body);
+  color: var(--vp-negro-suave);
+}
+
+h1, h2, h3 {
+  font-family: var(--vp-font-headline);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-weight: 400;
 }
 
-.caption,
-.caption-with-letter-spacing,
-.product__text.caption-with-letter-spacing {
-  font-family: var(--vp-font-mono);
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.1rem;
-  text-transform: uppercase;
+/* ============================================
+   HEADER (color inverse limpio)
+   ============================================ */
+
+.color-inverse {
+  background: var(--vp-verde-botella);
 }
 
-/* Announcement bar - estructura correcta */
+.color-inverse * {
+  color: var(--vp-azul-hielo) !important;
+}
+
+.color-inverse a:hover {
+  color: #fff !important;
+}
+
+.color-inverse svg {
+  fill: var(--vp-azul-hielo) !important;
+}
+
+/* ============================================
+   ANNOUNCEMENT BAR (grid full width)
+   ============================================ */
+
 .announcement-bar {
-  width: 100%;
-  position: relative;
-  background-color: var(--vp-verde-botella);
+  background: var(--vp-verde-botella);
   color: var(--vp-azul-hielo);
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-family: var(--vp-font-mono);
-  font-size: 1.2rem;
-  overflow: hidden; /* 👈 clave para que el grid no se corte */
+  position: relative;
+  overflow: hidden;
 }
 
-/* GRID FULL WIDTH */
 .announcement-bar::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background-image:
-    linear-gradient(rgba(197, 234, 255, 0.075) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(197, 234, 255, 0.06) 1px, transparent 1px);
-
+    linear-gradient(rgba(197,234,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197,234,255,0.07) 1px, transparent 1px);
   background-size: 32px 32px;
-  
-  pointer-events: none;
-  z-index: 0;
 }
 
-/* CONTENIDO ENCIMA DEL GRID */
 .announcement-bar .page-width {
-  position: relative; /* 👈 esto faltaba */
-  z-index: 1;         /* 👈 sube el contenido encima del grid */
-
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-/* TEXTO CENTRADO */
-.announcement-bar__message {
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   text-align: center;
 }
 
-/* COLOR TEXTO */
-.announcement-bar__message,
-.announcement-bar__message a,
-.announcement__link {
-  color: var(--vp-azul-hielo) !important;
-}
+/* ============================================
+   BUTTONS
+   ============================================ */
 
-/* Buttons — elegante, sin border-radius */
-.button,
-.shopify-payment-button__button--unbranded {
-  border-radius: 0 !important;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  transition: background-color var(--vp-transition), color var(--vp-transition);
-}
-
-/* Variant pills — cuadradas */
-.swatch-input__input + .swatch-input__label,
-.variant-input-wrapper .variant__button-label {
-  border-radius: 0 !important;
-  font-family: var(--vp-font-mono);
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.1rem;
-}
-
-/* Product card — sin sombra, bordes sutiles */
-.card--product {
+.button {
   border-radius: 0;
-  box-shadow: none;
-}
-
-.card__information .card__heading {
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-weight: 400;
-}
-
-/* Price — Chivo Mono */
-.price .price__regular,
-.price .price__sale,
-.price-item {
   font-family: var(--vp-font-mono);
-  letter-spacing: var(--vp-letter-spacing-normal);
+  text-transform: uppercase;
+  letter-spacing: var(--vp-letter-spacing-wide);
 }
 
 /* ============================================
-   NOTA DEL SASTRE — Bloque editorial
+   PRODUCT CARDS
    ============================================ */
 
-.nota-del-sastre {
-  margin: 2.4rem 0;
-  background-color: var(--vp-verde-botella);
-  color: var(--vp-crema);
-  padding: 3.2rem;
-  position: relative;
-}
-
-.nota-del-sastre::before {
-  content: '"';
-  font-family: 'Georgia', serif;
-  font-size: 8rem;
-  line-height: 1;
-  color: rgba(252, 249, 245, 0.15);
-  position: absolute;
-  top: 1.6rem;
-  left: 2.4rem;
-  pointer-events: none;
-}
-
-.nota-del-sastre__inner {
-  position: relative;
-  z-index: 1;
-}
-
-.nota-del-sastre__header {
-  margin-bottom: 1.6rem;
-}
-
-.nota-del-sastre__label {
-  font-family: var(--vp-font-mono);
-  font-size: 1.0rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-  color: rgba(252, 249, 245, 0.65);
-}
-
-.nota-del-sastre__content {
-  font-size: 1.5rem;
-  line-height: 1.6;
-  font-style: italic;
-  color: var(--vp-crema);
-}
-
-.nota-del-sastre__content p {
-  margin-bottom: 1.2rem;
-}
-
-.nota-del-sastre__content p:last-child {
-  margin-bottom: 0;
-}
-
-.nota-del-sastre__firma {
-  margin-top: 2rem;
-  margin-bottom: 0;
-  font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-  color: rgba(252, 249, 245, 0.65);
-  font-style: normal;
-}
-
-@media screen and (min-width: 750px) {
-  .nota-del-sastre {
-    padding: 4rem 4.8rem;
-  }
-
-  .nota-del-sastre__content {
-    font-size: 1.6rem;
-  }
-}
-
-/* ============================================
-   HEADER — refinements
-   ============================================ */
-
-.header__heading-link .header__heading-logo {
-  max-width: 18rem;
-}
-
-@media screen and (min-width: 990px) {
-  .header__heading-link .header__heading-logo {
-    max-width: 22rem;
-  }
-}
-
-/* Navigation links */
-.header__menu-item span,
-.header__active-menu-item {
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-family: var(--vp-font-mono);
-}
-
-/* ============================================
-   COLOR INVERSE — texto azul cielo sobre fondo verde
-   ============================================ */
-
-/* Nav links del header */
-.color-inverse .header__menu-item > span,
-.color-inverse .header__active-menu-item,
-.color-inverse .header__menu-item .header__menu-item-label {
-  color: var(--vp-azul-hielo) !important;
-}
-
-/* Hover sobre nav links */
-.color-inverse .header__menu-item:hover > span {
-  color: #ffffff !important;
-}
-
-/* Iconos del header (search, cuenta, carrito) */
-.color-inverse .header__icon svg {
-  fill: var(--vp-azul-hielo) !important;
-}
-
-.color-inverse .header__icon:hover svg {
-  fill: #ffffff !important;
-}
-
-/* Dropdown links del menú */
-.color-inverse .list-menu__item--link {
-  color: var(--vp-azul-hielo) !important;
-}
-
-/* Logo texto (fallback cuando no hay imagen) */
-.color-inverse .header__heading-link,
-.color-inverse .header__heading {
-  color: var(--vp-azul-hielo) !important;
-}
-
-/* ============================================
-   FOOTER — refinements
-   ============================================ */
-
-.footer__heading {
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-}
-
-/* Cuadrícula de stand sobre el fondo verde del footer */
-.footer.color-inverse {
-  background-image:
-    linear-gradient(rgba(197, 234, 255, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(197, 234, 255, 0.09) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: top left;
-}
-
-/* Links dentro del footer verde: todos en crema, no naranja */
-.footer.color-inverse a,
-.footer.color-inverse .footer__list-social-link,
-.footer.color-inverse .footer__list a {
-  color: rgba(252, 249, 245, 0.80) !important;
-  text-decoration: none;
-}
-
-.footer.color-inverse a:hover,
-.footer.color-inverse .footer__list a:hover {
-  color: var(--vp-crema) !important;
-  text-decoration: underline;
-}
-
-/* Headings del footer (VITO PIANO, Políticas) en crema */
-.footer.color-inverse .footer__heading {
-  color: var(--vp-crema) !important;
-}
-
-/* Newsletter heading */
-.footer.color-inverse .newsletter__heading {
-  color: var(--vp-crema) !important;
-}
-
-/* Input del newsletter */
-.footer.color-inverse .newsletter-form__button {
-  background: var(--vp-crema);
-  color: var(--vp-verde-botella);
-  border-color: var(--vp-crema);
-}
-
-/* Ícono de Instagram / social */
-.footer.color-inverse .list-social__link svg {
-  fill: var(--vp-crema) !important;
-}
-
-/* ============================================
-   HOMEPAGE — Hero
-   ============================================ */
-
-.banner__content .banner__box {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Hero heading — cream, oversized, tracked */
-.banner__content .banner__heading,
-.banner__content h2,
-.banner__content .h0 {
-  color: var(--vp-crema);
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-  font-weight: 300;
-}
-
-.banner__content .banner__text {
-  color: rgba(252, 249, 245, 0.7);
-  font-family: var(--vp-font-mono);
-  font-size: 1.2rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-}
-
-/* Hero buttons — primary in crema, secondary as ghost */
-.banner__content .button--primary {
-  background-color: var(--vp-crema);
+.card__heading a {
   color: var(--vp-negro-suave);
-  border-color: var(--vp-crema);
 }
 
-.banner__content .button--secondary {
-  border-color: rgba(252, 249, 245, 0.5);
-  color: var(--vp-crema);
-  background: transparent;
+.card__heading a:hover {
+  color: var(--vp-verde-botella);
 }
 
 /* ============================================
-   HOMEPAGE — Brand Statement
+   FOOTER — LORO PIANA STYLE
    ============================================ */
 
-.rich-text__blocks .rich-text__heading {
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-  font-weight: 300;
-}
-
-/* ============================================
-   HOMEPAGE — Collection List (HOMBRE / MUJER)
-   ============================================ */
-
-.collection-list-section .card-collection {
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.collection-list-section .card__image-animation {
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.collection-list-section .card--collection:hover .card__image-animation {
-  transform: scale(1.03);
-}
-
-.card--collection .card__heading {
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-weight: 400;
-  text-transform: uppercase;
-  font-family: var(--vp-font-mono);
-  font-size: 1.2rem;
-}
-
-/* ============================================
-   HOMEPAGE — Origin Callout (full-width inverse)
-   ============================================ */
-
-.rich-text--full-width.color-inverse {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.rich-text--full-width .rich-text__heading.h0 {
-  font-size: clamp(3rem, 6vw, 7.2rem);
-  line-height: 1.05;
-  font-weight: 300;
-  letter-spacing: -0.01em;
-  max-width: 18ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ============================================
-   HOMEPAGE — Pilares (multicolumn)
-   ============================================ */
-
-.multicolumn-list__item {
-  border-top: 1px solid rgba(28, 28, 26, 0.12);
-  padding-top: 2.4rem;
-}
-
-.multicolumn .column__heading {
-  font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 1.2rem;
-}
-
-.multicolumn .column__text {
-  font-size: 1.4rem;
-  line-height: 1.7;
-  color: rgba(28, 28, 26, 0.7);
-}
-
-/* ============================================
-   HOMEPAGE — Newsletter CTA
-   ============================================ */
-
-.newsletter .newsletter__heading {
-  letter-spacing: 0.02em;
-  font-weight: 300;
-}
-
-.newsletter-form__button {
-  border-radius: 0;
-}
-
-/* ============================================
-   FEATURED COLLECTION — Novedades
-   ============================================ */
-
-.featured-collection .title-wrapper {
-  border-bottom: 1px solid rgba(28, 28, 26, 0.1);
-  padding-bottom: 2rem;
-  margin-bottom: 0;
-}
-
-.featured-collection .title-wrapper .title {
-  font-weight: 300;
-  letter-spacing: 0.04em;
-}
-
-/* Subtle image zoom on product card hover */
-.card--product .card__media {
-  overflow: hidden;
-}
-
-.card--product:hover .card__media .media {
-  transform: scale(1.03);
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* ============================================
-   NAVEGACIÓN — link "Sale" destacado
-   ============================================ */
-
-.list-menu__item--link[href*="/sale"],
-.list-menu__item--link[href*="/rebajas"],
-.list-menu__item--link[href*="/descuentos"] {
-  color: var(--vp-terracota) !important;
-}
-
-.list-menu__item--link[href*="/sale"]:hover,
-.list-menu__item--link[href*="/rebajas"]:hover {
-  color: var(--vp-burdeos) !important;
-}
-
-/* ============================================
-   COLLECTION / PRODUCT LIST — refinements
-   ============================================ */
-
-.collection__title,
-.featured-collection__title {
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-weight: 400;
-}
-
-/* Badges — Chivo Mono */
-.badge {
-  border-radius: 0;
-  font-family: var(--vp-font-mono);
-  font-size: 1.0rem;
-  letter-spacing: var(--vp-letter-spacing-wide);
-  text-transform: uppercase;
-}
-
-/* ============================================
-   PRODUCT CARDS — force dark titles (prevent blue from stale brand colors)
-   ============================================ */
-
-.card--product .card__heading a,
-.card--product .card__heading .full-unstyled-link,
-.card__heading a,
-.card__heading .full-unstyled-link {
-  color: var(--vp-negro-suave) !important;
-}
-
-.card--product .card__heading a:hover,
-.card--product .card__heading .full-unstyled-link:hover {
-  color: var(--vp-verde-botella) !important;
-}
-
-/* ============================================
-   FORM INPUTS — minimal, cuadrado
-   ============================================ */
-
-.field__input,
-.select__select,
-.customer .field input,
-.customer select {
-  border-radius: 0;
-  font-family: var(--vp-font-mono);
-  letter-spacing: var(--vp-letter-spacing-normal);
-}
-
-/* ============================================
-   DECOFAST — Tipografía de impacto en headings
-   ============================================ */
-
-h1, h2, .h0, .h1, .h2 {
-  font-family: var(--vp-font-headline);
-}
-
-.banner__content .banner__heading,
-.banner__content h2,
-.banner__content .h0,
-.rich-text__heading,
-.card__heading,
-.collection__title,
-.featured-collection__title {
-  font-family: var(--vp-font-headline);
-}
-
-/* ============================================
-   WHATSAPP — Botón flotante
-   ============================================ */
-
-/* ============================================
-   WHATSAPP — Glass Button Ultra Minimal
-   ============================================ */
-
-.vp-wa-fab {
-  position: fixed;
-  bottom: 2.4rem;
-  right: 2.4rem;
-  z-index: 9998;
-
-  width: 5.6rem;
-  height: 5.6rem;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* 🎯 Glass effect */
-  background: color-mix(in srgb, var(--vp-verde-botella) 20%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  /* 🎯 Borde elegante */
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  /* 🎯 Sombra suave (no pesada) */
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-  text-decoration: none;
-
-  transition: all 0.25s ease;
-}
-
-/* Ícono */
-.vp-wa-fab svg {
-  width: 2.6rem;
-  height: 2.6rem;
-  fill: white;
-  opacity: 0.92;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-/* Hover — más sólido y presente */
-.vp-wa-fab:hover {
-  transform: translateY(-2px) scale(1.05);
-
-  background: color-mix(in srgb, var(--vp-verde-botella) 35%, transparent);
-
-  box-shadow: 
-    0 8px 28px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-.vp-wa-fab:hover svg {
-  transform: scale(1.05);
-  opacity: 1;
-}
-
-/* Mobile */
-@media screen and (max-width: 749px) {
-  .vp-wa-fab {
-    bottom: 7.2rem;
-    right: 1.4rem;
-    width: 5rem;
-    height: 5rem;
-  }
-
-  .vp-wa-fab svg {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
-}
-
-/* ============================================
-   HEADER — Isotipo a la derecha
-   ============================================ */
-
-.header__isotipo-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.8rem;
-  flex-shrink: 0;
-}
-
-.header__isotipo-img {
-  width: 3.2rem;
-  height: 3.2rem;
-  object-fit: contain;
-  display: block;
-}
-
-@media screen and (min-width: 990px) {
-  .header__isotipo-img {
-    width: 3.6rem;
-    height: 3.6rem;
-  }
-}
-
-/* ============================================
-   FOOTER — Layout estilo Loro Piana
-   ============================================ */
-
-/* Fondo general crema */
 .footer {
-  background: var(--vp-crema) !important;
-  padding-top: 6rem;
-  padding-bottom: 2rem;
+  background: var(--vp-crema);
+  padding: 6rem 0 2rem;
 }
 
 /* Recuadro verde */
@@ -687,191 +125,77 @@ h1, h2, .h0, .h1, .h2 {
   position: relative;
 
   background-image:
-    linear-gradient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(197, 234, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(197,234,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197,234,255,0.08) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-/* Títulos en naranja */
+/* Títulos */
 .footer__content-top .footer__heading {
-  color: var(--vp-terracota) !important;
+  color: var(--vp-terracota);
 }
 
-/* Texto en beige */
+/* Texto */
 .footer__content-top,
-.footer__content-top p {line-height: 1.3},
-.footer__content-top a [href^="tel"] {
-  color: var(--vp-terracota) !important}
-  .footer__content-top a [href^="mailto"] {
-  color: var(--vp-terracota) !important}
-  ;,
-.footer__content-top li {
-  color: rgba(252, 249, 245, 0.85) !important;
+.footer__content-top p,
+.footer__content-top li,
+.footer__content-top a {
+  color: rgba(252,249,245,0.85);
+  line-height: 1.3;
 }
 
-/* Copyright fuera del bloque */
-.footer__content-bottom {
-  background: transparent !important;
-  max-width: 1200px;
-  margin: 2rem auto 0;
-  padding: 0 !important;
-  text-align: center;
+/* Tel / Mail */
+.footer__content-top a[href^="tel"],
+.footer__content-top a[href^="mailto"] {
+  color: var(--vp-terracota);
 }
+
+/* Hover */
+.footer__content-top a:hover {
+  color: var(--vp-crema);
+}
+
+/* Instagram */
 .footer__content-top .list-social__link svg {
-  fill: var(--vp-terracota) !important;
+  fill: var(--vp-terracota);
 }
 
-/* ============================================
-   FOOTER — Bottom bar estilo Loro Piana
-   ============================================ */
-
-/* Fondo transparente, sin borde, con padding vertical */
+/* Bottom */
 .footer__content-bottom {
-  background: transparent !important;
-  border-top: none !important;
-  padding-top: 1.8rem !important;
-  padding-bottom: 1.8rem !important;
+  text-align: center;
+  margin-top: 2rem;
 }
 
-/* Copyright: Chivo Mono, uppercase, muted verde */
-.footer__copyright,
-.footer__copyright small,
-.footer__copyright .copyright__content {
-  font-family: var(--vp-font-mono) !important;
-  font-size: 0.9rem !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  color: var(--vp-terracota) !important;
-}
+/* Copyright */
 .footer__copyright {
-  background: transparent !important;
-}
-
-/* Ocultar "Tecnología de Shopify" / "Powered by Shopify" */
-.footer__copyright .shopify-link,
-.footer__copyright a[href*="shopify.com"] {
-  display: none !important;
-}
-
-/* Línea legal NIT - tono más sutil */
-.footer__copyright--legal {
-  display: block;
-  margin-top: 0.35rem;
-  opacity: 0.90;
-}
-
-/* Ocultar lista de políticas del bottom si está activa */
-.footer__content-bottom .policies-list {
-  display: none !important;
+  font-family: var(--vp-font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vp-terracota);
 }
 
 /* ============================================
-   MOBILE — Mejoras de interfaz
+   WHATSAPP BUTTON (clean)
    ============================================ */
 
-@media screen and (max-width: 749px) {
-  /* Títulos más compactos pero legibles */
-  .h0 {
-    font-size: clamp(3.2rem, 9vw, 5.6rem);
-    line-height: 1.08;
-  }
+.vp-wa-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .h1 {
-    font-size: clamp(2.6rem, 7vw, 4rem);
-  }
+  background: rgba(12,68,51,0.25);
+  backdrop-filter: blur(10px);
 
-  /* Product cards — información más clara */
-  .card__information {
-    padding: 1.2rem 0 0.4rem;
-  }
-
-  .card__heading {
-    font-size: 1.4rem;
-    line-height: 1.35;
-    letter-spacing: 0.04em;
-  }
-
-  .price__regular,
-  .price-item {
-    font-size: 1.4rem;
-  }
-
-  /* Botones con tap target mínimo 44px */
-  .button {
-    min-height: 4.4rem;
-    padding: 1.2rem 2rem;
-  }
-
-  /* Rich text en mobile */
-  .rich-text__heading {
-    font-size: clamp(2.4rem, 7vw, 3.6rem);
-    line-height: 1.1;
-  }
-
-  /* Announcement bar legible */
-  .announcement-bar__message {
-    font-size: 1.2rem;
-  }
-
-  /* Breadcrumbs — Chivo Mono pequeño */
-  .breadcrumb__item {
-    font-family: var(--vp-font-mono);
-    font-size: 1.0rem;
-    letter-spacing: var(--vp-letter-spacing-wide);
-    text-transform: uppercase;
-  }
-
-  /* Variant pills más grandes para touch */
-  .swatch-input__input + .swatch-input__label,
-  .variant-input-wrapper .variant__button-label {
-    min-width: 4.4rem;
-    min-height: 4.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Section padding reducido en mobile */
-  .shopify-section .section-full-width,
-  .shopify-section {
-    --page-width-padding: 1.6rem;
-  }
+  border: 1px solid var(--vp-terracota);
 }
 
-/* ============================================
-   MOBILE — Header layout
-   ============================================ */
-
-@media screen and (max-width: 749px) {
-  /* Ocultar isotipo en móvil — el espacio es muy ajustado */
-  .header__isotipo-link {
-    display: none !important;
-  }
-
-  /* Logo centrado en móvil: limitar ancho para no chocar con iconos */
-  .header__heading-logo {
-    max-height: 3.2rem !important;
-    max-width: 14rem !important;
-    width: auto !important;
-    object-fit: contain;
-  }
-
-  /* Asegurar que el centro absoluto no se desborde sobre los iconos */
-  .header--mobile-center .header__heading {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: calc(100% - 12rem);
-  }
-
-  .header--mobile-center .header__heading-logo-wrapper {
-    max-width: 100%;
-  }
-}
-
-@media screen and (min-width: 750px) and (max-width: 989px) {
-  .header__heading-logo {
-    max-height: 3.6rem;
-    width: auto !important;
-  }
+.vp-wa-fab svg {
+  fill: var(--vp-crema);
 }
