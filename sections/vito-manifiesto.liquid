@@ -22,7 +22,7 @@
 
   .vm-hero__eyebrow {
     font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(197, 234, 255, 0.65);
@@ -30,7 +30,6 @@
     display: inline-block;
   }
 
-  /* Línea del fondo igual de ancha que el eyebrow */
   .vm-hero__eyebrow-wrap {
     display: flex;
     flex-direction: column;
@@ -38,12 +37,14 @@
     margin-bottom: 3.2rem;
   }
 
+  /* Rule below headline, width approximates eyebrow text */
   .vm-hero__eyebrow-rule {
-    height: 2px;
-    width: 100%;
+    height: 3px;
+    width: 22rem;
+    max-width: 90%;
     background: rgba(197, 234, 255, 0.35);
     border: none;
-    margin: 0;
+    margin: 2.8rem auto 0;
     display: block;
   }
 
@@ -91,19 +92,16 @@
     margin: 5.6rem auto;
   }
 
-  /* Pull quote — énfasis con línea vertical izquierda */
+  /* Pull quote */
   .vm-pull {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-size: clamp(1.6rem, 2.8vw, 2.1rem);
     line-height: 1.3;
     color: #0C4433;
     letter-spacing: 0.01em;
     font-weight: 400;
-    text-align: left;
-    padding: 0.4rem 0 0.4rem 2.4rem;
-    border-left: 3px solid #0C4433;
-    border-top: none;
-    border-bottom: none;
+    text-align: center;
+    padding: 2.4rem 0;
     margin: 4.8rem 0;
   }
 
@@ -141,7 +139,7 @@
 
   .vm-compromisos__label {
     font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(197, 234, 255, 0.55);
@@ -158,12 +156,12 @@
   }
 
   .vm-compromisos__item {
-    border-top: 1px solid rgba(252, 249, 245, 0.10);
+    border-top: 2px solid rgba(252, 249, 245, 0.15);
     padding: 3.2rem 0;
   }
 
   .vm-compromisos__item:last-child {
-    border-bottom: 1px solid rgba(252, 249, 245, 0.10);
+    border-bottom: 2px solid rgba(252, 249, 245, 0.15);
   }
 
   .vm-compromisos__title {
@@ -192,13 +190,13 @@
 
     .vm-compromisos__item:nth-child(1),
     .vm-compromisos__item:nth-child(2) {
-      border-top: 1px solid rgba(252, 249, 245, 0.10);
+      border-top: 2px solid rgba(252, 249, 245, 0.15);
     }
 
     .vm-compromisos__item:nth-child(3),
     .vm-compromisos__item:nth-child(4) {
-      border-bottom: 1px solid rgba(252, 249, 245, 0.10);
-      border-top: 1px solid rgba(252, 249, 245, 0.10);
+      border-bottom: 2px solid rgba(252, 249, 245, 0.15);
+      border-top: 2px solid rgba(252, 249, 245, 0.15);
     }
   }
 
@@ -233,8 +231,9 @@
   .vm-cierre__firma {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     font-style: italic;
+    font-weight: 700;
     font-size: 1.4rem;
-    color: rgba(28, 28, 26, 0.45);
+    color: rgba(28, 28, 26, 0.55);
     margin: 0 0 3.2rem;
   }
 
@@ -258,7 +257,7 @@
     font-style: italic;
     color: rgba(28, 28, 26, 0.55);
     margin: 0;
-    line-height: 1.35;
+    line-height: 1.15;
   }
 
   .vm-cierre__piano-sub {
@@ -276,9 +275,9 @@
   <div class="vm-hero">
     <div class="vm-hero__eyebrow-wrap">
       <span class="vm-hero__eyebrow">Manifiesto · Vito Piano</span>
-      <hr class="vm-hero__eyebrow-rule">
     </div>
     <h1 class="vm-hero__headline">En defensa de lo que dura</h1>
+    <hr class="vm-hero__eyebrow-rule">
   </div>
 
   <!-- SECCIÓN 1: Provocación -->
@@ -295,7 +294,7 @@
     <h2 class="vm-section-heading">Slow Made no es una etiqueta.<br>Es una decisión.</h2>
 
     <p>Significa que cada prenda Vito Piano tarda lo que tiene que tardar en nacer. Que los materiales se eligen por sus propiedades reales, no por su precio de lista. Que las manos que cosen son artesanas con oficio, no líneas de producción bajo presión.</p>
-    <p>Significa que cuando te pones un Torricelli —nuestro primer pantalón— estás vistiendo algo que alguien pensó, cortó y terminó con atención. No con prisa.</p>
+    <p>Significa que cuando te pones una prenda VP, estás vistiendo algo que alguien pensó, cortó y terminó con atención. No con prisa.</p>
   </div>
 
   <!-- COMPROMISOS — recuadro contenido -->
