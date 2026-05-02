@@ -55,9 +55,9 @@
       "type": "header",
       "settings": {
         "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-28.png",
-        "logo_position": "top-left",
+        "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "drawer",
+        "menu_type_desktop": "dropdown",
         "sticky_header_type": "reduce-logo-size",
         "show_line_separator": true,
         "color_scheme": "inverse",
