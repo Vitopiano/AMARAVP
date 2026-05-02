@@ -26,13 +26,30 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(197, 234, 255, 0.65);
-    margin: 0 0 3.2rem;
+    margin: 0 0 2.4rem;
+    display: inline-block;
+  }
+
+  /* Línea del fondo igual de ancha que el eyebrow */
+  .vm-hero__eyebrow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3.2rem;
+  }
+
+  .vm-hero__eyebrow-rule {
+    height: 2px;
+    width: 100%;
+    background: rgba(197, 234, 255, 0.35);
+    border: none;
+    margin: 0;
     display: block;
   }
 
   .vm-hero__headline {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
-    font-size: clamp(4rem, 9vw, 8.8rem);
+    font-size: clamp(3.2rem, 7.5vw, 7rem);
     line-height: 0.95;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -43,11 +60,7 @@
   }
 
   .vm-hero__rule {
-    width: 3.2rem;
-    height: 1px;
-    background: rgba(197, 234, 255, 0.30);
-    margin: 4rem auto 0;
-    border: none;
+    display: none;
   }
 
   /* CUERPO — columna editorial centrada */
@@ -78,18 +91,19 @@
     margin: 5.6rem auto;
   }
 
-  /* Pull quote — frase de impacto */
+  /* Pull quote — énfasis con línea vertical izquierda */
   .vm-pull {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-    line-height: 1.2;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    line-height: 1.3;
     color: #0C4433;
     letter-spacing: 0.01em;
     font-weight: 400;
-    text-align: center;
-    padding: 3.2rem 0;
-    border-top: 1px solid rgba(12, 68, 51, 0.12);
-    border-bottom: 1px solid rgba(12, 68, 51, 0.12);
+    text-align: left;
+    padding: 0.4rem 0 0.4rem 2.4rem;
+    border-left: 3px solid #0C4433;
+    border-top: none;
+    border-bottom: none;
     margin: 4.8rem 0;
   }
 
@@ -104,19 +118,25 @@
     margin: 0 0 2.8rem;
   }
 
-  /* COMPROMISOS — bloque oscuro */
+  /* COMPROMISOS — recuadro verde contenido, no full-width */
+  .vm-compromisos-wrap {
+    max-width: 68ch;
+    margin: 0 auto;
+    padding: 0 2.4rem;
+  }
+
   .vm-compromisos {
     background: #0C4433;
     background-image:
       linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
       linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
-    padding: 7.2rem 2.4rem;
+    padding: 5.6rem 4rem;
   }
 
   .vm-compromisos__inner {
-    max-width: 68ch;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   .vm-compromisos__label {
@@ -215,16 +235,38 @@
     font-style: italic;
     font-size: 1.4rem;
     color: rgba(28, 28, 26, 0.45);
-    margin: 0 0 0.4rem;
+    margin: 0 0 3.2rem;
   }
 
-  .vm-cierre__tagline {
-    font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 0.16em;
+  /* Watermark después de la firma */
+  .vm-cierre__piano {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 1;
+    color: rgba(12, 68, 51, 0.07);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(12, 68, 51, 0.35);
+    display: block;
+    margin: 0 0 2.4rem;
+    user-select: none;
+  }
+
+  /* Piano piano — dos líneas juntas */
+  .vm-cierre__piano-text {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: rgba(28, 28, 26, 0.55);
     margin: 0;
+    line-height: 1.35;
+  }
+
+  .vm-cierre__piano-sub {
+    font-style: normal;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.10em;
+    color: rgba(28, 28, 26, 0.30);
   }
 </style>
 
@@ -232,9 +274,11 @@
 
   <!-- HERO -->
   <div class="vm-hero">
-    <span class="vm-hero__eyebrow">Manifiesto · Vito Piano</span>
+    <div class="vm-hero__eyebrow-wrap">
+      <span class="vm-hero__eyebrow">Manifiesto · Vito Piano</span>
+      <hr class="vm-hero__eyebrow-rule">
+    </div>
     <h1 class="vm-hero__headline">En defensa de lo que dura</h1>
-    <hr class="vm-hero__rule">
   </div>
 
   <!-- SECCIÓN 1: Provocación -->
@@ -254,7 +298,8 @@
     <p>Significa que cuando te pones un Torricelli —nuestro primer pantalón— estás vistiendo algo que alguien pensó, cortó y terminó con atención. No con prisa.</p>
   </div>
 
-  <!-- COMPROMISOS -->
+  <!-- COMPROMISOS — recuadro contenido -->
+  <div class="vm-compromisos-wrap">
   <div class="vm-compromisos">
     <div class="vm-compromisos__inner">
       <span class="vm-compromisos__label">Nuestros compromisos</span>
@@ -278,6 +323,7 @@
       </ul>
     </div>
   </div>
+  </div>
 
   <!-- CIERRE -->
   <div class="vm-cierre">
@@ -288,10 +334,11 @@
     <p>Eso es Vito Piano. Un sastre que hace las cosas como siempre se debieron hacer.</p>
     <p>El resto lo hace la ropa.</p>
 
+    <p class="vm-cierre__firma">— Vito Piano</p>
+
     <span class="vm-cierre__piano" aria-hidden="true">piano</span>
 
-    <p class="vm-cierre__firma">— Vito Piano</p>
-    <p class="vm-cierre__tagline">Piano piano. · Despacio, despacio.</p>
+    <p class="vm-cierre__piano-text"><em>Piano piano.</em><br><span class="vm-cierre__piano-sub">(Despacio, despacio.)</span></p>
   </div>
 
 </div>
