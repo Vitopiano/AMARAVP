@@ -1,311 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero": {
+    "image_banner": {
       "type": "image-banner",
-      "blocks": {
-        "heading_hero": {
-          "type": "heading",
-          "settings": {
-            "heading": "El origen<br>de tu estilo",
-            "heading_size": "h0"
-          }
-        },
-        "text_hero": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Slow fashion premium. Colombia × Italia.</p>"
-          }
-        },
-        "buttons_hero": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Explorar la colección",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "Nuestra historia",
-            "button_link_2": "shopify://pages/historia",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": ["heading_hero", "text_hero", "buttons_hero"],
       "settings": {
-        "image": "shopify:\/\/shop_images\/MG_8891_1092e239-4199-4952-9710-3c6e9b5b4fc9.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "desktop_content_position": "bottom-left",
+        "image": "shopify://shop_images/VP_Social_media_Banner_Facebook.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "bottom-center",
         "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "inverse",
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
         "image_behavior": "ambient",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": false,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "show_text_below": false
       }
     },
-    "brand_statement": {
-      "type": "rich-text",
-      "blocks": {
-        "caption_bs": {
-          "type": "caption",
-          "settings": {
-            "caption": "Slow Fashion · El Chicó, Bogotá · Colombia × Italia",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "heading_bs": {
-          "type": "heading",
-          "settings": {
-            "heading": "Ropa que dura más que las temporadas",
-            "heading_size": "h1"
-          }
-        },
-        "text_bs": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Cada prenda nace de una conversación entre la precisión italiana y la calidez colombiana. Fabricada para durar. Diseñada para ser tuya.</p>"
-          }
-        },
-        "button_bs": {
-          "type": "button",
-          "settings": {
-            "button_label": "Nuestra historia",
-            "button_link": "shopify://pages/historia",
-            "button_style_secondary": true
-          }
-        }
-      },
-      "block_order": ["caption_bs", "heading_bs", "text_bs", "button_bs"],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": false,
-        "padding_top": 96,
-        "padding_bottom": 96
-      }
-    },
-    "collection_split": {
-      "type": "collection-list",
-      "blocks": {
-        "col_hombre": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "hombre"
-          }
-        },
-        "col_mujer": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "mujer"
-          }
-        }
-      },
-      "block_order": ["col_hombre", "col_mujer"],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_ratio": "portrait",
-        "columns_desktop": 2,
-        "color_scheme": "background-1",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "craft_story": {
-      "type": "image-with-text",
-      "blocks": {
-        "caption_cs": {
-          "type": "caption",
-          "settings": {
-            "caption": "El oficio · La historia",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "heading_cs": {
-          "type": "heading",
-          "settings": {
-            "heading": "Cada puntada tiene una historia",
-            "heading_size": "h2"
-          }
-        },
-        "text_cs": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Hace más de 20 años, Vito llegó a Bogotá por tres semanas. Se quedó para siempre. Desde su taller en El Chicó, cada prenda es construida a mano por artesanos colombianos con técnicas aprendidas en Varese, Italia.</p>"
-          }
-        },
-        "button_cs": {
-          "type": "button",
-          "settings": {
-            "button_label": "Conoce el proceso",
-            "button_link": "shopify://pages/historia",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": ["caption_cs", "heading_cs", "text_cs", "button_cs"],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "inverse",
-        "mobile_content_alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "novedades": {
+    "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Novedades",
+        "title": "HOMBRE",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "frontpage",
+        "collection": "hombre",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
         "color_scheme": "background-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 36
-      }
-    },
-    "origin_callout": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_oc": {
-          "type": "heading",
-          "settings": {
-            "heading": "Hecho en Colombia.<br>Diseñado con alma italiana.",
-            "heading_size": "h0"
-          }
-        },
-        "text_oc": {
-          "type": "text",
-          "settings": {
-            "text": "<p>No somos una franquicia. No somos una marca masiva.<br>Somos un sastre, un equipo, y una visión de lo que debe ser la moda.</p>"
-          }
-        },
-        "button_oc": {
-          "type": "button",
-          "settings": {
-            "button_label": "Ver la colección completa",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": ["heading_oc", "text_oc", "button_oc"],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "inverse",
-        "full_width": true,
-        "padding_top": 96,
-        "padding_bottom": 96
-      }
-    },
-    "pilares": {
-      "type": "multicolumn",
-      "blocks": {
-        "pilar_1": {
-          "type": "column",
-          "settings": {
-            "title": "Materiales de origen",
-            "text": "<p>Tejidos seleccionados de proveedores italianos y colombianos con vocación por la calidad y la sostenibilidad.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "pilar_2": {
-          "type": "column",
-          "settings": {
-            "title": "Confección artesanal",
-            "text": "<p>Cada prenda pasa por manos expertas en Bogotá que dominan técnicas de sastrería clásica europea.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "pilar_3": {
-          "type": "column",
-          "settings": {
-            "title": "Envío a todo el mundo",
-            "text": "<p>Desde El Chicó hasta donde estés. Empaque premium sin plástico, con carta del sastre incluida.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": ["pilar_1", "pilar_2", "pilar_3"],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-2",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_style": "primary",
         "swipe_on_mobile": false,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 20,
+        "padding_bottom": 12
       }
     },
-    "newsletter_cta": {
-      "type": "newsletter",
-      "blocks": {
-        "nl_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Únete al mundo Vito Piano",
-            "heading_size": "h2"
-          }
-        },
-        "nl_paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Recibe novedades antes que nadie, acceso a ediciones limitadas, y cartas del sastre. 10% en tu primera compra.</p>"
-          }
-        },
-        "nl_form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": ["nl_heading", "nl_paragraph", "nl_form"],
-      "settings": {
-        "color_scheme": "background-1",
-        "full_width": false,
-        "narrow_content": true,
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "apps_section": {
+    "166857843790a880d7": {
       "type": "apps",
       "settings": {
         "include_margins": true
@@ -313,14 +61,8 @@
     }
   },
   "order": [
-    "hero",
-    "brand_statement",
-    "collection_split",
-    "craft_story",
-    "novedades",
-    "origin_callout",
-    "pilares",
-    "newsletter_cta",
-    "apps_section"
+    "image_banner",
+    "featured_collection",
+    "166857843790a880d7"
   ]
 }
