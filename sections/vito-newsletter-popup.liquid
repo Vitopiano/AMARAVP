@@ -268,6 +268,17 @@
 
           <div class="vp-popup__field">
             <input
+              type="text"
+              name="contact[first_name]"
+              id="vp-popup-name"
+              class="vp-popup__input"
+              placeholder="{{ section.settings.name_placeholder }}"
+              autocomplete="given-name"
+            >
+          </div>
+
+          <div class="vp-popup__field">
+            <input
               type="email"
               name="contact[email]"
               id="vp-popup-email"
@@ -369,8 +380,11 @@
         var month = document.getElementById('vp-popup-month');
         var day = document.getElementById('vp-popup-day');
         var noteField = document.getElementById('vp-birthday-note');
-        if (month && day && noteField && month.value && day.value) {
-          noteField.value = 'Cumpleanos: ' + month.value + '/' + day.value;
+        var tagsField = form.querySelector('input[name="contact[tags]"]');
+        if (month && day && month.value && day.value) {
+          var bdayTag = 'birthday-' + month.value + '-' + day.value;
+          if (noteField) noteField.value = 'Cumpleanos: ' + month.value + '/' + day.value;
+          if (tagsField) tagsField.value = tagsField.value + ',' + bdayTag;
         }
       });
     }
@@ -441,6 +455,12 @@
       "id": "form_title",
       "label": "Título del formulario",
       "default": "Ingresa tus datos"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Placeholder nombre",
+      "default": "Tu nombre"
     },
     {
       "type": "text",
