@@ -41,15 +41,27 @@ h1, h2, h3, .h1, .h2, .h3 {
   text-transform: uppercase;
 }
 
-/* Announcement bar */
+/* Announcement bar - Grid Vito Piano*/
 .announcement-bar {
   background-color: var(--vp-verde-botella);
   color: var(--vp-azul-hielo);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
+.announcement-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
+  background-image:
+    linear-gradient(rgba(197, 234, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 234, 255, 0.06) 1px, transparent 1px);
+
+  background-size: 32px 32px; /* más fino que el footer */
+  pointer-events: none;
+  z-index: 0;
+}
 .announcement-bar__message,
 .announcement-bar__message a,
 .announcement__link {
