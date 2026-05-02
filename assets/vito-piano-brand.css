@@ -391,6 +391,22 @@ h1, h2, h3, .h1, .h2, .h3 {
 }
 
 /* ============================================
+   PRODUCT CARDS — force dark titles (prevent blue from stale brand colors)
+   ============================================ */
+
+.card--product .card__heading a,
+.card--product .card__heading .full-unstyled-link,
+.card__heading a,
+.card__heading .full-unstyled-link {
+  color: var(--vp-negro-suave) !important;
+}
+
+.card--product .card__heading a:hover,
+.card--product .card__heading .full-unstyled-link:hover {
+  color: var(--vp-verde-botella) !important;
+}
+
+/* ============================================
    FORM INPUTS — minimal, cuadrado
    ============================================ */
 
