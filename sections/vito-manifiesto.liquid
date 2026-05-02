@@ -11,7 +11,7 @@
   .vm-hero {
     background-color: #0C4433;
     background-image:
-      linear-gradient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
+      linear-gSi radient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(197, 234, 255, 0.08) 1px, transparent 1px);
     background-size: 48px 48px;
     padding: 8rem 2.4rem 7rem;
@@ -35,7 +35,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: stretch;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.6rem;
   }
 
   .vm-hero__eyebrow {
@@ -163,7 +163,7 @@
 
   .vm-compromisos__item {
     border-top: 2px solid rgba(252, 249, 245, 0.15);
-    padding: 3.2rem 0;
+    padding: 1.8rem 0;
   }
 
   .vm-compromisos__item:last-child {
@@ -183,7 +183,7 @@
   .vm-compromisos__desc {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     font-size: 1.5rem;
-    line-height: 1.65;
+    line-height: 1.50;
     color: rgba(252, 249, 245, 0.60);
     margin: 0;
   }
@@ -243,6 +243,14 @@
     margin: 0 0 3.2rem;
   }
 
+  .vm-cierre__firma-img {
+    display: block;
+    margin: 0 auto 3.2rem;
+    max-width: 22rem;
+    width: 100%;
+    opacity: 0.75;
+  }
+
   /* Watermark después de la firma */
   .vm-cierre__piano {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
@@ -256,14 +264,14 @@
     user-select: none;
   }
 
-  /* Piano piano — dos líneas juntas */
+  /* Piano, piano — dos líneas juntas */
   .vm-cierre__piano-text {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     font-size: 1.5rem;
     font-style: italic;
     color: rgba(28, 28, 26, 0.55);
     margin: 0;
-    line-height: 1;
+    line-height: .75;
   }
 
   .vm-cierre__piano-sub {
@@ -341,11 +349,18 @@
     <p>Eso es Vito Piano. Un sastre que hace las cosas como siempre se debieron hacer.</p>
     <p>El resto lo hace la ropa.</p>
 
-    <p class="vm-cierre__firma">— Vito Piano</p>
-
-    <span class="vm-cierre__piano" aria-hidden="true">piano</span>
-
-    <p class="vm-cierre__piano-text"><em>Piano piano.</em><br><span class="vm-cierre__piano-sub">(Despacio, despacio.)</span></p>
+    {%- if section.settings.firma_image != blank -%}
+      {{- section.settings.firma_image | image_url: width: 440 | image_tag:
+          class: 'vm-cierre__firma-img',
+          alt: 'Firma Vito Piano',
+          loading: 'lazy',
+          widths: '220, 440'
+      -}}
+    {%- else -%}
+      <p class="vm-cierre__firma">— Vito Piano</p>
+      <span class="vm-cierre__piano" aria-hidden="true">piano</span>
+      <p class="vm-cierre__piano-text"><em>Piano, piano.</em><br><span class="vm-cierre__piano-sub">(Despacio, despacio.)</span></p>
+    {%- endif -%}
   </div>
 
 </div>
@@ -353,7 +368,14 @@
 {% schema %}
 {
   "name": "Manifiesto Vito Piano",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "firma_image",
+      "label": "Firma (imagen)",
+      "info": "Reemplaza el texto '— Vito Piano'. Sube la firma manuscrita."
+    }
+  ],
   "presets": [
     {
       "name": "Manifiesto Vito Piano"
