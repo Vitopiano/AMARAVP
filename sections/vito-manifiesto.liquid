@@ -30,21 +30,25 @@
     display: inline-block;
   }
 
+  /* Shrink-wraps to eyebrow text width via inline-flex */
   .vm-hero__eyebrow-wrap {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     margin-bottom: 3.2rem;
   }
 
-  /* Rule below headline, width approximates eyebrow text */
+  .vm-hero__eyebrow {
+    white-space: nowrap;
+  }
+
+  /* Rule sits directly below eyebrow, inherits its container width */
   .vm-hero__eyebrow-rule {
     height: 3px;
-    width: 22rem;
-    max-width: 90%;
+    width: 100%;
     background: rgba(197, 234, 255, 0.35);
     border: none;
-    margin: 2.8rem auto 0;
+    margin: 1.2rem 0 0;
     display: block;
   }
 
@@ -100,8 +104,9 @@
     color: #0C4433;
     letter-spacing: 0.01em;
     font-weight: 400;
-    text-align: center;
-    padding: 2.4rem 0;
+    text-align: left;
+    padding: 0.4rem 0 0.4rem 1.6rem;
+    border-left: 3px solid #0C4433;
     margin: 4.8rem 0;
   }
 
@@ -140,6 +145,7 @@
   .vm-compromisos__label {
     font-family: 'Chivo Mono', 'Courier New', monospace;
     font-size: 1.2rem;
+    font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(197, 234, 255, 0.55);
@@ -257,7 +263,7 @@
     font-style: italic;
     color: rgba(28, 28, 26, 0.55);
     margin: 0;
-    line-height: 1.15;
+    line-height: 1;
   }
 
   .vm-cierre__piano-sub {
@@ -266,6 +272,8 @@
     font-size: 1.0rem;
     letter-spacing: 0.10em;
     color: rgba(28, 28, 26, 0.30);
+    display: block;
+    margin-top: 0.3rem;
   }
 </style>
 
@@ -275,9 +283,9 @@
   <div class="vm-hero">
     <div class="vm-hero__eyebrow-wrap">
       <span class="vm-hero__eyebrow">Manifiesto · Vito Piano</span>
+      <hr class="vm-hero__eyebrow-rule">
     </div>
     <h1 class="vm-hero__headline">En defensa de lo que dura</h1>
-    <hr class="vm-hero__eyebrow-rule">
   </div>
 
   <!-- SECCIÓN 1: Provocación -->
@@ -287,7 +295,7 @@
     <p>Entendemos la lógica. La velocidad vende. El volumen escala. La inmediatez seduce.</p>
 
     <blockquote class="vm-pull">
-      Pero hay algo que la velocidad no puede fabricar: carácter.
+      Pero hay algo que la velocidad<br>no puede fabricar: carácter.
     </blockquote>
 
     <!-- SECCIÓN 2: Slow Made -->
