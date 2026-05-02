@@ -49,5 +49,7 @@
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
