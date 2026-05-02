@@ -20,10 +20,21 @@
 <meta property="og:description" content="{{ og_description | escape }}">
 
 {%- if page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
-  <meta property="og:image:width" content="{{ page_image.width }}">
-  <meta property="og:image:height" content="{{ page_image.height }}">
+  <meta property="og:image" content="https:{{ page_image | image_url: width: 1200 }}">
+  <meta property="og:image:secure_url" content="https:{{ page_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https:{{ page_image | image_url: width: 1200 }}">
+{%- elsif settings.brand_image != blank -%}
+  <meta property="og:image" content="https:{{ settings.brand_image | image_url: width: 1200 }}">
+  <meta property="og:image:secure_url" content="https:{{ settings.brand_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https:{{ settings.brand_image | image_url: width: 1200 }}">
+{%- endif -%}
+
+{%- if settings.social_instagram_link != blank -%}
+  <meta property="og:see_also" content="{{ settings.social_instagram_link }}">
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}

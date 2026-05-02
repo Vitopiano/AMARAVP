@@ -1,0 +1,404 @@
+/* Vito Piano — Brand Tokens & Premium Homepage */
+
+/* Override Shopify's default fonts with Vito Piano typefaces */
+:root {
+  --font-body-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-heading-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body-weight: 300;
+  --font-heading-weight: 400;
+}
+
+:root {
+  --vp-verde-botella: #0C4433;
+  --vp-burdeos: #431424;
+  --vp-terracota: #E25027;
+  --vp-azul-hielo: #C5EAFF;
+  --vp-crema: #FCF9F5;
+  --vp-gris-calido: #F0EDE8;
+  --vp-negro-suave: #1C1C1A;
+
+  --vp-font-headline: 'Bricolage Grotesque', 'Georgia', serif;
+  --vp-font-body: 'Bricolage Grotesque', system-ui, sans-serif;
+  --vp-font-mono: 'Chivo Mono', 'Courier New', monospace;
+
+  --vp-letter-spacing-wide: 0.12em;
+  --vp-letter-spacing-normal: 0.04em;
+  --vp-transition: 0.3s ease;
+}
+
+/* Typography refinements */
+h1, h2, h3, .h1, .h2, .h3 {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-weight: 400;
+}
+
+.caption,
+.caption-with-letter-spacing,
+.product__text.caption-with-letter-spacing {
+  font-family: var(--vp-font-mono);
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+/* Announcement bar */
+.announcement-bar {
+  background-color: var(--vp-verde-botella);
+  color: var(--vp-crema);
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+}
+
+/* Buttons — elegante, sin border-radius */
+.button,
+.shopify-payment-button__button--unbranded {
+  border-radius: 0 !important;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: background-color var(--vp-transition), color var(--vp-transition);
+}
+
+/* Variant pills — cuadradas */
+.swatch-input__input + .swatch-input__label,
+.variant-input-wrapper .variant__button-label {
+  border-radius: 0 !important;
+  font-family: var(--vp-font-mono);
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-size: 1.1rem;
+}
+
+/* Product card — sin sombra, bordes sutiles */
+.card--product {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card__information .card__heading {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-weight: 400;
+}
+
+/* Price — Chivo Mono */
+.price .price__regular,
+.price .price__sale,
+.price-item {
+  font-family: var(--vp-font-mono);
+  letter-spacing: var(--vp-letter-spacing-normal);
+}
+
+/* ============================================
+   NOTA DEL SASTRE — Bloque editorial
+   ============================================ */
+
+.nota-del-sastre {
+  margin: 2.4rem 0;
+  background-color: var(--vp-verde-botella);
+  color: var(--vp-crema);
+  padding: 3.2rem;
+  position: relative;
+}
+
+.nota-del-sastre::before {
+  content: '"';
+  font-family: 'Georgia', serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: rgba(252, 249, 245, 0.15);
+  position: absolute;
+  top: 1.6rem;
+  left: 2.4rem;
+  pointer-events: none;
+}
+
+.nota-del-sastre__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.nota-del-sastre__header {
+  margin-bottom: 1.6rem;
+}
+
+.nota-del-sastre__label {
+  font-family: var(--vp-font-mono);
+  font-size: 1.0rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+  color: rgba(252, 249, 245, 0.65);
+}
+
+.nota-del-sastre__content {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--vp-crema);
+}
+
+.nota-del-sastre__content p {
+  margin-bottom: 1.2rem;
+}
+
+.nota-del-sastre__content p:last-child {
+  margin-bottom: 0;
+}
+
+.nota-del-sastre__firma {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+  color: rgba(252, 249, 245, 0.65);
+  font-style: normal;
+}
+
+@media screen and (min-width: 750px) {
+  .nota-del-sastre {
+    padding: 4rem 4.8rem;
+  }
+
+  .nota-del-sastre__content {
+    font-size: 1.6rem;
+  }
+}
+
+/* ============================================
+   HEADER — refinements
+   ============================================ */
+
+.header__heading-link .header__heading-logo {
+  max-width: 18rem;
+}
+
+@media screen and (min-width: 990px) {
+  .header__heading-link .header__heading-logo {
+    max-width: 22rem;
+  }
+}
+
+/* Navigation links */
+.header__menu-item span,
+.header__active-menu-item {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-family: var(--vp-font-mono);
+}
+
+/* ============================================
+   FOOTER — refinements
+   ============================================ */
+
+.footer__heading {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   HOMEPAGE — Hero
+   ============================================ */
+
+.banner__content .banner__box {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hero heading — cream, oversized, tracked */
+.banner__content .banner__heading,
+.banner__content h2,
+.banner__content .h0 {
+  color: var(--vp-crema);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  font-weight: 300;
+}
+
+.banner__content .banner__text {
+  color: rgba(252, 249, 245, 0.7);
+  font-family: var(--vp-font-mono);
+  font-size: 1.2rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* Hero buttons — primary in crema, secondary as ghost */
+.banner__content .button--primary {
+  background-color: var(--vp-crema);
+  color: var(--vp-negro-suave);
+  border-color: var(--vp-crema);
+}
+
+.banner__content .button--secondary {
+  border-color: rgba(252, 249, 245, 0.5);
+  color: var(--vp-crema);
+  background: transparent;
+}
+
+/* ============================================
+   HOMEPAGE — Brand Statement
+   ============================================ */
+
+.rich-text__blocks .rich-text__heading {
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  font-weight: 300;
+}
+
+/* ============================================
+   HOMEPAGE — Collection List (HOMBRE / MUJER)
+   ============================================ */
+
+.collection-list-section .card-collection {
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.collection-list-section .card__image-animation {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.collection-list-section .card--collection:hover .card__image-animation {
+  transform: scale(1.03);
+}
+
+.card--collection .card__heading {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: var(--vp-font-mono);
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   HOMEPAGE — Origin Callout (full-width inverse)
+   ============================================ */
+
+.rich-text--full-width.color-inverse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rich-text--full-width .rich-text__heading.h0 {
+  font-size: clamp(3rem, 6vw, 7.2rem);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   HOMEPAGE — Pilares (multicolumn)
+   ============================================ */
+
+.multicolumn-list__item {
+  border-top: 1px solid rgba(28, 28, 26, 0.12);
+  padding-top: 2.4rem;
+}
+
+.multicolumn .column__heading {
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.multicolumn .column__text {
+  font-size: 1.4rem;
+  line-height: 1.65;
+  color: rgba(28, 28, 26, 0.7);
+}
+
+/* ============================================
+   HOMEPAGE — Newsletter CTA
+   ============================================ */
+
+.newsletter .newsletter__heading {
+  letter-spacing: 0.02em;
+  font-weight: 300;
+}
+
+.newsletter-form__button {
+  border-radius: 0;
+}
+
+/* ============================================
+   FEATURED COLLECTION — Novedades
+   ============================================ */
+
+.featured-collection .title-wrapper {
+  border-bottom: 1px solid rgba(28, 28, 26, 0.1);
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+}
+
+.featured-collection .title-wrapper .title {
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* Subtle image zoom on product card hover */
+.card--product .card__media {
+  overflow: hidden;
+}
+
+.card--product:hover .card__media .media {
+  transform: scale(1.03);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================
+   NAVEGACIÓN — link "Sale" destacado
+   ============================================ */
+
+.list-menu__item--link[href*="/sale"],
+.list-menu__item--link[href*="/rebajas"],
+.list-menu__item--link[href*="/descuentos"] {
+  color: var(--vp-terracota) !important;
+}
+
+.list-menu__item--link[href*="/sale"]:hover,
+.list-menu__item--link[href*="/rebajas"]:hover {
+  color: var(--vp-burdeos) !important;
+}
+
+/* ============================================
+   COLLECTION / PRODUCT LIST — refinements
+   ============================================ */
+
+.collection__title,
+.featured-collection__title {
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-weight: 400;
+}
+
+/* Badges — Chivo Mono */
+.badge {
+  border-radius: 0;
+  font-family: var(--vp-font-mono);
+  font-size: 1.0rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   FORM INPUTS — minimal, cuadrado
+   ============================================ */
+
+.field__input,
+.select__select,
+.customer .field input,
+.customer select {
+  border-radius: 0;
+  font-family: var(--vp-font-mono);
+  letter-spacing: var(--vp-letter-spacing-normal);
+}

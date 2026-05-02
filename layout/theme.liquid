@@ -35,6 +35,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    <!-- Vito Piano — Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&family=Chivo+Mono:wght@300;400&display=swap">
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -47,6 +52,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {% endif %}
 
     {% render 'meta-tags' %}
+
+    {%- if request.page_type == 'index' -%}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "{{ request.origin }}/#organization",
+          "name": "{{ shop.name | escape }}",
+          "url": "{{ request.origin }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ settings.logo | image_url: width: 400 | prepend: 'https:' }}"
+          },
+          "description": "Slow fashion premium. Precisión italiana, alma colombiana. Confeccionado a mano en Bogotá, Colombia.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bogotá",
+            "addressRegion": "Cundinamarca",
+            "addressCountry": "CO"
+          },
+          "sameAs": [
+            "{{ settings.social_instagram_link }}"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ request.origin }}/#website",
+          "url": "{{ request.origin }}",
+          "name": "{{ shop.name | escape }}",
+          "inLanguage": "es",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "{{ request.origin }}/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+    {%- endif -%}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -276,6 +326,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'vito-piano-brand.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -409,6 +460,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	data-element-reference=".price-item.price-item--regular"
 	src="https://statics.addi.com/shopify/js/shopify-co-widget-wrapper.bundle.min.js"
 ></script>
-    
+
+    {% section 'vito-newsletter-popup' %}
+
   </body>
 </html>

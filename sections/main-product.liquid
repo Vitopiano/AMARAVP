@@ -660,6 +660,22 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'nota_del_sastre' -%}
+                {%- if block.settings.nota_content != blank -%}
+                  <div class="nota-del-sastre" {{ block.shopify_attributes }}>
+                    <div class="nota-del-sastre__inner">
+                      <div class="nota-del-sastre__header">
+                        <span class="nota-del-sastre__label">— Nota del Sastre</span>
+                      </div>
+                      <div class="nota-del-sastre__content rte">
+                        {{ block.settings.nota_content }}
+                      </div>
+                      {%- if block.settings.show_signature -%}
+                        <p class="nota-del-sastre__firma">Vito Piano · El Chicó, Bogotá</p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -2072,6 +2088,25 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "nota_del_sastre",
+      "name": "Nota del Sastre",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "nota_content",
+          "label": "Nota del Sastre",
+          "info": "Historia personal de Vito sobre este producto"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_signature",
+          "label": "Mostrar firma",
+          "default": true
         }
       ]
     }
