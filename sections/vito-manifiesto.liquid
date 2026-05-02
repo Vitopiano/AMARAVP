@@ -349,18 +349,12 @@
     <p>Eso es Vito Piano. Un sastre que hace las cosas como siempre se debieron hacer.</p>
     <p>El resto lo hace la ropa.</p>
 
-    {%- if section.settings.firma_image != blank -%}
-      {{- section.settings.firma_image | image_url: width: 440 | image_tag:
-          class: 'vm-cierre__firma-img',
-          alt: 'Firma Vito Piano',
-          loading: 'lazy',
-          widths: '220, 440'
-      -}}
-    {%- else -%}
-      <p class="vm-cierre__firma">— Vito Piano</p>
-      <span class="vm-cierre__piano" aria-hidden="true">piano</span>
-      <p class="vm-cierre__piano-text"><em>Piano, piano.</em><br><span class="vm-cierre__piano-sub">(Despacio, despacio.)</span></p>
-    {%- endif -%}
+    <img
+      src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP-Firma.png?v=1777760768"
+      alt="Firma Vito Piano"
+      class="vm-cierre__firma-img"
+      loading="lazy"
+    >
   </div>
 
 </div>
