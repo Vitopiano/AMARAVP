@@ -224,6 +224,18 @@
           </localization-form>
         {%- endif -%}
       </div>
+      {%- if section.settings.isotipo_image != blank -%}
+        <a href="{{ routes.root_url }}" class="header__isotipo-link" aria-label="{{ shop.name }}">
+          {{- section.settings.isotipo_image | image_url: width: 80 | image_tag:
+            class: 'header__isotipo-img',
+            width: 36,
+            height: 36,
+            alt: shop.name,
+            loading: 'eager'
+          -}}
+        </a>
+      {%- endif -%}
+
       {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
@@ -261,18 +273,6 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
-
-      {%- if section.settings.isotipo_image != blank -%}
-        <a href="{{ routes.root_url }}" class="header__isotipo-link" aria-label="{{ shop.name }}">
-          {{- section.settings.isotipo_image | image_url: width: 80 | image_tag:
-            class: 'header__isotipo-img',
-            width: 36,
-            height: 36,
-            alt: shop.name,
-            loading: 'eager'
-          -}}
-        </a>
-      {%- endif -%}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
           {% if cart == empty %}

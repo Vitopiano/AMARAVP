@@ -243,6 +243,16 @@ Vito Piano habla como **un sastre apasionado que también es poeta**. Conoce su 
 
 ### 5.4 Banco de Copy Aprobado
 
+#### Frase Icónica — uso en packaging, tarjetas, tote bags, etiquetas y comunicaciones de marca
+
+> **"Cada prenda Vito Piano es una historia tejida con precisión italiana y alma colombiana. Un lujo consciente, diseñado para perdurar en tu estilo y tu vida."**
+
+Esta frase es el sello de marca. Aparece completa en piezas físicas (tarjetas, tote bags, empaque) y puede fragmentarse para uso digital:
+- *"Una historia tejida con precisión italiana y alma colombiana."*
+- *"Un lujo consciente, diseñado para perdurar."*
+
+#### Frases de apoyo
+
 ```
 Colombian craftsmanship meets Italian precision.
 El origen de tu estilo.

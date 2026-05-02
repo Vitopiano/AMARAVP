@@ -242,6 +242,15 @@ h1, h2, h3, .h1, .h2, .h3 {
   text-transform: uppercase;
 }
 
+/* Cuadrícula de stand sobre el fondo verde del footer */
+.footer.color-inverse {
+  background-image:
+    linear-gradient(rgba(197, 234, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 234, 255, 0.09) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: top left;
+}
+
 /* Links dentro del footer verde: todos en crema, no naranja */
 .footer.color-inverse a,
 .footer.color-inverse .footer__list-social-link,
@@ -614,6 +623,13 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright .shopify-link,
 .footer__copyright a[href*="shopify.com"] {
   display: none !important;
+}
+
+/* Línea legal NIT - tono más sutil */
+.footer__copyright--legal {
+  display: block;
+  margin-top: 0.4rem;
+  opacity: 0.6;
 }
 
 /* Ocultar lista de políticas del bottom si está activa */
