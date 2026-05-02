@@ -1,1 +1,53 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","blocks":{"6df3aef3-6003-42c8-aa02-589798e8e4a1":{"type":"text","settings":{"heading":"Contáctanos","subtext":"<p>info@shopamara.com.co<\/p><p><a href=\"https:\/\/wa.me\/3244775966\" target=\"_blank\" title=\"Whatsapp\">(+57) 324 477 5966<\/a><\/p><p><a href=\"https:\/\/shopamara.com.co\/pages\/tiendas-fisicas\" title=\"Tiendas físicas shop amara\">Tiendas físicas<\/a><\/p><p><\/p><p><\/p><p><\/p>"}},"footer-0":{"type":"link_list","settings":{"heading":"","menu":"footer"}},"e6eedd27-6f08-4501-8c99-4a4acabc4ab1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/logotipo_Footer-04_21f5a70b-0ae4-4c9d-918b-f3d282d7d0c7.png","image_width":205,"alignment":"center"}}},"block_order":["6df3aef3-6003-42c8-aa02-589798e8e4a1","footer-0","e6eedd27-6f08-4501-8c99-4a4acabc4ab1"],"settings":{"color_scheme":"accent-1","newsletter_enable":true,"newsletter_heading":"Newsletter","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":false,"enable_language_selector":false,"payment_enable":true,"show_policy":false,"margin_top":0,"padding_top":12,"padding_bottom":12}}},"order":["footer"]}
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "6df3aef3-6003-42c8-aa02-589798e8e4a1": {
+          "type": "text",
+          "settings": {
+            "heading": "Contáctanos",
+            "subtext": "<p>El Chicó · Bogotá, Colombia<\/p><p>info.vitopiano@gmail.com<\/p><p>WhatsApp: +579151143<\/p>"
+          }
+        },
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Políticas",
+            "menu": "footer"
+          }
+        },
+        "e6eedd27-6f08-4501-8c99-4a4acabc4ab1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/logotipo_Footer-04_23f95af2-bb7f-4bd8-9e62-3fd95de3d975.png",
+            "image_width": 200,
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "6df3aef3-6003-42c8-aa02-589798e8e4a1",
+        "footer-0",
+        "e6eedd27-6f08-4501-8c99-4a4acabc4ab1"
+      ],
+      "settings": {
+        "color_scheme": "inverse",
+        "newsletter_enable": true,
+        "newsletter_heading": "Únete al mundo Vito Piano",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": ["footer"]
+}

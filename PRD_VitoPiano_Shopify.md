@@ -13,18 +13,19 @@
 3. [El Personaje — Historia del Sastre](#3-el-personaje--historia-del-sastre)
 4. [Perfil del Cliente Ideal](#4-perfil-del-cliente-ideal)
 5. [Tono de Marca y Voz Editorial](#5-tono-de-marca-y-voz-editorial)
-6. [Ángulos de Venta](#6-ángulos-de-venta)
-7. [Filosofía y Sistema de Diseño](#7-filosofía-y-sistema-de-diseño)
-8. [Estructura del Sitio](#8-estructura-del-sitio)
-9. [Homepage — Wireframe y Contenido](#9-homepage--wireframe-y-contenido)
-10. [Product Page — Especificación Detallada](#10-product-page--especificación-detallada)
-11. [Páginas de Soporte](#11-páginas-de-soporte)
-12. [Canales de Venta](#12-canales-de-venta)
-13. [Email Marketing — Flows Detallados](#13-email-marketing--flows-detallados)
-14. [Integraciones Técnicas Shopify](#14-integraciones-técnicas-shopify)
-15. [Consideraciones de Accesibilidad y Performance](#15-consideraciones-de-accesibilidad-y-performance)
-16. [Fases de Implementación](#16-fases-de-implementación)
-17. [Restricciones y Decisiones de Diseño](#17-restricciones-y-decisiones-de-diseño)
+6. [Sistema de Nomenclatura de Prendas](#6-sistema-de-nomenclatura-de-prendas)
+7. [Ángulos de Venta](#7-ángulos-de-venta)
+8. [Filosofía y Sistema de Diseño](#8-filosofía-y-sistema-de-diseño)
+9. [Estructura del Sitio](#9-estructura-del-sitio)
+10. [Homepage — Wireframe y Contenido](#10-homepage--wireframe-y-contenido)
+11. [Product Page — Especificación Detallada](#11-product-page--especificación-detallada)
+12. [Páginas de Soporte](#12-páginas-de-soporte)
+13. [Canales de Venta](#13-canales-de-venta)
+14. [Email Marketing — Flows Detallados](#14-email-marketing--flows-detallados)
+15. [Integraciones Técnicas Shopify](#15-integraciones-técnicas-shopify)
+16. [Consideraciones de Accesibilidad y Performance](#16-consideraciones-de-accesibilidad-y-performance)
+17. [Fases de Implementación](#17-fases-de-implementación)
+18. [Restricciones y Decisiones de Diseño](#18-restricciones-y-decisiones-de-diseño)
 
 ---
 
@@ -281,7 +282,181 @@ Los colores de prenda nunca usan nombres genéricos. Siempre nombres de lugar o 
 
 ---
 
-## 6. Ángulos de Venta
+## 6. Sistema de Nomenclatura de Prendas
+
+### 6.1 Estrategia de Naming: La Caja de Herramientas de Identidad
+
+Cada prenda Vito Piano lleva el nombre de una figura de la cultura italiana — científicos, escritores, compositores, artesanos, diseñadores. Esta decisión no es decorativa: es la columna vertebral de la narrativa de marca.
+
+**Por qué funciona:**
+
+1. **Refuerza el origen sin repetirlo.** Decir "Torricelli" comunica Italia sin necesitar la palabra Italia. El nombre hace el trabajo cultural de forma implícita y elegante.
+2. **Construye un universo coleccionable.** El cliente no compra un pantalón beige — adquiere un "Torricelli". La especificidad crea deseo y distingue la prenda en la memoria.
+3. **Genera conversación.** "¿Por qué se llama así?" abre la puerta a la historia de la marca, el personaje Vito Piano, y la filosofía de cada categoría. El nombre es una excusa para conectar.
+
+> *"No vendemos prendas. Vendemos universos con nombre propio."*
+
+---
+
+### 6.2 Catálogo de Nombres por Categoría
+
+#### Categoría 1 — Sastrería *(Figuras del Arte Renacentista y Clásico)*
+
+Blazers, sacos, trajes. La sastrería como tradición artística más alta — nombres de pintores, escultores y arquitectos que transformaron la mirada humana.
+
+| Nombre | Referente |
+|---|---|
+| Leonardo | Leonardo da Vinci — pintor, científico, visionario |
+| Artemisia | Artemisia Gentileschi — pintora barroca, pionera |
+| Michelangelo | Miguel Ángel — escultor y pintor de la Capilla Sixtina |
+| Rafael | Rafael Sanzio — maestro del clasicismo |
+| Dante | Dante Alighieri — poeta, autor de La Divina Comedia |
+| Bernini | Gian Lorenzo Bernini — escultor y arquitecto barroco |
+| Donatello | Donatello — escultor del primer Renacimiento |
+| Botticelli | Sandro Botticelli — El nacimiento de Venus |
+| Tiziano | Tiziano Vecellio — maestro del color veneciano |
+| Brunelleschi | Filippo Brunelleschi — arquitecto de la cúpula de Florencia |
+| Caravaggio | Michelangelo Merisi da Caravaggio — maestro del claroscuro |
+| Palladio | Andrea Palladio — padre de la arquitectura clásica occidental |
+| Canova | Antonio Canova — escultor neoclásico |
+| Modigliani | Amedeo Modigliani — pintor de formas elongadas y puras |
+| Bellini | Giovanni Bellini — maestro del Renacimiento veneciano |
+| Veronese | Paolo Veronese — pintor de composiciones monumentales |
+| Giorgione | Giorgione — precursor del paisajismo romántico |
+| Giotto | Giotto di Bondone — padre de la pintura occidental |
+| Bramante | Donato Bramante — arquitecto del Vaticano |
+| Lotto | Lorenzo Lotto — retratista del alma |
+
+#### Categoría 2 — Pantalones *(Científicos e Inventores Italianos)*
+
+El pantalón como estructura, como ingeniería del cuerpo. Nombres de quienes construyeron el mundo moderno con rigor y precisión.
+
+| Nombre | Referente |
+|---|---|
+| Enzo | Enzo Ferrari — ingeniero y visionario del automóvil |
+| Marco | Marco Polo — explorador, abridor de mundos |
+| Galileo | Galileo Galilei — padre de la ciencia moderna |
+| Volta | Alessandro Volta — inventor de la batería eléctrica |
+| Fermi | Enrico Fermi — físico nuclear, Premio Nobel |
+| Meucci | Antonio Meucci — inventor del teléfono |
+| Cassini | Giovanni Cassini — astrónomo, cartógrafo del cielo |
+| Fibonacci | Leonardo Fibonacci — matemático, la secuencia áurea |
+| **Torricelli** | **Evangelista Torricelli — inventor del barómetro** *(primer producto confirmado)* |
+| Lagrange | Joseph-Louis Lagrange — matemático y físico |
+| Marconi | Guglielmo Marconi — inventor de la radio, Nobel |
+| Colombo | Cristóbal Colón — navegante que cambió la historia |
+| Vespucci | Américo Vespucio — cartógrafo que nombró América |
+| Polo | Marco Polo — explorador de Oriente |
+| Caboto | Giovanni Caboto — navegante del Atlántico Norte |
+| Gioia | Flavio Gioia — perfeccionador de la brújula |
+| Grimaldi | Francesco Grimaldi — físico, descubridor de la difracción |
+| Avogadro | Amedeo Avogadro — físico y químico |
+| Galvani | Luigi Galvani — electricidad animal |
+| Cardano | Gerolamo Cardano — matemático y filósofo |
+
+#### Categoría 3 — Camisería *(Escritores, Poetas y Cineastas)*
+
+La camisa como texto. Como piel que comunica. Nombres de quienes dieron forma al lenguaje y la mirada italiana.
+
+| Nombre | Referente |
+|---|---|
+| Petrarca | Francesco Petrarca — padre del humanismo lírico |
+| Boccaccio | Giovanni Boccaccio — El Decamerón |
+| Machiavelli | Niccolò Machiavelli — El Príncipe |
+| Leopardi | Giacomo Leopardi — poeta del infinito |
+| Calvino | Italo Calvino — maestro de lo fantástico literario |
+| Eco | Umberto Eco — El nombre de la rosa |
+| Pavese | Cesare Pavese — poeta de la soledad |
+| Ariosto | Ludovico Ariosto — Orlando Furioso |
+| Tasso | Torquato Tasso — épica del Renacimiento |
+| **Pasolini** | **Pier Paolo Pasolini — poeta, cineasta, pensador** *(primer producto confirmado)* |
+| Moravia | Alberto Moravia — novelista de la condición humana |
+| Svevo | Italo Svevo — La conciencia de Zeno |
+| Ungaretti | Giuseppe Ungaretti — poeta de la guerra y la luz |
+| Montale | Eugenio Montale — Nobel de Literatura 1975 |
+| D'Annunzio | Gabriele D'Annunzio — poeta y esteta |
+| Gramsci | Antonio Gramsci — filósofo y pensador político |
+| Pirandello | Luigi Pirandello — Nobel de Literatura 1934 |
+| Fellini | Federico Fellini — director de La Dolce Vita |
+| **Visconti** | **Luchino Visconti — director de El Gatopardo** *(primer producto confirmado — Chaqueta de mujer)* |
+| Antonioni | Michelangelo Antonioni — cineasta de la alienación moderna |
+
+#### Categoría 4 — Punto y Tejidos *(Compositores e Intérpretes)*
+
+El tejido como partitura. Cada hilo, una nota. Nombres de quienes compusieron la música del mundo.
+
+| Nombre | Referente |
+|---|---|
+| Vivaldi | Antonio Vivaldi — Las Cuatro Estaciones |
+| Verdi | Giuseppe Verdi — Aida, Otello, La Traviata |
+| Puccini | Giacomo Puccini — La Bohème, Madama Butterfly |
+| Rossini | Gioachino Rossini — El barbero de Sevilla |
+| Paganini | Niccolò Paganini — violinista virtuoso |
+| Monteverdi | Claudio Monteverdi — padre de la ópera |
+| Scarlatti | Alessandro Scarlatti — maestro del barroco napolitano |
+| Corelli | Arcangelo Corelli — arquitecto del concerto grosso |
+| Donizetti | Gaetano Donizetti — Lucia di Lammermoor |
+| Mascagni | Pietro Mascagni — Cavalleria rusticana |
+| Albinoni | Tomaso Albinoni — Adagio |
+| Clementi | Muzio Clementi — pionero del piano moderno |
+| Boccherini | Luigi Boccherini — Minueto |
+| Pergolesi | Giovanni Battista Pergolesi — Stabat Mater |
+| Lully | Jean-Baptiste Lully — arquitecto de la ópera francesa (origen italiano) |
+| Salieri | Antonio Salieri — compositor de corte |
+| Rota | Nino Rota — compositor de El Padrino y Fellini |
+| Morricone | Ennio Morricone — compositor del western y más |
+| Berio | Luciano Berio — vanguardia musical italiana |
+| Einaudi | Ludovico Einaudi — minimalismo contemporáneo |
+
+#### Categoría 5 — Accesorios *(Artesanos, Luthiers y Diseñadores Industriales)*
+
+El accesorio como obra maestra de escala menor. Nombres de quienes elevaron el objeto cotidiano a categoría de arte.
+
+| Nombre | Referente |
+|---|---|
+| Stradivari | Antonio Stradivari — luthier, violines perfectos |
+| Guarnieri | Giuseppe Guarneri — luthier rival de Stradivari |
+| Amati | Andrea Amati — fundador de la escuela de Cremona |
+| Cellini | Benvenuto Cellini — orfebre y escultor del Renacimiento |
+| Ghiglieri | Lorenzo Ghiglieri — escultor de metales nobles |
+| Bugatti | Rembrandt Bugatti — escultor y artista de la familia Bugatti |
+| Castiglioni | Achille Castiglioni — diseñador industrial, lámpara Arco |
+| Munari | Bruno Munari — diseñador, artista y pedagogo |
+| Sottsass | Ettore Sottsass — fundador del Memphis Group |
+| Ponti | Gio Ponti — arquitecto y diseñador, Superleggera |
+| Gae | Gae Aulenti — arquitecta y diseñadora de espacios |
+| Pininfarina | Battista Pininfarina — diseño de carrocerías Ferrari |
+| Zanuso | Marco Zanuso — diseñador industrial y arquitecto |
+| Bertone | Nuccio Bertone — diseñador de automóviles |
+| Fornasetti | Piero Fornasetti — artista decorativo obsesivo |
+| Scarpa | Carlo Scarpa — arquitecto de detalles perfectos |
+| Aulenti | Gae Aulenti — renovadora del Musée d'Orsay |
+| Albini | Franco Albini — diseñador racionalista italiano |
+| Colombo | Joe Cesare Colombo — diseñador futurista |
+| Piano | Renzo Piano — arquitecto del Centro Pompidou |
+
+---
+
+### 6.3 Primeros Productos Confirmados
+
+| Prenda | Nombre | Categoría | Referente |
+|---|---|---|---|
+| Pantalón | **Torricelli** | Pantalones (Científicos) | Evangelista Torricelli — inventor del barómetro. Precisión de medida, estructura perfecta. |
+| Blazer | **Pasolini** | Sastrería / Camisería (Escritores-Cineastas) | Pier Paolo Pasolini — poeta y cineasta. Forma que porta un punto de vista. |
+| Chaqueta de mujer | **Visconti** | Sastrería / Camisería (Cineastas) | Luchino Visconti — director de El Gatopardo. Elegancia aristocrática, nunca ostentosa. |
+
+---
+
+### 6.4 Criterios de Uso del Sistema
+
+- **Unicidad:** cada nombre se usa una sola vez dentro de su categoría. No hay dos Torricelli.
+- **Coherencia narrativa:** el referente debe tener resonancia con la prenda: Torricelli en pantalones por su precisión estructural; Visconti en la chaqueta femenina por su elegancia cinematográfica.
+- **Nombres en la tienda:** el nombre aparece como título de producto ("Pantalón Torricelli"), en la URL del producto, y como elemento destacado en la product page en la sección *historia de prenda*.
+- **Sin sobreexplicación en el copy:** el nombre debe despertar curiosidad, no exigir enciclopedia. Una línea de contexto es suficiente en la página de producto.
+
+---
+
+## 7. Ángulos de Venta
 
 Cinco ángulos distintos para usar según canal, momento y audiencia. Cada copy de campaña debe anclarse en uno de estos.
 
@@ -345,7 +520,7 @@ Activa la reencuadración de precio. No es caro — es inteligente.
 
 ---
 
-## 7. Filosofía y Sistema de Diseño
+## 8. Filosofía y Sistema de Diseño
 
 ### 7.1 Principio Central
 
@@ -424,7 +599,7 @@ Crema           #FCF9F5  — Fondo base del sitio. 70% de la superficie total. T
 
 ---
 
-## 8. Estructura del Sitio
+## 9. Estructura del Sitio
 
 ### 8.1 Arquitectura de Navegación
 
@@ -469,7 +644,7 @@ www.vitopiano.com
 
 ---
 
-## 9. Homepage — Wireframe y Contenido
+## 10. Homepage — Wireframe y Contenido
 
 ### Sección 1 — Hero Principal (Above the fold)
 
@@ -638,7 +813,7 @@ www.vitopiano.com
 
 ---
 
-## 10. Product Page — Especificación Detallada
+## 11. Product Page — Especificación Detallada
 
 La product page es el corazón del sitio. Equilibra impacto visual, narración de marca y funcionalidad de compra.
 
@@ -780,7 +955,7 @@ La product page es el corazón del sitio. Equilibra impacto visual, narración d
 
 ---
 
-## 11. Páginas de Soporte
+## 12. Páginas de Soporte
 
 ### 11.1 Nuestra Historia (`/nuestra-historia`)
 
@@ -832,7 +1007,7 @@ La product page es el corazón del sitio. Equilibra impacto visual, narración d
 
 ---
 
-## 12. Canales de Venta
+## 13. Canales de Venta
 
 ### 12.1 Canal Principal — Shopify Online Store
 
@@ -879,7 +1054,7 @@ El valor *"Cercano 1:1"* se materializa aquí. No es soporte — es el sastre en
 
 ---
 
-## 13. Email Marketing — Flows Detallados
+## 14. Email Marketing — Flows Detallados
 
 Herramienta: **Klaviyo**. Todos los emails usan el sistema tipográfico de marca y tono de Vito.
 
@@ -975,7 +1150,7 @@ Herramienta: **Klaviyo**. Todos los emails usan el sistema tipográfico de marca
 
 ---
 
-## 14. Integraciones Técnicas Shopify
+## 15. Integraciones Técnicas Shopify
 
 | Función | App / Herramienta | Prioridad |
 |---|---|---|
@@ -1009,7 +1184,7 @@ Herramienta: **Klaviyo**. Todos los emails usan el sistema tipográfico de marca
 
 ---
 
-## 15. Consideraciones de Accesibilidad y Performance
+## 16. Consideraciones de Accesibilidad y Performance
 
 - **Contraste de color:** verificar WCAG AA para todas las combinaciones (#0C4433 sobre #FCF9F5 cumple; verificar texto terracota sobre blanco)
 - **Mobile-first:** 70%+ del tráfico esperado es mobile (Instagram → sitio). Diseñar primero en 375px.
@@ -1022,7 +1197,7 @@ Herramienta: **Klaviyo**. Todos los emails usan el sistema tipográfico de marca
 
 ---
 
-## 16. Fases de Implementación
+## 17. Fases de Implementación
 
 ### Fase 1 — MVP (Semanas 1–6)
 - [ ] Setup Shopify + dominio + SSL
@@ -1062,7 +1237,7 @@ Herramienta: **Klaviyo**. Todos los emails usan el sistema tipográfico de marca
 
 ---
 
-## 17. Restricciones y Decisiones de Diseño
+## 18. Restricciones y Decisiones de Diseño
 
 ### Lo que nunca aparece en el sitio
 
