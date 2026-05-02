@@ -597,10 +597,57 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   FOOTER — Layout estilo Loro Piana
+   ============================================ */
+
+/* Fondo general crema */
+.footer {
+  background: var(--vp-crema) !important;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+}
+
+/* Recuadro verde */
+.footer__content-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem;
+  background: var(--vp-verde-botella);
+  position: relative;
+
+  background-image:
+    linear-gradient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 234, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Títulos en naranja */
+.footer__content-top .footer__heading {
+  color: var(--vp-terracota) !important;
+}
+
+/* Texto en beige */
+.footer__content-top,
+.footer__content-top p,
+.footer__content-top a,
+.footer__content-top li {
+  color: rgba(252, 249, 245, 0.85) !important;
+}
+
+/* Copyright fuera del bloque */
+.footer__content-bottom {
+  background: transparent !important;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding: 0 !important;
+  text-align: center;
+}
+
+/* ============================================
    FOOTER — Bottom bar estilo Loro Piana
    ============================================ */
 
-/* Strip crema debajo del bloque verde — un solo corte limpio */
+/* Fondo transparente, sin borde, con padding vertical */
 .footer__content-bottom {
   background: transparent !important;
   border-top: none !important;
@@ -632,7 +679,7 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright--legal {
   display: block;
   margin-top: 0.4rem;
-  opacity: 0.45;
+  opacity: 0.80;
 }
 
 /* Ocultar lista de políticas del bottom si está activa */
