@@ -46,6 +46,7 @@
     "header": {
       "type": "header",
       "settings": {
+        "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-25.png",
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
