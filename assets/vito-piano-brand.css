@@ -616,7 +616,10 @@ h1, h2, .h0, .h1, .h2 {
   font-size: 0.9rem !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: rgba(12, 68, 51, 0.45) !important;
+  color: var(--vp-terracota) !important;
+}
+.footer__copyright {
+  background: transparent !important;
 }
 
 /* Ocultar "Tecnología de Shopify" / "Powered by Shopify" */
@@ -629,7 +632,7 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright--legal {
   display: block;
   margin-top: 0.4rem;
-  opacity: 0.6;
+  opacity: 0.65;
 }
 
 /* Ocultar lista de políticas del bottom si está activa */
