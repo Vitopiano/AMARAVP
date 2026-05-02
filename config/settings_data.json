@@ -204,7 +204,7 @@
         "type": "vito-newsletter-popup",
         "settings": {
           "enabled": true,
-          "delay_seconds": 5,
+          "delay_seconds": 0,
           "eyebrow": "Bienvenido al mundo",
           "heading": "Vito Piano",
           "discount_badge": "10% OFF",
