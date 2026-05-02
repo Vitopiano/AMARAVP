@@ -255,10 +255,10 @@
         "settings": {
           "background": "#f0ede8",
           "background_gradient": "",
-          "text": "#1c1c1a",
-          "button": "#0c4433",
+          "text": "#0c4433",
+          "button": "#e25027",
           "button_label": "#fcf9f5",
-          "secondary_button_label": "#1c1c1a",
+          "secondary_button_label": "#e25027",
           "shadow": "#1c1c1a"
         }
       },
