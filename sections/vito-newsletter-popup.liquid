@@ -91,19 +91,19 @@
     font-weight: 400;
     color: #FCF9F5;
     margin: 0 0 1.6rem;
-    letter-spacing: 0.04em
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .vp-popup__discount {
+  .vp-popup__offer {
     display: block;
     font-family: 'Chivo Mono', monospace;
-    font-size: 5rem;
-    font-weight: 300;
-    color: #E25027;
-    line-height: 1;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(197, 234, 255, 0.80);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     margin-bottom: 1.6rem;
-    letter-spacing: -0.02em;
   }
 
   .vp-popup__subtext {
@@ -127,7 +127,7 @@
     font-size: 1.0rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #431424);
+    color: rgba(28, 28, 26, 0.45);
     margin: 0 0 2.4rem;
   }
 
@@ -249,10 +249,10 @@
     <button class="vp-popup__close" id="vp-popup-close" aria-label="Cerrar popup">&#215;</button>
 
     <div class="vp-popup__left">
-      <p class="vp-popup__eyebrow">{{ section.settings.eyebrow }}</p>
-      <h2 class="vp-popup__heading" id="vp-popup-heading">{{ section.settings.heading }}</h2>
-      <span class="vp-popup__discount">{{ section.settings.discount_badge }}</span>
-      <p class="vp-popup__subtext">{{ section.settings.subtext }}</p>
+      <p class="vp-popup__eyebrow">Bienvenido al mundo</p>
+      <h2 class="vp-popup__heading" id="vp-popup-heading">Vito Piano</h2>
+      <span class="vp-popup__offer">10% en tu primera prenda</span>
+      <p class="vp-popup__subtext">Únete a un círculo de personas que eligen con propósito. Como bienvenida, un descuento en tu primera compra.</p>
     </div>
 
     <div class="vp-popup__right">
@@ -262,10 +262,9 @@
 
         {%- if form.posted_successfully? -%}
           <div class="vp-popup__success">
-            <p>{{ section.settings.success_message }}</p>
+            <p>¡Bienvenido! Revisa tu correo — tu código de 10% estará esperándote.</p>
           </div>
         {%- else -%}
-          <p class="vp-popup__form-title">{{ section.settings.form_title }}</p>
 
           <div class="vp-popup__field">
             <input
@@ -322,10 +321,10 @@
           </div>
 
           <button type="submit" class="vp-popup__submit">
-            {{ section.settings.button_label }}
+            Unirme al mundo Vito Piano
           </button>
 
-          <p class="vp-popup__disclaimer">{{ section.settings.disclaimer }}</p>
+          <p class="vp-popup__disclaimer">Al suscribirte aceptas recibir comunicaciones de Vito Piano. Puedes darte de baja en cualquier momento.</p>
         {%- endif -%}
       {%- endform -%}
     </div>
