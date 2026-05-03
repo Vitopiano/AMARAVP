@@ -1166,8 +1166,9 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   PRODUCT PAGE — Editorial 3-column layout
-   40% sticky anchor | 30% scroll stack | 30% product info
+   PRODUCT PAGE — Editorial layout
+   Outer: 2-col grid (70% media | 30% info)
+   Inner: media wrapper = flex row (55% sticky | 45% scroll)
    ============================================ */
 
 .vp-editorial__sticky,
@@ -1176,29 +1177,31 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 @media screen and (min-width: 990px) {
-  /* ---- 3-column grid ---- */
+  /* Widen the media column — gives more visual weight to photography */
   .vp-product-editorial.product.grid--2-col-tablet {
-    grid-template-columns: 40fr 30fr 30fr !important;
+    grid-template-columns: 70fr 30fr !important;
     column-gap: 0 !important;
-    row-gap: 0 !important;
     align-items: start;
   }
 
-  /* Dissolve the media wrapper — its children become direct grid items */
+  /* Media wrapper: flex row — sticky image left, scroll stack right */
   .vp-product-editorial .product__media-wrapper {
-    display: contents;
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0 !important;
+    overflow: visible;
   }
 
-  /* ---- Col 1: anchor image, viewport-fill, sticky ---- */
+  /* ---- Left: sticky anchor image (55% of media column) ---- */
   .vp-editorial__sticky {
     display: block;
-    grid-column: 1;
-    grid-row: 1;
+    flex: 0 0 55%;
     position: sticky;
     top: var(--header-group-height, 0px);
     height: calc(100vh - var(--header-group-height, 0px));
     overflow: hidden;
-    align-self: start;
+    align-self: flex-start;
   }
 
   .vp-editorial__sticky .vp-editorial__img {
@@ -1209,12 +1212,12 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* ---- Col 2: seamless scrollable image stack ---- */
+  /* ---- Right: seamless scrollable image stack (fills remaining 45%) ---- */
   .vp-editorial__scroll {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
-    grid-column: 2;
-    grid-row: 1;
+    min-width: 0;
   }
 
   .vp-editorial__item .vp-editorial__img {
@@ -1223,22 +1226,14 @@ h1, h2, .h0, .h1, .h2 {
     height: auto;
   }
 
-  /* ---- Col 3: sticky product info ---- */
+  /* ---- Product info column (grid col 2, unchanged position) ---- */
   .vp-product-editorial .product__info-wrapper {
-    grid-column: 3;
-    grid-row: 1;
     padding-top: 5.6rem !important;
     padding-left: 4rem !important;
     padding-right: 3.2rem !important;
   }
 
-  /* Align the sticky info panel top with the sticky image top */
   .vp-product-editorial .product__info-container.product__column-sticky {
     top: calc(var(--header-group-height, 0px) + 3.2rem) !important;
-  }
-
-  /* Standard gallery hidden on desktop — editorial panels take over */
-  .vp-product-editorial .product__media-wrapper > .large-up-hide {
-    display: none !important;
   }
 }
