@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\" -Recurse -Force | Select-Object FullName, PSIsContainer | Sort-Object FullName | ForEach-Object { if \\($_.PSIsContainer\\) { \"[DIR]  \" + $_.FullName } else { \"[FILE] \" + $_.FullName } })"
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\" -Recurse -Force | Select-Object FullName, PSIsContainer | Sort-Object FullName | ForEach-Object { if \\($_.PSIsContainer\\) { \"[DIR]  \" + $_.FullName } else { \"[FILE] \" + $_.FullName } })",
+      "Bash(dir \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\\\\templates\" /b)"
     ],
     "additionalDirectories": [
       "C:\\Users\\dcsan\\OneDrive\\Documents\\Casa Vito SAS\\Vito piano\\07 Piezas\\Social Media\\Ai\\Fonts"

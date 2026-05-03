@@ -257,6 +257,20 @@ h1, h2, h3, .h1, .h2, .h3 {
   fill: #ffffff !important;
 }
 
+/* Contador del carrito — naranja sobre fondo verde */
+.cart-count-bubble {
+  background-color: var(--vp-terracota) !important;
+  color: #FCF9F5 !important;
+  font-family: var(--vp-font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 1.8rem;
+  height: 1.8rem;
+  width: auto;
+  padding: 0 0.3rem;
+  border-radius: 1rem;
+}
+
 /* Dropdown links del menú */
 .color-inverse .list-menu__item--link {
   color: var(--vp-azul-hielo) !important;
@@ -722,11 +736,12 @@ h1, h2, .h0, .h1, .h2 {
    Instagram      → naranja
 */
 
-/* Títulos: azul cielo */
+/* Títulos: azul cielo, sin salto de palabra */
 .footer__content-top .footer__heading,
 .footer__content-top .footer-block__heading {
   color: var(--vp-azul-hielo) !important;
   text-align: left !important;
+  white-space: nowrap;
 }
 
 /* Cuerpo (párrafos, texto plano): crema */
@@ -808,6 +823,8 @@ h1, h2, .h0, .h1, .h2 {
     grid-column: 1;
     grid-row: 2;
     margin-top: 1.6rem;
+    justify-content: flex-start;
+    padding-left: 0;
   }
 }
 
