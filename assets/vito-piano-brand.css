@@ -90,12 +90,19 @@ h1, h2, h3, .h1, .h2, .h3 {
 .shopify-payment-button__button--unbranded {
   border-radius: 0 !important;
   overflow: hidden !important;
+  position: relative !important;
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono) !important;
   font-size: 1.1rem !important;
   font-weight: 400 !important;
   text-transform: uppercase;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+}
+
+/* Wrapper del payment button: también recortado */
+.shopify-payment-button {
+  overflow: hidden !important;
+  border-radius: 0 !important;
 }
 
 /* ============================================
