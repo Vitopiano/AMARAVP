@@ -7,54 +7,68 @@
     background: #FCF9F5;
   }
 
-  /* HERO — apertura narrativa, crema */
+  /* HERO — verde botella con cuadrícula, igual que Manifiesto */
   .vs-hero {
-    padding: 9.6rem 2.4rem 7.2rem;
+    background-color: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 8rem 2.4rem 7rem;
     text-align: center;
-    background: #FCF9F5;
-    border-bottom: 1px solid rgba(12, 68, 51, 0.08);
+    position: relative;
+    overflow: hidden;
   }
 
-  .vs-hero__chapter {
+  /* Shrink-wraps to eyebrow text width via inline-flex */
+  .vs-hero__eyebrow-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 1.6rem;
+  }
+
+  .vs-hero__eyebrow {
     font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.24em;
+    font-size: 1.3rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(12, 68, 51, 0.40);
-    display: block;
-    margin-bottom: 3.6rem;
+    color: rgba(197, 234, 255, 0.65);
+    margin: 0;
+    display: inline-block;
+    white-space: nowrap;
   }
 
-  .vs-hero__opening {
+  /* Rule sits directly below eyebrow, inherits its container width */
+  .vs-hero__eyebrow-rule {
+    height: 3px;
+    width: 100%;
+    background: rgba(197, 234, 255, 0.35);
+    border: none;
+    margin: 1.6rem 0 0;
+    display: block;
+  }
+
+  .vs-hero__headline {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
-    font-size: clamp(2.8rem, 6vw, 5.6rem);
-    line-height: 1.12;
+    font-size: clamp(3.2rem, 7.5vw, 7rem);
+    line-height: 0.95;
     font-weight: 400;
-    color: #0C4433;
-    font-style: italic;
-    max-width: 18ch;
-    margin: 0 auto 4rem;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
+    color: #FCF9F5;
+    margin: 0 auto;
+    max-width: 20ch;
+    text-transform: uppercase;
   }
 
   .vs-hero__location {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.2rem;
+    display: block;
     font-family: 'Chivo Mono', 'Courier New', monospace;
     font-size: 0.85rem;
     letter-spacing: 0.20em;
     text-transform: uppercase;
-    color: rgba(12, 68, 51, 0.35);
-  }
-
-  .vs-hero__location::before,
-  .vs-hero__location::after {
-    content: "";
-    display: block;
-    width: 2.4rem;
-    height: 1px;
-    background: rgba(12, 68, 51, 0.20);
+    color: rgba(197, 234, 255, 0.40);
+    margin-top: 2.8rem;
   }
 
   /* CUERPO NARRATIVO */
@@ -107,22 +121,18 @@
     white-space: nowrap;
   }
 
-  /* Pull quote */
+  /* Pull quote — igual que Manifiesto */
   .vs-pull {
-    border-left: 2px solid #0C4433;
-    padding: 0.4rem 0 0.4rem 2.8rem;
-    margin: 4.8rem 0;
-  }
-
-  .vs-pull p {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
-    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-size: clamp(1.6rem, 2.8vw, 2.1rem);
     line-height: 1.3;
     color: #0C4433;
-    font-weight: 400;
     letter-spacing: 0.01em;
-    margin: 0 !important;
-    font-style: italic;
+    font-weight: 400;
+    text-align: left;
+    padding: 0.4rem 0 0.4rem 1.6rem;
+    border-left: 3px solid #0C4433;
+    margin: 4.8rem 0;
   }
 
   /* BLOQUE VERDE — Lo que hacemos */
@@ -210,10 +220,6 @@
       padding: 6.4rem 2.4rem 5.6rem;
     }
 
-    .vs-pull {
-      padding-left: 2rem;
-    }
-
     .vs-dark {
       padding: 5.6rem 2.4rem;
     }
@@ -222,10 +228,13 @@
 
 <div class="vs-page">
 
-  <!-- HERO: apertura como primera línea de novela -->
+  <!-- HERO: misma estructura que Manifiesto -->
   <div class="vs-hero">
-    <span class="vs-hero__chapter">El Sastre · Nuestra Historia</span>
-    <h1 class="vs-hero__opening">Había una vez<br>un sastre en el norte.</h1>
+    <div class="vs-hero__eyebrow-wrap">
+      <span class="vs-hero__eyebrow">El Sastre · Nuestra Historia</span>
+      <hr class="vs-hero__eyebrow-rule">
+    </div>
+    <h1 class="vs-hero__headline">Había una vez<br>un sastre en el norte.</h1>
     <span class="vs-hero__location">Norte de Italia</span>
   </div>
 
@@ -233,9 +242,9 @@
   <div class="vs-body">
     <p>No era un sastre cualquiera. Era el tipo de hombre que pasa horas ajustando un hombro antes de coser, que elige el forro por cómo cae y no por cuánto cuesta, que cree —con la convicción de los que han visto pasar décadas— que una prenda bien hecha es la forma más silenciosa de decir algo importante.</p>
 
-    <div class="vs-pull">
-      <p>Aprendió lo que los italianos saben desde siempre: que las cosas buenas se hacen <em>piano piano</em>. Despacio. Sin atajos.</p>
-    </div>
+    <blockquote class="vs-pull">
+      Aprendió lo que los italianos saben desde siempre:<br>que las cosas buenas se hacen <em>piano piano</em>.<br>Despacio. Sin atajos.
+    </blockquote>
 
     <p>Ese fue siempre su modo de trabajar. Y eventualmente, su nombre.</p>
   </div>

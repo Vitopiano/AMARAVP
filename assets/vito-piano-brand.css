@@ -819,12 +819,18 @@ h1, h2, .h0, .h1, .h2 {
   }
 
   /* Instagram: col 1, fila 2 — debajo de VITO PIANO */
-  .footer__content-top .footer__list-social {
+  .vp-footer-social {
     grid-column: 1;
     grid-row: 2;
     margin-top: 1.6rem;
+    justify-self: start;
+  }
+
+  .vp-footer-social .footer__list-social,
+  .vp-footer-social .list-social {
     justify-content: flex-start;
     padding-left: 0;
+    margin: 0;
   }
 }
 
