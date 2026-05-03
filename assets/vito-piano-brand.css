@@ -41,43 +41,35 @@ h1, h2, h3, .h1, .h2, .h3 {
   text-transform: uppercase;
 }
 
-/* Announcement bar - estructura correcta */
-.announcement-bar {
+/* UTILITY BAR (barra de anuncios) — contenedor real, ancho completo */
+.utility-bar {
   width: 100%;
   position: relative;
-  background-color: var(--vp-verde-botella);
+  background-color: var(--vp-verde-botella) !important;
   color: var(--vp-azul-hielo);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono);
   font-size: 1.2rem;
-  overflow: hidden; /* 👈 clave para que el grid no se corte */
+  overflow: hidden;
 }
 
-/* GRID FULL WIDTH */
-.announcement-bar::before {
+/* Cuadrícula sobre todo el ancho del contenedor */
+.utility-bar::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background-image:
     linear-gradient(rgba(197, 234, 255, 0.075) 1px, transparent 1px),
     linear-gradient(90deg, rgba(197, 234, 255, 0.06) 1px, transparent 1px);
-
   background-size: 32px 32px;
-  
   pointer-events: none;
   z-index: 0;
 }
 
-/* CONTENIDO ENCIMA DEL GRID */
-.announcement-bar .page-width {
-  position: relative; /* 👈 esto faltaba */
-  z-index: 1;         /* 👈 sube el contenido encima del grid */
-
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+/* Texto centrado por encima de la cuadrícula */
+.utility-bar .page-width {
+  position: relative;
+  z-index: 1;
 }
 
 /* TEXTO CENTRADO */
@@ -803,11 +795,15 @@ h1, h2, .h0, .h1, .h2 {
     display: contents !important;
   }
 
-  /* Bloques de texto/lista: auto-colocados en col 1 y col 2 */
+  /* Bloques de texto/lista: auto-colocados en col 1 y col 2
+     Quita el padding de grid__item para alinear con el borde de columna */
   .footer-block {
     text-align: left;
     align-self: start;
     min-width: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   /* Formulario newsletter: col 3, fila 1 */
@@ -816,14 +812,23 @@ h1, h2, .h0, .h1, .h2 {
     grid-row: 1;
     text-align: left;
     align-self: start;
+    width: 100%;
   }
 
-  /* Instagram: col 1, fila 2 — debajo de VITO PIANO */
+  /* El form y el campo llenan el ancho completo de la columna */
+  .footer__content-top .footer__newsletter.newsletter-form,
+  .footer__content-top .newsletter-form__field-wrapper,
+  .footer__content-top .newsletter-form .field {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Instagram: col 1, fila 2 — alineado al borde izquierdo igual que VITO PIANO */
   .vp-footer-social {
     grid-column: 1;
     grid-row: 2;
     margin-top: 1.6rem;
-    justify-self: start;
+    padding-left: 0;
   }
 
   .vp-footer-social .footer__list-social,

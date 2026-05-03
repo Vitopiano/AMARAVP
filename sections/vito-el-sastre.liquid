@@ -135,19 +135,25 @@
     margin: 4.8rem 0;
   }
 
-  /* BLOQUE VERDE — Lo que hacemos */
+  /* BLOQUE VERDE — Lo que hacemos: rectángulo contenido, igual que vm-compromisos */
+  .vs-dark-wrap {
+    max-width: 68ch;
+    margin: 0 auto;
+    padding: 0 2.4rem;
+  }
+
   .vs-dark {
     background: #0C4433;
     background-image:
       linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
       linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
-    padding: 7.2rem 2.4rem;
+    padding: 5.5rem 4rem;
   }
 
   .vs-dark__inner {
-    max-width: 62ch;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
   }
 
   .vs-dark__label {
@@ -220,8 +226,12 @@
       padding: 6.4rem 2.4rem 5.6rem;
     }
 
+    .vs-dark-wrap {
+      padding: 0 1.6rem;
+    }
+
     .vs-dark {
-      padding: 5.6rem 2.4rem;
+      padding: 4rem 2.4rem;
     }
   }
 </style>
@@ -269,14 +279,16 @@
     <p>Así nació Vito Piano. No como marca. Como conversación entre dos culturas que tienen más en común de lo que parece: el orgullo de hacer bien las cosas, la desconfianza saludable hacia lo masivo, y la convicción de que lo bello y lo duradero no están reñidos.</p>
   </div>
 
-  <!-- LO QUE HACEMOS — bloque verde -->
-  <div class="vs-dark">
-    <div class="vs-dark__inner">
-      <span class="vs-dark__label">El Taller</span>
-      <h2 class="vs-dark__heading">Prendas para quienes entienden que la ropa dice algo, de todas formas.</h2>
-      <p>Cada pieza nace con un nombre. Un nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
-      <p>Trabajamos con materiales seleccionados, producción local de calidad, y el tiempo que cada prenda necesita para existir bien.</p>
-      <p><em>No somos moda rápida. No queremos serlo.</em></p>
+  <!-- LO QUE HACEMOS — rectángulo verde contenido, igual que compromisos en Manifiesto -->
+  <div class="vs-dark-wrap">
+    <div class="vs-dark">
+      <div class="vs-dark__inner">
+        <span class="vs-dark__label">El Taller</span>
+        <h2 class="vs-dark__heading">Prendas para quienes entienden que la ropa dice algo, de todas formas.</h2>
+        <p>Cada pieza nace con un nombre. Un nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
+        <p>Trabajamos con materiales seleccionados, producción local de calidad, y el tiempo que cada prenda necesita para existir bien.</p>
+        <p><em>No somos moda rápida. No queremos serlo.</em></p>
+      </div>
     </div>
   </div>
 
