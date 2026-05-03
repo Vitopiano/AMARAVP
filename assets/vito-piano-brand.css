@@ -770,25 +770,38 @@ h1, h2, .h0, .h1, .h2 {
 @media screen and (min-width: 750px) {
   .footer__content-top {
     display: grid !important;
-    grid-template-columns: minmax(180px, 2fr) minmax(200px, 2fr) minmax(260px, 3fr);
+    grid-template-columns: minmax(160px, 2fr) minmax(160px, 2fr) minmax(240px, 3fr);
     align-items: start;
-    gap: 4rem 5rem;
+    gap: 2.4rem 3.2rem;
     padding: 5.6rem 4rem;
   }
 
-  .footer__blocks-wrapper {
+  /* Disuelve ambos wrappers — hijos participan directamente en el grid */
+  .footer__blocks-wrapper,
+  .footer-block--newsletter {
     display: contents !important;
   }
 
-  .footer-block,
-  .footer-block--newsletter {
+  /* Bloques de texto/lista: auto-colocados en col 1 y col 2 */
+  .footer-block {
     text-align: left;
     align-self: start;
     min-width: 0;
   }
 
-  .footer-block--newsletter .footer-block__heading {
+  /* Formulario newsletter: col 3, fila 1 */
+  .footer-block__newsletter {
+    grid-column: 3;
+    grid-row: 1;
     text-align: left;
+    align-self: start;
+  }
+
+  /* Instagram: col 1, fila 2 — debajo de VITO PIANO */
+  .footer__content-top .footer__list-social {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 1.6rem;
   }
 }
 
