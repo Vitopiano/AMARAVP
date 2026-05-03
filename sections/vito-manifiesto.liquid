@@ -208,10 +208,10 @@
 
   /* CIERRE — firma editorial */
   .vm-cierre {
-    max-width: 52ch;
+    max-width: 68ch;
     margin: 0 auto;
     padding: 6.4rem 2.4rem 8rem;
-    text-align: center;
+    text-align: left;
   }
 
   .vm-cierre p {
@@ -220,6 +220,11 @@
     line-height: 1.75;
     color: rgba(28, 28, 26, 0.70);
     margin: 0 0 2.4rem;
+  }
+
+  .vm-cierre__firma-block {
+    text-align: center;
+    margin-top: 4.8rem;
   }
 
   .vm-cierre__piano {
@@ -311,13 +316,16 @@
 
     <p>Significa que cada prenda Vito Piano tarda lo que tiene que tardar en nacer. Que los materiales se eligen por sus propiedades reales, no por su precio de lista. Que las manos que cosen son artesanas con oficio, no líneas de producción bajo presión.</p>
     <p>Significa que cuando te pones una prenda VP, estás vistiendo algo que alguien pensó, cortó y terminó con atención. No con prisa.</p>
+    <p>Los italianos tienen una expresión para esto.</p>
+    <p><em>Piano, piano.</em></p>
+    <p>La llevamos en el nombre.</p>
   </div>
 
   <!-- COMPROMISOS — recuadro contenido -->
   <div class="vm-compromisos-wrap">
   <div class="vm-compromisos">
     <div class="vm-compromisos__inner">
-      <span class="vm-compromisos__label">Nada aquí es casual. Cada costura, cada fibra, cada decisión tiene un propósito.</span>
+      <span class="vm-compromisos__label">Nuestros compromisos</span>
       <ul class="vm-compromisos__list">
         <li class="vm-compromisos__item">
           <span class="vm-compromisos__title">Producción local</span>
@@ -340,20 +348,27 @@
   </div>
   </div>
 
+  <!-- PULL QUOTE FINAL — antes del cierre -->
+  <div class="vm-body" style="padding-top: 0; padding-bottom: 0;">
+    <blockquote class="vm-pull">
+      Vestir bien es un arte.<br>Vivir con intención es el verdadero lujo.
+    </blockquote>
+  </div>
+
   <!-- CIERRE -->
   <div class="vm-cierre">
     <p>No necesitamos que estés en contra de nada.</p>
     <p>Solo te invitamos a elegir diferente. A preguntarte, antes de comprar, si esta prenda va a durar. Si fue hecha con intención. Si le vas a hacer honor.</p>
-    <p><em>Vestir bien es un arte. Vivir con intención es el verdadero lujo.</em></p>
     <p>El resto lo hace la ropa.</p>
-    <p class="vm-cierre__piano-text"><em>Piano, piano.</em><br><span class="vm-cierre__piano-sub">(Despacio, despacio.)</span></p>
-
-    <img
-      src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP-Firma.png?v=1777760768"
-      alt="Firma Vito Piano"
-      class="vm-cierre__firma-img"
-      loading="lazy"
-    >
+    <div class="vm-cierre__firma-block">
+      <p class="vm-cierre__piano-text"><em>Piano, piano.</em></p>
+      <img
+        src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP-Firma.png?v=1777760768"
+        alt="Firma Vito Piano"
+        class="vm-cierre__firma-img"
+        loading="lazy"
+      >
+    </div>
   </div>
 
 </div>

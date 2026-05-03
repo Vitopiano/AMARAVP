@@ -1,0 +1,95 @@
+{%- liquid
+  assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
+-%}
+
+{# ── Desktop col 1: anchor image — sticky, viewport-height ── #}
+<div
+  class="vp-editorial__sticky"
+  id="VpAnchorMedia-{{ section.id }}"
+  data-current-media="{{ featured_media.id }}"
+>
+  {%- if featured_media != null -%}
+    {{
+      featured_media.preview_image
+      | image_url: width: 1800
+      | image_tag:
+        loading: 'eager',
+        class: 'vp-editorial__img',
+        widths: '600, 900, 1200, 1500, 1800',
+        sizes: '(min-width: 1440px) 576px, 40vw',
+        alt: featured_media.alt | escape
+    }}
+  {%- endif -%}
+</div>
+
+{# ── Desktop col 2: seamless editorial scroll stack ── #}
+<div class="vp-editorial__scroll">
+  {%- for media in product.media -%}
+    {%- unless media.id == featured_media.id -%}
+      <div
+        class="vp-editorial__item"
+        data-vp-media-id="{{ media.id }}"
+      >
+        {{
+          media.preview_image
+          | image_url: width: 1600
+          | image_tag:
+            loading: 'lazy',
+            class: 'vp-editorial__img',
+            widths: '400, 700, 1000, 1400, 1600',
+            sizes: '(min-width: 1440px) 432px, 30vw',
+            alt: media.alt | escape
+        }}
+      </div>
+    {%- endunless -%}
+  {%- endfor -%}
+</div>
+
+{# ── Mobile / tablet: Dawn's standard slider ── #}
+<div class="large-up-hide">
+  {%- render 'product-media-gallery', variant_images: variant_images -%}
+</div>
+
+<script>
+(function () {
+  var sectionId = '{{ section.id }}';
+  var anchorEl  = document.getElementById('VpAnchorMedia-' + sectionId);
+  if (!anchorEl) return;
+
+  var productInfoEl = document.querySelector(
+    'product-info[data-section="' + sectionId + '"]'
+  );
+  if (!productInfoEl) return;
+
+  productInfoEl.addEventListener('variant:change', function (e) {
+    var variant = e.detail && e.detail.variant;
+    if (!variant || !variant.featured_media) return;
+
+    var mediaId = String(variant.featured_media.id);
+    if (anchorEl.dataset.currentMedia === mediaId) return;
+
+    var targetItem = document.querySelector(
+      '[data-vp-media-id="' + mediaId + '"]'
+    );
+    if (!targetItem) return;
+
+    var sourceImg = targetItem.querySelector('.vp-editorial__img');
+    var anchorImg = anchorEl.querySelector('.vp-editorial__img');
+    if (!sourceImg || !anchorImg) return;
+
+    /* Crossfade: fade out, swap src, fade in */
+    anchorImg.style.transition = 'opacity 0.35s ease';
+    anchorImg.style.opacity    = '0';
+
+    setTimeout(function () {
+      anchorImg.src    = sourceImg.src;
+      anchorImg.srcset = sourceImg.srcset;
+      anchorImg.alt    = sourceImg.alt;
+      anchorEl.dataset.currentMedia = mediaId;
+      requestAnimationFrame(function () {
+        anchorImg.style.opacity = '1';
+      });
+    }, 350);
+  });
+})();
+</script>

@@ -1,0 +1,183 @@
+<style>
+  #vp-cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    border-top: 1px solid rgba(197, 234, 255, 0.15);
+    padding: 2.8rem 3.2rem;
+    display: none;
+  }
+
+  #vp-cookie-banner.is-visible {
+    display: block;
+  }
+
+  .vp-cookie__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2.4rem 4rem;
+    align-items: end;
+  }
+
+  .vp-cookie__header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .vp-cookie__title {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.65);
+    margin: 0;
+  }
+
+  .vp-cookie__body {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.65;
+    color: rgba(252, 249, 245, 0.72);
+    margin: 0;
+  }
+
+  .vp-cookie__body a {
+    color: rgba(252, 249, 245, 0.90);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .vp-cookie__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    min-width: 22rem;
+  }
+
+  .vp-cookie__btn {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    padding: 1.2rem 2rem;
+    transition: opacity 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .vp-cookie__btn:hover {
+    opacity: 0.85;
+  }
+
+  .vp-cookie__btn--accept {
+    background: #FCF9F5;
+    color: #0C4433;
+  }
+
+  .vp-cookie__btn--essential {
+    background: transparent;
+    color: rgba(252, 249, 245, 0.65);
+    border: 1px solid rgba(252, 249, 245, 0.25);
+  }
+
+  .vp-cookie__btn--essential:hover {
+    border-color: rgba(252, 249, 245, 0.50);
+    color: rgba(252, 249, 245, 0.90);
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    #vp-cookie-banner {
+      padding: 2.4rem 2rem;
+    }
+
+    .vp-cookie__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .vp-cookie__actions {
+      min-width: 0;
+      flex-direction: row;
+    }
+
+    .vp-cookie__btn {
+      flex: 1;
+      padding: 1.2rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<div id="vp-cookie-banner" role="dialog" aria-label="Consentimiento de cookies" aria-modal="true">
+  <div class="vp-cookie__inner">
+    <div class="vp-cookie__content">
+      <div class="vp-cookie__header">
+        <p class="vp-cookie__title">Cookies · Vito Piano</p>
+      </div>
+      <p class="vp-cookie__body">
+        Usamos cookies para mejorar tu experiencia, analizar el tráfico y ofrecerte contenido relevante.
+        Puedes aceptar todas o quedarte solo con las esenciales.
+        Consulta nuestra <a href="/policies/privacy-policy">política de privacidad</a>.
+      </p>
+    </div>
+    <div class="vp-cookie__actions">
+      <button class="vp-cookie__btn vp-cookie__btn--accept" id="vp-cookie-accept">
+        Aceptar todas
+      </button>
+      <button class="vp-cookie__btn vp-cookie__btn--essential" id="vp-cookie-essential">
+        Solo esenciales
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var STORAGE_KEY = 'vp_cookie_consent';
+    var banner = document.getElementById('vp-cookie-banner');
+
+    function hasConsent() {
+      try { return !!localStorage.getItem(STORAGE_KEY); } catch (e) { return true; }
+    }
+
+    function setConsent(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+      banner.classList.remove('is-visible');
+
+      if (window.Shopify && window.Shopify.customerPrivacy) {
+        var analyticsConsent = value === 'all' ? 'yes' : 'no';
+        window.Shopify.customerPrivacy.setTrackingConsent(
+          { analytics: analyticsConsent, marketing: analyticsConsent, preferences: analyticsConsent, sale_of_data: 'no' },
+          function () {}
+        );
+      }
+    }
+
+    if (!hasConsent()) {
+      banner.classList.add('is-visible');
+    }
+
+    document.getElementById('vp-cookie-accept').addEventListener('click', function () {
+      setConsent('all');
+    });
+
+    document.getElementById('vp-cookie-essential').addEventListener('click', function () {
+      setConsent('essential');
+    });
+  })();
+</script>

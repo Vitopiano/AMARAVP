@@ -242,13 +242,13 @@
             </div>
           {%- endif -%}
 
-        </div>
+          {%- if section.settings.show_social and has_social_icons -%}
+            <div class="vp-footer-social">
+              {%- render 'social-icons', class: 'footer__list-social' -%}
+            </div>
+          {%- endif -%}
 
-        {%- if section.settings.show_social and has_social_icons -%}
-          <div class="vp-footer-social">
-            {%- render 'social-icons', class: 'footer__list-social' -%}
-          </div>
-        {%- endif -%}
+        </div>
       </div>
     {%- endunless -%}
   {%- endif -%}

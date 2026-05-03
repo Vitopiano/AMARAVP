@@ -194,7 +194,47 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
+    margin-bottom: 2.0rem;
+  }
+
+  .vp-popup__interests {
+    display: flex;
+    gap: 1.6rem;
     margin-bottom: 2.4rem;
+  }
+
+  .vp-popup__interest-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    font-family: 'Chivo Mono', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(67, 20, 36, 0.65);
+    user-select: none;
+  }
+
+  .vp-popup__interest-option input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 1.5px solid rgba(67, 20, 36, 0.45);
+    border-radius: 50%;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .vp-popup__interest-option input[type="radio"]:checked {
+    background-color: #431424;
+    border-color: #431424;
+  }
+
+  .vp-popup__interest-option:has(input:checked) {
+    color: rgba(67, 20, 36, 0.90);
   }
 
   .vp-popup__submit {
@@ -350,6 +390,19 @@
             </select>
           </div>
 
+          <span class="vp-popup__birthday-label" style="margin-bottom: 0.8rem; display: block;">Me interesa</span>
+          <div class="vp-popup__interests">
+            <label class="vp-popup__interest-option">
+              <input type="radio" name="vp-interest" value="mujer"> Mujer
+            </label>
+            <label class="vp-popup__interest-option">
+              <input type="radio" name="vp-interest" value="hombre"> Hombre
+            </label>
+            <label class="vp-popup__interest-option">
+              <input type="radio" name="vp-interest" value="ambos" checked> Ambos
+            </label>
+          </div>
+
           <button type="submit" class="vp-popup__submit">
             Unirme al mundo <span style="white-space: nowrap;">Vito Piano</span>
           </button>
@@ -415,6 +468,10 @@
           var bdayTag = 'birthday-' + month.value + '-' + day.value;
           if (noteField) noteField.value = 'Cumpleanos: ' + month.value + '/' + day.value;
           if (tagsField) tagsField.value = tagsField.value + ',' + bdayTag;
+        }
+        var interest = form.querySelector('input[name="vp-interest"]:checked');
+        if (interest && interest.value && tagsField) {
+          tagsField.value = tagsField.value + ',interes-' + interest.value;
         }
       });
     }
