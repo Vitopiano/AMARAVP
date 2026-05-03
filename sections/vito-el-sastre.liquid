@@ -100,25 +100,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    padding: 2.8rem 2.4rem;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 4rem 2.4rem;
     position: relative;
   }
 
-  .vs-chapter-break__line {
-    flex: 1;
-    max-width: 8rem;
-    height: 1px;
-    background: rgba(12, 68, 51, 0.15);
+  .vs-chapter-break__isotipo {
+    display: block;
+    width: 9rem;
+    height: 9rem;
+    opacity: 0.55;
   }
 
   .vs-chapter-break__place {
     font-family: 'Chivo Mono', 'Courier New', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.26em;
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(12, 68, 51, 0.40);
+    color: rgba(12, 68, 51, 0.35);
     white-space: nowrap;
+  }
+
+  .vs-chapter-break__line {
+    width: 3.2rem;
+    height: 1px;
+    background: rgba(12, 68, 51, 0.15);
   }
 
   /* Pull quote — igual que Manifiesto */
@@ -223,6 +230,41 @@
     margin-top: 4.8rem;
   }
 
+  /* DIANA — La creadora */
+  .vs-diana {
+    max-width: 62ch;
+    margin: 0 auto;
+    padding: 5.6rem 2.4rem 6.4rem;
+    border-top: 1px solid rgba(12, 68, 51, 0.12);
+  }
+
+  .vs-diana__label {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(12, 68, 51, 0.40);
+    display: block;
+    margin-bottom: 2.8rem;
+  }
+
+  .vs-diana p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.78;
+    color: rgba(28, 28, 26, 0.75);
+    margin: 0 0 2.2rem;
+  }
+
+  .vs-diana p em {
+    color: #0C4433;
+    font-style: italic;
+  }
+
+  .vs-diana p:last-child {
+    margin-bottom: 0;
+  }
+
   /* Mobile */
   @media screen and (max-width: 749px) {
     .vs-hero {
@@ -251,11 +293,11 @@
     <span class="vs-hero__location">Norte de Italia · Colombia</span>
   </div>
 
-  <!-- CAPÍTULO 1: El origen -->
+  <!-- CAPÍTULO 1: El origen — el personaje y la filosofía -->
   <div class="vs-body" style="padding-bottom: 3.2rem;">
     <p>Nació en el rigor del norte de Italia, donde la sastrería no es un oficio — es una forma de arquitectura silenciosa. Donde el corte de un hombro se mide con la misma convicción con que un ingeniero calcula una estructura que debe durar.</p>
 
-    <p>No era el tipo de maestro que explica lo que hace. Era el tipo que te muestra el forro de la prenda que termina de coser y espera a que lo toques. Que elige el hilo por cómo se comporta en el tiempo, no por lo que cuesta. Que cree —con la serenidad de quien ha visto pasar modas— que una prenda bien hecha es la forma más silenciosa de decir algo importante.</p>
+    <p>Allí se aprende el <em>saper fare</em> — el saber hacer italiano. No una técnica. Una filosofía: que cada cosa merece el tiempo que necesita. Que el forro se elige por cómo cae, no por cuánto cuesta. Que una prenda bien construida es la forma más silenciosa de decir algo importante.</p>
 
     <blockquote class="vs-pull">
       Aprendió lo que los italianos saben desde siempre:<br>que las cosas buenas se hacen <em>piano piano</em>.<br>Despacio. Sin atajos.
@@ -264,17 +306,27 @@
     <p>Ese fue siempre su modo de trabajar. Y eventualmente, su nombre.</p>
   </div>
 
-  <!-- SEPARADOR: cambio geográfico — reducir espacio antes del separator -->
-
+  <!-- SEPARADOR: isotipo de marca como eje del cruce Italia → Colombia -->
   <div class="vs-chapter-break">
+    {% if section.settings.isotipo_image != blank %}
+      <img
+        src="{{ section.settings.isotipo_image | image_url: width: 180 }}"
+        alt="Vito Piano — El origen de tu estilo"
+        class="vs-chapter-break__isotipo"
+        loading="lazy"
+      >
+    {% endif %}
     <div class="vs-chapter-break__line"></div>
     <span class="vs-chapter-break__place">Colombia</span>
     <div class="vs-chapter-break__line"></div>
   </div>
 
-  <!-- CAPÍTULO 2: Colombia -->
-  <div class="vs-body" style="padding-top: 0;">
-    <p>Su viaje hacia el sur no fue una mudanza. Fue un hallazgo.</p>
+  <!-- CAPÍTULO 2: Colombia — el hallazgo -->
+  <div class="vs-body" style="padding-top: 0; padding-bottom: 3.2rem;">
+
+    <blockquote class="vs-pull">
+      Su viaje hacia el sur<br>no fue una mudanza.<br>Fue un hallazgo.
+    </blockquote>
 
     <p>Trajo consigo lo que no cabe en maletas: una manera de entender el oficio. La convicción de que confeccionar ropa es, antes que nada, un acto de respeto — hacia quien la va a vestir, hacia quien la hace, hacia los materiales que la componen.</p>
 
@@ -283,22 +335,30 @@
     <p>Así nació Vito Piano. No como marca. Como conversación entre dos culturas que tienen más en común de lo que parece: el orgullo de hacer bien las cosas, la desconfianza saludable hacia lo masivo, y la convicción de que lo bello y lo duradero no están reñidos.</p>
   </div>
 
-  <!-- LO QUE HACEMOS — rectángulo verde contenido, igual que compromisos en Manifiesto -->
+  <!-- DIANA: La creadora — la historia real detrás del personaje -->
+  <div class="vs-diana">
+    <span class="vs-diana__label">La creadora</span>
+    <p>Detrás del nombre, hay una arquitecta.</p>
+    <p>Diana Santos estudió en Florencia durante siete años. Aprendió a leer espacios antes de leer colecciones. A entender por qué una estructura funciona antes de preguntarse por qué una prenda cae bien. Allí el italiano se convirtió en su segundo idioma — y el <em>saper fare</em>, en su segunda naturaleza.</p>
+    <p>Cuando volvió a Colombia, Vito Piano fue la manera de darle nombre a lo que había traído consigo: una mirada formada en el rigor y el arte del norte de Italia, lista para encontrar su alma en estas latitudes.</p>
+  </div>
+
+  <!-- EL TALLER — bloque verde: el universo de las prendas -->
   <div class="vs-dark-wrap">
     <div class="vs-dark">
       <div class="vs-dark__inner">
         <span class="vs-dark__label">El Taller</span>
-        <h2 class="vs-dark__heading">Prendas para quienes entienden que la ropa dice algo, de todas formas.</h2>
-        <p>Cada pieza nace con un nombre. Un nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
+        <h2 class="vs-dark__heading">La moda es un lenguaje.<br>Cada prenda, una historia con nombre propio.</h2>
+        <p>Cada pieza de Vito Piano lleva el nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
         <p>Trabajamos con materiales seleccionados, producción local de calidad, y el tiempo que cada prenda necesita para existir bien.</p>
-        <p><em>No somos moda rápida. No queremos serlo.</em></p>
+        <p><em>Vestirse es contar quién eres sin decir una palabra.</em></p>
       </div>
     </div>
   </div>
 
-  <!-- CIERRE: comunidad y bienvenida -->
+  <!-- CIERRE: bienvenida -->
   <div class="vs-cierre">
-    <p>Vito Piano es para quien elige con cuidado. Para el profesional que distingue entre lo que se ve y lo que se siente. Para quien prefiere tener menos y mejor.</p>
+    <p>Vito Piano es para quien elige con cuidado. Para quien distingue entre lo que se ve y lo que se siente. Para quien prefiere tener menos y mejor.</p>
     <p>Si llegaste aquí, probablemente ya sabes de lo que hablamos.</p>
     <span class="vs-cierre__bienvenido">Bienvenido.</span>
   </div>
@@ -308,7 +368,14 @@
 {% schema %}
 {
   "name": "El Sastre",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "isotipo_image",
+      "label": "Isotipo circular",
+      "info": "El sello circular 'El origen de tu estilo'. Aparece entre los dos capítulos."
+    }
+  ],
   "presets": [
     {
       "name": "El Sastre"
