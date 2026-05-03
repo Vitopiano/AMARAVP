@@ -85,15 +85,17 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-azul-hielo) !important;
 }
 
-/* Buttons — elegante, sin border-radius */
+/* Buttons — tipografía y forma unificadas */
 .button,
 .shopify-payment-button__button--unbranded {
   border-radius: 0 !important;
+  overflow: hidden !important;
   letter-spacing: var(--vp-letter-spacing-wide);
-  font-family: var(--vp-font-mono);
-  font-size: 1.1rem;
+  font-family: var(--vp-font-mono) !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
   text-transform: uppercase;
-  transition: background-color var(--vp-transition), color var(--vp-transition);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
 }
 
 /* ============================================
@@ -102,17 +104,14 @@ h1, h2, h3, .h1, .h2, .h3 {
    Sobre fondo verde → azul cielo
 ============================================ */
 
-/* Transición fluida en todos los botones */
-.button {
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
-}
-
 /* Botón verde (primario) sobre fondo crema: hover → azul cielo relleno, texto verde */
 .button:hover,
-.button--primary:hover {
+.button--primary:hover,
+.shopify-payment-button__button--unbranded:hover {
   background-color: var(--vp-azul-hielo) !important;
   border-color: var(--vp-azul-hielo) !important;
   color: var(--vp-verde-botella) !important;
+  opacity: 1 !important;
 }
 
 /* Botón crema (secundario/ghost) sobre fondo crema: hover → vinotinto relleno, texto crema */
@@ -122,16 +121,22 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-crema) !important;
 }
 
-/* Shopify payment button ("Comprar ahora"): overflow clip + hover azul cielo */
-.shopify-payment-button__button--unbranded {
-  overflow: hidden !important;
-  border-radius: var(--buttons-radius, var(--buttons-radius-outlines, 4px)) !important;
+/* ============================================
+   HIPERVÍNCULOS — naranja (terracota) en contextos de contenido
+============================================ */
+
+/* "Compartir" y cualquier botón/link acción en la ficha de producto */
+.share-button__button,
+.share-button__button summary {
+  color: var(--vp-terracota) !important;
 }
 
-.shopify-payment-button__button--unbranded:hover {
-  background: var(--vp-azul-hielo) !important;
-  color: var(--vp-verde-botella) !important;
-  opacity: 1 !important;
+/* Links en descripción del producto y texto enriquecido */
+.product__description a,
+.rte a {
+  color: var(--vp-terracota) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Sobre fondo verde (color-inverse, hero): hover → azul cielo */
