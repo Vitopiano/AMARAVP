@@ -708,9 +708,20 @@ h1, h2, .h0, .h1, .h2 {
   background-size: 48px 48px;
 }
 
-/* Títulos en naranja */
-.footer__content-top .footer__heading {
+/* Títulos en naranja, alineados izquierda */
+.footer__content-top .footer__heading,
+.footer__content-top .footer-block__heading {
   color: var(--vp-terracota) !important;
+  text-align: left !important;
+}
+
+/* Todo el contenido de columnas alineado izquierda */
+.footer__content-top .footer-block__newsletter,
+.footer__content-top .newsletter-form,
+.footer__content-top .footer__list,
+.footer__content-top p,
+.footer__content-top li {
+  text-align: left;
 }
 
 /* Texto crema en items de lista */
@@ -728,27 +739,27 @@ h1, h2, .h0, .h1, .h2 {
    ============================================ */
 @media screen and (min-width: 750px) {
   .footer__content-top {
-    display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 5rem;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 4rem;
+    padding: 5.6rem 4rem;
   }
 
   .footer__blocks-wrapper {
-    display: flex !important;
-    flex: 2;
-    gap: 4rem;
-    align-items: flex-start;
+    display: contents !important;
   }
 
-  .footer-block {
-    flex: 1;
-    min-width: 0;
-  }
-
+  .footer-block,
   .footer-block--newsletter {
-    flex: 1;
-    min-width: 0;
+    text-align: left;
+    align-self: start;
+  }
+
+  /* Newsletter heading alineado igual que los otros headings */
+  .footer-block--newsletter .footer-block__heading {
+    text-align: left;
   }
 }
 
@@ -809,12 +820,27 @@ h1, h2, .h0, .h1, .h2 {
   display: none !important;
 }
 
-/* Bottom bar: Instagram izquierda, copyright derecha */
+/* Bottom bar: Instagram izquierda, copyright centrado */
 .footer__content-bottom-wrapper--vp {
-  display: flex !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 2rem;
+}
+
+/* Copyright centrado, dos líneas */
+.footer__content-bottom-wrapper--vp .footer__copyright {
+  grid-column: 2;
+  text-align: center !important;
+}
+
+.footer__copyright .copyright__content {
+  display: block;
+}
+
+.footer__copyright--legal {
+  display: block;
+  margin-top: 0.2rem;
 }
 
 .footer__column--social {
