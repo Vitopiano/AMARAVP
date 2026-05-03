@@ -320,8 +320,14 @@ h1, h2, h3, .h1, .h2, .h3 {
 }
 
 /* Ícono social (Instagram) en naranja */
-.footer.color-inverse .list-social__link svg {
+.footer.color-inverse .list-social__link,
+.footer.color-inverse .footer__list-social-link {
+  color: var(--vp-terracota) !important;
+}
+.footer.color-inverse .list-social__link svg,
+.footer.color-inverse .footer__list-social-link svg {
   fill: var(--vp-terracota) !important;
+  color: var(--vp-terracota) !important;
 }
 
 /* Teléfono WhatsApp en naranja */
