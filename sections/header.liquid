@@ -130,6 +130,14 @@
       endif
     -%}
 
+    {%- if section.settings.isotipo_image != blank -%}
+      <a href="{{ routes.root_url }}" class="header__isotipo-mobile" aria-label="{{ shop.name }}">
+        {{- section.settings.isotipo_image | image_url: width: 80 | image_tag:
+          class: 'header__isotipo-img', width: 32, height: 32, alt: shop.name, loading: 'eager'
+        -}}
+      </a>
+    {%- endif -%}
+
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">

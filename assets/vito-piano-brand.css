@@ -59,9 +59,9 @@ h1, h2, h3, .h1, .h2, .h3 {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(197, 234, 255, 0.075) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(197, 234, 255, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
 }
@@ -107,19 +107,31 @@ h1, h2, h3, .h1, .h2, .h3 {
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
 }
 
-/* Sobre fondo crema (default): hover → vinotinto */
+/* Botón verde (primario) sobre fondo crema: hover → azul cielo relleno, texto verde */
 .button:hover,
 .button--primary:hover {
+  background-color: var(--vp-azul-hielo) !important;
+  border-color: var(--vp-azul-hielo) !important;
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Botón crema (secundario/ghost) sobre fondo crema: hover → vinotinto relleno, texto crema */
+.button--secondary:hover {
   background-color: var(--vp-burdeos) !important;
   border-color: var(--vp-burdeos) !important;
   color: var(--vp-crema) !important;
 }
 
-/* Ghost/secondary sobre fondo crema: hover → vinotinto contorno */
-.button--secondary:hover {
-  background-color: transparent !important;
-  border-color: var(--vp-burdeos) !important;
-  color: var(--vp-burdeos) !important;
+/* Shopify payment button ("Comprar ahora"): overflow clip + hover azul cielo */
+.shopify-payment-button__button--unbranded {
+  overflow: hidden !important;
+  border-radius: var(--buttons-radius, var(--buttons-radius-outlines, 4px)) !important;
+}
+
+.shopify-payment-button__button--unbranded:hover {
+  background: var(--vp-azul-hielo) !important;
+  color: var(--vp-verde-botella) !important;
+  opacity: 1 !important;
 }
 
 /* Sobre fondo verde (color-inverse, hero): hover → azul cielo */
@@ -1066,30 +1078,70 @@ h1, h2, .h0, .h1, .h2 {
    MOBILE — Header layout
    ============================================ */
 
+/* Isotipo mobile: hidden on desktop, shown left on mobile */
+.header__isotipo-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 749px) {
-  /* Ocultar isotipo en móvil — el espacio es muy ajustado */
-  .header__isotipo-link {
-    display: none !important;
+  /* Flex row: [isotipo 0] [logo 1] [icons 9] [hamburger 10] */
+  .header {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 
-  /* Logo centrado en móvil: limitar ancho para no chocar con iconos */
+  header-drawer {
+    order: 10 !important;
+    margin-left: 0.4rem !important;
+    margin-right: -1rem !important;
+  }
+
+  .header__isotipo-mobile {
+    display: flex !important;
+    align-items: center;
+    order: 0;
+    flex-shrink: 0;
+    margin-right: 0.6rem;
+  }
+
+  .header__isotipo-mobile .header__isotipo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .header__heading,
+  .header--mobile-center .header__heading {
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    order: 1;
+    flex: 1 1 auto;
+    text-align: left;
+    max-width: none !important;
+  }
+
+  .header__heading-logo-wrapper {
+    max-width: 100%;
+  }
+
   .header__heading-logo {
-    max-height: 3.2rem !important;
-    max-width: 14rem !important;
+    max-height: 2.8rem !important;
+    max-width: 11rem !important;
     width: auto !important;
     object-fit: contain;
   }
 
-  /* Asegurar que el centro absoluto no se desborde sobre los iconos */
-  .header--mobile-center .header__heading {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: calc(100% - 12rem);
+  .header__icons {
+    order: 9;
+    flex-shrink: 0;
   }
 
-  .header--mobile-center .header__heading-logo-wrapper {
-    max-width: 100%;
+  /* Hide the desktop isotipo inside icons panel */
+  .header__icons .header__isotipo-link {
+    display: none !important;
   }
 }
 
@@ -1167,8 +1219,7 @@ h1, h2, .h0, .h1, .h2 {
 
 /* ============================================
    PRODUCT PAGE — Editorial layout
-   Outer: 2-col grid (70% media | 30% info)
-   Inner: media wrapper = flex row (55% sticky | 45% scroll)
+   Full-width section: imagen anclada | scroll stack | info producto
    ============================================ */
 
 .vp-editorial__sticky,
@@ -1177,14 +1228,26 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 @media screen and (min-width: 990px) {
-  /* Widen the media column — gives more visual weight to photography */
+  /* ---- Full-bleed section: remove page-width container constraints ---- */
+  .vp-editorial-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .vp-editorial-section > .page-width {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Outer grid: 75% photography | 25% product info */
   .vp-product-editorial.product.grid--2-col-tablet {
-    grid-template-columns: 70fr 30fr !important;
+    grid-template-columns: 75fr 25fr !important;
     column-gap: 0 !important;
     align-items: start;
   }
 
-  /* Media wrapper: flex row — sticky image left, scroll stack right */
+  /* Media wrapper: flex row — sticky anchor left (50%), scroll stack right (50%) */
   .vp-product-editorial .product__media-wrapper {
     display: flex !important;
     flex-direction: row;
@@ -1193,10 +1256,10 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* ---- Left: sticky anchor image (55% of media column) ---- */
+  /* ---- Sticky anchor image: 50% of media column ---- */
   .vp-editorial__sticky {
     display: block;
-    flex: 0 0 55%;
+    flex: 0 0 50%;
     position: sticky;
     top: var(--header-group-height, 0px);
     height: calc(100vh - var(--header-group-height, 0px));
@@ -1212,7 +1275,7 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* ---- Right: seamless scrollable image stack (fills remaining 45%) ---- */
+  /* ---- Scroll stack: 50% of media column, each image fills ~90vh ---- */
   .vp-editorial__scroll {
     display: flex;
     flex: 1 1 auto;
@@ -1220,17 +1283,23 @@ h1, h2, .h0, .h1, .h2 {
     min-width: 0;
   }
 
+  .vp-editorial__item {
+    overflow: hidden;
+  }
+
   .vp-editorial__item .vp-editorial__img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 90vh;
+    object-fit: cover;
+    object-position: center top;
   }
 
-  /* ---- Product info column (grid col 2, unchanged position) ---- */
+  /* ---- Product info: sticky, padded, right column ---- */
   .vp-product-editorial .product__info-wrapper {
     padding-top: 5.6rem !important;
     padding-left: 4rem !important;
-    padding-right: 3.2rem !important;
+    padding-right: 4rem !important;
   }
 
   .vp-product-editorial .product__info-container.product__column-sticky {
