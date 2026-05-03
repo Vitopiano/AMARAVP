@@ -741,11 +741,17 @@ h1, h2, .h0, .h1, .h2 {
   color: rgba(252, 249, 245, 0.85) !important;
 }
 
-/* Links de navegación (políticas): crema */
+/* Links de navegación (políticas): crema, sin salto de línea */
 .footer.color-inverse a,
 .footer.color-inverse .footer__list a {
   color: rgba(252, 249, 245, 0.80) !important;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Párrafos cortos: sin salto de línea */
+.footer__content-top .footer-block p {
+  white-space: nowrap;
 }
 
 /* Links de acción (teléfono, email, WhatsApp): naranja */
@@ -770,10 +776,10 @@ h1, h2, .h0, .h1, .h2 {
 @media screen and (min-width: 750px) {
   .footer__content-top {
     display: grid !important;
-    grid-template-columns: minmax(160px, 2fr) minmax(160px, 2fr) minmax(240px, 3fr);
+    grid-template-columns: 1fr 1fr 1.4fr;
     align-items: start;
-    gap: 2.4rem 3.2rem;
-    padding: 5.6rem 4rem;
+    gap: 2rem 6rem;
+    padding: 5.6rem 6rem;
   }
 
   /* Disuelve ambos wrappers — hijos participan directamente en el grid */
