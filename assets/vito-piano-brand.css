@@ -145,10 +145,10 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-verde-botella) !important;
 }
 
-/* Cookie banner: botones sobre fondo verde */
+/* Cookie banner: botones sobre fondo vinotinto */
 #vp-cookie-banner .vp-cookie__btn--accept:hover {
   background-color: var(--vp-azul-hielo) !important;
-  color: var(--vp-verde-botella) !important;
+  color: var(--vp-burdeos) !important;
   opacity: 1;
 }
 
@@ -1097,6 +1097,71 @@ h1, h2, .h0, .h1, .h2 {
   .header__heading-logo {
     max-height: 3.6rem;
     width: auto !important;
+  }
+}
+
+/* ============================================
+   MOBILE — Footer alignment & rhythm
+   ============================================ */
+
+@media screen and (max-width: 749px) {
+  .footer__content-top {
+    padding: 3.2rem 2rem !important;
+  }
+
+  /* Force left alignment for all footer elements on mobile */
+  .footer__content-top,
+  .footer__content-top .footer-block,
+  .footer__content-top .footer-block__newsletter,
+  .footer__content-top .footer__list,
+  .footer__content-top p,
+  .footer__content-top li,
+  .footer__content-top .newsletter-form {
+    text-align: left !important;
+  }
+
+  /* More breathing before each section title */
+  .footer__content-top .footer__heading,
+  .footer__content-top .footer-block__heading,
+  .footer__content-top .newsletter__heading {
+    margin-top: 2.8rem !important;
+    margin-bottom: 0.6rem !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+
+  /* First block: no extra top margin */
+  .footer__content-top .footer-block:first-child .footer__heading,
+  .footer__content-top .footer-block:first-child .footer-block__heading {
+    margin-top: 0 !important;
+  }
+
+  /* Tighter line height within each section */
+  .footer__content-top p,
+  .footer__content-top .footer__subtext {
+    line-height: 1.35 !important;
+    margin-bottom: 0.2rem !important;
+    white-space: normal !important;
+  }
+
+  .footer__content-top li {
+    line-height: 1.4 !important;
+  }
+
+  .footer__content-top .footer__list .list-menu__item--link {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  /* Social icons left-aligned on mobile */
+  .vp-footer-social {
+    justify-content: flex-start !important;
+    margin-top: 2rem;
+  }
+
+  .vp-footer-social .footer__list-social,
+  .vp-footer-social .list-social {
+    justify-content: flex-start !important;
   }
 }
 

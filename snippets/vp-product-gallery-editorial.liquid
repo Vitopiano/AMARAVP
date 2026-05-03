@@ -2,7 +2,6 @@
   assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media
 -%}
 
-{# ── Desktop col 1: anchor image — sticky, viewport-height ── #}
 <div
   class="vp-editorial__sticky"
   id="VpAnchorMedia-{{ section.id }}"
@@ -22,7 +21,6 @@
   {%- endif -%}
 </div>
 
-{# ── Desktop col 2: seamless editorial scroll stack ── #}
 <div class="vp-editorial__scroll">
   {%- for media in product.media -%}
     {%- unless media.id == featured_media.id -%}
@@ -45,7 +43,6 @@
   {%- endfor -%}
 </div>
 
-{# ── Mobile / tablet: Dawn's standard slider ── #}
 <div class="large-up-hide">
   {%- render 'product-media-gallery', variant_images: variant_images -%}
 </div>
