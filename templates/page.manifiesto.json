@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "manifiesto": {
-      "type": "vito-manifiesto",
-      "settings": {}
-    }
-  },
-  "order": ["manifiesto"]
-}
