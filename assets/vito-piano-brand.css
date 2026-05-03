@@ -828,14 +828,24 @@ h1, h2, .h0, .h1, .h2 {
     grid-column: 1;
     grid-row: 2;
     margin-top: 1.6rem;
-    padding-left: 0;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .vp-footer-social .footer__list-social,
   .vp-footer-social .list-social {
-    justify-content: flex-start;
-    padding-left: 0;
-    margin: 0;
+    display: flex !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .vp-footer-social .list-social__item {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
 
