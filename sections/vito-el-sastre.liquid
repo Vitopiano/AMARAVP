@@ -128,6 +128,11 @@
     background: rgba(12, 68, 51, 0.15);
   }
 
+  /* Sin margen superior cuando la cita abre una sección (sin párrafo previo) */
+  .vs-body > .vs-pull:first-child {
+    margin-top: 0;
+  }
+
   /* Pull quote — igual que Manifiesto */
   .vs-pull {
     font-family: 'Decofast', 'Bricolage Grotesque', serif;
@@ -205,9 +210,9 @@
 
   /* CIERRE — bienvenida */
   .vs-cierre {
-    max-width: 48ch;
+    max-width: 52ch;
     margin: 0 auto;
-    padding: 8rem 2.4rem 10rem;
+    padding: 4.8rem 2.4rem 8rem;
     text-align: center;
   }
 
@@ -232,9 +237,9 @@
 
   /* DIANA — La creadora */
   .vs-diana {
-    max-width: 62ch;
+    max-width: 68ch;
     margin: 0 auto;
-    padding: 5.6rem 2.4rem 6.4rem;
+    padding: 3.2rem 2.4rem 5.6rem;
     border-top: 1px solid rgba(12, 68, 51, 0.12);
   }
 
@@ -251,9 +256,9 @@
   .vs-diana p {
     font-family: 'Bricolage Grotesque', system-ui, sans-serif;
     font-size: 1.7rem;
-    line-height: 1.78;
-    color: rgba(28, 28, 26, 0.75);
-    margin: 0 0 2.2rem;
+    line-height: 1.75;
+    color: rgba(28, 28, 26, 0.78);
+    margin: 0 0 2rem;
   }
 
   .vs-diana p em {
@@ -263,6 +268,18 @@
 
   .vs-diana p:last-child {
     margin-bottom: 0;
+  }
+
+  /* Desktop — columnas editoriales */
+  @media screen and (min-width: 750px) {
+    .vs-body {
+      column-count: 2;
+      column-gap: 4.8rem;
+    }
+
+    .vs-pull {
+      column-span: all;
+    }
   }
 
   /* Mobile */
@@ -293,20 +310,24 @@
     <span class="vs-hero__location">Norte de Italia · Colombia</span>
   </div>
 
-  <!-- CAPÍTULO 1: El origen — el personaje y la filosofía -->
+  <!-- CAPÍTULO 1: El origen -->
   <div class="vs-body" style="padding-bottom: 3.2rem;">
-    <p>Nació en el rigor del norte de Italia, donde la sastrería no es un oficio — es una forma de arquitectura silenciosa. Donde el corte de un hombro se mide con la misma convicción con que un ingeniero calcula una estructura que debe durar.</p>
+    <p>Nació en el rigor del norte de Italia, donde la sastrería no es un oficio — es una forma de arquitectura silenciosa.</p>
 
-    <p>Allí se aprende el <em>saper fare</em> — el saber hacer italiano. No una técnica. Una filosofía: que cada cosa merece el tiempo que necesita. Que el forro se elige por cómo cae, no por cuánto cuesta. Que una prenda bien construida es la forma más silenciosa de decir algo importante.</p>
+    <p>Donde el corte de un hombro se mide con la misma convicción con que un ingeniero calcula una estructura que debe durar.</p>
+
+    <p>Allí se aprende el <em>saper fare</em> — el saber hacer italiano. No una técnica. Una filosofía.</p>
+
+    <p>Que cada cosa merece el tiempo que necesita. Que el forro se elige por cómo cae, no por cuánto cuesta. Que una prenda bien construida es la forma más silenciosa de decir algo importante.</p>
 
     <blockquote class="vs-pull">
-      Aprendió lo que los italianos saben desde siempre:<br>que las cosas buenas se hacen <em>piano piano</em>.<br>Despacio. Sin atajos.
+      Las cosas buenas se hacen <em>piano piano</em>.<br>Despacio. Sin atajos.
     </blockquote>
 
     <p>Ese fue siempre su modo de trabajar. Y eventualmente, su nombre.</p>
   </div>
 
-  <!-- SEPARADOR: isotipo de marca como eje del cruce Italia → Colombia -->
+  <!-- SEPARADOR: isotipo — eje del cruce Italia → Colombia -->
   <div class="vs-chapter-break">
     {% if section.settings.isotipo_image != blank %}
       <img
@@ -321,27 +342,32 @@
     <div class="vs-chapter-break__line"></div>
   </div>
 
-  <!-- CAPÍTULO 2: Colombia — el hallazgo -->
-  <div class="vs-body" style="padding-top: 0; padding-bottom: 3.2rem;">
+  <!-- CAPÍTULO 2: Colombia -->
+  <div class="vs-body" style="padding-top: 2.4rem; padding-bottom: 3.2rem;">
 
     <blockquote class="vs-pull">
-      Su viaje hacia el sur<br>no fue una mudanza.<br>Fue un hallazgo.
+      Su viaje hacia el sur no fue una mudanza.<br>Fue un hallazgo.
     </blockquote>
 
-    <p>Trajo consigo lo que no cabe en maletas: una manera de entender el oficio. La convicción de que confeccionar ropa es, antes que nada, un acto de respeto — hacia quien la va a vestir, hacia quien la hace, hacia los materiales que la componen.</p>
+    <p>Trajo consigo lo que no cabe en maletas: una manera de entender el oficio.</p>
+
+    <p>La convicción de que confeccionar ropa es, antes que nada, un acto de respeto — hacia quien la va a vestir, hacia quien la hace, hacia los materiales que la componen.</p>
 
     <p>En estas latitudes encontró lo que su técnica necesitaba para cobrar vida: urgencia creativa, manos artesanas de oficio profundo, y una tierra generosa en texturas, colores y carácter propio.</p>
 
-    <p>Así nació Vito Piano. No como marca. Como conversación entre dos culturas que tienen más en común de lo que parece: el orgullo de hacer bien las cosas, la desconfianza saludable hacia lo masivo, y la convicción de que lo bello y lo duradero no están reñidos.</p>
+    <p>Así nació Vito Piano. No como marca. Como conversación entre dos culturas.</p>
+
+    <p>El orgullo de hacer bien las cosas. La desconfianza saludable hacia lo masivo. La convicción de que lo bello y lo duradero no están reñidos.</p>
   </div>
 
-  <!-- EL TALLER — bloque verde: el universo de las prendas -->
+  <!-- EL TALLER — bloque verde -->
   <div class="vs-dark-wrap">
     <div class="vs-dark">
       <div class="vs-dark__inner">
         <span class="vs-dark__label">El Taller</span>
         <h2 class="vs-dark__heading">La moda es un lenguaje.<br>Cada prenda, una historia con nombre propio.</h2>
-        <p>Cada pieza de Vito Piano lleva el nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos. Personas que entendieron que la forma es también fondo.</p>
+        <p>Cada pieza lleva el nombre de alguien que construyó algo que duró: científicos, compositores, pintores, arquitectos.</p>
+        <p>Personas que entendieron que la forma es también fondo.</p>
         <p>Trabajamos con materiales seleccionados, producción local de calidad, y el tiempo que cada prenda necesita para existir bien.</p>
         <p><em>Vestirse es contar quién eres sin decir una palabra.</em></p>
       </div>
@@ -352,13 +378,14 @@
   <div class="vs-diana">
     <span class="vs-diana__label">La creadora</span>
     <p>Detrás del nombre, hay una mirada formada en Florencia.</p>
-    <p>Diana Santos vivió en esa ciudad durante siete años. Aprendió a leer espacios antes de leer colecciones. A entender por qué una estructura funciona antes de preguntarse por qué una prenda cae bien. El italiano se convirtió en su segundo idioma — y el <em>saper fare</em>, en su segunda naturaleza.</p>
-    <p>Cuando volvió a Colombia, Vito Piano fue la manera de darle nombre a lo que había traído consigo: una mirada formada en el rigor y el arte del norte de Italia, lista para encontrar su alma en estas latitudes.</p>
+    <p>Diana vivió en esa ciudad durante siete años. Aprendió a leer espacios antes de leer colecciones.</p>
+    <p>A entender por qué una estructura funciona antes de preguntarse por qué una prenda cae bien. El italiano se convirtió en su segundo idioma — y el <em>saper fare</em>, en su segunda naturaleza.</p>
+    <p>Cuando volvió a Colombia, Vito Piano fue la manera de darle nombre a esa mirada.</p>
   </div>
 
-  <!-- CIERRE: bienvenida -->
+  <!-- CIERRE -->
   <div class="vs-cierre">
-    <p>Vito Piano es para quien elige con cuidado. Para quien distingue entre lo que se ve y lo que se siente. Para quien prefiere tener menos y mejor.</p>
+    <p>Vito Piano es para quien elige con cuidado. Para quien distingue entre lo que se ve y lo que se siente.</p>
     <p>Si llegaste aquí, probablemente ya sabes de lo que hablamos.</p>
     <span class="vs-cierre__bienvenido">Bienvenido.</span>
   </div>
