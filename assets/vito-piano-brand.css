@@ -319,9 +319,19 @@ h1, h2, h3, .h1, .h2, .h3 {
   border-color: var(--vp-crema);
 }
 
-/* Ícono de Instagram / social */
+/* Ícono social (Instagram) en naranja */
 .footer.color-inverse .list-social__link svg {
-  fill: var(--vp-crema) !important;
+  fill: var(--vp-terracota) !important;
+}
+
+/* Teléfono WhatsApp en naranja */
+.footer.color-inverse a[href*="wa.me"] {
+  color: var(--vp-terracota) !important;
+}
+.footer.color-inverse a[href*="wa.me"]:hover {
+  color: var(--vp-terracota) !important;
+  opacity: 0.8;
+  text-decoration: none;
 }
 
 /* ============================================

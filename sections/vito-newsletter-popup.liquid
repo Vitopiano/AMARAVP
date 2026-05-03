@@ -51,7 +51,7 @@
     border: none;
     cursor: pointer;
     font-size: 2.2rem;
-    color: rba(252, 249, 245, 0.65);
+    color: #431424;
     line-height: 1;
     z-index: 2;
     width: 3.2rem;
@@ -64,7 +64,7 @@
   }
 
   .vp-popup__close:hover {
-    color: #FCF9F5;
+    color: #0C4433;
   }
 
   /* --- Panel izquierdo: verde botella --- */
@@ -155,12 +155,12 @@
   .vp-popup__input,
   .vp-popup__select {
     width: 100%;
-    border: 1px solid #431424;
+    border: 1.5px solid #431424;
     background: transparent;
     padding: 1.2rem 1.4rem;
     font-size: 1.4rem;
     border-radius: 0;
-    color: #431424;
+    color: rgba(67, 20, 36, 0.50);
     font-family: 'Chivo Mono', monospace;
     letter-spacing: 0.03em;
     outline: none;
@@ -170,9 +170,14 @@
     box-sizing: border-box;
   }
 
+  .vp-popup__input::placeholder {
+    color: rgba(67, 20, 36, 0.40);
+  }
+
   .vp-popup__input:focus,
   .vp-popup__select:focus {
     border-color: #431424;
+    color: rgba(67, 20, 36, 0.75);
   }
 
   .vp-popup__birthday-label {
@@ -180,7 +185,7 @@
     font-size: 1.0rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #431424;
+    color: rgba(67, 20, 36, 0.50);
     margin: 0 0 0.8rem;
     display: block;
   }
