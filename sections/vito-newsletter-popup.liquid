@@ -95,11 +95,18 @@
     text-transform: uppercase;
   }
 
+  /* Logo + offer agrupados: inline-flex para igualar anchos */
+  .vp-popup__brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 0 1.6rem;
+  }
+
   .vp-popup__logo {
     display: block;
     width: 100%;
-    max-width: 22rem;
-    margin: 0 0 1.6rem;
+    margin: 0 0 1.0rem;
     filter: brightness(10);
     opacity: 0.92;
   }
@@ -112,7 +119,8 @@
     color: rgba(197, 234, 255, 0.80);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 1.6rem;
+    white-space: nowrap;
+    margin: 0;
   }
 
   .vp-popup__subtext {
@@ -259,14 +267,16 @@
 
     <div class="vp-popup__left">
       <p class="vp-popup__eyebrow">Bienvenido al mundo</p>
-      <img
-        src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP_Logo_Logo_terciario-20.png?v=1777766396"
-        alt="Vito Piano"
-        id="vp-popup-heading"
-        class="vp-popup__logo"
-        loading="eager"
-      >
-      <span class="vp-popup__offer">10% en tu primera prenda</span>
+      <div class="vp-popup__brand">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP_Logo_Logo_terciario-20.png?v=1777766396"
+          alt="Vito Piano"
+          id="vp-popup-heading"
+          class="vp-popup__logo"
+          loading="eager"
+        >
+        <span class="vp-popup__offer">10% en tu primera compra</span>
+      </div>
       <p class="vp-popup__subtext">Únete a un círculo de personas que eligen con propósito. Como bienvenida, un descuento en tu primera compra.</p>
     </div>
 
