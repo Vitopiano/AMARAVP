@@ -714,6 +714,14 @@ h1, h2, .h0, .h1, .h2 {
    Hipervínculos → naranja (solo los que tienen href real)
 */
 
+/* JERARQUÍA DE COLOR EN FOOTER
+   Títulos        → azul cielo
+   Cuerpo         → crema
+   Links acción   → naranja (wa.me, tel, mailto)
+   Links nav      → crema
+   Instagram      → naranja
+*/
+
 /* Títulos: azul cielo */
 .footer__content-top .footer__heading,
 .footer__content-top .footer-block__heading {
@@ -721,27 +729,26 @@ h1, h2, .h0, .h1, .h2 {
   text-align: left !important;
 }
 
-/* Cuerpo (párrafos y texto): crema */
+/* Cuerpo (párrafos, texto plano): crema */
 .footer__content-top p,
-.footer__content-top .footer__subtext,
-.footer__content-top .footer-block__subtext {
+.footer__content-top .footer__subtext {
   color: rgba(252, 249, 245, 0.85) !important;
   line-height: 1.5;
 }
 
-/* Items de lista (Políticas): crema */
-.footer__content-top li,
-.footer__content-top .footer__list-item {
+/* Items de lista: crema */
+.footer__content-top li {
   color: rgba(252, 249, 245, 0.85) !important;
 }
 
-/* Links de navegación (Políticas de reembolso, etc.): crema */
-.footer.color-inverse .footer__list a,
-.footer.color-inverse .footer__list-social-link {
+/* Links de navegación (políticas): crema */
+.footer.color-inverse a,
+.footer.color-inverse .footer__list a {
   color: rgba(252, 249, 245, 0.80) !important;
+  text-decoration: none;
 }
 
-/* Solo hipervínculos reales con destino externo o de acción: naranja */
+/* Links de acción (teléfono, email, WhatsApp): naranja */
 .footer.color-inverse a[href*="wa.me"],
 .footer.color-inverse a[href^="tel:"],
 .footer.color-inverse a[href^="mailto:"] {
@@ -763,9 +770,9 @@ h1, h2, .h0, .h1, .h2 {
 @media screen and (min-width: 750px) {
   .footer__content-top {
     display: grid !important;
-    grid-template-columns: 2fr 1.5fr 2.5fr;
+    grid-template-columns: minmax(180px, 2fr) minmax(200px, 2fr) minmax(260px, 3fr);
     align-items: start;
-    gap: 3.2rem;
+    gap: 4rem 5rem;
     padding: 5.6rem 4rem;
   }
 
