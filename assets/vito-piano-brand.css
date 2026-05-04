@@ -1433,14 +1433,14 @@ h1, h2, .h0, .h1, .h2 {
     padding-right: 0 !important;
   }
 
-  /* Outer grid: 75% photography | 25% product info — stretch so info column spans full image height */
+  /* Outer grid: 76% fotos | 24% info */
   .vp-product-editorial.product.grid--2-col-tablet {
-    grid-template-columns: 75fr 25fr !important;
+    grid-template-columns: 76fr 24fr !important;
     column-gap: 0 !important;
     align-items: stretch;
   }
 
-  /* Media wrapper: flex row — sticky anchor left (50%), scroll stack right (50%) */
+  /* Media wrapper: flex row — sticky izquierda (50%) | scroll centro (50%) */
   .vp-product-editorial .product__media-wrapper {
     display: flex !important;
     flex-direction: row;
@@ -1449,7 +1449,7 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* ---- Sticky anchor image: 50% of media column ---- */
+  /* Imagen izquierda fija: 50% del área de fotos = 38% del viewport */
   .vp-editorial__sticky {
     display: block;
     flex: 0 0 50%;
@@ -1468,7 +1468,7 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* ---- Scroll stack: 50% of media column, each image fills ~90vh ---- */
+  /* Imágenes que scrollean: 50% del área de fotos = 38% del viewport */
   .vp-editorial__scroll {
     display: flex;
     flex: 1 1 auto;
@@ -1480,28 +1480,35 @@ h1, h2, .h0, .h1, .h2 {
     overflow: hidden;
   }
 
+  /* Cada imagen ocupa el alto completo del viewport */
   .vp-editorial__item .vp-editorial__img {
     display: block;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     object-fit: cover;
     object-position: center top;
   }
 
-  /* ---- Product info: full-height column so sticky has room to pin ---- */
+  /* Panel de info: columna completa, siempre sticky */
   .vp-product-editorial .product__info-wrapper {
-    padding-top: 5.6rem !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
+    padding-top: 4rem !important;
+    padding-left: 2.4rem !important;
+    padding-right: 2.4rem !important;
     align-self: stretch;
     height: 100%;
+    background: var(--vp-crema);
+    /* Dawn aplica animate--slide-in con transform, lo que rompe position: sticky */
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transition: none !important;
   }
 
-  .vp-product-editorial .product__info-container.product__column-sticky {
+  /* Sticky independiente del setting enable_sticky_info del customizer */
+  .vp-product-editorial .product__info-container {
     position: sticky !important;
-    top: calc(var(--header-group-height, 0px) + 3.2rem) !important;
-    max-height: calc(100vh - var(--header-group-height, 0px) - 3.2rem);
-    overflow-y: auto;
+    top: var(--header-group-height, 0px) !important;
+    padding-top: 2.4rem !important;
   }
 }
 
