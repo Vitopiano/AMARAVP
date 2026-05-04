@@ -148,10 +148,6 @@ a.skip-to-content-link:focus-visible {
   overflow: hidden !important;
   position: relative !important;
   box-shadow: none !important;
-  clip-path: inset(0) !important;
-  -webkit-clip-path: inset(0) !important;
-  transform: translateZ(0) !important;
-  -webkit-transform: translateZ(0) !important;
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono) !important;
   font-size: 1.1rem !important;
@@ -160,7 +156,7 @@ a.skip-to-content-link:focus-visible {
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
 }
 
-/* Kill Dawn's ::before AND ::after — ambos pueden desbordar el borde del botón */
+/* Kill Dawn's ::before AND ::after — causan desborde más allá del borde */
 .button::before,
 .button::after {
   content: none !important;
@@ -1456,4 +1452,46 @@ h1, h2, .h0, .h1, .h2 {
     max-height: calc(100vh - var(--header-group-height, 0px) - 3.2rem);
     overflow-y: auto;
   }
+}
+
+/* ============================================
+   MOBILE DRAWER — Colores del menú lateral
+============================================ */
+
+/* Items de navegación: verde botella */
+.menu-drawer__menu-item,
+.menu-drawer__menu-item.link,
+.menu-drawer__close-button {
+  color: var(--vp-verde-botella) !important;
+}
+
+.menu-drawer__menu-item svg,
+.menu-drawer__close-button svg {
+  color: var(--vp-verde-botella) !important;
+  fill: var(--vp-verde-botella) !important;
+}
+
+/* "Iniciar sesión" + ícono de cuenta: naranja */
+.menu-drawer__account,
+.menu-drawer__account.link {
+  color: var(--vp-terracota) !important;
+}
+
+.menu-drawer__account svg,
+.menu-drawer__account account-icon svg,
+.menu-drawer__account .svg-wrapper svg {
+  color: var(--vp-terracota) !important;
+  fill: var(--vp-terracota) !important;
+  stroke: var(--vp-terracota) !important;
+}
+
+/* Ícono de Instagram (y cualquier social) en el drawer: naranja */
+.menu-drawer .list-social__link,
+.menu-drawer .list-social__link.link {
+  color: var(--vp-terracota) !important;
+}
+
+.menu-drawer .list-social__link svg {
+  color: var(--vp-terracota) !important;
+  fill: var(--vp-terracota) !important;
 }
