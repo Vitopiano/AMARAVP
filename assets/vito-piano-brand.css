@@ -1476,16 +1476,22 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* Columna info: 28% del total — siempre visible mientras se scrollean las fotos */
+  /* Columna info: 28% del total.
+     El WRAPPER es el elemento sticky (no el container interno).
+     align-self: flex-start es crítico: permite que el wrapper tenga su
+     altura natural (contenido) en vez de estirarse, lo que da rango al sticky. */
   .vp-product-editorial .product__info-wrapper {
     flex: 0 0 28% !important;
     width: 28% !important;
     max-width: 28% !important;
+    align-self: flex-start !important;
+    position: sticky !important;
+    top: var(--header-group-height, 0px) !important;
     /* padding interior del panel */
     padding-top: 4rem !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 4rem !important;
     background: var(--vp-crema);
     /* Dawn aplica animate--slide-in con transform, lo que rompe position:sticky */
     transform: none !important;
@@ -1534,15 +1540,17 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* Contenedor de info sticky: se queda fijo mientras el usuario hace scroll
-     por las imágenes — sin scroll interno, el contenido se expande naturalmente
-     cuando el usuario abre acordeones (descripción, guía de talla, etc.) */
+  /* El container ya no necesita ser sticky — el wrapper lo maneja */
   .vp-product-editorial .product__info-container {
-    position: sticky !important;
-    top: var(--header-group-height, 0px) !important;
-    padding-top: 2.4rem !important;
-    overflow-y: visible;
-    max-height: none;
+    position: static !important;
+    padding-top: 0 !important;
+  }
+
+  /* Botones de compra: márgenes negativos para cancelar el padding del wrapper
+     y así llegar al borde izquierdo y derecho del panel */
+  .vp-product-editorial .product-form__buttons {
+    margin-left: -2.4rem !important;
+    margin-right: -2.4rem !important;
   }
 }
 
