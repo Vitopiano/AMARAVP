@@ -85,6 +85,30 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-azul-hielo) !important;
 }
 
+/* Skip link: visually hidden — override our .button position */
+.skip-to-content-link {
+  position: absolute !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  width: 1px !important;
+  height: 1px !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.skip-to-content-link:focus-visible {
+  position: static !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  width: auto !important;
+  height: auto !important;
+  white-space: normal !important;
+  padding: 1.2rem 2rem !important;
+  margin: 0 !important;
+}
+
 /* Buttons — tipografía y forma unificadas */
 .button,
 .shopify-payment-button__button--unbranded {
@@ -158,9 +182,9 @@ h1, h2, h3, .h1, .h2, .h3 {
 
 .color-inverse .button--secondary:hover,
 .banner .button--secondary:hover {
-  background-color: transparent !important;
-  border-color: var(--vp-azul-hielo) !important;
-  color: var(--vp-azul-hielo) !important;
+  background-color: var(--vp-burdeos) !important;
+  border-color: var(--vp-burdeos) !important;
+  color: var(--vp-crema) !important;
 }
 
 /* Newsletter footer: flecha submit sobre fondo verde */
@@ -1106,8 +1130,9 @@ h1, h2, .h0, .h1, .h2 {
 
   header-drawer {
     order: 10 !important;
+    flex-shrink: 0 !important;
     margin-left: 0.4rem !important;
-    margin-right: -1rem !important;
+    margin-right: -1.5rem !important;
   }
 
   .header__isotipo-mobile {
@@ -1149,6 +1174,7 @@ h1, h2, .h0, .h1, .h2 {
   .header__icons {
     order: 9;
     flex-shrink: 0;
+    margin-left: auto !important;
   }
 
   /* Hide the desktop isotipo inside icons panel */
@@ -1200,21 +1226,29 @@ h1, h2, .h0, .h1, .h2 {
     margin-top: 0 !important;
   }
 
-  /* Tighter line height within each section */
+  /* Equal tight line rhythm — same for p and li */
   .footer__content-top p,
-  .footer__content-top .footer__subtext {
-    line-height: 1.35 !important;
-    margin-bottom: 0.2rem !important;
+  .footer__content-top .footer__subtext,
+  .footer__content-top li,
+  .footer__content-top a {
+    line-height: 1.4 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     white-space: normal !important;
   }
 
-  .footer__content-top li {
-    line-height: 1.4 !important;
+  /* Remove ul default indentation so list items align with paragraphs */
+  .footer__content-top .footer__list,
+  .footer__content-top ul {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    list-style: none !important;
   }
 
   .footer__content-top .footer__list .list-menu__item--link {
-    padding-top: 0.35rem !important;
-    padding-bottom: 0.35rem !important;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    padding-left: 0 !important;
   }
 
   /* Social icons left-aligned on mobile */
@@ -1252,11 +1286,11 @@ h1, h2, .h0, .h1, .h2 {
     padding-right: 0 !important;
   }
 
-  /* Outer grid: 75% photography | 25% product info */
+  /* Outer grid: 75% photography | 25% product info — stretch so info column spans full image height */
   .vp-product-editorial.product.grid--2-col-tablet {
     grid-template-columns: 75fr 25fr !important;
     column-gap: 0 !important;
-    align-items: start;
+    align-items: stretch;
   }
 
   /* Media wrapper: flex row — sticky anchor left (50%), scroll stack right (50%) */
@@ -1307,14 +1341,19 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* ---- Product info: sticky, padded, right column ---- */
+  /* ---- Product info: full-height column so sticky has room to pin ---- */
   .vp-product-editorial .product__info-wrapper {
     padding-top: 5.6rem !important;
     padding-left: 4rem !important;
     padding-right: 4rem !important;
+    align-self: stretch;
+    height: 100%;
   }
 
   .vp-product-editorial .product__info-container.product__column-sticky {
+    position: sticky !important;
     top: calc(var(--header-group-height, 0px) + 3.2rem) !important;
+    max-height: calc(100vh - var(--header-group-height, 0px) - 3.2rem);
+    overflow-y: auto;
   }
 }
