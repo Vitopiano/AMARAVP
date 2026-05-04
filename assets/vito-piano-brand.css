@@ -1003,7 +1003,7 @@ h1, h2, .h0, .h1, .h2 {
   .vp-footer-social {
     grid-column: 3;
     grid-row: 2;
-    margin-top: 1.2rem;
+    margin-top: 0.5rem;
     padding: 0 !important;
     display: flex;
     justify-content: flex-end;
@@ -1031,6 +1031,26 @@ h1, h2, .h0, .h1, .h2 {
   .footer.color-inverse a,
   .footer.color-inverse .footer__list a {
     white-space: nowrap;
+  }
+
+  /* Alineación de filas entre columnas: ritmo vertical uniforme */
+  .footer__content-top .footer__heading,
+  .footer__content-top .footer-block__heading {
+    font-size: 1.15rem !important;
+    line-height: 1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 1.4rem !important;
+    padding: 0 !important;
+  }
+
+  .footer__content-top .footer-block p,
+  .footer__content-top .footer__list .list-menu__item,
+  .footer__content-top .footer__list li {
+    font-size: 1.35rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 }
 
