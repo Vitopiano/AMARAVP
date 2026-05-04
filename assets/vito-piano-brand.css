@@ -1422,11 +1422,19 @@ h1, h2, .h0, .h1, .h2 {
 
 @media screen and (min-width: 990px) {
   /* ---- Full-bleed: toda la cadena de contenedores sin restricción de ancho ---- */
+  /* product-info es un custom element — por defecto display:inline, lo forzamos a block */
+  product-info.vp-editorial-section {
+    display: block !important;
+    width: 100% !important;
+  }
+
   .vp-editorial-section {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
     display: block !important;
+    /* Sobrescribe --page-width para que .page-width interno no quede limitado a ~1200px */
+    --page-width: 100vw;
   }
 
   /* El shopify-section que envuelve la sección */
@@ -1538,18 +1546,35 @@ h1, h2, .h0, .h1, .h2 {
 /* Fila superior: cantidad a la izquierda, añadir a la cesta a la derecha */
 .vp-qty-row {
   display: flex;
-  align-items: stretch;
+  align-items: stretch !important;
   gap: 0.8rem;
   margin-bottom: 0.8rem;
 }
 
-.vp-qty-row .quantity {
+/* quantity-input es custom element (display:inline por defecto) — forzar flex para heredar altura */
+.vp-qty-row quantity-input.quantity {
+  display: flex !important;
+  align-items: stretch !important;
+  height: auto !important;
   flex: 0 0 auto;
+}
+
+.vp-qty-row .quantity__button {
+  height: 100% !important;
+  flex-shrink: 0;
+}
+
+.vp-qty-row .quantity__input {
+  height: 100% !important;
+  min-height: 4.4rem;
+  align-self: stretch;
+  box-sizing: border-box;
 }
 
 .vp-qty-row .product-form__submit {
   flex: 1 1 auto;
   width: auto !important;
+  min-height: 4.4rem;
 }
 
 /* Comprar ahora: ancho completo debajo */
