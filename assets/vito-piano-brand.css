@@ -26,6 +26,37 @@
   --vp-transition: 0.3s ease;
 }
 
+/* ============================================
+   SCROLLBAR — verde sobre carril transparente
+============================================ */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-verde-botella) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-verde-botella);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-verde-botella);
+  opacity: 0.75;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 /* Typography refinements */
 h1, h2, h3, .h1, .h2, .h3 {
   letter-spacing: var(--vp-letter-spacing-wide);
@@ -115,12 +146,20 @@ h1, h2, h3, .h1, .h2, .h3 {
   border-radius: 0 !important;
   overflow: hidden !important;
   position: relative !important;
+  box-shadow: none !important;
+  clip-path: inset(0) !important;
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono) !important;
   font-size: 1.1rem !important;
   font-weight: 400 !important;
   text-transform: uppercase;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+}
+
+/* Kill Dawn's ::before — it extends beyond the button box and causes overflow */
+.button::before {
+  content: none !important;
+  display: none !important;
 }
 
 /* Wrapper del payment button: también recortado */
@@ -859,17 +898,11 @@ h1, h2, .h0, .h1, .h2 {
   color: rgba(252, 249, 245, 0.85) !important;
 }
 
-/* Links de navegación (políticas): crema, sin salto de línea */
+/* Links de navegación (políticas): crema */
 .footer.color-inverse a,
 .footer.color-inverse .footer__list a {
   color: rgba(252, 249, 245, 0.80) !important;
   text-decoration: none;
-  white-space: nowrap;
-}
-
-/* Párrafos cortos: sin salto de línea */
-.footer__content-top .footer-block p {
-  white-space: nowrap;
 }
 
 /* Links de acción (teléfono, email, WhatsApp): naranja */
@@ -1017,11 +1050,27 @@ h1, h2, .h0, .h1, .h2 {
   display: none !important;
 }
 
-/* Bottom bar: copyright centrado en dos líneas */
+/* Bottom bar: isotipo encima, copyright debajo — columna centrada */
 .footer__content-bottom-wrapper--vp {
   display: flex !important;
+  flex-direction: column !important;
   justify-content: center;
   align-items: center;
+  gap: 1.2rem;
+}
+
+/* Isotipo naranja sobre el copyright */
+.footer__iso-mark-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__iso-mark {
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: contain;
+  /* Convertir a terracota naranja (#E25027) */
+  filter: brightness(0) saturate(100%) invert(38%) sepia(80%) saturate(700%) hue-rotate(340deg) brightness(1.05);
 }
 
 .footer__copyright {
@@ -1195,70 +1244,98 @@ h1, h2, .h0, .h1, .h2 {
    ============================================ */
 
 @media screen and (max-width: 749px) {
+
+  /* Contenedor: rectángulo verde sobre fondo crema — márgenes laterales */
   .footer__content-top {
-    padding: 3.2rem 2rem !important;
+    margin: 0 1.5rem !important;
+    padding: 2.8rem 2rem !important;
+    text-align: left !important;
   }
 
-  /* Force left alignment for all footer elements on mobile */
-  .footer__content-top,
-  .footer__content-top .footer-block,
-  .footer__content-top .footer-block__newsletter,
-  .footer__content-top .footer__list,
+  /* Todo en el footer: izquierda, sin márgenes propios */
+  .footer__content-top *,
   .footer__content-top p,
   .footer__content-top li,
+  .footer__content-top a,
+  .footer__content-top span,
+  .footer__content-top .footer-block,
+  .footer__content-top .footer__list,
   .footer__content-top .newsletter-form {
     text-align: left !important;
-  }
-
-  /* More breathing before each section title */
-  .footer__content-top .footer__heading,
-  .footer__content-top .footer-block__heading,
-  .footer__content-top .newsletter__heading {
-    margin-top: 2.8rem !important;
-    margin-bottom: 0.6rem !important;
-    white-space: normal !important;
-    text-align: left !important;
-  }
-
-  /* First block: no extra top margin */
-  .footer__content-top .footer-block:first-child .footer__heading,
-  .footer__content-top .footer-block:first-child .footer-block__heading {
-    margin-top: 0 !important;
-  }
-
-  /* Equal tight line rhythm — same for p and li */
-  .footer__content-top p,
-  .footer__content-top .footer__subtext,
-  .footer__content-top li,
-  .footer__content-top a {
-    line-height: 1.4 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    white-space: normal !important;
+    line-height: 1 !important;
   }
 
-  /* Remove ul default indentation so list items align with paragraphs */
-  .footer__content-top .footer__list,
-  .footer__content-top ul {
+  /* Texto de contenido: cada línea tiene su propio respiro mínimo */
+  .footer__content-top p,
+  .footer__content-top li,
+  .footer__content-top .list-menu__item--link {
+    padding-top: 0.15rem !important;
+    padding-bottom: 0.15rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    list-style: none !important;
+  }
+
+  /* Listas: sin indentación — alineadas igual que los párrafos */
+  .footer__content-top ul,
+  .footer__content-top ol,
+  .footer__content-top .footer__list {
     padding-left: 0 !important;
     margin-left: 0 !important;
     list-style: none !important;
   }
 
-  .footer__content-top .footer__list .list-menu__item--link {
-    padding-top: 0.3rem !important;
-    padding-bottom: 0.3rem !important;
+  /* Títulos de sección: espacio antes = 1.6 unidades */
+  .footer__content-top .footer__heading,
+  .footer__content-top .footer-block__heading,
+  .footer__content-top .newsletter__heading {
+    margin-top: 1.6rem !important;
+    margin-bottom: 0.4rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  /* Primer bloque: sin margen superior */
+  .footer__content-top .footer-block:first-child .footer__heading,
+  .footer__content-top .footer-block:first-child .footer-block__heading {
+    margin-top: 0 !important;
+  }
+
+  /* Iconos sociales: alineados a la izquierda */
+  .vp-footer-social,
+  .footer__content-top .footer__list-social,
+  .footer__content-top .list-social {
+    justify-content: flex-start !important;
+    margin-top: 1.6rem !important;
+    margin-bottom: 0 !important;
     padding-left: 0 !important;
   }
 
-  /* Social icons left-aligned on mobile */
-  .vp-footer-social {
-    justify-content: flex-start !important;
-    margin-top: 2rem;
+  /* Newsletter block: todo a la izquierda */
+  .footer__content-top .footer-block--newsletter,
+  .footer__content-top .footer-block__newsletter {
+    text-align: left !important;
+    align-items: flex-start !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .vp-footer-social .footer__list-social,
-  .vp-footer-social .list-social {
+  .footer__content-top .newsletter__heading,
+  .footer__content-top .footer-block--newsletter h2,
+  .footer__content-top .footer-block--newsletter p {
+    text-align: left !important;
+    align-self: flex-start !important;
+  }
+
+  .footer__content-top .newsletter-form,
+  .footer__content-top .newsletter-form__field-wrapper,
+  .footer__content-top .field {
+    text-align: left !important;
+    width: 100% !important;
     justify-content: flex-start !important;
   }
 }
