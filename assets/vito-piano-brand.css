@@ -1532,6 +1532,32 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   PRODUCT — Editorial form: [cantidad | añadir] arriba / [comprar ahora] abajo
+============================================ */
+
+/* Fila superior: cantidad a la izquierda, añadir a la cesta a la derecha */
+.vp-qty-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.vp-qty-row .quantity {
+  flex: 0 0 auto;
+}
+
+.vp-qty-row .product-form__submit {
+  flex: 1 1 auto;
+  width: auto !important;
+}
+
+/* Comprar ahora: ancho completo debajo */
+.product-form__buttons .shopify-payment-button {
+  margin-top: 0 !important;
+}
+
+/* ============================================
    MOBILE DRAWER — Colores del menú lateral
 ============================================ */
 
