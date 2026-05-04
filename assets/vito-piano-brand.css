@@ -1421,16 +1421,34 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 @media screen and (min-width: 990px) {
-  /* ---- Full-bleed section: remove page-width container constraints ---- */
+  /* ---- Full-bleed: toda la cadena de contenedores sin restricción de ancho ---- */
   .vp-editorial-section {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: block !important;
   }
 
+  /* El shopify-section que envuelve la sección */
+  .shopify-section:has(.vp-editorial-section) {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .vp-editorial-section .page-width,
   .vp-editorial-section > .page-width {
-    max-width: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .vp-product-editorial {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* Outer grid: 76% fotos | 24% info */
