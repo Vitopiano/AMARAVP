@@ -103,10 +103,14 @@ h1, h2, h3, .h1, .h2, .h3 {
   z-index: 1;
 }
 
-/* TEXTO CENTRADO */
+/* TEXTO CENTRADO — horizontal y vertical */
 .announcement-bar__message {
-  padding: 1rem 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   text-align: center;
+  height: 100%;
+  padding: 0;
 }
 
 /* COLOR TEXTO */
@@ -401,7 +405,7 @@ a.skip-to-content-link:focus-visible {
 .header__menu-item span,
 .header__active-menu-item {
   letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-family: var(--vp-font-mono);
 }
@@ -1459,11 +1463,11 @@ h1, h2, .h0, .h1, .h2 {
     padding: 0 !important;
   }
 
-  /* Columna fotos: 80% del total (40% izq sticky + 40% centro scroll) */
+  /* Columna fotos: 75% del total (37.5% izq sticky + 37.5% centro scroll) */
   .vp-product-editorial .product__media-wrapper {
-    flex: 0 0 80% !important;
-    width: 80% !important;
-    max-width: 80% !important;
+    flex: 0 0 75% !important;
+    width: 75% !important;
+    max-width: 75% !important;
     /* flex row interno: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
@@ -1472,11 +1476,11 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* Columna info: 20% del total — siempre visible mientras se scrollean las fotos */
+  /* Columna info: 25% del total — siempre visible mientras se scrollean las fotos */
   .vp-product-editorial .product__info-wrapper {
-    flex: 0 0 20% !important;
-    width: 20% !important;
-    max-width: 20% !important;
+    flex: 0 0 25% !important;
+    width: 25% !important;
+    max-width: 25% !important;
     /* padding interior del panel */
     padding-top: 4rem !important;
     padding-left: 2.4rem !important;
