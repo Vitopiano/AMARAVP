@@ -80,7 +80,7 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-azul-hielo);
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   overflow: hidden;
 }
 
@@ -149,6 +149,9 @@ a.skip-to-content-link:focus-visible {
   position: relative !important;
   box-shadow: none !important;
   clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
   letter-spacing: var(--vp-letter-spacing-wide);
   font-family: var(--vp-font-mono) !important;
   font-size: 1.1rem !important;
@@ -157,8 +160,9 @@ a.skip-to-content-link:focus-visible {
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
 }
 
-/* Kill Dawn's ::before — it extends beyond the button box and causes overflow */
-.button::before {
+/* Kill Dawn's ::before AND ::after — ambos pueden desbordar el borde del botón */
+.button::before,
+.button::after {
   content: none !important;
   display: none !important;
 }
@@ -1141,7 +1145,7 @@ h1, h2, .h0, .h1, .h2 {
 
   /* Announcement bar legible */
   .announcement-bar__message {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   /* Breadcrumbs — Chivo Mono pequeño */
