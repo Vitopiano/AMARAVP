@@ -158,7 +158,9 @@ a.skip-to-content-link:focus-visible {
 
 /* Kill Dawn's ::before AND ::after — causan desborde más allá del borde */
 .button::before,
-.button::after {
+.button::after,
+.shopify-payment-button__button--unbranded::before,
+.shopify-payment-button__button--unbranded::after {
   content: none !important;
   display: none !important;
 }
@@ -167,6 +169,12 @@ a.skip-to-content-link:focus-visible {
 .shopify-payment-button {
   overflow: hidden !important;
   border-radius: 0 !important;
+}
+
+/* Botón secundario: borde visible del mismo color que el texto */
+.button--secondary {
+  border: 1px solid currentColor !important;
+  background: transparent !important;
 }
 
 /* ============================================
@@ -247,13 +255,36 @@ a.skip-to-content-link:focus-visible {
   opacity: 1;
 }
 
-/* Variant pills — cuadradas */
+/* Variant size buttons — cuadrados, mismo estilo que botones secundarios */
 .swatch-input__input + .swatch-input__label,
-.variant-input-wrapper .variant__button-label {
+.variant-input-wrapper .variant__button-label,
+.variant__button-label {
   border-radius: 0 !important;
-  font-family: var(--vp-font-mono);
-  letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.1rem;
+  font-family: var(--vp-font-mono) !important;
+  letter-spacing: var(--vp-letter-spacing-wide) !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  border: 1px solid var(--vp-negro-suave) !important;
+  color: var(--vp-negro-suave) !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Talla seleccionada: fondo sólido */
+.swatch-input__input:checked + .swatch-input__label,
+.variant-input-wrapper input:checked + .variant__button-label {
+  background-color: var(--vp-negro-suave) !important;
+  border-color: var(--vp-negro-suave) !important;
+  color: var(--vp-crema) !important;
+}
+
+/* Talla no disponible: tachada, opaca */
+.swatch-input__input:disabled + .swatch-input__label,
+.variant-input-wrapper .variant__button-label.disabled,
+.variant__button-label--disabled {
+  opacity: 0.32 !important;
+  cursor: not-allowed !important;
 }
 
 /* Product card — sin sombra, bordes sutiles */
