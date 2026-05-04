@@ -1172,7 +1172,7 @@ h1, h2, .h0, .h1, .h2 {
   }
 
   .card__heading {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.35;
     letter-spacing: 0.04em;
   }
@@ -1535,13 +1535,14 @@ h1, h2, .h0, .h1, .h2 {
   }
 
   /* Contenedor de info sticky: se queda fijo mientras el usuario hace scroll
-     por las imágenes de la columna central — permite ver tallas/colores siempre */
+     por las imágenes — sin scroll interno, el contenido se expande naturalmente
+     cuando el usuario abre acordeones (descripción, guía de talla, etc.) */
   .vp-product-editorial .product__info-container {
     position: sticky !important;
     top: var(--header-group-height, 0px) !important;
     padding-top: 2.4rem !important;
-    overflow-y: auto;
-    max-height: calc(100vh - var(--header-group-height, 0px));
+    overflow-y: visible;
+    max-height: none;
   }
 }
 
