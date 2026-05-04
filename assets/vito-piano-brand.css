@@ -1445,26 +1445,26 @@ h1, h2, .h0, .h1, .h2 {
     margin: 0;
   }
 
+  /* IMPORTANTE: Dawn usa display:flex (no CSS Grid) en .grid
+     — las columnas se controlan con width/flex en los .grid__item,
+     NO con grid-template-columns (que se ignora en un flex container) */
+
+  /* Flex container: sin gap, ocupa todo el ancho, sin margen inferior */
   .vp-product-editorial {
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+    margin-bottom: 0 !important;
+    align-items: stretch;
     width: 100% !important;
-    margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* Outer grid: 80% fotos (40 izq | 40 centro) | 20% info */
-  .vp-product-editorial.product.grid--2-col-tablet {
-    grid-template-columns: 80fr 20fr !important;
-    column-gap: 0 !important;
-    align-items: stretch;
-  }
-
-  /* Dawn pone width/max-width en los grid items según media_size del admin
-     (medium=55%/45%, large=65%/35%, small=45%/55%) — anular para que sea el
-     grid quien controle el ancho, no la propiedad width de cada item */
+  /* Columna fotos: 80% del total (40% izq sticky + 40% centro scroll) */
   .vp-product-editorial .product__media-wrapper {
-    width: auto !important;
-    max-width: none !important;
-    /* flex row: izquierda sticky 50% | scroll center 50% */
+    flex: 0 0 80% !important;
+    width: 80% !important;
+    max-width: 80% !important;
+    /* flex row interno: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
     align-items: flex-start;
@@ -1472,17 +1472,16 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* Panel info: ocupa su celda del grid completa, contenido con padding propio */
+  /* Columna info: 20% del total — siempre visible mientras se scrollean las fotos */
   .vp-product-editorial .product__info-wrapper {
-    width: auto !important;
-    max-width: none !important;
-    /* padding interior del panel: sólo arriba y laterales para respiración */
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    max-width: 20% !important;
+    /* padding interior del panel */
     padding-top: 4rem !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
     padding-bottom: 0 !important;
-    align-self: stretch;
-    height: 100%;
     background: var(--vp-crema);
     /* Dawn aplica animate--slide-in con transform, lo que rompe position:sticky */
     transform: none !important;
