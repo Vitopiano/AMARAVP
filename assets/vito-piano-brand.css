@@ -1435,10 +1435,11 @@ h1, h2, .h0, .h1, .h2 {
     margin: 0 !important;
   }
 
+  /* Forzar 100vw en el contenedor interno — sin transform (rompe sticky) */
   .vp-editorial-section .page-width,
   .vp-editorial-section > .page-width {
-    max-width: 100% !important;
-    width: 100% !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
     margin-left: 0 !important;
@@ -1451,14 +1452,14 @@ h1, h2, .h0, .h1, .h2 {
     padding: 0 !important;
   }
 
-  /* Outer grid: 76% fotos | 24% info */
+  /* Outer grid: 80% fotos (40 izq | 40 centro) | 20% info */
   .vp-product-editorial.product.grid--2-col-tablet {
-    grid-template-columns: 76fr 24fr !important;
+    grid-template-columns: 80fr 20fr !important;
     column-gap: 0 !important;
     align-items: stretch;
   }
 
-  /* Media wrapper: flex row — sticky izquierda (50%) | scroll centro (50%) */
+  /* Media wrapper: flex row — izquierda 50% del 80% = 40% total | centro 50% del 80% = 40% total */
   .vp-product-editorial .product__media-wrapper {
     display: flex !important;
     flex-direction: row;
@@ -1467,7 +1468,7 @@ h1, h2, .h0, .h1, .h2 {
     overflow: visible;
   }
 
-  /* Imagen izquierda fija: 50% del área de fotos = 38% del viewport */
+  /* Imagen izquierda fija: 50% del 80% = 40% del total */
   .vp-editorial__sticky {
     display: block;
     flex: 0 0 50%;
@@ -1486,7 +1487,7 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* Imágenes que scrollean: 50% del área de fotos = 38% del viewport */
+  /* Imágenes que scrollean: 50% del 80% = 40% del total */
   .vp-editorial__scroll {
     display: flex;
     flex: 1 1 auto;
