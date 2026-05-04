@@ -1458,13 +1458,37 @@ h1, h2, .h0, .h1, .h2 {
     align-items: stretch;
   }
 
-  /* Media wrapper: flex row — izquierda 50% del 80% = 40% total | centro 50% del 80% = 40% total */
+  /* Dawn pone width/max-width en los grid items según media_size del admin
+     (medium=55%/45%, large=65%/35%, small=45%/55%) — anular para que sea el
+     grid quien controle el ancho, no la propiedad width de cada item */
   .vp-product-editorial .product__media-wrapper {
+    width: auto !important;
+    max-width: none !important;
+    /* flex row: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
     align-items: flex-start;
     padding: 0 !important;
     overflow: visible;
+  }
+
+  /* Panel info: ocupa su celda del grid completa, contenido con padding propio */
+  .vp-product-editorial .product__info-wrapper {
+    width: auto !important;
+    max-width: none !important;
+    /* padding interior del panel: sólo arriba y laterales para respiración */
+    padding-top: 4rem !important;
+    padding-left: 2.4rem !important;
+    padding-right: 2.4rem !important;
+    padding-bottom: 0 !important;
+    align-self: stretch;
+    height: 100%;
+    background: var(--vp-crema);
+    /* Dawn aplica animate--slide-in con transform, lo que rompe position:sticky */
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transition: none !important;
   }
 
   /* Imagen izquierda fija: 50% del 80% = 40% del total */
@@ -1507,26 +1531,14 @@ h1, h2, .h0, .h1, .h2 {
     object-position: center top;
   }
 
-  /* Panel de info: columna completa, siempre sticky */
-  .vp-product-editorial .product__info-wrapper {
-    padding-top: 4rem !important;
-    padding-left: 2.4rem !important;
-    padding-right: 2.4rem !important;
-    align-self: stretch;
-    height: 100%;
-    background: var(--vp-crema);
-    /* Dawn aplica animate--slide-in con transform, lo que rompe position: sticky */
-    transform: none !important;
-    animation: none !important;
-    opacity: 1 !important;
-    transition: none !important;
-  }
-
-  /* Sticky independiente del setting enable_sticky_info del customizer */
+  /* Contenedor de info sticky: se queda fijo mientras el usuario hace scroll
+     por las imágenes de la columna central — permite ver tallas/colores siempre */
   .vp-product-editorial .product__info-container {
     position: sticky !important;
     top: var(--header-group-height, 0px) !important;
     padding-top: 2.4rem !important;
+    overflow-y: auto;
+    max-height: calc(100vh - var(--header-group-height, 0px));
   }
 }
 
