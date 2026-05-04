@@ -116,19 +116,20 @@ h1, h2, h3, .h1, .h2, .h3 {
   color: var(--vp-azul-hielo) !important;
 }
 
-/* Skip link: visually hidden — override our .button position */
-.skip-to-content-link {
+/* Skip link: visually hidden — especificidad alta (a.clase) para ganar a .button */
+a.skip-to-content-link {
   position: absolute !important;
   overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
+  clip: rect(0, 0, 0, 0) !important;
   clip-path: inset(50%) !important;
   width: 1px !important;
   height: 1px !important;
   white-space: nowrap !important;
-  margin: 0 !important;
+  margin: -1px !important;
   padding: 0 !important;
+  border: 0 !important;
 }
-.skip-to-content-link:focus-visible {
+a.skip-to-content-link:focus-visible {
   position: static !important;
   overflow: visible !important;
   clip: auto !important;
@@ -991,6 +992,15 @@ h1, h2, .h0, .h1, .h2 {
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  /* Evitar que el texto corto se parta en columnas angostas */
+  .footer__content-top .footer-block p,
+  .footer__content-top .footer-block a,
+  .footer__content-top .footer__list a,
+  .footer.color-inverse a,
+  .footer.color-inverse .footer__list a {
+    white-space: nowrap;
+  }
 }
 
 /* Newsletter email input — texto crema */
@@ -1056,7 +1066,7 @@ h1, h2, .h0, .h1, .h2 {
   flex-direction: column !important;
   justify-content: center;
   align-items: center;
-  gap: 1.2rem;
+  gap: 0.6rem;
 }
 
 /* Isotipo naranja sobre el copyright */
@@ -1287,12 +1297,21 @@ h1, h2, .h0, .h1, .h2 {
     list-style: none !important;
   }
 
-  /* Títulos de sección: espacio antes = 1.6 unidades */
+  /* Títulos de sección (nav): espacio antes = 1.6 */
   .footer__content-top .footer__heading,
-  .footer__content-top .footer-block__heading,
-  .footer__content-top .newsletter__heading {
+  .footer__content-top .footer-block__heading {
     margin-top: 1.6rem !important;
     margin-bottom: 0.4rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  /* Newsletter heading → box: 1.8rem */
+  .footer__content-top .newsletter__heading {
+    margin-top: 1.6rem !important;
+    margin-bottom: 1.8rem !important;
     padding: 0 !important;
     line-height: 1 !important;
     text-align: left !important;
@@ -1305,12 +1324,12 @@ h1, h2, .h0, .h1, .h2 {
     margin-top: 0 !important;
   }
 
-  /* Iconos sociales: alineados a la izquierda */
+  /* Iconos sociales: box → Instagram = 2.5rem */
   .vp-footer-social,
   .footer__content-top .footer__list-social,
   .footer__content-top .list-social {
     justify-content: flex-start !important;
-    margin-top: 1.6rem !important;
+    margin-top: 2.5rem !important;
     margin-bottom: 0 !important;
     padding-left: 0 !important;
   }
