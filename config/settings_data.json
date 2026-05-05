@@ -204,11 +204,11 @@
         "type": "vito-newsletter-popup",
         "settings": {
           "enabled": true,
-          "delay_seconds": 0,
+          "delay_seconds": 2,
           "eyebrow": "Bienvenido al mundo",
           "heading": "Vito Piano",
           "discount_badge": "10% OFF",
-          "subtext": "En tu primera compra. Suscríbete y únete a un círculo de hombres y mujeres que visten con propósito.",
+          "subtext": "En tu primera compra. Suscríbete y únete al círculo de hombres y mujeres que visten con propósito.",
           "form_title": "Ingresa tus datos",
           "name_placeholder": "Tu nombre",
           "email_placeholder": "tu@email.com",
@@ -239,6 +239,11 @@
           "button_vertical_position": "lowest",
           "greeting_message": "👋 ¡Hola! \nGracias por contactar Vito Piano. ¿En qué podemos ayudarte hoy?\n\nNuestro equipo te responderá en el menor tiempo posible."
         }
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
