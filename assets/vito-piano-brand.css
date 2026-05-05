@@ -1486,9 +1486,9 @@ h1, h2, .h0, .h1, .h2 {
     max-width: 28% !important;
     align-self: flex-start !important;
     position: sticky !important;
-    top: var(--header-group-height, 0px) !important;
-    /* padding interior del panel */
-    padding-top: 4rem !important;
+    top: 0 !important;
+    /* padding-top absorbe la altura del header para que el título no quede tapado */
+    padding-top: calc(var(--header-group-height, 5rem) + 2rem) !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
     padding-bottom: 4rem !important;
@@ -1546,12 +1546,6 @@ h1, h2, .h0, .h1, .h2 {
     padding-top: 0 !important;
   }
 
-  /* Botones de compra: márgenes negativos para cancelar el padding del wrapper
-     y así llegar al borde izquierdo y derecho del panel */
-  .vp-product-editorial .product-form__buttons {
-    margin-left: -2.4rem !important;
-    margin-right: -2.4rem !important;
-  }
 }
 
 /* ============================================
