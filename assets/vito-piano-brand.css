@@ -291,6 +291,39 @@ a.skip-to-content-link:focus-visible {
   cursor: not-allowed !important;
 }
 
+/* COLOR swatches — sólo el círculo relleno, sin borde de label ni texto
+   :has(.swatch) detecta labels de color vs labels de texto (tallas) */
+.swatch-input__input + .swatch-input__label:has(.swatch) {
+  border-radius: 50% !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: visible !important;
+}
+
+.swatch-input__label:has(.swatch) .swatch {
+  width: 2.6rem !important;
+  height: 2.6rem !important;
+  border-radius: 50% !important;
+  border: 0.1rem solid rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Seleccionado: ring externo sobre el círculo */
+.swatch-input__input:checked + .swatch-input__label:has(.swatch) {
+  background-color: transparent !important;
+  border: none !important;
+  outline: 0.15rem solid var(--vp-negro-suave) !important;
+  outline-offset: 0.25rem !important;
+  border-radius: 50% !important;
+}
+
+/* No disponible: diagonal mantenida en el círculo interior */
+.swatch-input__input:disabled + .swatch-input__label:has(.swatch) {
+  opacity: 0.35 !important;
+}
+
 /* Product card — sin sombra, bordes sutiles */
 .card--product {
   border-radius: 0;
@@ -1424,6 +1457,12 @@ h1, h2, .h0, .h1, .h2 {
   display: none;
 }
 
+/* Mobile: mismo padding lateral que Dawn's .page-width */
+.vp-editorial-page-width {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 @media screen and (min-width: 990px) {
   /* ---- Full-bleed: toda la cadena de contenedores sin restricción de ancho ---- */
   /* product-info es un custom element — por defecto display:inline, lo forzamos a block */
@@ -1578,6 +1617,15 @@ h1, h2, .h0, .h1, .h2 {
 /* Comprar ahora: ancho completo debajo */
 .product-form__buttons .shopify-payment-button {
   margin-top: 0 !important;
+}
+
+/* Botones al mismo ancho que los acordeones (Descripción, Guía de talla...) */
+.vp-product-editorial .product-form,
+.vp-product-editorial .product-form .form,
+.vp-product-editorial .product-form__buttons,
+.vp-product-editorial .vp-qty-row {
+  width: 100% !important;
+  box-sizing: border-box;
 }
 
 /* ============================================
