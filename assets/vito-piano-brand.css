@@ -2,9 +2,9 @@
 
 /* Override Shopify's default fonts with Vito Piano typefaces */
 :root {
-  --font-body-family: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-heading-family: 'Decofast', 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body-weight: 300;
+  --font-body-family: 'Chivo Mono', monospace;
+  --font-heading-family: 'Chivo Mono', monospace;
+  --font-body-weight: 400;
   --font-heading-weight: 400;
 }
 
@@ -114,6 +114,7 @@ h1, h2, h3, .h1, .h2, .h3 {
   min-height: 0 !important;
   font-size: 1.4rem !important;
   line-height: 1.75rem !important;
+  font-family: 'Decofast', serif !important;
 }
 
 /* COLOR TEXTO */
