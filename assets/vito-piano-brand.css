@@ -103,14 +103,17 @@ h1, h2, h3, .h1, .h2, .h3 {
   z-index: 1;
 }
 
-/* TEXTO CENTRADO — horizontal y vertical */
+/* TEXTO CENTRADO — horizontal y vertical, misma altura que FSB (41px) */
 .announcement-bar__message {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center;
   height: 100%;
-  padding: 0;
+  padding: 1.2rem 0 !important;
+  min-height: 0 !important;
+  font-size: 1.4rem !important;
+  line-height: 1.75rem !important;
 }
 
 /* COLOR TEXTO */
