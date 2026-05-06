@@ -919,8 +919,8 @@ h1, h2, .h0, .h1, .h2 {
 /* Fondo general crema */
 .footer {
   background: var(--vp-crema) !important;
-  padding-top: 6rem;
-  padding-bottom: 2rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 
 /* Recuadro verde */
@@ -1077,8 +1077,9 @@ h1, h2, .h0, .h1, .h2 {
   /* Alineación de filas entre columnas: ritmo vertical uniforme */
   .footer__content-top .footer__heading,
   .footer__content-top .footer-block__heading {
-    font-size: 1.15rem !important;
-    line-height: 1 !important;
+    font-size: 2.4rem !important;
+    line-height: 1.8 !important;
+    letter-spacing: var(--vp-letter-spacing-wide) !important;
     margin-top: 0 !important;
     margin-bottom: 1.4rem !important;
     padding: 0 !important;
@@ -1087,8 +1088,8 @@ h1, h2, .h0, .h1, .h2 {
   .footer__content-top .footer-block p,
   .footer__content-top .footer__list .list-menu__item,
   .footer__content-top .footer__list li {
-    font-size: 1.35rem !important;
-    line-height: 1 !important;
+    font-size: 1.8rem !important;
+    line-height: 1.4 !important;
     margin: 0 !important;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
@@ -1125,7 +1126,7 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright small,
 .footer__copyright .copyright__content {
   font-family: var(--vp-font-mono) !important;
-  font-size: 0.9rem !important;
+  font-size: 1rem !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
   color: var(--vp-terracota) !important;
