@@ -1087,9 +1087,12 @@ h1, h2, .h0, .h1, .h2 {
 
   .footer__content-top .footer-block p,
   .footer__content-top .footer__list .list-menu__item,
-  .footer__content-top .footer__list li {
-    font-size: 1.8rem !important;
+  .footer__content-top .footer__list li,
+  .footer__content-top .footer__list a,
+  .footer__content-top .footer-block a {
+    font-size: 1.6rem !important;
     line-height: 1.4 !important;
+    letter-spacing: 0.06em !important;
     margin: 0 !important;
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
@@ -1145,7 +1148,7 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright--legal {
   display: block;
   margin-top: 0.35rem;
-  opacity: 0.90;
+  opacity: 0.85;
 }
 
 /* Ocultar lista de políticas del bottom si está activa */
