@@ -7,6 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Chivo+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Decofast';
+      src: url('https://cdn.shopify.com/s/files/1/0680/0490/5276/files/Decofast-Regular.ttf?v=1778084238') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -36,10 +44,10 @@
     }
 
     .ps-brand__name {
-      font-family: 'Chivo Mono', monospace;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
+      font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #0C4433;
     }
@@ -54,8 +62,9 @@
     }
 
     .ps-order-meta__number {
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
       color: #1C1C1A;
       letter-spacing: 0.06em;
       display: block;
@@ -240,9 +249,9 @@
     }
 
     .ps-totals__table .ps-totals__total td {
-      font-family: 'Chivo Mono', monospace;
-      font-size: 0.95rem;
-      font-weight: 700;
+      font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
       color: #0C4433;
       border-top: 2px solid #0C4433;
       padding-top: 0.7rem;
@@ -282,12 +291,13 @@
     }
 
     .ps-footer__signature {
+      font-family: 'Decofast', 'Bricolage Grotesque', sans-serif;
       display: block;
-      font-size: 1rem;
-      font-style: italic;
+      font-size: 1.3rem;
+      font-style: normal;
       color: rgba(12, 68, 51, 0.50);
       margin-top: 0.3rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
 
     .ps-footer__contact {
