@@ -1082,7 +1082,7 @@ h1, h2, .h0, .h1, .h2 {
     letter-spacing: var(--vp-letter-spacing-wide) !important;
     margin-top: 0 !important;
     margin-bottom: 1.4rem !important;
-    padding: 2rem 0 0 0 !important;
+    padding: 0 !important;
   }
 
   .footer__content-top .footer-block p,
