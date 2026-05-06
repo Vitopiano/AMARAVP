@@ -464,7 +464,9 @@ a.skip-to-content-link:focus-visible {
 }
 
 /* Iconos del header (search, cuenta, carrito) */
-.header__icon .icon {
+.header__icon .icon,
+.header__icon .svg-wrapper,
+.header__icon .svg-wrapper svg {
   height: 2.4rem !important;
   width: 2.4rem !important;
 }
