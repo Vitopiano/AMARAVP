@@ -464,6 +464,11 @@ a.skip-to-content-link:focus-visible {
 }
 
 /* Iconos del header (search, cuenta, carrito) */
+.header__icon .icon {
+  height: 3rem !important;
+  width: 3rem !important;
+}
+
 .color-inverse .header__icon svg {
   fill: var(--vp-azul-hielo) !important;
 }
