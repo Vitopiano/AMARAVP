@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/VP_Logo_Logo_Principal-04.png",
     "logo_width": 300,
-    "favicon": "shopify://shop_images/VP_Social_media_Profile-02.jpg",
+    "favicon": "shopify://shop_images/VP_Logo_Isotipo-25.png",
     "type_header_font": "bricolage_grotesque_n4",
     "heading_scale": 100,
     "type_body_font": "chivo_n4",
@@ -221,11 +221,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "11349500561483629931": {
-        "type": "shopify://apps/notify-me/blocks/app-embed/b399b727-6c85-44fc-9e21-63114bd72054",
-        "disabled": false,
-        "settings": {}
-      },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": false,
