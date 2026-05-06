@@ -313,11 +313,7 @@
   <!-- HEADER -->
   <header class="ps-header">
     <div class="ps-brand">
-      {% if shop.logo %}
-        <img src="{{ shop.logo | image_url: width: 140 }}" alt="{{ shop.name }}" class="ps-brand__logo">
-      {% else %}
-        <span class="ps-brand__name">Vito Piano</span>
-      {% endif %}
+      <img src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP_Logo_Logo_terciario-19.png?v=1778083430" alt="Vito Piano" class="ps-brand__logo">
     </div>
     <div class="ps-order-meta">
       <span class="ps-order-meta__number">{{ order.name }}</span>
