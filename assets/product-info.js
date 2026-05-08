@@ -133,6 +133,7 @@ if (!customElements.get('product-info')) {
               console.log('Fetch aborted by user');
             } else {
               console.error(error);
+              this.productForm?.toggleSubmitButton(false);
             }
           });
       }
@@ -208,6 +209,9 @@ if (!customElements.get('product-info')) {
               variant,
             },
           });
+
+          window?.Shopify?.PaymentButton?.init();
+          this.dispatchEvent(new CustomEvent('variant:change', { bubbles: true, detail: { variant } }));
         };
       }
 
@@ -217,6 +221,7 @@ if (!customElements.get('product-info')) {
         ).forEach((productForm) => {
           const input = productForm.querySelector('input[name="id"]');
           input.value = variantId ?? '';
+          input.toggleAttribute('disabled', !variantId);
           input.dispatchEvent(new Event('change', { bubbles: true }));
         });
       }
@@ -355,6 +360,7 @@ if (!customElements.get('product-info')) {
         this.setQuantityBoundries();
 
         const quantityFormUpdated = html.getElementById(`Quantity-Form-${sectionId}`);
+        if (!this.quantityForm || !quantityFormUpdated) return;
         const selectors = ['.quantity__input', '.quantity__rules', '.quantity__label'];
         for (let selector of selectors) {
           const current = this.quantityForm.querySelector(selector);
