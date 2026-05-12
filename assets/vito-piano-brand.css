@@ -1078,7 +1078,7 @@ h1, h2, .h0, .h1, .h2 {
   /* Alineación de filas entre columnas: ritmo vertical uniforme */
   .footer__content-top .footer__heading,
   .footer__content-top .footer-block__heading {
-    font-size: 2.4rem !important;
+    font-size: 2.2rem !important;
     line-height: 1.8 !important;
     letter-spacing: var(--vp-letter-spacing-wide) !important;
     margin-top: 0 !important;
