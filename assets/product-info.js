@@ -118,7 +118,10 @@ if (!customElements.get('product-info')) {
         this.abortController = new AbortController();
 
         fetch(requestUrl, { signal: this.abortController.signal })
-          .then((response) => response.text())
+          .then((response) => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.text();
+          })
           .then((responseText) => {
             this.pendingRequestUrl = null;
             const html = new DOMParser().parseFromString(responseText, 'text/html');

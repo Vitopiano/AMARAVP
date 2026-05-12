@@ -91,6 +91,7 @@ if (!customElements.get('product-form')) {
           })
           .catch((e) => {
             console.error(e);
+            this.handleErrorMessage(window.cartStrings?.error);
           })
           .finally(() => {
             this.submitButton.classList.remove('loading');
@@ -112,15 +113,21 @@ if (!customElements.get('product-form')) {
 
         if (errorMessage) {
           this.errorMessage.textContent = errorMessage;
+          clearTimeout(this._errorTimeout);
+          this._errorTimeout = setTimeout(() => this.handleErrorMessage(), 5000);
         }
       }
 
       toggleSubmitButton(disable = true, text) {
         if (disable) {
           this.submitButton.setAttribute('disabled', 'disabled');
+          this.submitButton.classList.add('loading');
+          this.querySelector('.loading__spinner').classList.remove('hidden');
           if (text) this.submitButtonText.textContent = text;
         } else {
           this.submitButton.removeAttribute('disabled');
+          this.submitButton.classList.remove('loading');
+          this.querySelector('.loading__spinner').classList.add('hidden');
           this.submitButtonText.textContent = window.variantStrings.addToCart;
         }
       }
