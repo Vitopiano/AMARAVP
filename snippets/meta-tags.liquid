@@ -11,8 +11,6 @@
     assign og_url = request.origin
   endif
 
-  comment — og:description con fallback inteligente por tipo de página + truncado a 155 chars
-  endcomment
   if page_description != blank
     assign og_description = page_description | strip_html | truncate: 155
   elsif request.page_type == 'product'
@@ -29,8 +27,6 @@
     assign og_description = shop.description | default: shop.name | truncate: 155
   endif
 
-  comment — og:locale mapeado desde el locale del request
-  endcomment
   case request.locale.iso_code
     when 'es'
       assign og_locale = 'es_CO'
@@ -50,8 +46,6 @@
       assign og_locale = 'es_CO'
   endcase
 
-  comment — og:image:alt por tipo de página
-  endcomment
   if request.page_type == 'product'
     assign og_image_alt = product.featured_image.alt | default: product.title
   elsif request.page_type == 'article'

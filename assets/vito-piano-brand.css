@@ -1374,11 +1374,11 @@ h1, h2, .h0, .h1, .h2 {
     line-height: 1 !important;
   }
 
-  /* Texto de contenido: cada línea tiene su propio respiro mínimo */
+  /* Texto de contenido: 0.15rem entre frases consecutivas (solo padding-bottom) */
   .footer__content-top p,
   .footer__content-top li,
   .footer__content-top .list-menu__item--link {
-    padding-top: 0.15rem !important;
+    padding-top: 0 !important;
     padding-bottom: 0.15rem !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -1394,11 +1394,11 @@ h1, h2, .h0, .h1, .h2 {
     list-style: none !important;
   }
 
-  /* Títulos de sección (nav): espacio antes = 1.6 */
+  /* Títulos de sección (nav): espacio antes = 1.6, después = 0.6 */
   .footer__content-top .footer__heading,
   .footer__content-top .footer-block__heading {
     margin-top: 1.6rem !important;
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.6rem !important;
     padding: 0 !important;
     line-height: 1 !important;
     text-align: left !important;
