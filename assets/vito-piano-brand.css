@@ -1091,7 +1091,7 @@ h1, h2, .h0, .h1, .h2 {
   .footer__content-top .footer__list li,
   .footer__content-top .footer__list a,
   .footer__content-top .footer-block a {
-    font-size: 1.6rem !important;
+    font-size: 1.5rem !important;
     line-height: 1.4 !important;
     letter-spacing: 0.06em !important;
     margin: 0 !important;
@@ -1378,6 +1378,7 @@ h1, h2, .h0, .h1, .h2 {
   .footer__content-top p,
   .footer__content-top li,
   .footer__content-top .list-menu__item--link {
+    font-size: 1.4rem !important;
     padding-top: 0 !important;
     padding-bottom: 0.15rem !important;
     padding-left: 0 !important;
