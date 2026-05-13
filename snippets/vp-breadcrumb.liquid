@@ -1,0 +1,166 @@
+{%- liquid
+  comment
+    Parámetros:
+    - col_handle: handle de la colección actual (string)
+    - product: objeto product de Shopify (opcional, solo en páginas de producto)
+    Genera el BreadcrumbList JSON-LD con jerarquía completa de la tienda.
+  endcomment
+
+  case col_handle
+    when 'hombre-superior'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_depth = 2
+    when 'hombre-inferior'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_depth = 2
+    when 'camisetas-hombre'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_l2_name = 'Superior'
+      assign bc_l2_handle = 'hombre-superior'
+      assign bc_depth = 3
+    when 'chaquetas-hombre'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_l2_name = 'Superior'
+      assign bc_l2_handle = 'hombre-superior'
+      assign bc_depth = 3
+    when 'blazers-hombre'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_l2_name = 'Superior'
+      assign bc_l2_handle = 'hombre-superior'
+      assign bc_depth = 3
+    when 'pantalones-hombre'
+      assign bc_l1_name = 'Hombre'
+      assign bc_l1_handle = 'hombre'
+      assign bc_l2_name = 'Inferior'
+      assign bc_l2_handle = 'hombre-inferior'
+      assign bc_depth = 3
+    when 'mujer-superior'
+      assign bc_l1_name = 'Mujer'
+      assign bc_l1_handle = 'mujer'
+      assign bc_depth = 2
+    when 'chaquetas-mujer'
+      assign bc_l1_name = 'Mujer'
+      assign bc_l1_handle = 'mujer'
+      assign bc_l2_name = 'Superior'
+      assign bc_l2_handle = 'mujer-superior'
+      assign bc_depth = 3
+    when 'cinturones'
+      assign bc_l1_name = 'Accesorios'
+      assign bc_l1_handle = 'accesorios'
+      assign bc_depth = 2
+    else
+      assign bc_depth = 1
+  endcase
+
+  assign bc_has_product = false
+  if product != blank
+    assign bc_has_product = true
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": {{ shop.name | json }},
+      "item": {{ request.origin | json }}
+    }
+    {%- if bc_depth == 1 -%}
+      {%- if bc_has_product and col_handle != blank -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ request.origin | append: '/collections/' | append: col_handle | json }}
+        }
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | json }}
+        }
+      {%- elsif bc_has_product -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | json }}
+        }
+      {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }}
+        }
+      {%- endif -%}
+
+    {%- elsif bc_depth == 2 -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ bc_l1_name | json }},
+        "item": {{ request.origin | append: '/collections/' | append: bc_l1_handle | json }}
+      }
+      {%- if bc_has_product -%}
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ collection.title | json }},
+          "item": {{ request.origin | append: '/collections/' | append: col_handle | json }}
+        }
+        ,{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ product.title | json }}
+        }
+      {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ collection.title | json }}
+        }
+      {%- endif -%}
+
+    {%- elsif bc_depth == 3 -%}
+      ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ bc_l1_name | json }},
+        "item": {{ request.origin | append: '/collections/' | append: bc_l1_handle | json }}
+      }
+      ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ bc_l2_name | json }},
+        "item": {{ request.origin | append: '/collections/' | append: bc_l2_handle | json }}
+      }
+      {%- if bc_has_product -%}
+        ,{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ collection.title | json }},
+          "item": {{ request.origin | append: '/collections/' | append: col_handle | json }}
+        }
+        ,{
+          "@type": "ListItem",
+          "position": 5,
+          "name": {{ product.title | json }}
+        }
+      {%- else -%}
+        ,{
+          "@type": "ListItem",
+          "position": 4,
+          "name": {{ collection.title | json }}
+        }
+      {%- endif -%}
+    {%- endif -%}
+  ]
+}
+</script>
