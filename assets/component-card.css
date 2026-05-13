@@ -391,13 +391,21 @@
     transform: scale(1.03);
   }
 
+  .card-wrapper .media.media--hover-effect > img:first-child:not(:only-child) {
+    transition: opacity var(--duration-long) ease;
+  }
+
   .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
     opacity: 0;
   }
 
+  .card-wrapper .media.media--hover-effect > img + img {
+    transition: opacity var(--duration-long) ease;
+  }
+
   .card-wrapper:hover .media.media--hover-effect > img + img {
     opacity: 1;
-    transition: transform var(--duration-long) ease;
+    transition: opacity var(--duration-long) ease, transform var(--duration-long) ease;
     transform: scale(1.03);
   }
 
