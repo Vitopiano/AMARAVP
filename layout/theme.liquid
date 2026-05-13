@@ -33,6 +33,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//connect.facebook.net">
 
     <!-- Vito Piano — Google Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -340,6 +343,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
     {% endstyle %}
 
+    <link rel="preload" as="style" href="{{ 'base.css' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'vito-piano-brand.css' | asset_url }}">
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'vito-piano-brand.css' | asset_url | stylesheet_tag }}
 <link rel="preload" as="font" href="{{ 'Decofast.otf' | asset_url }}" type="font/otf" crossorigin>

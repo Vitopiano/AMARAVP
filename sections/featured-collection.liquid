@@ -1,15 +1,22 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+</noscript>
 
 {% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" href="{{ 'mask-blobs.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'mask-blobs.css' | asset_url | stylesheet_tag }}</noscript>
 {%- endif -%}
 
 {%- unless section.settings.quick_add == 'none' -%}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" href="{{ 'quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'quick-add.css' | asset_url | stylesheet_tag }}</noscript>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
