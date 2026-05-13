@@ -29,6 +29,28 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   <style>
     .card-wrapper--sold-out { opacity: 0.5; pointer-events: auto; }
+
+    @media (hover: none) {
+      .card__media .media--hover-effect {
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .card__media .media--hover-effect::-webkit-scrollbar {
+        display: none;
+      }
+      .card__media .media--hover-effect > img {
+        position: relative !important;
+        flex: 0 0 100%;
+        min-width: 100%;
+        scroll-snap-align: start;
+        opacity: 1 !important;
+        object-fit: cover;
+      }
+    }
   </style>
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}

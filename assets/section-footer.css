@@ -360,6 +360,7 @@
 
 @media screen and (max-width: 989px) {
   .footer-block__details-content .list-menu__item--link {
+    display: block;
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
   }
