@@ -1,81 +1,76 @@
 /* ═══════════════════════════════════════════════════
-   VP QUICK-ADD MODAL — Editorial Brand Styling
+   VP QUICK-ADD MODAL — Layout columna única
+   Imagen arriba · Info abajo · Sin overflow
    ═══════════════════════════════════════════════════ */
 
-/* ── Fondo del overlay ── */
+/* ── Overlay ── */
 .quick-add-modal {
-  background: rgba(12, 68, 51, 0.35);
+  background: rgba(12, 68, 51, 0.4);
 }
 
-/* ── Contenedor principal del modal ── */
+/* ── Ventana del modal: ancho fijo centrado ── */
 .quick-add-modal__content {
   background-color: #F5F0E8;
   border-radius: 0;
+  box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
-  box-sizing: border-box;
+  width: calc(100% - 3rem);
+  max-width: 480px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media screen and (min-width: 750px) {
   .quick-add-modal__content {
-    width: 82%;
-    max-width: 960px;
+    max-width: 500px;
+    width: 500px;
+    margin-top: 6rem;
+    max-height: calc(100vh - 8rem);
   }
 }
 
-@media screen and (min-width: 990px) {
-  .quick-add-modal__content {
-    width: 72%;
-  }
-}
-
-/* ── Área de contenido (imagen + info) ── */
+/* ── Área interna: una sola columna, sin flex horizontal ── */
 .quick-add-modal__content-info {
   --modal-padding: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: visible;
-  background-color: #F5F0E8;
+  display: block !important;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
+  background-color: #F5F0E8;
+  overflow: hidden;
 }
 
-.quick-add-modal__content-info > * {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* ── Producto dentro del modal: sin overflow horizontal ── */
+/* ── Producto: forzar layout vertical ── */
 quick-add-modal .product {
-  max-width: 100%;
-  overflow-x: hidden;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+quick-add-modal .product__media-wrapper,
+quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  position: static !important;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-/* ── Columna de imagen: ajustar para no desbordar ── */
-@media screen and (min-width: 750px) {
-  quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
-    max-width: 42%;
-    width: 42%;
-    min-width: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-
-  quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
-    max-width: 58%;
-    width: 58%;
-    min-width: 0;
-    padding: 2.4rem;
-    box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: visible;
-  }
+quick-add-modal .product__info-wrapper,
+quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 2rem 2.4rem 2.4rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* ── Solo imagen principal: ocultar TODO excepto el primer item ── */
+/* ── Solo la primera imagen ── */
 quick-add-modal .thumbnail-list,
 quick-add-modal .thumbnail-slider,
 quick-add-modal .slider-buttons,
@@ -89,50 +84,38 @@ quick-add-modal .product__media-list li:first-child {
   display: block !important;
 }
 
-/* ── Columna de imagen: sticky, una sola imagen que llena el espacio ── */
-@media screen and (min-width: 750px) {
-  quick-add-modal .product__media-wrapper {
-    position: sticky;
-    top: 0;
-    align-self: flex-start;
-    overflow: hidden;
-  }
-
-  quick-add-modal .product__media-list {
-    margin: 0;
-    overflow: hidden;
-  }
-
-  quick-add-modal .product__media-item:first-child .media,
-  quick-add-modal li:first-child .media {
-    max-height: 78vh;
-    overflow: hidden;
-  }
-
-  quick-add-modal .product__media-item:first-child img,
-  quick-add-modal li:first-child img {
-    width: 100%;
-    height: 100%;
-    max-height: 78vh;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
+quick-add-modal .product__media-list {
+  margin: 0;
+  overflow: hidden;
 }
 
-/* ── Título del producto: sin corte de palabras ── */
+/* ── Imagen: alto fijo, cubre el ancho completo ── */
+quick-add-modal .product__media-item:first-child .media,
+quick-add-modal li:first-child .media {
+  height: 320px;
+  overflow: hidden;
+}
+
+quick-add-modal .product__media-item:first-child img,
+quick-add-modal li:first-child img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Título: sin corte de palabras ── */
 quick-add-modal .product__title a,
 quick-add-modal .product__title h1,
 quick-add-modal .product__title h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
   color: #0C4433;
-  word-break: normal;
-  overflow-wrap: normal;
   hyphens: none;
   -webkit-hyphens: none;
-  -ms-hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 /* ── Precio ── */
@@ -141,15 +124,13 @@ quick-add-modal .price {
 }
 
 quick-add-modal .price__regular .price-item {
-  font-size: 1.6rem;
-  letter-spacing: 0.02em;
+  font-size: 1.5rem;
 }
 
-/* ── Texto de impuestos y envío ── */
+/* ── Texto impuestos ── */
 quick-add-modal .product__taxes {
-  font-size: 1.1rem;
-  letter-spacing: 0.06em;
-  opacity: 0.65;
+  font-size: 1rem;
+  opacity: 0.6;
   color: #0C4433;
 }
 
@@ -174,15 +155,48 @@ quick-add-modal .swatch-input__input:checked + label {
   color: #F5F0E8;
 }
 
+/* ── Fila cantidad + agregar al carrito ── */
+quick-add-modal .product-form__buttons {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+quick-add-modal quantity-input {
+  width: 5rem;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+quick-add-modal quantity-input .quantity__input {
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  font-size: 1.2rem;
+  min-width: 0;
+}
+
+quick-add-modal quantity-input .quantity__button {
+  width: 1.6rem;
+  padding: 0;
+}
+
+quick-add-modal .product-form__submit {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
 /* ── Botón "Agregar al carrito" ── */
 quick-add-modal .product-form__cart-submit,
 quick-add-modal [name='add'] {
   background-color: transparent;
   border: 1px solid #0C4433;
   color: #0C4433;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   font-size: 1rem;
   white-space: nowrap;
+  width: 100%;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -196,8 +210,8 @@ quick-add-modal [name='add']:hover {
 quick-add-modal .shopify-payment-button__button {
   background-color: #0C4433 !important;
   border-radius: 0 !important;
-  letter-spacing: 0.12em;
-  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  font-size: 1rem;
 }
 
 /* ── Botón de cierre (×) ── */
@@ -228,68 +242,40 @@ quick-add-modal .shopify-payment-button__button {
 quick-add-modal .product__view-details {
   color: #0C4433;
   font-size: 1.2rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-decoration: none;
   border-bottom: 1px solid rgba(12, 68, 51, 0.3);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding-bottom: 0.1rem;
-  transition: border-color 0.2s ease;
 }
 
 quick-add-modal .product__view-details:hover {
   border-bottom-color: #0C4433;
 }
 
-/* ── Scrollbar del modal ── */
-.quick-add-modal__content::-webkit-scrollbar {
-  width: 4px;
-}
+/* ── Scrollbar ── */
+.quick-add-modal__content::-webkit-scrollbar { width: 3px; }
+.quick-add-modal__content::-webkit-scrollbar-track { background: transparent; }
+.quick-add-modal__content::-webkit-scrollbar-thumb { background: rgba(12, 68, 51, 0.25); }
+.quick-add-modal__content::-webkit-scrollbar-thumb:hover { background: #0C4433; }
 
-.quick-add-modal__content::-webkit-scrollbar-track {
-  background: rgba(12, 68, 51, 0.06);
-}
-
-.quick-add-modal__content::-webkit-scrollbar-thumb {
-  background: rgba(12, 68, 51, 0.3);
-}
-
-.quick-add-modal__content::-webkit-scrollbar-thumb:hover {
-  background: #0C4433;
-}
-
-/* ── Divisores / separadores ── */
-quick-add-modal .product__info-wrapper hr,
-quick-add-modal .product-information hr {
+/* ── Separadores ── */
+quick-add-modal .product__info-wrapper hr {
   border-color: rgba(12, 68, 51, 0.1);
 }
 
-/* ── Selector de cantidad: compacto, botón de carrito protagonista ── */
-quick-add-modal quantity-input {
-  min-width: 0;
-  width: 5rem;
-  flex-shrink: 0;
-}
-
-quick-add-modal quantity-input .quantity__input {
-  min-width: 0;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-  font-size: 1.2rem;
-}
-
-quick-add-modal quantity-input .quantity__button {
-  width: 1.6rem;
-  padding: 0;
-}
-
-quick-add-modal .product-form__submit {
-  flex: 1;
-  min-width: 0;
-}
-
-quick-add-modal .product-form__buttons {
-  max-width: 100%;
-  gap: 0.6rem;
+/* ── Active facets pills ── */
+span.active-facets__button-inner {
+  background-color: #F5F0E8;
+  border: 1px solid rgba(12, 68, 51, 0.2);
+  border-radius: 0;
+  box-shadow: none;
+  color: #0C4433;
+  font-family: var(--font-heading-family);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 1.1rem;
+  text-transform: uppercase;
 }
