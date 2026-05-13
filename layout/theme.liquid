@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#0C4433">
     <link rel="canonical" href="{{ canonical_url }}">
+    {%- render 'vp-hreflang' -%}
     {%- if request.page_type == 'cart'
       or request.page_type == 'search'
       or request.page_type contains 'customers'
