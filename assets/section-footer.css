@@ -361,17 +361,14 @@
 @media screen and (max-width: 989px) {
   .footer-block__details-content .list-menu__item--link {
     display: block;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
-  }
-
-  .footer-block__details-content.rte {
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
   }
 
   .footer-block__details-content.rte > * {
+    display: block;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
     margin: 0;
   }
 }
