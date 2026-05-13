@@ -1,0 +1,200 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .vito-porque__heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .vito-porque__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem 3rem;
+  }
+  @media screen and (min-width: 990px) {
+    .vito-porque__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .vito-porque__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    text-align: center;
+  }
+  .vito-porque__icon {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  .vito-porque__item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .vito-porque__item-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.75;
+  }
+{%- endstyle -%}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="page-width section-{{ section.id }}-padding">
+      {%- if section.settings.title != blank -%}
+        <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin vito-porque__heading">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        </div>
+      {%- endif -%}
+
+      <div class="vito-porque__grid">
+        {%- for block in section.blocks -%}
+          <div class="vito-porque__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <div class="vito-porque__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="vito-porque__item-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="vito-porque__item-text">{{ block.settings.text }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Por qué Vito Piano",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Por qué elegir Vito Piano",
+      "label": "Título"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Pequeño" },
+        { "value": "h1", "label": "Mediano" },
+        { "value": "h0", "label": "Grande" }
+      ],
+      "default": "h1",
+      "label": "Tamaño del título"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado inferior",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pilar",
+      "name": "Pilar de marca",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Ícono (emoji)",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Fibras naturales"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Descripción",
+          "default": "Lino, algodón y materiales que respetan tu piel y el medio ambiente."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Por qué Vito Piano",
+      "blocks": [
+        {
+          "type": "pilar",
+          "settings": {
+            "icon": "🌿",
+            "title": "Fibras naturales",
+            "text": "Lino, algodón y materiales que respetan tu piel y el medio ambiente."
+          }
+        },
+        {
+          "type": "pilar",
+          "settings": {
+            "icon": "🧵",
+            "title": "Hecho a mano",
+            "text": "Cada prenda pasa por manos artesanas colombianas que garantizan acabados únicos."
+          }
+        },
+        {
+          "type": "pilar",
+          "settings": {
+            "icon": "🐌",
+            "title": "Slow fashion",
+            "text": "Producimos en pequeñas colecciones para evitar el exceso y cuidar la calidad."
+          }
+        },
+        {
+          "type": "pilar",
+          "settings": {
+            "icon": "🇨🇴",
+            "title": "Origen colombiano",
+            "text": "Diseño y producción en Colombia, apoyando el talento y la industria local."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

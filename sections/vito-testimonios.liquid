@@ -1,0 +1,198 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .vito-testimonios__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media screen and (min-width: 750px) {
+    .vito-testimonios__grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+  .vito-testimonio {
+    padding: 2rem;
+    border: 1px solid rgba(12, 68, 51, 0.15);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .vito-testimonio__stars {
+    color: #E25027;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .vito-testimonio__text {
+    margin: 0;
+    font-style: italic;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .vito-testimonio__author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.5rem;
+  }
+  .vito-testimonio__name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .vito-testimonio__product {
+    font-size: 0.8rem;
+    opacity: 0.55;
+  }
+{%- endstyle -%}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="page-width section-{{ section.id }}-padding">
+      {%- if section.settings.title != blank -%}
+        <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        </div>
+      {%- endif -%}
+
+      <div class="vito-testimonios__grid">
+        {%- for block in section.blocks -%}
+          <div class="vito-testimonio" {{ block.shopify_attributes }}>
+            <div class="vito-testimonio__stars" aria-label="5 estrellas">★★★★★</div>
+            <blockquote class="vito-testimonio__text">"{{ block.settings.testimony }}"</blockquote>
+            <div class="vito-testimonio__author">
+              <span class="vito-testimonio__name">— {{ block.settings.customer_name }}</span>
+              {%- if block.settings.product_name != blank -%}
+                <span class="vito-testimonio__product">{{ block.settings.product_name }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Testimonios",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Lo que dicen nuestras clientas",
+      "label": "Título"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Pequeño" },
+        { "value": "h1", "label": "Mediano" },
+        { "value": "h0", "label": "Grande" }
+      ],
+      "default": "h1",
+      "label": "Tamaño del título"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espaciado inferior",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonio",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "testimony",
+          "label": "Texto del testimonio",
+          "default": "Increíble calidad, se nota el cuidado en cada detalle. Ya es mi tercera compra y siempre quedo encantada."
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Nombre del cliente",
+          "default": "María P."
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Producto comprado (opcional)",
+          "default": "Blusa Lino Bordada"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonios",
+      "blocks": [
+        {
+          "type": "testimonio",
+          "settings": {
+            "testimony": "Increíble calidad, se nota el cuidado en cada detalle. Ya es mi tercera compra y siempre quedo encantada.",
+            "customer_name": "María P.",
+            "product_name": "Blusa Lino Bordada"
+          }
+        },
+        {
+          "type": "testimonio",
+          "settings": {
+            "testimony": "La tela es suave y el tallaje es perfecto. El envío llegó muy rápido y el empaque es precioso.",
+            "customer_name": "Valentina R.",
+            "product_name": "Vestido Artesanal"
+          }
+        },
+        {
+          "type": "testimonio",
+          "settings": {
+            "testimony": "Llevé la blusa a una reunión y me preguntaron tres veces dónde la había comprado. Definitivamente regreso.",
+            "customer_name": "Carolina M.",
+            "product_name": "Top Tencel"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

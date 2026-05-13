@@ -365,10 +365,13 @@
     padding-bottom: 0.8rem;
   }
 
+  .footer-block__details-content.rte {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
   .footer-block__details-content.rte > * {
-    display: block;
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
     margin: 0;
   }
 }
