@@ -1,0 +1,191 @@
+/* ═══════════════════════════════════════════════════
+   VP QUICK-ADD MODAL — Editorial Brand Styling
+   ═══════════════════════════════════════════════════ */
+
+/* ── Fondo del overlay ── */
+.quick-add-modal {
+  background: rgba(12, 68, 51, 0.35);
+}
+
+/* ── Contenedor principal del modal ── */
+.quick-add-modal__content {
+  background-color: #F5F0E8;
+  border-radius: 0;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 750px) {
+  .quick-add-modal__content {
+    width: 82%;
+    max-width: 1000px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .quick-add-modal__content {
+    width: 72%;
+  }
+}
+
+/* ── Área de contenido (imagen + info) ── */
+.quick-add-modal__content-info {
+  --modal-padding: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #F5F0E8;
+}
+
+/* ── Columna de imagen: ajustar para no desbordar ── */
+@media screen and (min-width: 750px) {
+  quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
+    max-width: 46%;
+    width: 46%;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
+    max-width: 54%;
+    width: 54%;
+    padding-left: 2.4rem;
+    padding-top: 2.4rem;
+    padding-right: 2.4rem;
+    padding-bottom: 2.4rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+}
+
+/* ── Eliminar thumbnails en el modal (innecesarios) ── */
+quick-add-modal .thumbnail-list {
+  display: none !important;
+}
+
+/* ── Título del producto ── */
+quick-add-modal .product__title a {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #0C4433;
+}
+
+/* ── Precio ── */
+quick-add-modal .price {
+  color: #0C4433;
+}
+
+quick-add-modal .price__regular .price-item {
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Texto de impuestos y envío ── */
+quick-add-modal .product__taxes {
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+  color: #0C4433;
+}
+
+/* ── Label "Tamaño" ── */
+quick-add-modal .product-form__input .form__label {
+  color: #0C4433;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+/* ── Botones de talla ── */
+quick-add-modal .swatch-input__input + label,
+quick-add-modal .swatch-input + label {
+  border-color: rgba(12, 68, 51, 0.3);
+  color: #0C4433;
+}
+
+quick-add-modal .swatch-input__input:checked + label {
+  background-color: #0C4433;
+  border-color: #0C4433;
+  color: #F5F0E8;
+}
+
+/* ── Botón "Agregar al carrito" ── */
+quick-add-modal .product-form__cart-submit,
+quick-add-modal [name='add'] {
+  background-color: transparent;
+  border: 1px solid #0C4433;
+  color: #0C4433;
+  letter-spacing: 0.12em;
+  font-size: 1.1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+quick-add-modal .product-form__cart-submit:hover,
+quick-add-modal [name='add']:hover {
+  background-color: #0C4433;
+  color: #F5F0E8;
+}
+
+/* ── Botón "Comprar ahora" ── */
+quick-add-modal .shopify-payment-button__button {
+  background-color: #0C4433 !important;
+  border-radius: 0 !important;
+  letter-spacing: 0.12em;
+  font-size: 1.1rem;
+}
+
+/* ── Botón de cierre (×) ── */
+.quick-add-modal__toggle {
+  background-color: #F5F0E8;
+  border: 1px solid rgba(12, 68, 51, 0.2);
+  border-radius: 0;
+  color: #0C4433;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0.8rem;
+}
+
+.quick-add-modal__toggle:hover {
+  background-color: #0C4433;
+  color: #F5F0E8;
+}
+
+/* ── Link "Ver todos los detalles" ── */
+quick-add-modal .product__view-details {
+  color: #0C4433;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(12, 68, 51, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 0.1rem;
+  transition: border-color 0.2s ease;
+}
+
+quick-add-modal .product__view-details:hover {
+  border-bottom-color: #0C4433;
+}
+
+/* ── Scrollbar del modal ── */
+.quick-add-modal__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.quick-add-modal__content::-webkit-scrollbar-track {
+  background: rgba(12, 68, 51, 0.06);
+}
+
+.quick-add-modal__content::-webkit-scrollbar-thumb {
+  background: rgba(12, 68, 51, 0.3);
+}
+
+.quick-add-modal__content::-webkit-scrollbar-thumb:hover {
+  background: #0C4433;
+}
+
+/* ── Divisores / separadores ── */
+quick-add-modal .product__info-wrapper hr,
+quick-add-modal .product-information hr {
+  border-color: rgba(12, 68, 51, 0.1);
+}
