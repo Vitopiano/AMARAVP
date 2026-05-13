@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   VP QUICK-ADD MODAL — Layout columna única
-   Imagen arriba · Info abajo · Sin overflow
+   VP QUICK-ADD MODAL
    ═══════════════════════════════════════════════════ */
 
 /* ── Overlay ── */
@@ -8,123 +7,118 @@
   background: rgba(12, 68, 51, 0.4);
 }
 
-/* ── Ventana del modal: ancho fijo centrado ── */
+/* ── Ventana ── */
 .quick-add-modal__content {
   background-color: #F5F0E8;
   border-radius: 0;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
-  width: calc(100% - 3rem);
-  max-width: 480px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 @media screen and (min-width: 750px) {
   .quick-add-modal__content {
-    max-width: 500px;
-    width: 500px;
-    margin-top: 6rem;
-    max-height: calc(100vh - 8rem);
+    width: 78%;
+    max-width: 860px;
+    max-height: calc(100vh - 12rem);
   }
 }
 
-/* ── Área interna: una sola columna, sin flex horizontal ── */
+@media screen and (min-width: 990px) {
+  .quick-add-modal__content {
+    width: 68%;
+  }
+}
+
+/* ── Área interna ── */
 .quick-add-modal__content-info {
   --modal-padding: 0;
   padding: 0;
-  display: block !important;
-  width: 100%;
-  box-sizing: border-box;
+  overflow-x: hidden;
   background-color: #F5F0E8;
-  overflow: hidden;
-}
-
-/* ── Producto: forzar layout vertical ── */
-quick-add-modal .product {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-quick-add-modal .product__media-wrapper,
-quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  position: static !important;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
-quick-add-modal .product__info-wrapper,
-quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 2rem 2.4rem 2.4rem;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-/* ── Solo la primera imagen ── */
-quick-add-modal .thumbnail-list,
-quick-add-modal .thumbnail-slider,
-quick-add-modal .slider-buttons,
-quick-add-modal .product__media-list .product__media-item,
-quick-add-modal .product__media-list li {
+/* ── Imagen: solo la primera usando sibling selector ── */
+quick-add-modal .product__media-item ~ .product__media-item,
+quick-add-modal .product__media-list li ~ li {
   display: none !important;
 }
 
-quick-add-modal .product__media-list .product__media-item:first-child,
-quick-add-modal .product__media-list li:first-child {
-  display: block !important;
+quick-add-modal .thumbnail-list,
+quick-add-modal .thumbnail-slider,
+quick-add-modal .slider-buttons {
+  display: none !important;
 }
 
 quick-add-modal .product__media-list {
-  margin: 0;
   overflow: hidden;
+  margin: 0;
 }
 
-/* ── Imagen: alto fijo, cubre el ancho completo ── */
+/* ── Imagen principal: llena la columna ── */
 quick-add-modal .product__media-item:first-child .media,
-quick-add-modal li:first-child .media {
-  height: 320px;
+quick-add-modal .product__media-list li:first-child .media {
   overflow: hidden;
+  height: 100%;
+  min-height: 360px;
 }
 
 quick-add-modal .product__media-item:first-child img,
-quick-add-modal li:first-child img {
+quick-add-modal .product__media-list li:first-child img {
   width: 100%;
-  height: 320px;
+  height: 100%;
+  min-height: 360px;
   object-fit: cover;
   object-position: center top;
   display: block;
+}
+
+/* ── Columna imagen ── */
+@media screen and (min-width: 750px) {
+  quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
+    max-width: 44%;
+    width: 44%;
+    min-width: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+
+  /* ── Columna info: más ancha, con todo el espacio ── */
+  quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
+    max-width: 56%;
+    width: 56%;
+    min-width: 0;
+    padding: 2.4rem 2.4rem 2.4rem 2.8rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 }
 
 /* ── Título: sin corte de palabras ── */
 quick-add-modal .product__title a,
 quick-add-modal .product__title h1,
 quick-add-modal .product__title h2 {
-  font-size: 1.8rem;
-  line-height: 1.25;
+  font-size: 1.6rem;
+  line-height: 1.3;
   color: #0C4433;
-  hyphens: none;
-  -webkit-hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  white-space: normal;
 }
 
 /* ── Precio ── */
-quick-add-modal .price {
-  color: #0C4433;
-}
+quick-add-modal .price { color: #0C4433; }
 
 quick-add-modal .price__regular .price-item {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 /* ── Texto impuestos ── */
@@ -137,9 +131,9 @@ quick-add-modal .product__taxes {
 /* ── Label "Tamaño" ── */
 quick-add-modal .product-form__input .form__label {
   color: #0C4433;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* ── Botones de talla ── */
@@ -155,7 +149,7 @@ quick-add-modal .swatch-input__input:checked + label {
   color: #F5F0E8;
 }
 
-/* ── Fila cantidad + agregar al carrito ── */
+/* ── Fila cantidad + carrito ── */
 quick-add-modal .product-form__buttons {
   display: flex;
   gap: 0.6rem;
@@ -172,7 +166,7 @@ quick-add-modal quantity-input {
 quick-add-modal quantity-input .quantity__input {
   padding-left: 0.2rem;
   padding-right: 0.2rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   min-width: 0;
 }
 
@@ -193,10 +187,11 @@ quick-add-modal [name='add'] {
   background-color: transparent;
   border: 1px solid #0C4433;
   color: #0C4433;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-size: 1rem;
   white-space: nowrap;
   width: 100%;
+  box-sizing: border-box;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -210,11 +205,11 @@ quick-add-modal [name='add']:hover {
 quick-add-modal .shopify-payment-button__button {
   background-color: #0C4433 !important;
   border-radius: 0 !important;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   font-size: 1rem;
 }
 
-/* ── Botón de cierre (×) ── */
+/* ── Botón cierre ── */
 .quick-add-modal__toggle {
   background-color: #F5F0E8;
   border: 1px solid rgba(12, 68, 51, 0.2);
@@ -238,10 +233,10 @@ quick-add-modal .shopify-payment-button__button {
   color: #F5F0E8;
 }
 
-/* ── Link "Ver todos los detalles" ── */
+/* ── "Ver todos los detalles" ── */
 quick-add-modal .product__view-details {
   color: #0C4433;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 0.04em;
   text-decoration: none;
   border-bottom: 1px solid rgba(12, 68, 51, 0.3);
@@ -264,18 +259,4 @@ quick-add-modal .product__view-details:hover {
 /* ── Separadores ── */
 quick-add-modal .product__info-wrapper hr {
   border-color: rgba(12, 68, 51, 0.1);
-}
-
-/* ── Active facets pills ── */
-span.active-facets__button-inner {
-  background-color: #F5F0E8;
-  border: 1px solid rgba(12, 68, 51, 0.2);
-  border-radius: 0;
-  box-shadow: none;
-  color: #0C4433;
-  font-family: var(--font-heading-family);
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-  padding: 0.35rem 1.1rem;
-  text-transform: uppercase;
 }
