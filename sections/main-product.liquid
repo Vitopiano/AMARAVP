@@ -62,13 +62,10 @@
       border-top: 1px solid rgba(12, 68, 51, 0.12);
     }
     .vp-trust-bar__item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.3rem;
-      color: rgba(28, 28, 26, 0.65);
+      font-size: 1.2rem;
+      color: rgba(28, 28, 26, 0.6);
+      letter-spacing: 0.01em;
     }
-    .vp-trust-bar__icon { font-size: 1.4rem; flex-shrink: 0; }
 
     /* Sticky ATC - solo mobile */
     .vp-sticky-atc {
@@ -555,7 +552,7 @@
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
                 {%- if block.settings.size_guide_url != blank -%}
                   <a href="{{ block.settings.size_guide_url }}" class="vp-size-guide-link" target="_blank" rel="noopener">
-                    📏 {{ block.settings.size_guide_text | default: 'Guía de tallas' }}
+                    {{ block.settings.size_guide_text | default: 'Guía de tallas' }}
                   </a>
                 {%- endif -%}
               {%- when 'buy_buttons' -%}
@@ -569,22 +566,13 @@
                 {%- if block.settings.show_trust_bar -%}
                   <div class="vp-trust-bar">
                     {%- if block.settings.shipping_text != blank -%}
-                      <div class="vp-trust-bar__item">
-                        <span class="vp-trust-bar__icon" aria-hidden="true">🚚</span>
-                        <span>{{ block.settings.shipping_text }}</span>
-                      </div>
+                      <div class="vp-trust-bar__item">{{ block.settings.shipping_text }}</div>
                     {%- endif -%}
                     {%- if block.settings.returns_text != blank -%}
-                      <div class="vp-trust-bar__item">
-                        <span class="vp-trust-bar__icon" aria-hidden="true">↩️</span>
-                        <span>{{ block.settings.returns_text }}</span>
-                      </div>
+                      <div class="vp-trust-bar__item">{{ block.settings.returns_text }}</div>
                     {%- endif -%}
                     {%- if block.settings.origin_text != blank -%}
-                      <div class="vp-trust-bar__item">
-                        <span class="vp-trust-bar__icon" aria-hidden="true">🇨🇴</span>
-                        <span>{{ block.settings.origin_text }}</span>
-                      </div>
+                      <div class="vp-trust-bar__item">{{ block.settings.origin_text }}</div>
                     {%- endif -%}
                   </div>
                 {%- endif -%}
@@ -1119,13 +1107,13 @@
           "type": "text",
           "id": "shipping_text",
           "label": "Texto de envío",
-          "default": "Envío gratis en compras mayores a $200.000"
+          "default": "Envío gratis en compras mayores a $400.000"
         },
         {
           "type": "text",
           "id": "returns_text",
           "label": "Texto de cambios",
-          "default": "Cambios y devoluciones en 15 días"
+          "default": "Cambios y devoluciones en 20 días"
         },
         {
           "type": "text",
