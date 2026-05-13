@@ -361,8 +361,8 @@
 @media screen and (max-width: 989px) {
   .footer-block__details-content .list-menu__item--link {
     display: block;
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .footer-block__details-content.rte {
