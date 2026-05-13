@@ -364,11 +364,14 @@
     padding-bottom: 1.4rem;
   }
 
-  .footer-block__details-content > p,
-  .footer-block__details-content > a {
+  .footer-block__details-content.rte > * {
     display: block;
     margin-top: 0;
-    margin-bottom: 1.4rem;
+    margin-bottom: 0;
+  }
+
+  .footer-block__details-content.rte > * + * {
+    margin-top: 1.4rem;
   }
 }
 
