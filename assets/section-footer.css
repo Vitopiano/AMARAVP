@@ -368,7 +368,7 @@
   .footer-block__details-content.rte {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 1rem;
   }
 
   .footer-block__details-content.rte > * {
