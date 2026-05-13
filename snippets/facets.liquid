@@ -15,6 +15,7 @@
 {{ 'component-show-more.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+{{ 'vp-facets.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
@@ -398,16 +399,19 @@
                     class="facet-filters__sort select__select caption-large"
                     id="SortBy"
                     aria-describedby="a11y-refresh-page-message"
+                    style="background-color:#F5F0E8;color:#0C4433;"
                   >
                     {%- for option in results.sort_options -%}
-                      <option
-                        value="{{ option.value | escape }}"
-                        {% if option.value == sort_by %}
-                          selected="selected"
-                        {% endif %}
-                      >
-                        {{ option.name | escape }}
-                      </option>
+                      {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                        <option
+                          value="{{ option.value | escape }}"
+                          {% if option.value == sort_by %}
+                            selected="selected"
+                          {% endif %}
+                        >
+                          {{ option.name | escape }}
+                        </option>
+                      {%- endif -%}
                     {%- endfor -%}
                   </select>
                   <span class="svg-wrapper">
@@ -731,16 +735,19 @@
                           class="select__select"
                           id="SortBy-mobile"
                           aria-describedby="a11y-refresh-page-message"
+                          style="background-color:#F5F0E8;color:#0C4433;"
                         >
                           {%- for option in results.sort_options -%}
-                            <option
-                              value="{{ option.value | escape }}"
-                              {% if option.value == sort_by %}
-                                selected="selected"
-                              {% endif %}
-                            >
-                              {{ option.name | escape }}
-                            </option>
+                            {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                              <option
+                                value="{{ option.value | escape }}"
+                                {% if option.value == sort_by %}
+                                  selected="selected"
+                                {% endif %}
+                              >
+                                {{ option.name | escape }}
+                              </option>
+                            {%- endif -%}
                           {%- endfor -%}
                         </select>
                         <span class="svg-wrapper">
@@ -838,16 +845,19 @@
                 class="facet-filters__sort select__select caption-large"
                 id="SortBy"
                 aria-describedby="a11y-refresh-page-message"
+                style="background-color:#F5F0E8;color:#0C4433;"
               >
                 {%- for option in results.sort_options -%}
-                  <option
-                    value="{{ option.value | escape }}"
-                    {% if option.value == sort_by %}
-                      selected="selected"
-                    {% endif %}
-                  >
-                    {{ option.name | escape }}
-                  </option>
+                  {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                    <option
+                      value="{{ option.value | escape }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name | escape }}
+                    </option>
+                  {%- endif -%}
                 {%- endfor -%}
               </select>
               <span class="svg-wrapper">

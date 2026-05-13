@@ -78,23 +78,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Organization",
+          "@type": ["ClothingStore", "Organization"],
           "@id": "{{ request.origin }}/#organization",
           "name": "{{ shop.name | escape }}",
           "url": "{{ request.origin }}",
+          "telephone": "+573189151143",
+          "priceRange": "$$$",
+          "currenciesAccepted": "COP",
+          "paymentAccepted": "Cash, Credit Card, Debit Card",
           "logo": {
             "@type": "ImageObject",
             "url": "{{ settings.logo | image_url: width: 400 | prepend: 'https:' }}"
           },
+          "image": "{{ settings.logo | image_url: width: 400 | prepend: 'https:' }}",
           "description": "Slow fashion premium. Precisión italiana, alma colombiana. Confeccionado a mano en Bogotá, Colombia.",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Calle 106 # 17-17, Segundo Piso",
             "addressLocality": "Bogotá",
             "addressRegion": "Cundinamarca",
+            "postalCode": "110111",
             "addressCountry": "CO"
           },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+              "opens": "11:00",
+              "closes": "21:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Sunday",
+              "opens": "11:00",
+              "closes": "16:00"
+            }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Colecciones Vito Piano",
+            "url": "{{ request.origin }}/collections/all"
+          },
           "sameAs": [
-            "{{ settings.social_instagram_link }}"
+            "{{ settings.social_instagram_link }}",
+            "{{ settings.social_facebook_link }}",
+            "{{ settings.social_tiktok_link }}"
           ]
         },
         {

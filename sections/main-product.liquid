@@ -37,6 +37,82 @@
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
+
+    /* Guía de tallas */
+    .vp-size-guide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.2rem;
+      color: rgba(12, 68, 51, 0.7);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-top: 0.8rem;
+      transition: color 0.2s;
+    }
+    .vp-size-guide-link:hover { color: #0C4433; }
+
+    /* Barra de confianza */
+    .vp-trust-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid rgba(12, 68, 51, 0.12);
+    }
+    .vp-trust-bar__item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.3rem;
+      color: rgba(28, 28, 26, 0.65);
+    }
+    .vp-trust-bar__icon { font-size: 1.4rem; flex-shrink: 0; }
+
+    /* Sticky ATC - solo mobile */
+    .vp-sticky-atc {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: #FCF9F5;
+      border-top: 1px solid rgba(12, 68, 51, 0.15);
+      padding: 1.2rem 2rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    }
+    .vp-sticky-atc.is-visible { display: flex; }
+    @media screen and (min-width: 750px) {
+      .vp-sticky-atc { display: none !important; }
+    }
+    .vp-sticky-atc__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+    .vp-sticky-atc__title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vp-sticky-atc__price {
+      font-size: 1.2rem;
+      color: rgba(28, 28, 26, 0.65);
+    }
+    .vp-sticky-atc__btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 1.2rem 2rem;
+      font-size: 1.3rem;
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -477,6 +553,11 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+                {%- if block.settings.size_guide_url != blank -%}
+                  <a href="{{ block.settings.size_guide_url }}" class="vp-size-guide-link" target="_blank" rel="noopener">
+                    📏 {{ block.settings.size_guide_text | default: 'Guía de tallas' }}
+                  </a>
+                {%- endif -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -485,6 +566,28 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- if block.settings.show_trust_bar -%}
+                  <div class="vp-trust-bar">
+                    {%- if block.settings.shipping_text != blank -%}
+                      <div class="vp-trust-bar__item">
+                        <span class="vp-trust-bar__icon" aria-hidden="true">🚚</span>
+                        <span>{{ block.settings.shipping_text }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.returns_text != blank -%}
+                      <div class="vp-trust-bar__item">
+                        <span class="vp-trust-bar__icon" aria-hidden="true">↩️</span>
+                        <span>{{ block.settings.returns_text }}</span>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.origin_text != blank -%}
+                      <div class="vp-trust-bar__item">
+                        <span class="vp-trust-bar__icon" aria-hidden="true">🇨🇴</span>
+                        <span>{{ block.settings.origin_text }}</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -750,6 +853,56 @@
 
     {%- render 'vp-schema-product' -%}
   </div>
+
+  <div id="vp-sticky-atc" class="vp-sticky-atc" aria-hidden="true">
+    <div class="vp-sticky-atc__info">
+      <span class="vp-sticky-atc__title">{{ product.title | truncate: 38 }}</span>
+      <span class="vp-sticky-atc__price" id="vp-sticky-price">
+        {{- product.selected_or_first_available_variant.price | money -}}
+      </span>
+    </div>
+    <button class="vp-sticky-atc__btn button button--primary" id="vp-sticky-btn" type="button">
+      {{- 'products.product.add_to_cart' | t -}}
+    </button>
+  </div>
+
+  <script>
+  (function () {
+    function init() {
+      var stickyBar = document.getElementById('vp-sticky-atc');
+      var stickyBtn = document.getElementById('vp-sticky-btn');
+      var stickyPrice = document.getElementById('vp-sticky-price');
+      var mainForm = document.getElementById('product-form-{{ section.id }}');
+      if (!stickyBar || !mainForm) return;
+
+      var mainBtn = mainForm.querySelector('[name="add"]');
+      if (!mainBtn) return;
+
+      new IntersectionObserver(function (entries) {
+        var visible = entries[0].isIntersecting;
+        stickyBar.classList.toggle('is-visible', !visible);
+        stickyBar.setAttribute('aria-hidden', String(visible));
+      }, { threshold: 0.5 }).observe(mainBtn);
+
+      var priceContainer = document.getElementById('price-{{ section.id }}');
+      if (priceContainer && stickyPrice) {
+        new MutationObserver(function () {
+          var el = priceContainer.querySelector('.price-item--sale') ||
+                   priceContainer.querySelector('.price-item--regular');
+          if (el) stickyPrice.textContent = el.textContent.trim();
+        }).observe(priceContainer, { childList: true, subtree: true });
+      }
+
+      if (stickyBtn) {
+        stickyBtn.addEventListener('click', function () { mainBtn.click(); });
+      }
+    }
+
+    document.readyState === 'loading'
+      ? document.addEventListener('DOMContentLoaded', init)
+      : init();
+  })();
+  </script>
 </product-info>
 
 {% schema %}
@@ -919,6 +1072,17 @@
             }
           ],
           "default": "circle"
+        },
+        {
+          "type": "url",
+          "id": "size_guide_url",
+          "label": "URL de guía de tallas"
+        },
+        {
+          "type": "text",
+          "id": "size_guide_text",
+          "label": "Texto del enlace de guía de tallas",
+          "default": "Guía de tallas"
         }
       ]
     },
@@ -940,6 +1104,34 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        },
+        {
+          "type": "header",
+          "content": "Barra de confianza"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_trust_bar",
+          "default": true,
+          "label": "Mostrar barra de confianza"
+        },
+        {
+          "type": "text",
+          "id": "shipping_text",
+          "label": "Texto de envío",
+          "default": "Envío gratis en compras mayores a $200.000"
+        },
+        {
+          "type": "text",
+          "id": "returns_text",
+          "label": "Texto de cambios",
+          "default": "Cambios y devoluciones en 15 días"
+        },
+        {
+          "type": "text",
+          "id": "origin_text",
+          "label": "Texto de origen",
+          "default": "Hecho a mano en Colombia"
         }
       ]
     },
