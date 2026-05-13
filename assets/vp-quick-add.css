@@ -261,11 +261,17 @@ quick-add-modal .product-information hr {
   border-color: rgba(12, 68, 51, 0.1);
 }
 
-/* ── Selector de cantidad: más compacto para que quepa el botón ── */
+/* ── Selector de cantidad: compacto, botón de carrito protagonista ── */
 quick-add-modal quantity-input {
   min-width: 0;
-  width: 10rem;
+  width: 7.2rem;
   flex-shrink: 0;
+}
+
+quick-add-modal quantity-input .quantity__input {
+  min-width: 0;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
 }
 
 quick-add-modal .product-form__submit {
@@ -275,4 +281,5 @@ quick-add-modal .product-form__submit {
 
 quick-add-modal .product-form__buttons {
   max-width: 100%;
+  gap: 0.6rem;
 }
