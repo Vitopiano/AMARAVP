@@ -3,6 +3,11 @@
    Verde #0C4433 · Crema #F5F0E8
    ═══════════════════════════════════════════════════ */
 
+/* ── Reducir gap entre título de colección y filtros ── */
+.collection-hero__title {
+  margin-bottom: 0.5rem;
+}
+
 /* ── Labels del filtro (Talla ^  Precio ^  Disponibilidad ^) ── */
 .facets__summary {
   font-family: var(--font-heading-family);

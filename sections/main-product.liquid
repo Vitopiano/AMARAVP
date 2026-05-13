@@ -58,8 +58,11 @@
       flex-direction: column;
       gap: 0.8rem;
       margin-top: 1.6rem;
+      margin-bottom: 1.6rem;
       padding-top: 1.6rem;
+      padding-bottom: 1.6rem;
       border-top: 1px solid rgba(12, 68, 51, 0.12);
+      border-bottom: 1px solid rgba(12, 68, 51, 0.12);
     }
     .vp-trust-bar__item {
       font-size: 1.2rem;
@@ -543,6 +546,20 @@
                   </button>
                 </modal-opener>
               {%- when 'share' -%}
+                {%- assign buy_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
+                {%- if buy_block.settings.show_trust_bar -%}
+                  <div class="vp-trust-bar">
+                    {%- if buy_block.settings.shipping_text != blank -%}
+                      <div class="vp-trust-bar__item">{{ buy_block.settings.shipping_text }}</div>
+                    {%- endif -%}
+                    {%- if buy_block.settings.returns_text != blank -%}
+                      <div class="vp-trust-bar__item">{{ buy_block.settings.returns_text }}</div>
+                    {%- endif -%}
+                    {%- if buy_block.settings.origin_text != blank -%}
+                      <div class="vp-trust-bar__item">{{ buy_block.settings.origin_text }}</div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
                 {% liquid
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
@@ -563,19 +580,6 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                {%- if block.settings.show_trust_bar -%}
-                  <div class="vp-trust-bar">
-                    {%- if block.settings.shipping_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ block.settings.shipping_text }}</div>
-                    {%- endif -%}
-                    {%- if block.settings.returns_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ block.settings.returns_text }}</div>
-                    {%- endif -%}
-                    {%- if block.settings.origin_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ block.settings.origin_text }}</div>
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
