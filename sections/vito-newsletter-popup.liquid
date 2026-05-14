@@ -270,11 +270,14 @@
   }
 
   .vp-popup__disclaimer {
-    font-size: 1.0rem;
-    color: rgba(28, 28, 26, 0.4);
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(12, 68, 51, 0.45);
     margin: 0;
-    line-height: 1.55;
-    font-family: 'Chivo Mono', monospace;
+    line-height: 1.6;
+    letter-spacing: 0;
   }
 
   .vp-popup__success {
@@ -334,8 +337,7 @@
         >
         <span class="vp-popup__offer">10% en tu primera compra</span>
       </div>
-      <p class="vp-popup__subtext">Únete a un círculo de personas que eligen con propósito. Como bienvenida, un descuento en tu primera compra.</p>
-      <p class="vp-popup__whisper">Sin ruido. Solo lo que vale: novedades, lanzamientos y acceso anticipado a nuevas piezas.</p>
+      <p class="vp-popup__subtext">Únete a un círculo de personas que eligen con propósito.</p>
     </div>
 
     <div class="vp-popup__right">
@@ -417,10 +419,10 @@
           </div>
 
           <button type="submit" class="vp-popup__submit">
-            {{ section.settings.button_label }}
+            Suscribirme
           </button>
 
-          <p class="vp-popup__disclaimer">Al suscribirte aceptas recibir comunicaciones de Vito Piano. Puedes darte de baja en cualquier momento.</p>
+          <p class="vp-popup__disclaimer">Sin ruido. Solo lo que vale: novedades, lanzamientos y acceso anticipado a nuevas piezas.</p>
         {%- endif -%}
       {%- endform -%}
     </div>
