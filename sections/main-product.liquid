@@ -38,6 +38,15 @@
       }
     }
 
+    /* Vendor sobre el título */
+    .vp-product-vendor {
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(28, 28, 26, 0.4);
+      margin: 0 0 0.8rem;
+    }
+
     /* Guía de tallas */
     .vp-size-guide-link {
       display: inline-flex;
@@ -174,6 +183,9 @@
                 </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
+                  {%- if product.vendor != blank -%}
+                    <p class="vp-product-vendor">{{ product.vendor }}</p>
+                  {%- endif -%}
                   <h1>{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
