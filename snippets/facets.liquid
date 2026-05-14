@@ -402,7 +402,7 @@
                     style="background-color:#F5F0E8;color:#0C4433;"
                   >
                     {%- for option in results.sort_options -%}
-                      {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                      {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' or option.value == 'created-descending' or option.value == 'created-ascending' -%}
                         <option
                           value="{{ option.value | escape }}"
                           {% if option.value == sort_by %}
@@ -738,7 +738,7 @@
                           style="background-color:#F5F0E8;color:#0C4433;"
                         >
                           {%- for option in results.sort_options -%}
-                            {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                            {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' or option.value == 'created-descending' or option.value == 'created-ascending' -%}
                               <option
                                 value="{{ option.value | escape }}"
                                 {% if option.value == sort_by %}
@@ -848,7 +848,7 @@
                 style="background-color:#F5F0E8;color:#0C4433;"
               >
                 {%- for option in results.sort_options -%}
-                  {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' -%}
+                  {%- if option.value == 'best-selling' or option.value == 'price-ascending' or option.value == 'price-descending' or option.value == 'created-descending' or option.value == 'created-ascending' -%}
                     <option
                       value="{{ option.value | escape }}"
                       {% if option.value == sort_by %}

@@ -1864,6 +1864,18 @@ body {
   overflow-x: hidden;
 }
 
+/* Filtros — "Eliminar todo" hover naranja */
+.active-facets__button-remove:hover,
+.active-facets__button-remove:hover span,
+.mobile-facets__clear:hover {
+  color: var(--vp-terracota) !important;
+}
+
+/* Filtros — "Restablecer" por sección hover naranja */
+.facets__reset:hover {
+  color: var(--vp-terracota) !important;
+}
+
 /* Anular page-width del ul interno */
 .mega-menu__list.page-width {
   max-width: none !important;
