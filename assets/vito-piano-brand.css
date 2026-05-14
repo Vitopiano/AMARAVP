@@ -1281,12 +1281,13 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 @media screen and (max-width: 749px) {
-  /* Flex row: [isotipo 0] [logo 1] [icons 9] [hamburger 10] */
+  /* Flex row: [roseta izq] [logo CENTRADO absoluto] [icons der] [hamburger] */
   .header {
     display: flex !important;
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
+    position: relative !important;
   }
 
   header-drawer {
@@ -1301,7 +1302,8 @@ h1, h2, .h0, .h1, .h2 {
     align-items: center;
     order: 0;
     flex-shrink: 0;
-    margin-right: 0.6rem;
+    margin-right: 0 !important;
+    z-index: 2;
   }
 
   .header__isotipo-mobile .header__isotipo-img {
@@ -1310,19 +1312,24 @@ h1, h2, .h0, .h1, .h2 {
     object-fit: contain;
   }
 
+  /* Logo centrado absolutamente en el header */
   .header__heading,
   .header--mobile-center .header__heading {
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
     order: 1;
-    flex: 1 1 auto;
-    text-align: left;
-    max-width: none !important;
+    flex: 0 0 auto !important;
+    text-align: center !important;
+    max-width: 55% !important;
+    z-index: 1;
   }
 
   .header__heading-logo-wrapper {
     max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .header__heading-logo {
@@ -1336,9 +1343,10 @@ h1, h2, .h0, .h1, .h2 {
     order: 9;
     flex-shrink: 0;
     margin-left: auto !important;
+    z-index: 2;
   }
 
-  /* Hide the desktop isotipo inside icons panel */
+  /* Ocultar el isotipo desktop dentro del panel de iconos */
   .header__icons .header__isotipo-link {
     display: none !important;
   }
