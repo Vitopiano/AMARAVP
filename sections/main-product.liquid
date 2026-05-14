@@ -316,7 +316,7 @@
                   </details>
                 </div>
               {%- when 'quantity_selector' -%}
-                {%- unless product.media.size > 1 -%}
+                {%- unless true -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -549,9 +549,6 @@
                 {%- assign buy_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
                 {%- if buy_block.settings.show_trust_bar -%}
                   <div class="vp-trust-bar">
-                    {%- if buy_block.settings.shipping_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ buy_block.settings.shipping_text }}</div>
-                    {%- endif -%}
                     {%- if buy_block.settings.returns_text != blank -%}
                       <div class="vp-trust-bar__item">{{ buy_block.settings.returns_text }}</div>
                     {%- endif -%}

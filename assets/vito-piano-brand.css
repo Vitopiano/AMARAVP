@@ -447,9 +447,16 @@ a.skip-to-content-link:focus-visible {
   font-family: var(--vp-font-mono);
 }
 
-/* Header bar — todo centrado verticalmente */
+/* Header bar: centrado en mobile, alineado al fondo en desktop */
 .header {
   align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    align-items: flex-end !important;
+    padding-bottom: 1rem !important;
+  }
 }
 
 /* ============================================
@@ -1746,23 +1753,31 @@ quick-add-modal .product__rating {
    MEGA MENU DESKTOP — Flyout a la derecha
    ============================================ */
 
-/* Panel compacto posicionado bajo el botón de nav, no full-width */
+/* <details class="mega-menu"> necesita position:relative para que
+   .mega-menu__content se posicione relativo al nav-item, no al header */
 .mega-menu {
   position: relative !important;
 }
 
+/* Panel compacto: debajo del nav-item, no full-width
+   - position/top: duplicamos para mayor especificidad
+   - width:auto cancela el right:0 de Dawn que hace full-width */
 .mega-menu__content {
+  position: absolute !important;
+  top: 100% !important;
   left: 0 !important;
   right: auto !important;
+  width: auto !important;
   min-width: 17rem !important;
   padding-top: 0.4rem !important;
   padding-bottom: 0.4rem !important;
   background-color: var(--vp-crema) !important;
   border-top: 2px solid var(--vp-terracota) !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  z-index: 10 !important;
 }
 
-/* Anular el page-width del ul interno */
+/* Anular page-width del ul interno */
 .mega-menu__list.page-width {
   max-width: none !important;
   padding-left: 0 !important;
@@ -1770,20 +1785,25 @@ quick-add-modal .product__rating {
   width: auto !important;
 }
 
-/* Columna única en lugar de 6-columnas grid */
+/* Columna única — cancela el grid de 6 columnas de Dawn */
 .mega-menu__list {
   display: block !important;
   padding: 0 !important;
   gap: 0 !important;
 }
 
-/* Cada li es el contexto del flyout */
+/* Cada li: contexto del flyout + ancho auto
+   (Dawn aplica width:16% en header--top-center que hay que cancelar) */
 .mega-menu__list > li {
   position: relative !important;
+  width: auto !important;
+  padding-right: 0 !important;
 }
 
-/* Nivel 2 (Superior, Inferior) — verde botella con flecha → */
-.mega-menu__link--level-2 {
+/* ── Nivel 2 (Superior, Inferior) ──
+   Selector con .mega-menu__content para ganar a la variable
+   --color-foreground del color-scheme que Dawn inyecta */
+.mega-menu__content .mega-menu__link--level-2 {
   color: var(--vp-verde-botella) !important;
   font-family: var(--vp-font-mono) !important;
   font-size: 1.0rem !important;
@@ -1798,7 +1818,7 @@ quick-add-modal .product__rating {
   white-space: nowrap;
 }
 
-.mega-menu__link--level-2::after {
+.mega-menu__content .mega-menu__link--level-2::after {
   content: '›';
   font-size: 1.8rem;
   line-height: 1;
@@ -1806,7 +1826,7 @@ quick-add-modal .product__rating {
   opacity: 0.65;
 }
 
-/* Flyout nivel 3 — oculto, aparece a la DERECHA al hacer hover */
+/* ── Flyout nivel 3: oculto, aparece a la DERECHA al hacer hover ── */
 .mega-menu__list > li > ul.list-unstyled {
   position: absolute !important;
   left: 100% !important;
@@ -1822,17 +1842,17 @@ quick-add-modal .product__rating {
   pointer-events: none !important;
   transform: translateX(-6px) !important;
   transition: opacity 0.18s ease, transform 0.18s ease !important;
+  z-index: 11 !important;
 }
 
-/* Mostrar flyout al pasar el cursor por el li */
 .mega-menu__list > li:hover > ul.list-unstyled {
   opacity: 1 !important;
   pointer-events: auto !important;
   transform: translateX(0) !important;
 }
 
-/* Nivel 3 (Chaquetas, Camisetas, Blazer) */
-.mega-menu__list > li > ul.list-unstyled .mega-menu__link {
+/* ── Nivel 3 (Camisetas, Chaquetas, Blazer…) ── */
+.mega-menu__content .mega-menu__list > li > ul.list-unstyled .mega-menu__link {
   color: var(--vp-verde-botella) !important;
   font-family: var(--vp-font-mono) !important;
   font-size: 1.0rem !important;
@@ -1845,7 +1865,7 @@ quick-add-modal .product__rating {
   white-space: nowrap;
 }
 
-.mega-menu__list > li > ul.list-unstyled .mega-menu__link:hover {
+.mega-menu__content .mega-menu__list > li > ul.list-unstyled .mega-menu__link:hover {
   color: var(--vp-terracota) !important;
   text-decoration: none !important;
 }

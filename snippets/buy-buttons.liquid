@@ -70,9 +70,7 @@
           endif
         -%}
 
-        {%- if product.media.size > 1 -%}
-          {%- comment -%} Editorial layout: [cantidad | añadir] arriba / [comprar ahora] abajo {%- endcomment -%}
-          <div class="product-form__buttons">
+        <div class="product-form__buttons">
             <div class="vp-qty-row">
               <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section_id }}">
                 <button class="quantity__button no-js-hidden" name="minus" type="button">
@@ -121,32 +119,6 @@
               {{ form | payment_button }}
             {%- endif -%}
           </div>
-        {%- else -%}
-          {%- comment -%} Layout estándar (producto con 1 imagen) {%- endcomment -%}
-          <div class="product-form__buttons">
-            <button
-              id="ProductSubmitButton-{{ section_id }}"
-              type="submit"
-              name="add"
-              class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout or product.selected_or_first_available_variant == null %}disabled{% endif %}
-            >
-              <span>
-                {%- if product.selected_or_first_available_variant == null -%}
-                  {{ 'products.product.unavailable' | t }}
-                {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                  {{ 'products.product.sold_out' | t }}
-                {%- else -%}
-                  {{ 'products.product.add_to_cart' | t }}
-                {%- endif -%}
-              </span>
-              {%- render 'loading-spinner' -%}
-            </button>
-            {%- if show_dynamic_checkout -%}
-              {{ form | payment_button }}
-            {%- endif -%}
-          </div>
-        {%- endif -%}
       {%- endform -%}
     </product-form>
   {%- else -%}
