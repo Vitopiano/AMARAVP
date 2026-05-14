@@ -1697,6 +1697,52 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   QUICK-ADD MODAL — Editorial 3 columnas
+   ============================================ */
+
+/* 1. Modal ancho completo — elimina scroll horizontal */
+@media screen and (min-width: 990px) {
+  .quick-add-modal__content {
+    width: 92% !important;
+    max-width: 1400px !important;
+    margin-top: 4rem !important;
+    max-height: calc(100% - 8rem) !important;
+  }
+}
+
+/* 2. Título sin cortar palabras */
+quick-add-modal .product__title h1,
+quick-add-modal .product__title a {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* 3. Botones — misma altura los tres */
+quick-add-modal quantity-input.quantity,
+quick-add-modal .vp-qty-row .product-form__submit,
+quick-add-modal .shopify-payment-button__button--unbranded,
+quick-add-modal .shopify-payment-button__button {
+  height: 5.4rem !important;
+  min-height: 0 !important;
+}
+
+/* 4. Botones — mismo ancho total (qty+añadir = comprar ahora) */
+quick-add-modal .product-form__buttons,
+quick-add-modal .vp-qty-row,
+quick-add-modal .shopify-payment-button {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 5. Eliminar rating nativo de Dawn — conservar solo Judge.me */
+quick-add-modal .rating,
+quick-add-modal .rating-star,
+quick-add-modal .product__rating {
+  display: none !important;
+}
+
+/* ============================================
    MEGA MENU DESKTOP — Flyout a la derecha
    ============================================ */
 
@@ -1736,9 +1782,9 @@ h1, h2, .h0, .h1, .h2 {
   position: relative !important;
 }
 
-/* Nivel 2 (Superior, Inferior) — naranja con flecha → */
+/* Nivel 2 (Superior, Inferior) — verde botella con flecha → */
 .mega-menu__link--level-2 {
-  color: var(--vp-terracota) !important;
+  color: var(--vp-verde-botella) !important;
   font-family: var(--vp-font-mono) !important;
   font-size: 1.0rem !important;
   letter-spacing: var(--vp-letter-spacing-wide) !important;
@@ -1787,7 +1833,7 @@ h1, h2, .h0, .h1, .h2 {
 
 /* Nivel 3 (Chaquetas, Camisetas, Blazer) */
 .mega-menu__list > li > ul.list-unstyled .mega-menu__link {
-  color: var(--vp-negro-suave) !important;
+  color: var(--vp-verde-botella) !important;
   font-family: var(--vp-font-mono) !important;
   font-size: 1.0rem !important;
   letter-spacing: var(--vp-letter-spacing-wide) !important;
