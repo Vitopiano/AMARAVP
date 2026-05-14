@@ -1849,6 +1849,14 @@ quick-add-modal .product__rating {
   border-top: 2px solid var(--vp-terracota) !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
   z-index: 10 !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Anular max-height del header sticky que causa scroll */
+.shopify-section-header-sticky .mega-menu__content {
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 /* Anular page-width del ul interno */
