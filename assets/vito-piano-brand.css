@@ -1859,6 +1859,11 @@ quick-add-modal .product__rating {
   overflow: visible !important;
 }
 
+/* Evitar scrollbar horizontal en página por submenús que sobresalen del viewport */
+body {
+  overflow-x: hidden;
+}
+
 /* Anular page-width del ul interno */
 .mega-menu__list.page-width {
   max-width: none !important;
