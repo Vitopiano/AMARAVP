@@ -1704,6 +1704,80 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   SEARCH — Input y resultados en crema
+   ============================================ */
+
+/* Input field: fondo crema, texto verde */
+.header predictive-search .field,
+.header predictive-search .field__input,
+.header predictive-search input[type="search"],
+.search-modal .field,
+.search-modal .field__input,
+.search-modal input[type="search"] {
+  background-color: var(--vp-crema) !important;
+  color: var(--vp-verde-botella) !important;
+  border-color: rgba(12, 68, 51, 0.2) !important;
+}
+
+/* Label flotante "Búsqueda" */
+.header predictive-search .field__label,
+.search-modal .field__label {
+  color: rgba(12, 68, 51, 0.6) !important;
+}
+
+/* Íconos (lupa, x) dentro del search */
+.header predictive-search .search__button svg,
+.header predictive-search .reset__button svg,
+.search-modal .search__button svg,
+.search-modal .reset__button svg {
+  fill: var(--vp-verde-botella) !important;
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Panel de resultados: fondo crema */
+.predictive-search {
+  background-color: var(--vp-crema) !important;
+  border-color: rgba(12, 68, 51, 0.12) !important;
+}
+
+/* Separador "PRODUCTOS" */
+.predictive-search__heading {
+  color: rgba(12, 68, 51, 0.55) !important;
+  border-bottom-color: rgba(12, 68, 51, 0.1) !important;
+}
+
+/* Nombre del producto */
+.predictive-search__item-heading {
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Precio */
+.predictive-search__item .price,
+.predictive-search__item .price-item {
+  color: rgba(12, 68, 51, 0.7) !important;
+}
+
+/* Item hover: tinte verde muy sutil */
+.predictive-search__list-item[aria-selected='true'] > *,
+.predictive-search__list-item:hover > *,
+.predictive-search__item[aria-selected='true'],
+.predictive-search__item:hover {
+  background-color: rgba(12, 68, 51, 0.04) !important;
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Botón "Buscar X" al fondo */
+.predictive-search__item--term {
+  color: var(--vp-verde-botella) !important;
+}
+
+.predictive-search__item--term .icon-arrow,
+.predictive-search__item--term svg {
+  color: var(--vp-terracota) !important;
+  fill: var(--vp-terracota) !important;
+}
+
+/* ============================================
    QUICK-ADD MODAL — Editorial 3 columnas
    ============================================ */
 
