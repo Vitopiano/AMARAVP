@@ -1319,7 +1319,7 @@ h1, h2, .h0, .h1, .h2 {
     object-fit: contain;
   }
 
-  /* Logo centrado en el espacio libre entre roseta e iconos */
+  /* Logo a la izquierda en mobile */
   .header__heading,
   .header--mobile-center .header__heading {
     position: static !important;
@@ -1328,10 +1328,10 @@ h1, h2, .h0, .h1, .h2 {
     top: auto !important;
     order: 1;
     flex: 1 1 auto !important;
-    text-align: center !important;
+    text-align: left !important;
     max-width: none !important;
     display: flex !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     z-index: 1;
   }
@@ -1339,12 +1339,12 @@ h1, h2, .h0, .h1, .h2 {
   .header__heading-logo-wrapper {
     max-width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .header__heading-logo {
-    max-height: 2.9rem !important;
-    max-width: 11.3rem !important;
+    max-height: 3.2rem !important;
+    max-width: 12.4rem !important;
     width: auto !important;
     object-fit: contain;
   }
