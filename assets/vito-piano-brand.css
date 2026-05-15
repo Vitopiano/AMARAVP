@@ -314,13 +314,17 @@ a.skip-to-content-link:focus-visible {
   border: 0.1rem solid rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Seleccionado: ring externo sobre el círculo */
+/* Seleccionado: ring sobre el círculo interior, no el label */
 .swatch-input__input:checked + .swatch-input__label:has(.swatch) {
   background-color: transparent !important;
   border: none !important;
+  outline: none !important;
+  border-radius: 50% !important;
+}
+
+.swatch-input__input:checked + .swatch-input__label:has(.swatch) .swatch {
   outline: 0.15rem solid var(--vp-negro-suave) !important;
   outline-offset: 0.25rem !important;
-  border-radius: 50% !important;
 }
 
 /* No disponible: diagonal mantenida en el círculo interior */
