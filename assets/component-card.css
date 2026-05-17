@@ -601,3 +601,21 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+/* Mobile: link directo al producto, sin popup */
+.vp-quick-add-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .vp-quick-add-desktop {
+    display: none;
+  }
+
+  .vp-quick-add-mobile {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+  }
+}
+}
