@@ -71,7 +71,28 @@
   box-sizing: border-box;
 }
 
-/* ── Imagen: solo la primera usando sibling selector ── */
+/* ── Galería editorial en popup: solo la imagen principal, sin columna scroll ── */
+quick-add-modal .vp-editorial__scroll {
+  display: none !important;
+}
+
+quick-add-modal .vp-editorial__sticky {
+  display: block !important;
+  position: static !important;
+  height: 100% !important;
+  flex: 1 1 auto !important;
+  overflow: hidden;
+}
+
+quick-add-modal .vp-editorial__sticky .vp-editorial__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Imagen Dawn estándar: solo la primera ── */
 quick-add-modal .product__media-item ~ .product__media-item,
 quick-add-modal .product__media-list li ~ li {
   display: none !important;
