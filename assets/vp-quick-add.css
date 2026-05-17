@@ -17,10 +17,40 @@
 }
 
 @media screen and (min-width: 750px) {
+  /* Pegado al tope — antes tenía 10rem de margen */
   .quick-add-modal__content {
     width: 78%;
     max-width: 860px;
-    max-height: calc(100vh - 12rem);
+    margin-top: 1.5rem;
+    height: calc(100vh - 3rem);
+    max-height: calc(100vh - 3rem);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Content-info ocupa el espacio restante */
+  .quick-add-modal__content-info {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Permite que la altura fluya hacia .product */
+  .quick-add-modal__content-info > * {
+    height: 100%;
+  }
+
+  quick-add-modal product-info {
+    display: flex;
+    width: 100%;
+  }
+
+  quick-add-modal .product {
+    width: 100%;
+    min-height: 0;
   }
 }
 
@@ -88,16 +118,31 @@ quick-add-modal .product__media-list li:first-child img {
     align-self: stretch;
   }
 
-  /* ── Columna info: más ancha, con todo el espacio ── */
+  /* ── Columna info: scroll independiente ── */
   quick-add-modal .product:not(.product--no-media) .product__info-wrapper {
     max-width: 56%;
     width: 56%;
     min-width: 0;
+    height: 100%;
     padding: 2.4rem 2.4rem 2.4rem 2.8rem;
     box-sizing: border-box;
     overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* ── Cadena de altura para que la imagen llene la columna ── */
+  quick-add-modal .product__column-sticky,
+  quick-add-modal .product__media-list,
+  quick-add-modal .product__media-item:first-child,
+  quick-add-modal .product__media-item:first-child .product-media-container {
+    height: 100%;
   }
 }
+
+/* ── Scrollbar en columna info ── */
+quick-add-modal .product__info-wrapper::-webkit-scrollbar { width: 3px; }
+quick-add-modal .product__info-wrapper::-webkit-scrollbar-track { background: transparent; }
+quick-add-modal .product__info-wrapper::-webkit-scrollbar-thumb { background: rgba(12, 68, 51, 0.25); }
 
 /* ── Título: sin corte de palabras ── */
 quick-add-modal .product__title a,
@@ -136,10 +181,10 @@ quick-add-modal .product-form__input .form__label {
   font-size: 1rem;
 }
 
-/* ── Botones de talla ── */
+/* ── Botones de talla: mismo grosor 1px, color más suave para no-seleccionado ── */
 quick-add-modal .swatch-input__input + label,
 quick-add-modal .swatch-input + label {
-  border-color: rgba(12, 68, 51, 0.3);
+  border: 1px solid rgba(12, 68, 51, 0.3);
   color: #0C4433;
 }
 
@@ -161,6 +206,16 @@ quick-add-modal quantity-input {
   width: 5rem;
   min-width: 0;
   flex-shrink: 0;
+}
+
+/* ── Borde del quantity igual al del botón ATC: 1px solid #0C4433 ── */
+quick-add-modal .quantity:after {
+  box-shadow: 0 0 0 1px #0C4433;
+  border-color: transparent;
+}
+
+quick-add-modal .quantity:before {
+  box-shadow: none;
 }
 
 quick-add-modal quantity-input .quantity__input {
@@ -229,17 +284,26 @@ quick-add-modal .shopify-payment-button__button {
 }
 
 .quick-add-modal__toggle:hover {
-  background-color: #0C4433;
+  background-color: #6B1420;
   color: #F5F0E8;
+}
+
+/* ── Hipervínculos: todos naranjas ── */
+quick-add-modal a:not(.button):not([class*="quick-add__submit"]) {
+  color: #E25027;
+}
+
+quick-add-modal a:not(.button):not([class*="quick-add__submit"]):hover {
+  color: #c73e1a;
 }
 
 /* ── "Ver todos los detalles" ── */
 quick-add-modal .product__view-details {
-  color: #0C4433;
+  color: #E25027;
   font-size: 1.1rem;
   letter-spacing: 0.04em;
   text-decoration: none;
-  border-bottom: 1px solid rgba(12, 68, 51, 0.3);
+  border-bottom: 1px solid rgba(226, 80, 39, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -247,7 +311,7 @@ quick-add-modal .product__view-details {
 }
 
 quick-add-modal .product__view-details:hover {
-  border-bottom-color: #0C4433;
+  border-bottom-color: #E25027;
 }
 
 /* ── Scrollbar ── */
