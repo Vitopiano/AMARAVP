@@ -1539,11 +1539,11 @@ h1, h2, .h0, .h1, .h2 {
     padding: 0 !important;
   }
 
-  /* Columna fotos: 72% del total (36% izq sticky + 36% centro scroll) */
+  /* Columna fotos: 70% del total (35% izq sticky + 35% centro scroll) */
   .vp-product-editorial .product__media-wrapper {
-    flex: 0 0 72% !important;
-    width: 72% !important;
-    max-width: 72% !important;
+    flex: 0 0 70% !important;
+    width: 70% !important;
+    max-width: 70% !important;
     /* flex row interno: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
@@ -1557,14 +1557,14 @@ h1, h2, .h0, .h1, .h2 {
      align-self: flex-start es crítico: permite que el wrapper tenga su
      altura natural (contenido) en vez de estirarse, lo que da rango al sticky. */
   .vp-product-editorial .product__info-wrapper {
-    flex: 0 0 28% !important;
-    width: 28% !important;
-    max-width: 28% !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    max-width: 30% !important;
     align-self: flex-start !important;
     position: sticky !important;
     top: 0 !important;
     /* padding-top absorbe la altura del header para que el título no quede tapado */
-    padding-top: calc(var(--header-group-height, 5rem) + 2rem) !important;
+    padding-top: calc(var(--header-group-height, 5rem) + 0.5rem) !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
     padding-bottom: 4rem !important;
