@@ -1562,9 +1562,8 @@ h1, h2, .h0, .h1, .h2 {
     max-width: 30% !important;
     align-self: flex-start !important;
     position: sticky !important;
-    top: 0 !important;
-    /* padding-top absorbe la altura del header para que el título no quede tapado */
-    padding-top: calc(var(--header-group-height, 5rem) + 0.5rem) !important;
+    top: var(--header-group-height, 5rem) !important;
+    padding-top: 1.5rem !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
     padding-bottom: 4rem !important;
