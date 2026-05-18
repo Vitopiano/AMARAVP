@@ -1781,16 +1781,34 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   QUICK-ADD MODAL — Editorial 3 columnas
+   QUICK-ADD MODAL — 2 columnas: imagen única + info
    ============================================ */
 
-/* 1. Modal ancho completo — elimina scroll horizontal */
+/* 1. Dimensiones del modal */
 @media screen and (min-width: 990px) {
   .quick-add-modal__content {
-    width: 92% !important;
-    max-width: 1400px !important;
-    margin-top: 4rem !important;
-    max-height: calc(100% - 8rem) !important;
+    width: 72% !important;
+    max-width: 920px !important;
+    margin-top: 1.5rem !important;
+    height: calc(100vh - 3rem) !important;
+    max-height: calc(100vh - 3rem) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Anular layout editorial de 3 cols — volver a 2 cols (44% imagen | 56% info) */
+  quick-add-modal .vp-product-editorial .product__media-wrapper {
+    flex: 0 0 44% !important;
+    width: 44% !important;
+    max-width: 44% !important;
+    display: block !important;
+  }
+
+  quick-add-modal .vp-product-editorial .product__info-wrapper {
+    flex: 0 0 56% !important;
+    width: 56% !important;
+    max-width: 56% !important;
   }
 }
 
