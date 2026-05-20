@@ -1781,14 +1781,14 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   QUICK-ADD MODAL — 2 columnas: imagen única + info
+   QUICK-ADD MODAL — 3 columnas: fija | scroll | info
    ============================================ */
 
-/* 1. Dimensiones del modal */
 @media screen and (min-width: 990px) {
+  /* Popup ancho para las 3 columnas editoriales */
   .quick-add-modal__content {
-    width: 72% !important;
-    max-width: 920px !important;
+    width: 88% !important;
+    max-width: 1280px !important;
     margin-top: 1.5rem !important;
     height: calc(100vh - 3rem) !important;
     max-height: calc(100vh - 3rem) !important;
@@ -1797,18 +1797,14 @@ h1, h2, .h0, .h1, .h2 {
     flex-direction: column !important;
   }
 
-  /* Anular layout editorial de 3 cols — volver a 2 cols (44% imagen | 56% info) */
+  /* Cadena de altura para las 3 columnas */
   quick-add-modal .vp-product-editorial .product__media-wrapper {
-    flex: 0 0 44% !important;
-    width: 44% !important;
-    max-width: 44% !important;
-    display: block !important;
+    height: 100% !important;
   }
 
   quick-add-modal .vp-product-editorial .product__info-wrapper {
-    flex: 0 0 56% !important;
-    width: 56% !important;
-    max-width: 56% !important;
+    height: 100% !important;
+    overflow-y: auto !important;
   }
 }
 
