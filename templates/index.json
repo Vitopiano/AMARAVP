@@ -37,8 +37,41 @@
         "padding_bottom": 12
       }
     },
-    "166857843790a880d7": {
+    "1779403844c13cd9c6": {
       "type": "apps",
+      "blocks": {
+        "judge_me_reviews_reviews_grid_widget_48cbjL": {
+          "type": "shopify://apps/judge-me-reviews/blocks/reviews_grid_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "review_selection": "all",
+            "products": [],
+            "show_media_only": false,
+            "display_order": "media_first",
+            "card_grouping": "per_media",
+            "columns_desktop": 3,
+            "rows_desktop": 3,
+            "columns_mobile": "2",
+            "rows_mobile": 6,
+            "show_stars": true,
+            "show_reviewer_name": true,
+            "show_review_title_on_hover_desktop": true,
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "card_spacing": "medium",
+            "header_text_color": "#000000",
+            "star_and_reviewer_name_color": "#F9F9F9",
+            "drop_shadow_color": "#000000",
+            "overlay_and_background_color": "#000000",
+            "content_color": "#F9F9F9",
+            "header_text": "From our customers",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_reviews_grid_widget_48cbjL"
+      ],
       "settings": {
         "include_margins": true
       }
@@ -46,6 +79,6 @@
   },
   "order": [
     "featured_collection",
-    "166857843790a880d7"
+    "1779403844c13cd9c6"
   ]
 }
