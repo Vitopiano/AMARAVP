@@ -1,0 +1,604 @@
+<style>
+  /* ============================================
+     PROGRAMA DE GARANTÍA — Vito Piano
+  ============================================ */
+
+  .vpg-page {
+    background: #FCF9F5;
+  }
+
+  /* ---- HERO ---- */
+  .vpg-hero {
+    background-color: #0C4433;
+    background-image:
+      linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 7rem 2.4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vpg-hero__eyebrow {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(197, 234, 255, 0.6);
+    display: block;
+    margin-bottom: 1.8rem;
+  }
+
+  .vpg-hero__title {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(3rem, 6.5vw, 6rem);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #FCF9F5;
+    margin: 0 0 1.8rem;
+    max-width: 20ch;
+  }
+
+  .vpg-hero__subtitle {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: rgba(252, 249, 245, 0.7);
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .vpg-hero__codigo {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2.4rem;
+    padding: 0.8rem 1.6rem;
+    background: rgba(197, 234, 255, 0.1);
+    border: 1px solid rgba(197, 234, 255, 0.22);
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: #C5EAFF;
+    width: fit-content;
+  }
+
+  .vpg-hero__codigo.is-visible {
+    display: inline-flex;
+  }
+
+  /* ---- BENEFICIOS ---- */
+  .vpg-beneficios {
+    padding: 8rem 2.4rem;
+    background: #FCF9F5;
+  }
+
+  .vpg-beneficios__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vpg-beneficios__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem 6rem;
+    }
+  }
+
+  .vpg-beneficio {
+    border-top: 1px solid rgba(28, 28, 26, 0.12);
+    padding-top: 2.4rem;
+  }
+
+  .vpg-beneficio__num {
+    display: block;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E25027;
+    margin-bottom: 1.2rem;
+  }
+
+  .vpg-beneficio h3 {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: #1C1C1A;
+    margin: 0 0 1rem;
+  }
+
+  .vpg-beneficio p {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: rgba(28, 28, 26, 0.62);
+    margin: 0;
+  }
+
+  /* ---- FORM SECTION ---- */
+  .vpg-form-section {
+    padding: 8rem 2.4rem 10rem;
+    background: #F0EDE8;
+  }
+
+  .vpg-form-section__inner {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .vpg-form-section__eyebrow {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(28, 28, 26, 0.45);
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .vpg-form-section__title {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #1C1C1A;
+    margin: 0 0 4.8rem;
+    line-height: 1.1;
+  }
+
+  /* ---- FIELDS ---- */
+  .vpg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.6rem;
+  }
+
+  .vpg-field {
+    position: relative;
+  }
+
+  .vpg-field__input {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(28, 28, 26, 0.22);
+    border-radius: 0;
+    padding: 1.2rem 0;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: #1C1C1A;
+    outline: none;
+    transition: border-color 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .vpg-field__input:focus {
+    border-bottom-color: #0C4433;
+  }
+
+  /* Float label */
+  .vpg-field__label {
+    position: absolute;
+    top: 1.2rem;
+    left: 0;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(28, 28, 26, 0.45);
+    pointer-events: none;
+    transition: top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
+  }
+
+  .vpg-field__input:not(:placeholder-shown) + .vpg-field__label,
+  .vpg-field__input:focus + .vpg-field__label {
+    top: -1.8rem;
+    font-size: 0.9rem;
+    color: #0C4433;
+  }
+
+  /* Select label: always floated */
+  .vpg-field__label--static {
+    position: static;
+    display: block;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0C4433;
+    margin-bottom: 0.8rem;
+    pointer-events: none;
+  }
+
+  .vpg-field__select {
+    cursor: pointer;
+    padding-right: 2.4rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%231C1C1A' stroke-width='1.4' fill='none' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.2rem center;
+  }
+
+  .vpg-field__select option {
+    color: #1C1C1A;
+    background: #FCF9F5;
+  }
+
+  /* Checkbox row */
+  .vpg-field--check {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding-top: 0.4rem;
+  }
+
+  .vpg-field--check input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-top: 0.15rem;
+    accent-color: #0C4433;
+    cursor: pointer;
+    border-radius: 0;
+  }
+
+  .vpg-field--check label {
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    letter-spacing: 0.04em;
+    color: rgba(28, 28, 26, 0.65);
+    cursor: pointer;
+  }
+
+  .vpg-field--check label a {
+    color: #E25027;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Submit */
+  .vpg-submit {
+    margin-top: 0.8rem;
+  }
+
+  .vpg-btn {
+    display: inline-block;
+    background-color: #0C4433 !important;
+    color: #FCF9F5 !important;
+    border: 1px solid #0C4433 !important;
+    border-radius: 0 !important;
+    padding: 1.6rem 4.8rem !important;
+    font-family: 'Chivo Mono', 'Courier New', monospace !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .vpg-btn {
+      width: auto;
+    }
+  }
+
+  .vpg-btn:hover {
+    background-color: #C5EAFF !important;
+    border-color: #C5EAFF !important;
+    color: #0C4433 !important;
+  }
+
+  /* Form footer note */
+  .vpg-form-note {
+    margin-top: 2.8rem;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    color: rgba(28, 28, 26, 0.48);
+    border-top: 1px solid rgba(28, 28, 26, 0.1);
+    padding-top: 2rem;
+  }
+
+  .vpg-form-note a {
+    color: #E25027;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Error state */
+  .vpg-error-msg {
+    margin-bottom: 2.4rem;
+    padding: 1.2rem 1.6rem;
+    background: rgba(226, 80, 39, 0.08);
+    border-left: 3px solid #E25027;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: #E25027;
+    letter-spacing: 0.04em;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 749px) {
+    .vpg-hero {
+      padding: 5rem 1.6rem 4.5rem;
+    }
+
+    .vpg-beneficios {
+      padding: 5.5rem 1.6rem;
+    }
+
+    .vpg-form-section {
+      padding: 5.5rem 1.6rem 7rem;
+    }
+  }
+</style>
+
+<div class="vpg-page">
+
+  <!-- HERO -->
+  <div class="vpg-hero">
+    <span class="vpg-hero__eyebrow">Programa de Garantía · Vito Piano</span>
+    <h1 class="vpg-hero__title">Bienvenido al Programa de Garantía Vito Piano</h1>
+    <p class="vpg-hero__subtitle">Tu prenda merece cuidados que duren tanto como ella.</p>
+    <div id="vpg-codigo-badge" class="vpg-hero__codigo" aria-live="polite">
+      Código detectado: <strong id="vpg-codigo-valor"></strong>
+    </div>
+  </div>
+
+  <!-- BENEFICIOS -->
+  <div class="vpg-beneficios">
+    <div class="vpg-beneficios__grid">
+
+      <div class="vpg-beneficio">
+        <span class="vpg-beneficio__num">01</span>
+        <h3>Garantía de confección</h3>
+        <p>6 meses de respaldo directo con la marca. Cualquier defecto de confección —costuras, botones, herrajes— lo reparamos sin costo y sin trámites.</p>
+      </div>
+
+      <div class="vpg-beneficio">
+        <span class="vpg-beneficio__num">02</span>
+        <h3>Guía personalizada de cuidado</h3>
+        <p>Te enviamos las instrucciones exactas para mantener tu prenda como el primer día. Lavado, planchado, almacenamiento.</p>
+      </div>
+
+      <div class="vpg-beneficio">
+        <span class="vpg-beneficio__num">03</span>
+        <h3>Familia Vito Piano</h3>
+        <p>Acceso a eventos privados, drops con anticipación y piezas de edición limitada reservadas para quienes ya visten la marca.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="vpg-form-section">
+    <div class="vpg-form-section__inner">
+      <span class="vpg-form-section__eyebrow">Registro de prenda</span>
+      <h2 class="vpg-form-section__title">Activa tu garantía</h2>
+
+      {%- form 'contact', id: 'VPGarantiaForm', class: 'vpg-form' -%}
+
+        {%- if form.posted_successfully? -%}
+          <script>window.location.href = '/pages/garantia-activada';</script>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="vpg-error-msg" role="alert">
+            Revisa el campo de correo electrónico e intenta de nuevo.
+          </div>
+        {%- endif -%}
+
+        <!-- Nombre -->
+        <div class="vpg-field">
+          <input
+            class="vpg-field__input"
+            type="text"
+            id="vpg-nombre"
+            name="contact[Nombre]"
+            required
+            placeholder=" "
+            autocomplete="name"
+          >
+          <label class="vpg-field__label" for="vpg-nombre">Nombre completo <span aria-hidden="true">*</span></label>
+        </div>
+
+        <!-- Email -->
+        <div class="vpg-field">
+          <input
+            class="vpg-field__input"
+            type="email"
+            id="vpg-email"
+            name="contact[email]"
+            required
+            placeholder=" "
+            autocomplete="email"
+            autocapitalize="off"
+            spellcheck="false"
+          >
+          <label class="vpg-field__label" for="vpg-email">Correo electrónico <span aria-hidden="true">*</span></label>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="vpg-field">
+          <input
+            class="vpg-field__input"
+            type="tel"
+            id="vpg-whatsapp"
+            name="contact[WhatsApp]"
+            required
+            placeholder=" "
+            autocomplete="tel"
+          >
+          <label class="vpg-field__label" for="vpg-whatsapp">WhatsApp con código de país <span aria-hidden="true">*</span></label>
+        </div>
+
+        <!-- Prenda -->
+        <div class="vpg-field">
+          <label class="vpg-field__label--static" for="vpg-prenda">¿Qué prenda tienes? <span aria-hidden="true">*</span></label>
+          <select
+            class="vpg-field__input vpg-field__select"
+            id="vpg-prenda"
+            name="contact[Prenda]"
+            required
+          >
+            <option value="" disabled selected>Selecciona tu prenda</option>
+            {%- for product in collections.all.products limit: 50 -%}
+              <option value="{{ product.title | escape }}">{{ product.title }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+
+        <!-- Talla -->
+        <div class="vpg-field">
+          <label class="vpg-field__label--static" for="vpg-talla">Talla <span aria-hidden="true">*</span></label>
+          <select
+            class="vpg-field__input vpg-field__select"
+            id="vpg-talla"
+            name="contact[Talla]"
+            required
+          >
+            <option value="" disabled selected>Selecciona tu talla</option>
+            <option value="XXS">XXS</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+            <option value="Única">Única</option>
+          </select>
+        </div>
+
+        <!-- Punto de venta -->
+        <div class="vpg-field">
+          <label class="vpg-field__label--static" for="vpg-punto">¿Dónde la compraste? <span aria-hidden="true">*</span></label>
+          <select
+            class="vpg-field__input vpg-field__select"
+            id="vpg-punto"
+            name="contact[Punto de venta]"
+            required
+          >
+            <option value="" disabled selected>Selecciona el punto</option>
+            <option value="Casa Balsa">Casa Balsa</option>
+            <option value="Gueycani">Gueycani</option>
+            <option value="Feria Eva">Feria Eva</option>
+            <option value="Feria Vassar">Feria Vassar</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <!-- Código de etiqueta -->
+        <div class="vpg-field">
+          <input
+            class="vpg-field__input"
+            type="text"
+            id="vpg-codigo"
+            name="contact[Codigo de etiqueta]"
+            placeholder=" "
+            autocomplete="off"
+          >
+          <label class="vpg-field__label" for="vpg-codigo">Código de tu etiqueta</label>
+        </div>
+
+        <!-- Consentimiento -->
+        <div class="vpg-field vpg-field--check">
+          <input
+            type="checkbox"
+            id="vpg-consent"
+            name="contact[Acepta comunicaciones]"
+            value="Sí"
+            required
+          >
+          <label for="vpg-consent">
+            Acepto recibir comunicaciones de Vito Piano sobre cuidado de prenda, nuevas colecciones y eventos exclusivos. Puedo darme de baja cuando quiera.
+            <a href="/policies/privacy-policy" target="_blank" rel="noopener">Política de privacidad.</a>
+            <span aria-hidden="true"> *</span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <div class="vpg-submit">
+          <button type="submit" class="button vpg-btn">Activar mi garantía</button>
+        </div>
+
+        <p class="vpg-form-note">
+          Tu código de bienvenida llegará a tu correo en los próximos 5 minutos. Si no lo recibes, revisa la carpeta de spam o escríbenos a <a href="mailto:ciao@vitopiano.com">ciao@vitopiano.com</a>
+        </p>
+
+      {%- endform -%}
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var codigo = params.get('codigo');
+    var punto  = params.get('punto');
+
+    // Pre-fill código
+    var codigoInput = document.getElementById('vpg-codigo');
+    if (codigoInput && codigo) {
+      codigoInput.value = codigo;
+      var badge = document.getElementById('vpg-codigo-badge');
+      var valor = document.getElementById('vpg-codigo-valor');
+      if (badge && valor) {
+        valor.textContent = codigo;
+        badge.classList.add('is-visible');
+      }
+    }
+
+    // Pre-fill WhatsApp prefix
+    var waInput = document.getElementById('vpg-whatsapp');
+    if (waInput && !waInput.value) {
+      waInput.value = '+57 ';
+    }
+
+    // Pre-select punto de venta
+    var puntoMap = {
+      'casa-balsa':   'Casa Balsa',
+      'gueycani':     'Gueycani',
+      'feria-eva':    'Feria Eva',
+      'feria-vassar': 'Feria Vassar'
+    };
+    if (punto && puntoMap[punto]) {
+      var puntoSelect = document.getElementById('vpg-punto');
+      if (puntoSelect) {
+        for (var i = 0; i < puntoSelect.options.length; i++) {
+          if (puntoSelect.options[i].value === puntoMap[punto]) {
+            puntoSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Programa Garantía",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Programa Garantía Vito Piano"
+    }
+  ]
+}
+{% endschema %}

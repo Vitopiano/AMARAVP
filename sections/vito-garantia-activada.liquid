@@ -1,0 +1,142 @@
+<style>
+  /* ============================================
+     GARANTÍA ACTIVADA — Página de éxito
+  ============================================ */
+
+  .vpg-ok {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 10rem 2.4rem;
+    background: #FCF9F5;
+  }
+
+  .vpg-ok__inner {
+    max-width: 56rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .vpg-ok__check {
+    display: block;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.0rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #0C4433;
+    margin-bottom: 2.4rem;
+  }
+
+  /* La línea decorativa bajo el eyebrow */
+  .vpg-ok__check::after {
+    content: '';
+    display: block;
+    width: 3.2rem;
+    height: 2px;
+    background: #0C4433;
+    margin: 1.2rem auto 0;
+    opacity: 0.3;
+  }
+
+  .vpg-ok__title {
+    font-family: 'Decofast', 'Bricolage Grotesque', serif;
+    font-size: clamp(3.2rem, 6vw, 5.6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #1C1C1A;
+    margin: 0 0 2.4rem;
+  }
+
+  .vpg-ok__subtitle {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.65;
+    color: rgba(28, 28, 26, 0.62);
+    margin: 0 0 4rem;
+    max-width: 44ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vpg-ok__cta {
+    display: inline-block;
+    background-color: #0C4433;
+    color: #FCF9F5;
+    border: 1px solid #0C4433;
+    border-radius: 0;
+    padding: 1.6rem 4.8rem;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .vpg-ok__cta:hover {
+    background-color: #C5EAFF;
+    border-color: #C5EAFF;
+    color: #0C4433;
+  }
+
+  .vpg-ok__note {
+    margin-top: 3.2rem;
+    font-family: 'Chivo Mono', 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: rgba(28, 28, 26, 0.42);
+    line-height: 1.6;
+  }
+
+  .vpg-ok__note a {
+    color: #E25027;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vpg-ok {
+      padding: 7rem 1.6rem;
+    }
+
+    .vpg-ok__cta {
+      display: block;
+      text-align: center;
+    }
+  }
+</style>
+
+<div class="vpg-ok">
+  <div class="vpg-ok__inner">
+
+    <span class="vpg-ok__check">Garantía activa</span>
+
+    <h1 class="vpg-ok__title">Listo, tu prenda está protegida.</h1>
+
+    <p class="vpg-ok__subtitle">
+      Te enviamos a tu correo el certificado de garantía, la guía de cuidado de tu prenda y tu código de bienvenida.
+    </p>
+
+    <a href="/collections/all" class="vpg-ok__cta">Conoce la colección completa</a>
+
+    <p class="vpg-ok__note">
+      ¿No recibiste el correo? Revisa spam o escríbenos a <a href="mailto:ciao@vitopiano.com">ciao@vitopiano.com</a>
+    </p>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Garantía Activada",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Garantía Activada Vito Piano"
+    }
+  ]
+}
+{% endschema %}
