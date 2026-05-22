@@ -16,13 +16,13 @@
           "type": "title",
           "settings": {}
         },
+        "rating_VGGndE": {
+          "type": "rating",
+          "settings": {}
+        },
         "judge_me_reviews_preview_badge_zMzfar": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "disabled": true,
-          "settings": {}
-        },
-        "rating_BXxD3B": {
-          "type": "rating",
           "settings": {}
         },
         "price_FURHcA": {
@@ -38,17 +38,13 @@
             "size_guide_text": "Guía de tallas"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true,
             "show_trust_bar": true,
-            "shipping_text": "Envío gratis en compras mayores a $400.000",
+            "shipping_text": "",
             "returns_text": "Cambios y devoluciones en 20 días",
             "origin_text": "Hecho a mano en Colombia"
           }
@@ -92,11 +88,10 @@
       },
       "block_order": [
         "title",
+        "rating_VGGndE",
         "judge_me_reviews_preview_badge_zMzfar",
-        "rating_BXxD3B",
         "price_FURHcA",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
         "propuesta_de_uso_mK7rrh",
@@ -121,6 +116,26 @@
         "padding_bottom": 12
       }
     },
+    "177939536913734d5a": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_PrreRg": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "hide_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_PrreRg"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -142,6 +157,7 @@
   },
   "order": [
     "main",
+    "177939536913734d5a",
     "related-products"
   ]
 }

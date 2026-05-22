@@ -20,7 +20,7 @@
         "collection": "hombre",
         "products_to_show": 4,
         "columns_desktop": 4,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": false,
         "view_all_style": "solid",
         "enable_desktop_slider": true,
@@ -30,15 +30,26 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "standard",
+        "quick_add": "bulk",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 20,
         "padding_bottom": 12
       }
     },
-    "166857843790a880d7": {
+    "1779403844c13cd9c6": {
       "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_gXfiDM": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1200
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_gXfiDM"
+      ],
       "settings": {
         "include_margins": true
       }
@@ -46,6 +57,6 @@
   },
   "order": [
     "featured_collection",
-    "166857843790a880d7"
+    "1779403844c13cd9c6"
   ]
 }
