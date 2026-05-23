@@ -20,7 +20,7 @@
 
     <p class="splash-welcome">{{ section.settings.welcome }}</p>
 
-    <p class="splash-message">{{ section.settings.message }}</p>
+    <p class="splash-message">{{ section.settings.message | newline_to_br }}</p>
 
     <a href="{{ section.settings.button_url }}" class="splash-button">
       {{ section.settings.button_text }}
@@ -60,7 +60,7 @@
       "type": "textarea",
       "id": "message",
       "label": "Mensaje del descuento",
-      "default": "Tu invitación del 10% en tu primera compra ya está esperando."
+      "default": "Tu 10% de bienvenida está activo.\nLo verás aplicado en tu carrito de compras."
     },
     {
       "type": "text",
