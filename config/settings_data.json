@@ -217,6 +217,19 @@
           "disclaimer": "Al suscribirte aceptas recibir comunicaciones de Vito Piano. Puedes darte de baja en cualquier momento.",
           "success_message": "¡Bienvenido! Revisa tu correo — tu código de 10% estará esperándote."
         }
+      },
+      "bienvenida-splash": {
+        "type": "bienvenida-splash",
+        "settings": {
+          "logo": "shopify://shop_images/VP_Logo_Logo_Principal-01.png",
+          "greeting": "Benvenuto",
+          "welcome": "a Vito Piano.",
+          "message": "Tu invitación del 10% en tu primera compra ya está esperando.",
+          "button_text": "Entrar a la colección →",
+          "button_url": "https://vitopiano.com/discount/CIAO10?redirect=/collections/all",
+          "tagline_1": "La herencia de dos mundos",
+          "tagline_2": "ITA & COL · Slow Fashion Store"
+        }
       }
     },
     "content_for_index": [],
