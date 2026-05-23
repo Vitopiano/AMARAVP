@@ -314,13 +314,17 @@ a.skip-to-content-link:focus-visible {
   border: 0.1rem solid rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Seleccionado: ring externo sobre el círculo */
+/* Seleccionado: ring sobre el círculo interior, no el label */
 .swatch-input__input:checked + .swatch-input__label:has(.swatch) {
   background-color: transparent !important;
   border: none !important;
+  outline: none !important;
+  border-radius: 50% !important;
+}
+
+.swatch-input__input:checked + .swatch-input__label:has(.swatch) .swatch {
   outline: 0.15rem solid var(--vp-negro-suave) !important;
   outline-offset: 0.25rem !important;
-  border-radius: 50% !important;
 }
 
 /* No disponible: diagonal mantenida en el círculo interior */
@@ -442,9 +446,21 @@ a.skip-to-content-link:focus-visible {
 .header__menu-item span,
 .header__active-menu-item {
   letter-spacing: var(--vp-letter-spacing-wide);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
   font-family: var(--vp-font-mono);
+}
+
+/* Header bar: centrado en mobile, alineado al fondo en desktop */
+.header {
+  align-items: center;
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    align-items: flex-end !important;
+    padding-bottom: 1rem !important;
+  }
 }
 
 /* ============================================
@@ -1078,7 +1094,7 @@ h1, h2, .h0, .h1, .h2 {
   /* Alineación de filas entre columnas: ritmo vertical uniforme */
   .footer__content-top .footer__heading,
   .footer__content-top .footer-block__heading {
-    font-size: 2.4rem !important;
+    font-size: 2.2rem !important;
     line-height: 1.8 !important;
     letter-spacing: var(--vp-letter-spacing-wide) !important;
     margin-top: 0 !important;
@@ -1091,7 +1107,7 @@ h1, h2, .h0, .h1, .h2 {
   .footer__content-top .footer__list li,
   .footer__content-top .footer__list a,
   .footer__content-top .footer-block a {
-    font-size: 1.6rem !important;
+    font-size: 1.5rem !important;
     line-height: 1.4 !important;
     letter-spacing: 0.06em !important;
     margin: 0 !important;
@@ -1276,12 +1292,13 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 @media screen and (max-width: 749px) {
-  /* Flex row: [isotipo 0] [logo 1] [icons 9] [hamburger 10] */
+  /* Flex row: [roseta izq] [logo CENTRADO absoluto] [icons der] [hamburger] */
   .header {
     display: flex !important;
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
+    position: relative !important;
   }
 
   header-drawer {
@@ -1296,7 +1313,8 @@ h1, h2, .h0, .h1, .h2 {
     align-items: center;
     order: 0;
     flex-shrink: 0;
-    margin-right: 0.6rem;
+    margin-right: 0 !important;
+    z-index: 2;
   }
 
   .header__isotipo-mobile .header__isotipo-img {
@@ -1305,24 +1323,32 @@ h1, h2, .h0, .h1, .h2 {
     object-fit: contain;
   }
 
+  /* Logo a la izquierda en mobile */
   .header__heading,
   .header--mobile-center .header__heading {
     position: static !important;
     transform: none !important;
     left: auto !important;
+    top: auto !important;
     order: 1;
-    flex: 1 1 auto;
-    text-align: left;
+    flex: 1 1 auto !important;
+    text-align: left !important;
     max-width: none !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    z-index: 1;
   }
 
   .header__heading-logo-wrapper {
     max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
   }
 
   .header__heading-logo {
-    max-height: 2.8rem !important;
-    max-width: 11rem !important;
+    max-height: 3.2rem !important;
+    max-width: 12.4rem !important;
     width: auto !important;
     object-fit: contain;
   }
@@ -1331,9 +1357,10 @@ h1, h2, .h0, .h1, .h2 {
     order: 9;
     flex-shrink: 0;
     margin-left: auto !important;
+    z-index: 2;
   }
 
-  /* Hide the desktop isotipo inside icons panel */
+  /* Ocultar el isotipo desktop dentro del panel de iconos */
   .header__icons .header__isotipo-link {
     display: none !important;
   }
@@ -1374,11 +1401,12 @@ h1, h2, .h0, .h1, .h2 {
     line-height: 1 !important;
   }
 
-  /* Texto de contenido: cada línea tiene su propio respiro mínimo */
+  /* Texto de contenido: 0.15rem entre frases consecutivas (solo padding-bottom) */
   .footer__content-top p,
   .footer__content-top li,
   .footer__content-top .list-menu__item--link {
-    padding-top: 0.15rem !important;
+    font-size: 1.4rem !important;
+    padding-top: 0 !important;
     padding-bottom: 0.15rem !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -1394,11 +1422,11 @@ h1, h2, .h0, .h1, .h2 {
     list-style: none !important;
   }
 
-  /* Títulos de sección (nav): espacio antes = 1.6 */
+  /* Títulos de sección (nav): espacio antes = 1.6, después = 0.6 */
   .footer__content-top .footer__heading,
   .footer__content-top .footer-block__heading {
     margin-top: 1.6rem !important;
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.6rem !important;
     padding: 0 !important;
     line-height: 1 !important;
     text-align: left !important;
@@ -1511,11 +1539,11 @@ h1, h2, .h0, .h1, .h2 {
     padding: 0 !important;
   }
 
-  /* Columna fotos: 72% del total (36% izq sticky + 36% centro scroll) */
+  /* Columna fotos: 70% del total (35% izq sticky + 35% centro scroll) */
   .vp-product-editorial .product__media-wrapper {
-    flex: 0 0 72% !important;
-    width: 72% !important;
-    max-width: 72% !important;
+    flex: 0 0 70% !important;
+    width: 70% !important;
+    max-width: 70% !important;
     /* flex row interno: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
@@ -1529,14 +1557,13 @@ h1, h2, .h0, .h1, .h2 {
      align-self: flex-start es crítico: permite que el wrapper tenga su
      altura natural (contenido) en vez de estirarse, lo que da rango al sticky. */
   .vp-product-editorial .product__info-wrapper {
-    flex: 0 0 28% !important;
-    width: 28% !important;
-    max-width: 28% !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    max-width: 30% !important;
     align-self: flex-start !important;
     position: sticky !important;
-    top: 0 !important;
-    /* padding-top absorbe la altura del header para que el título no quede tapado */
-    padding-top: calc(var(--header-group-height, 5rem) + 2rem) !important;
+    top: var(--header-group-height, 5rem) !important;
+    padding-top: 1.5rem !important;
     padding-left: 2.4rem !important;
     padding-right: 2.4rem !important;
     padding-bottom: 4rem !important;
@@ -1677,4 +1704,284 @@ h1, h2, .h0, .h1, .h2 {
 .menu-drawer .list-social__link svg {
   color: var(--vp-terracota) !important;
   fill: var(--vp-terracota) !important;
+}
+
+/* ============================================
+   SEARCH — Input y resultados en crema
+   ============================================ */
+
+/* Input field: fondo crema, texto verde */
+.header predictive-search .field,
+.header predictive-search .field__input,
+.header predictive-search input[type="search"],
+.search-modal .field,
+.search-modal .field__input,
+.search-modal input[type="search"] {
+  background-color: var(--vp-crema) !important;
+  color: var(--vp-verde-botella) !important;
+  border-color: rgba(12, 68, 51, 0.2) !important;
+}
+
+/* Label flotante "Búsqueda" */
+.header predictive-search .field__label,
+.search-modal .field__label {
+  color: rgba(12, 68, 51, 0.6) !important;
+}
+
+/* Íconos (lupa, x) dentro del search */
+.header predictive-search .search__button svg,
+.header predictive-search .reset__button svg,
+.search-modal .search__button svg,
+.search-modal .reset__button svg {
+  fill: var(--vp-verde-botella) !important;
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Panel de resultados: fondo crema */
+.predictive-search {
+  background-color: var(--vp-crema) !important;
+  border-color: rgba(12, 68, 51, 0.12) !important;
+}
+
+/* Separador "PRODUCTOS" */
+.predictive-search__heading {
+  color: rgba(12, 68, 51, 0.55) !important;
+  border-bottom-color: rgba(12, 68, 51, 0.1) !important;
+}
+
+/* Nombre del producto */
+.predictive-search__item-heading {
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Precio */
+.predictive-search__item .price,
+.predictive-search__item .price-item {
+  color: rgba(12, 68, 51, 0.7) !important;
+}
+
+/* Item hover: tinte verde muy sutil */
+.predictive-search__list-item[aria-selected='true'] > *,
+.predictive-search__list-item:hover > *,
+.predictive-search__item[aria-selected='true'],
+.predictive-search__item:hover {
+  background-color: rgba(12, 68, 51, 0.04) !important;
+  color: var(--vp-verde-botella) !important;
+}
+
+/* Botón "Buscar X" al fondo */
+.predictive-search__item--term {
+  color: var(--vp-verde-botella) !important;
+}
+
+.predictive-search__item--term .icon-arrow,
+.predictive-search__item--term svg {
+  color: var(--vp-terracota) !important;
+  fill: var(--vp-terracota) !important;
+}
+
+/* ============================================
+   QUICK-ADD MODAL — 3 columnas: fija | scroll | info
+   ============================================ */
+
+@media screen and (min-width: 990px) {
+  /* Popup ancho para las 3 columnas editoriales */
+  .quick-add-modal__content {
+    width: 88% !important;
+    max-width: 1280px !important;
+    margin-top: 1.5rem !important;
+    height: calc(100vh - 3rem) !important;
+    max-height: calc(100vh - 3rem) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Cadena de altura para las 3 columnas */
+  quick-add-modal .vp-product-editorial .product__media-wrapper {
+    height: 100% !important;
+  }
+
+  quick-add-modal .vp-product-editorial .product__info-wrapper {
+    height: 100% !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* 2. Título sin cortar palabras */
+quick-add-modal .product__title h1,
+quick-add-modal .product__title a {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* 3. Botones — misma altura los tres */
+quick-add-modal quantity-input.quantity,
+quick-add-modal .vp-qty-row .product-form__submit,
+quick-add-modal .shopify-payment-button__button--unbranded,
+quick-add-modal .shopify-payment-button__button {
+  height: 5.4rem !important;
+  min-height: 0 !important;
+}
+
+/* 4. Botones — mismo ancho total (qty+añadir = comprar ahora) */
+quick-add-modal .product-form__buttons,
+quick-add-modal .vp-qty-row,
+quick-add-modal .shopify-payment-button {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 5. Eliminar rating nativo de Dawn — conservar solo Judge.me */
+quick-add-modal .rating,
+quick-add-modal .rating-star,
+quick-add-modal .product__rating {
+  display: none !important;
+}
+
+/* ============================================
+   MEGA MENU DESKTOP — Flyout a la derecha
+   ============================================ */
+
+/* <details class="mega-menu"> necesita position:relative para que
+   .mega-menu__content se posicione relativo al nav-item, no al header */
+.mega-menu {
+  position: relative !important;
+}
+
+/* Panel compacto: debajo del nav-item, no full-width
+   - position/top: duplicamos para mayor especificidad
+   - width:auto cancela el right:0 de Dawn que hace full-width */
+.mega-menu__content {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+  width: auto !important;
+  min-width: 17rem !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  background-color: var(--vp-crema) !important;
+  border-top: 2px solid var(--vp-terracota) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  z-index: 10 !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Anular max-height del header sticky que causa scroll */
+.shopify-section-header-sticky .mega-menu__content {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Evitar scrollbar horizontal en página por submenús que sobresalen del viewport */
+body {
+  overflow-x: hidden;
+}
+
+/* Filtros — "Eliminar todo" hover naranja */
+.active-facets__button-remove:hover,
+.active-facets__button-remove:hover span,
+.mobile-facets__clear:hover {
+  color: var(--vp-terracota) !important;
+}
+
+/* Filtros — "Restablecer" por sección hover naranja */
+.facets__reset:hover {
+  color: var(--vp-terracota) !important;
+}
+
+/* Anular page-width del ul interno */
+.mega-menu__list.page-width {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: auto !important;
+}
+
+/* Columna única — cancela el grid de 6 columnas de Dawn */
+.mega-menu__list {
+  display: block !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+/* Cada li: contexto del flyout + ancho auto
+   (Dawn aplica width:16% en header--top-center que hay que cancelar) */
+.mega-menu__list > li {
+  position: relative !important;
+  width: auto !important;
+  padding-right: 0 !important;
+}
+
+/* ── Nivel 2 (Superior, Inferior) ──
+   Selector con .mega-menu__content para ganar a la variable
+   --color-foreground del color-scheme que Dawn inyecta */
+.mega-menu__content .mega-menu__link--level-2 {
+  color: var(--vp-verde-botella) !important;
+  font-family: var(--vp-font-mono) !important;
+  font-size: 1.0rem !important;
+  letter-spacing: var(--vp-letter-spacing-wide) !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  padding: 1rem 1.6rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.mega-menu__content .mega-menu__link--level-2::after {
+  content: '›';
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-left: 1.2rem;
+  opacity: 0.65;
+}
+
+/* ── Flyout nivel 3: oculto, aparece a la DERECHA al hacer hover ── */
+.mega-menu__list > li > ul.list-unstyled {
+  position: absolute !important;
+  left: 100% !important;
+  top: 0 !important;
+  min-width: 17rem !important;
+  padding: 0.4rem 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  background-color: var(--vp-crema) !important;
+  border-top: 2px solid var(--vp-terracota) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateX(-6px) !important;
+  transition: opacity 0.18s ease, transform 0.18s ease !important;
+  z-index: 11 !important;
+}
+
+.mega-menu__list > li:hover > ul.list-unstyled {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateX(0) !important;
+}
+
+/* ── Nivel 3 (Camisetas, Chaquetas, Blazer…) ── */
+.mega-menu__content .mega-menu__list > li > ul.list-unstyled .mega-menu__link {
+  color: var(--vp-verde-botella) !important;
+  font-family: var(--vp-font-mono) !important;
+  font-size: 1.0rem !important;
+  letter-spacing: var(--vp-letter-spacing-wide) !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  padding: 0.9rem 1.6rem !important;
+  display: block !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.mega-menu__content .mega-menu__list > li > ul.list-unstyled .mega-menu__link:hover {
+  color: var(--vp-terracota) !important;
+  text-decoration: none !important;
 }

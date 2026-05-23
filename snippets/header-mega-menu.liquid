@@ -11,7 +11,7 @@
       <li>
         {%- if link.links != blank -%}
           <header-menu>
-            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu" data-url="{{ link.url }}">
               <summary
                 id="HeaderMenu-{{ link.handle }}"
                 class="header__menu-item list-menu__item link focus-inset"
@@ -92,3 +92,42 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<script>
+(function () {
+  function initHoverMenu() {
+    if (window.innerWidth < 990) return;
+    document.querySelectorAll('details.mega-menu[data-url]').forEach(function (details) {
+      var summary = details.querySelector(':scope > summary');
+      var url = details.getAttribute('data-url');
+      var closeTimer;
+
+      // Abrir submenú al pasar el mouse
+      details.addEventListener('mouseenter', function () {
+        clearTimeout(closeTimer);
+        details.open = true;
+      });
+
+      // Cerrar al salir con pequeño delay para permitir mover el cursor al submenú
+      details.addEventListener('mouseleave', function () {
+        closeTimer = setTimeout(function () { details.open = false; }, 150);
+      });
+
+      // Click navega a la colección en vez de toggle
+      if (summary && url && url !== '#' && url !== 'javascript:void(0)') {
+        summary.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          window.location.href = url;
+        });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHoverMenu);
+  } else {
+    initHoverMenu();
+  }
+})();
+</script>

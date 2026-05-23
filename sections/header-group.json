@@ -31,7 +31,7 @@
         "9cb827b1-06e8-4378-8611-1e903c1f608e": {
           "type": "announcement",
           "settings": {
-            "text": "Envíos gratis durante EVA",
+            "text": "Envíos gratis con compras superiores a $400,000",
             "link": ""
           }
         }
@@ -57,13 +57,13 @@
         "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-28.png",
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
-        "sticky_header_type": "reduce-logo-size",
-        "show_line_separator": true,
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": false,
         "color_scheme": "inverse",
         "menu_color_scheme": "",
-        "enable_country_selector": false,
-        "enable_language_selector": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
         "enable_customer_avatar": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,

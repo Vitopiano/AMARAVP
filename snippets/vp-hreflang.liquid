@@ -1,0 +1,23 @@
+{%- liquid
+  assign page_url = canonical_url | remove: request.origin
+  assign clean_path = page_url
+  for locale in shop.published_locales
+    unless locale.primary
+      assign prefix_slash = '/' | append: locale.iso_code | append: '/'
+      assign prefix_exact = '/' | append: locale.iso_code
+      if clean_path == prefix_exact
+        assign clean_path = '/'
+      elsif clean_path contains prefix_slash
+        assign clean_path = clean_path | replace_first: prefix_slash, '/'
+      endif
+    endunless
+  endfor
+-%}
+{%- for locale in shop.published_locales -%}
+  {%- if locale.primary -%}
+    <link rel="alternate" hreflang="{{ locale.iso_code }}" href="{{ request.origin }}{{ clean_path }}">
+  {%- else -%}
+    <link rel="alternate" hreflang="{{ locale.iso_code }}" href="{{ request.origin }}/{{ locale.iso_code }}{{ clean_path }}">
+  {%- endif -%}
+{%- endfor -%}
+<link rel="alternate" hreflang="x-default" href="{{ request.origin }}{{ clean_path }}">

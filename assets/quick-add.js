@@ -73,6 +73,16 @@ if (!customElements.get('quick-add-modal')) {
 
         const modalDialog = productElement.querySelectorAll('modal-dialog');
         if (modalDialog) modalDialog.forEach((modal) => modal.remove());
+
+        // Conservar solo la primera imagen de la galería
+        const mediaItems = productElement.querySelectorAll('.product__media-item');
+        mediaItems.forEach((item, index) => { if (index > 0) item.remove(); });
+
+        const thumbnailSlider = productElement.querySelector('.thumbnail-slider');
+        if (thumbnailSlider) thumbnailSlider.remove();
+
+        const sliderButtons = productElement.querySelector('.slider-buttons');
+        if (sliderButtons) sliderButtons.remove();
       }
 
       preventDuplicatedIDs(productElement) {

@@ -16,39 +16,50 @@
           "type": "title",
           "settings": {}
         },
+        "rating_VGGndE": {
+          "type": "rating",
+          "settings": {}
+        },
         "judge_me_reviews_preview_badge_zMzfar": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {}
         },
         "price_FURHcA": {
           "type": "price",
           "settings": {}
         },
-        "rating_BXxD3B": {
-          "type": "rating",
-          "settings": {}
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "size_guide_url": "",
+            "size_guide_text": "Guía de tallas"
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "show_trust_bar": true,
+            "shipping_text": "",
+            "returns_text": "Cambios y devoluciones en 20 días",
+            "origin_text": "Hecho a mano en Colombia"
           }
         },
         "description": {
           "type": "description",
-          "settings": {}
+          "settings": {
+            "heading": "Descripción"
+          }
+        },
+        "propuesta_de_uso_mK7rrh": {
+          "type": "propuesta_de_uso",
+          "settings": {
+            "heading": "Notas de Styling"
+          }
         },
         "collapsible_tab_bKjnC9": {
           "type": "collapsible_tab",
@@ -73,25 +84,20 @@
           "settings": {
             "share_label": "Compartir"
           }
-        },
-        "glo_color_swatch_product_bundles_quantity_breaks_gdkR8j": {
-          "type": "shopify://apps/glo-color-swatch/blocks/product-bundles-quantity-breaks/4394f710-096c-4021-bbde-8ebb26057c11",
-          "settings": {}
         }
       },
       "block_order": [
         "title",
+        "rating_VGGndE",
         "judge_me_reviews_preview_badge_zMzfar",
         "price_FURHcA",
-        "rating_BXxD3B",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
+        "propuesta_de_uso_mK7rrh",
         "collapsible_tab_bKjnC9",
         "collapsible-row-1",
-        "share",
-        "glo_color_swatch_product_bundles_quantity_breaks_gdkR8j"
+        "share"
       ],
       "custom_css": [],
       "settings": {
@@ -106,8 +112,28 @@
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
+        "padding_top": 8,
         "padding_bottom": 12
+      }
+    },
+    "177939536913734d5a": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_PrreRg": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "hide_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_PrreRg"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "related-products": {
@@ -131,6 +157,7 @@
   },
   "order": [
     "main",
+    "177939536913734d5a",
     "related-products"
   ]
 }
