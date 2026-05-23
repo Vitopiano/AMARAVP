@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "vp-garantia": {
-      "type": "vito-programa-garantia",
-      "settings": {}
-    }
-  },
-  "order": ["vp-garantia"]
-}
