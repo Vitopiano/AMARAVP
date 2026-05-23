@@ -112,7 +112,6 @@ body.bienvenida-page {
   border-radius: 0;
   transition: background 0.2s ease, transform 0.2s ease;
   cursor: pointer;
-  margin-bottom: 4.8rem;
 }
 
 .splash-button:hover {
@@ -129,7 +128,7 @@ body.bienvenida-page {
 
 /* TAGLINE */
 .splash-tagline {
-  margin-top: 7rem;
+  margin-top: 4.8rem;
   margin-bottom: 5rem;
   color: #999999;
   font-family: 'Chivo Mono', monospace;
