@@ -45,6 +45,7 @@ body.bienvenida-page {
 
 /* LOGO */
 .splash-logo {
+  margin-top: 5rem;
   margin-bottom: 2.4rem;
   width: 100%;
   display: flex;
@@ -128,6 +129,8 @@ body.bienvenida-page {
 
 /* TAGLINE */
 .splash-tagline {
+  margin-top: 7rem;
+  margin-bottom: 5rem;
   color: #999999;
   font-family: 'Chivo Mono', monospace;
   font-size: 1rem;
@@ -152,8 +155,6 @@ body.bienvenida-page {
   }
 
   .splash-button {
-    width: 100%;
-    text-align: center;
     padding: 1.4rem 2.8rem;
     font-size: 1rem;
   }
