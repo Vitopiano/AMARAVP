@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\" -Recurse -Force | Select-Object FullName, PSIsContainer | Sort-Object FullName | ForEach-Object { if \\($_.PSIsContainer\\) { \"[DIR]  \" + $_.FullName } else { \"[FILE] \" + $_.FullName } })",
-      "WebFetch(domain:vitopiano.com)"
+      "WebFetch(domain:vitopiano.com)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\" -Directory)",
+      "Bash(Select-Object Name)"
     ],
     "additionalDirectories": [
       "c:\\Users\\dcsan\\.claude\\projects\\c--Users-dcsan-OneDrive-Documents-Casa-Vito-SAS-Vito-piano-amaraVP-AMARAVP\\memory"

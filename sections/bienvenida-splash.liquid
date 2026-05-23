@@ -1,0 +1,95 @@
+<div class="splash-container">
+  <div class="splash-content">
+
+    <div class="splash-logo">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 240 }}"
+             alt="Vito Piano"
+             width="120"
+             height="auto"
+             loading="eager">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0680/0490/5276/files/VP_Logo_Logo_terciario-19.png?v=1778083430"
+             alt="Vito Piano"
+             width="120"
+             loading="eager">
+      {% endif %}
+    </div>
+
+    <h1 class="splash-greeting">{{ section.settings.greeting }}</h1>
+
+    <p class="splash-welcome">{{ section.settings.welcome }}</p>
+
+    <p class="splash-message">{{ section.settings.message }}</p>
+
+    <a href="{{ section.settings.button_url }}" class="splash-button">
+      {{ section.settings.button_text }}
+    </a>
+
+    <div class="splash-tagline">
+      <p>{{ section.settings.tagline_1 }}</p>
+      <p>{{ section.settings.tagline_2 }}</p>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Splash Bienvenida",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Si está vacío, usa el logo por defecto."
+    },
+    {
+      "type": "text",
+      "id": "greeting",
+      "label": "Saludo principal",
+      "default": "Ciao."
+    },
+    {
+      "type": "text",
+      "id": "welcome",
+      "label": "Bienvenida",
+      "default": "Bienvenido a Vito Piano."
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Mensaje del descuento",
+      "default": "Tu invitación del 10% en tu primera compra ya está esperando."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto del botón",
+      "default": "Entrar a la colección →"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "URL del botón"
+    },
+    {
+      "type": "text",
+      "id": "tagline_1",
+      "label": "Tagline línea 1",
+      "default": "La herencia de dos mundos"
+    },
+    {
+      "type": "text",
+      "id": "tagline_2",
+      "label": "Tagline línea 2",
+      "default": "ITA & COL · Slow Fashion Store"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Splash Bienvenida"
+    }
+  ]
+}
+{% endschema %}
