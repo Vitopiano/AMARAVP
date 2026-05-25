@@ -575,6 +575,42 @@
                 %}
 
               {%- when 'variant_picker' -%}
+                {%- comment -%} Navegación entre colores: busca tag "familia-XXX" y renderiza círculos {%- endcomment -%}
+                {%- assign familia_tag = nil -%}
+                {%- for tag in product.tags -%}
+                  {%- if tag contains 'familia-' -%}
+                    {%- assign familia_tag = tag -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if familia_tag != nil -%}
+                  {%- assign familia_collection = collections[familia_tag] -%}
+                  {%- if familia_collection != nil and familia_collection.products.size > 1 -%}
+                    <div class="vp-color-nav">
+                      <p class="vp-color-nav__label">Color</p>
+                      <div class="vp-color-nav__swatches">
+                        {%- for sibling in familia_collection.products -%}
+                          {%- assign swatch_color = sibling.metafields.custom.color_hex | default: '#888888' -%}
+                          {%- if sibling.id == product.id -%}
+                            <span
+                              class="vp-color-nav__swatch vp-color-nav__swatch--active"
+                              style="background-color: {{ swatch_color }};"
+                              title="{{ sibling.title | escape }}"
+                              aria-current="true"
+                            ></span>
+                          {%- else -%}
+                            <a
+                              href="{{ sibling.url }}"
+                              class="vp-color-nav__swatch"
+                              style="background-color: {{ swatch_color }};"
+                              title="{{ sibling.title | escape }}"
+                            ></a>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
                 {%- if block.settings.size_guide_url != blank -%}
                   <a href="{{ block.settings.size_guide_url }}" class="vp-size-guide-link" target="_blank" rel="noopener">
