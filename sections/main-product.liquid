@@ -590,12 +590,18 @@
                       <p class="vp-color-nav__label">Color</p>
                       <div class="vp-color-nav__swatches">
                         {%- for sibling in familia_collection.products -%}
-                          {%- assign swatch_color = sibling.metafields.custom.color_hex -%}
-                          {%- if swatch_color == blank -%}{%- assign swatch_color = '#888888' -%}{%- endif -%}
+                          {%- assign c1 = sibling.metafields.custom.color_hex -%}
+                          {%- assign c2 = sibling.metafields.custom.color_hex_2 -%}
+                          {%- if c1 == blank -%}{%- assign c1 = '#888888' -%}{%- endif -%}
+                          {%- if c2 != blank -%}
+                            {%- assign swatch_style = 'background: linear-gradient(135deg, ' | append: c1 | append: ' 50%, ' | append: c2 | append: ' 50%);' -%}
+                          {%- else -%}
+                            {%- assign swatch_style = 'background-color: ' | append: c1 | append: ';' -%}
+                          {%- endif -%}
                           {%- if sibling.id == product.id -%}
                             <span
                               class="vp-color-nav__swatch vp-color-nav__swatch--active"
-                              style="background-color: {{ swatch_color }};"
+                              style="{{ swatch_style }}"
                               title="{{ sibling.title | escape }}"
                               aria-current="true"
                             ></span>
@@ -603,7 +609,7 @@
                             <a
                               href="{{ sibling.url }}"
                               class="vp-color-nav__swatch"
-                              style="background-color: {{ swatch_color }};"
+                              style="{{ swatch_style }}"
                               title="{{ sibling.title | escape }}"
                             ></a>
                           {%- endif -%}
