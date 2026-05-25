@@ -590,7 +590,8 @@
                       <p class="vp-color-nav__label">Color</p>
                       <div class="vp-color-nav__swatches">
                         {%- for sibling in familia_collection.products -%}
-                          {%- assign swatch_color = sibling.metafields.custom.color_hex | default: '#888888' -%}
+                          {%- assign swatch_color = sibling.metafields.custom.color_hex -%}
+                          {%- if swatch_color == blank -%}{%- assign swatch_color = '#888888' -%}{%- endif -%}
                           {%- if sibling.id == product.id -%}
                             <span
                               class="vp-color-nav__swatch vp-color-nav__swatch--active"
