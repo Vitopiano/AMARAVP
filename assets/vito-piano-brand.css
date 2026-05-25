@@ -1893,6 +1893,11 @@ body {
   color: var(--vp-terracota) !important;
 }
 
+/* Espacio entre widget Addi y línea de impuestos/envío */
+.product__tax {
+  margin-top: 0.8rem !important;
+}
+
 /* Addi widget — fondo transparente */
 [class*="addi"],
 [id*="addi"] {
