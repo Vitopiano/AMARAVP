@@ -1893,6 +1893,14 @@ body {
   color: var(--vp-terracota) !important;
 }
 
+/* Addi widget — fondo transparente */
+[class*="addi"],
+[id*="addi"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Anular page-width del ul interno */
 .mega-menu__list.page-width {
   max-width: none !important;
