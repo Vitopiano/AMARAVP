@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "vp-garantia-ok": {
-      "type": "vito-garantia-activada",
-      "settings": {}
-    }
-  },
-  "order": ["vp-garantia-ok"]
-}

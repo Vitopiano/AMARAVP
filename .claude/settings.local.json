@@ -1,9 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\kasan\\\\Desktop\\\\casa vito sas\\\\AmaraVP\" -Force)",
-      "Bash(Select-Object Name, PSIsContainer)",
-      "Bash(Format-Table -AutoSize)"
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\" -Recurse -Force | Select-Object FullName, PSIsContainer | Sort-Object FullName | ForEach-Object { if \\($_.PSIsContainer\\) { \"[DIR]  \" + $_.FullName } else { \"[FILE] \" + $_.FullName } })",
+      "WebFetch(domain:vitopiano.com)",
+      "Bash(del \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\\\\templates\\\\page.garantia-activada.json\")",
+      "Bash(del \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\\\\templates\\\\page.programa-garantia.json\")",
+      "PowerShell(Remove-Item \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\\\\templates\\\\page.garantia-activada.json\" -Confirm:$false)",
+      "PowerShell(Remove-Item \"c:\\\\Users\\\\dcsan\\\\OneDrive\\\\Documents\\\\Casa Vito SAS\\\\Vito piano\\\\amaraVP\\\\AMARAVP\\\\templates\\\\page.programa-garantia.json\" -Confirm:$false)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\dcsan\\.claude\\projects\\c--Users-dcsan-OneDrive-Documents-Casa-Vito-SAS-Vito-piano-amaraVP-AMARAVP\\memory"
     ]
   }
 }

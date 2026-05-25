@@ -646,7 +646,7 @@ ITA & COL                        Hombre               Nuestra Historia         G
 Slow Fashion Store               Mujer                El Taller                Cuidado de Prendas
                                  Accesorios           Slow Fashion             Envíos y Devoluciones
 [Instagram] [WhatsApp]           Corporativo          Blog                     Contacto
-info@vitopiano.com
+ciao@vitopiano.com
 (+57) 324 477 5966
 www.vitopiano.com
                                  © 2026 Vito Piano. Hecho en Colombia, con alma italiana.
