@@ -87,6 +87,32 @@
         >
           <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
             {%- if cart != empty -%}
+              {%- comment -%} Barra envío gratis — umbral $600.000 COP = 60000000 centavos {%- endcomment -%}
+              {%- assign vp_threshold = 60000000 -%}
+              {%- if cart.total_price < vp_threshold -%}
+                {%- assign vp_remaining = vp_threshold | minus: cart.total_price -%}
+                {%- assign vp_pct = cart.total_price | times: 100.0 | divided_by: vp_threshold | round -%}
+              {%- else -%}
+                {%- assign vp_remaining = 0 -%}
+                {%- assign vp_pct = 100 -%}
+              {%- endif -%}
+              <div class="vp-free-ship">
+                {%- if vp_remaining > 0 -%}
+                  <p class="vp-free-ship__msg">
+                    Te faltan <strong>{{ vp_remaining | money }}</strong> para envío gratis
+                  </p>
+                {%- else -%}
+                  <p class="vp-free-ship__msg vp-free-ship__msg--done">
+                    ¡Tienes envío gratis!
+                  </p>
+                {%- endif -%}
+                <div class="vp-free-ship__track">
+                  <div class="vp-free-ship__fill" style="width: {{ vp_pct }}%"></div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if cart != empty -%}
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
                   <thead role="rowgroup">

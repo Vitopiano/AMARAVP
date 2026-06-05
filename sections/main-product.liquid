@@ -619,10 +619,47 @@
                   {%- endif -%}
                 {%- endif -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-                {%- if block.settings.size_guide_url != blank -%}
-                  <a href="{{ block.settings.size_guide_url }}" class="vp-size-guide-link" target="_blank" rel="noopener">
+                {%- if block.settings.size_guide_image != blank or block.settings.size_guide_url != blank -%}
+                  <button
+                    type="button"
+                    class="vp-size-guide-link"
+                    onclick="document.getElementById('VpSizeGuide-{{ section.id }}-{{ block.id }}').showModal()"
+                  >
                     {{ block.settings.size_guide_text | default: 'Guía de tallas' }}
-                  </a>
+                  </button>
+
+                  <dialog
+                    id="VpSizeGuide-{{ section.id }}-{{ block.id }}"
+                    class="vp-size-guide-modal"
+                    onclick="if(event.target===this)this.close()"
+                  >
+                    <div class="vp-size-guide-modal__inner">
+                      <button
+                        type="button"
+                        class="vp-size-guide-modal__close"
+                        onclick="this.closest('dialog').close()"
+                        aria-label="Cerrar guía de tallas"
+                      >&#215;</button>
+                      {%- if block.settings.size_guide_image != blank -%}
+                        {{
+                          block.settings.size_guide_image
+                          | image_url: width: 1200
+                          | image_tag:
+                            loading: 'lazy',
+                            class: 'vp-size-guide-modal__img',
+                            widths: '400, 600, 800, 1000, 1200',
+                            sizes: '(min-width: 750px) 640px, 90vw',
+                            alt: 'Guía de tallas'
+                        }}
+                      {%- elsif block.settings.size_guide_url != blank -%}
+                        <p class="vp-size-guide-modal__fallback">
+                          <a href="{{ block.settings.size_guide_url }}" target="_blank" rel="noopener">
+                            Ver guía de tallas
+                          </a>
+                        </p>
+                      {%- endif -%}
+                    </div>
+                  </dialog>
                 {%- endif -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
@@ -854,6 +891,71 @@
                       </div>
                     </details>
                   </div>
+                {%- endif -%}
+              {%- when 'regalo' -%}
+                {%- assign gift_product = all_products[block.settings.gift_product] -%}
+                {%- assign gift_variant = gift_product.variants | first -%}
+                {%- if gift_variant != nil -%}
+                  <div class="vp-regalo" {{ block.shopify_attributes }}>
+                    <label class="vp-regalo__label" for="vp-regalo-check-{{ block.id }}">
+                      <input
+                        type="checkbox"
+                        id="vp-regalo-check-{{ block.id }}"
+                        class="vp-regalo__checkbox"
+                      >
+                      <span class="vp-regalo__text">
+                        {{ block.settings.label | default: 'Agregar empaque y tarjeta regalo' }}
+                        <strong class="vp-regalo__price">(+ {{ gift_variant.price | money }})</strong>
+                      </span>
+                    </label>
+                    <div class="vp-regalo__nota" id="vp-regalo-nota-wrap-{{ block.id }}" hidden>
+                      <label class="vp-regalo__nota-label" for="vp-regalo-nota-{{ block.id }}">
+                        {{ block.settings.nota_label | default: 'Nota para la tarjeta (opcional)' }}
+                      </label>
+                      <textarea
+                        id="vp-regalo-nota-{{ block.id }}"
+                        class="vp-regalo__textarea"
+                        rows="3"
+                        maxlength="200"
+                        placeholder="{{ block.settings.nota_placeholder | default: 'Escribe tu mensaje aquí...' }}"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <script>
+                  (function () {
+                    var blockId  = '{{ block.id }}';
+                    var sectionId = '{{ section.id }}';
+                    var giftVariantId = {{ gift_variant.id }};
+
+                    function init() {
+                      var checkbox  = document.getElementById('vp-regalo-check-'      + blockId);
+                      var notaWrap  = document.getElementById('vp-regalo-nota-wrap-'   + blockId);
+                      var form      = document.getElementById('product-form-'          + sectionId);
+                      if (!checkbox || !notaWrap || !form) return;
+
+                      checkbox.addEventListener('change', function () {
+                        notaWrap.hidden = !checkbox.checked;
+                      });
+
+                      form.addEventListener('submit', function () {
+                        if (!checkbox.checked) return;
+                        var notaEl = document.getElementById('vp-regalo-nota-' + blockId);
+                        var note   = notaEl ? notaEl.value.trim() : '';
+                        var giftItem = { id: giftVariantId, quantity: 1 };
+                        if (note) giftItem.properties = { 'Nota para la tarjeta': note };
+                        fetch('/cart/add.js', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ items: [giftItem] })
+                        }).catch(function (e) { console.error('Error al agregar regalo:', e); });
+                      });
+                    }
+
+                    document.readyState === 'loading'
+                      ? document.addEventListener('DOMContentLoaded', init)
+                      : init();
+                  })();
+                  </script>
                 {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
@@ -1144,14 +1246,19 @@
           "default": "circle"
         },
         {
+          "type": "image_picker",
+          "id": "size_guide_image",
+          "label": "Imagen de guía de tallas (abre en popup)"
+        },
+        {
           "type": "url",
           "id": "size_guide_url",
-          "label": "URL de guía de tallas"
+          "label": "URL de guía de tallas (si no hay imagen)"
         },
         {
           "type": "text",
           "id": "size_guide_text",
-          "label": "Texto del enlace de guía de tallas",
+          "label": "Texto del botón de guía de tallas",
           "default": "Guía de tallas"
         }
       ]
@@ -2402,6 +2509,36 @@
           "id": "heading",
           "label": "Título del acordeón",
           "default": "Notas de Styling"
+        }
+      ]
+    },
+    {
+      "type": "regalo",
+      "name": "Empaque y Tarjeta Regalo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Producto regalo (Empaque y Tarjeta)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto del checkbox",
+          "default": "Agregar empaque y tarjeta regalo"
+        },
+        {
+          "type": "text",
+          "id": "nota_label",
+          "label": "Etiqueta del campo de nota",
+          "default": "Nota para la tarjeta (opcional)"
+        },
+        {
+          "type": "text",
+          "id": "nota_placeholder",
+          "label": "Placeholder del campo de nota",
+          "default": "Escribe tu mensaje aquí..."
         }
       ]
     }

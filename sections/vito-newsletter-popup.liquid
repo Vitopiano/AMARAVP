@@ -5,11 +5,11 @@
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(12, 68, 51, 0.78);
+    background: rgba(12, 68, 51, 0.32);
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
   }
 
   .vp-popup-overlay.is-active {
@@ -45,26 +45,27 @@
 
   .vp-popup__close {
     position: absolute;
-    top: 1.4rem;
-    right: 1.4rem;
-    background: none;
-    border: none;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(67, 20, 36, 0.1);
+    border: 1px solid rgba(67, 20, 36, 0.25);
     cursor: pointer;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: #431424;
     line-height: 1;
     z-index: 2;
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3.4rem;
+    height: 3.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     padding: 0;
   }
 
   .vp-popup__close:hover {
-    color: #0C4433;
+    background: #431424;
+    color: #FCF9F5;
   }
 
   /* --- Panel izquierdo: verde botella --- */
@@ -343,7 +344,6 @@
     <div class="vp-popup__right">
       {%- form 'customer', id: 'vp-popup-form', class: 'vp-popup__form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter,vito-piano-10off">
-        <input type="hidden" name="contact[note]" id="vp-birthday-note" value="">
 
         {%- if form.posted_successfully? -%}
           <div class="vp-popup__success">
@@ -376,33 +376,6 @@
             {%- if form.errors contains 'email' -%}
               <span class="vp-popup__error">{{ form.errors.messages.email }}</span>
             {%- endif -%}
-          </div>
-
-          <label class="vp-popup__birthday-label" for="vp-popup-month">
-            {{ section.settings.birthday_label }}
-          </label>
-          <div class="vp-popup__birthday-fields">
-            <select id="vp-popup-month" class="vp-popup__select" aria-label="Mes de cumpleaños">
-              <option value="">Mes</option>
-              <option value="01">Enero</option>
-              <option value="02">Febrero</option>
-              <option value="03">Marzo</option>
-              <option value="04">Abril</option>
-              <option value="05">Mayo</option>
-              <option value="06">Junio</option>
-              <option value="07">Julio</option>
-              <option value="08">Agosto</option>
-              <option value="09">Septiembre</option>
-              <option value="10">Octubre</option>
-              <option value="11">Noviembre</option>
-              <option value="12">Diciembre</option>
-            </select>
-            <select id="vp-popup-day" class="vp-popup__select" aria-label="Día de cumpleaños">
-              <option value="">Día</option>
-              {%- for i in (1..31) -%}
-                <option value="{{ i | prepend: '00' | slice: -2, 2 }}">{{ i }}</option>
-              {%- endfor -%}
-            </select>
           </div>
 
           <span class="vp-popup__birthday-label" style="margin-bottom: 0.8rem; display: block;">Me interesa</span>
@@ -475,15 +448,7 @@
     var form = document.getElementById('vp-popup-form');
     if (form) {
       form.addEventListener('submit', function () {
-        var month = document.getElementById('vp-popup-month');
-        var day = document.getElementById('vp-popup-day');
-        var noteField = document.getElementById('vp-birthday-note');
         var tagsField = form.querySelector('input[name="contact[tags]"]');
-        if (month && day && month.value && day.value) {
-          var bdayTag = 'birthday-' + month.value + '-' + day.value;
-          if (noteField) noteField.value = 'Cumpleanos: ' + month.value + '/' + day.value;
-          if (tagsField) tagsField.value = tagsField.value + ',' + bdayTag;
-        }
         var interest = form.querySelector('input[name="vp-interest"]:checked');
         if (interest && interest.value && tagsField) {
           tagsField.value = tagsField.value + ',interes-' + interest.value;

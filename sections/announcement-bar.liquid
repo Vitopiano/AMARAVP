@@ -9,7 +9,11 @@
   if section.settings.enable_country_selector or section.settings.enable_language_selector
     assign language_country_selector = true
   endif
-  if section.blocks.size > 0
+  assign is_product_page = false
+  if request.page_type == 'product' and section.settings.product_page_text != blank
+    assign is_product_page = true
+  endif
+  if section.blocks.size > 0 or is_product_page
     assign announcement_bar = true
   endif
 -%}
@@ -26,7 +30,26 @@
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
-    {%- if section.blocks.size == 1 -%}
+    {%- if is_product_page -%}
+      <div
+        class="announcement-bar announcement-bar--one-announcement"
+        role="region"
+        aria-label="Información de envío"
+      >
+        {%- if section.settings.product_page_link != blank -%}
+          <a href="{{ section.settings.product_page_link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
+        {%- endif -%}
+        <p class="announcement-bar__message h5">
+          <span>{{ section.settings.product_page_text | escape }}</span>
+          {%- if section.settings.product_page_link != blank -%}
+            {{- 'icon-arrow.svg' | inline_asset_content -}}
+          {%- endif -%}
+        </p>
+        {%- if section.settings.product_page_link != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- elsif section.blocks.size == 1 -%}
       <div
         class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
         role="region"
@@ -178,6 +201,21 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
+    },
+    {
+      "type": "header",
+      "content": "Anuncio exclusivo para páginas de producto"
+    },
+    {
+      "type": "text",
+      "id": "product_page_text",
+      "label": "Texto del anuncio (páginas de producto)",
+      "default": "Envío gratis en compras mayores a $600.000"
+    },
+    {
+      "type": "url",
+      "id": "product_page_link",
+      "label": "Enlace del anuncio (opcional)"
     },
     {
       "type": "checkbox",
