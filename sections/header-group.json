@@ -21,28 +21,30 @@
             "link": ""
           }
         },
+        "9cb827b1-06e8-4378-8611-1e903c1f608e": {
+          "type": "announcement",
+          "settings": {
+            "text": "Envíos gratis con compras superiores a $600,000",
+            "link": ""
+          }
+        },
         "a03b5515-776a-4538-9cc0-9defdff5c007": {
           "type": "announcement",
           "settings": {
             "text": "Slow Fashion Store",
             "link": ""
           }
-        },
-        "9cb827b1-06e8-4378-8611-1e903c1f608e": {
-          "type": "announcement",
-          "settings": {
-            "text": "Envíos gratis con compras superiores a $400,000",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "announcement_YNPgLe",
-        "a03b5515-776a-4538-9cc0-9defdff5c007",
-        "9cb827b1-06e8-4378-8611-1e903c1f608e"
+        "9cb827b1-06e8-4378-8611-1e903c1f608e",
+        "a03b5515-776a-4538-9cc0-9defdff5c007"
       ],
       "settings": {
         "color_scheme": "inverse",
+        "product_page_text": "Envío gratis en compras mayores a $600.000",
+        "product_page_link": "",
         "show_line_separator": false,
         "show_social": false,
         "auto_rotate": true,

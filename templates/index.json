@@ -12,13 +12,13 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "HOMBRE",
+        "title": "",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "hombre",
-        "products_to_show": 4,
+        "collection": "productos",
+        "products_to_show": 24,
         "columns_desktop": 4,
         "full_width": true,
         "show_view_all": false,
