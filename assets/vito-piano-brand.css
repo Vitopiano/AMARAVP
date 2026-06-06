@@ -846,7 +846,7 @@ h1, h2, .h0, .h1, .h2 {
   justify-content: center;
 
   /* 🎯 Glass effect */
-  background: color-mix(in srgb, var(--vp-verde-botella) 20%, transparent);
+  background: color-mix(in srgb, var(--vp-verde-botella) 25%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
