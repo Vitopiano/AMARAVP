@@ -322,7 +322,7 @@
     }
   }
 
-  /* --- Pestaña lateral --- */
+  /* --- Pestaña lateral (desktop) --- */
   .vp-popup-tab {
     display: none;
     position: fixed;
@@ -347,6 +347,21 @@
 
   .vp-popup-tab:hover {
     background: #431424;
+  }
+
+  /* --- Pestaña en mobile: horizontal, esquina inferior izquierda --- */
+  @media screen and (max-width: 749px) {
+    .vp-popup-tab {
+      writing-mode: horizontal-tb;
+      transform: none;
+      top: auto;
+      bottom: 7.6rem;
+      left: 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 1.0rem;
+      padding: 0.9rem 1.2rem;
+      letter-spacing: 0.14em;
+    }
   }
 </style>
 

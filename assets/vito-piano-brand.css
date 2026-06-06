@@ -84,19 +84,6 @@ h1, h2, h3, .h1, .h2, .h3 {
   overflow: hidden;
 }
 
-/* Cuadrícula sobre todo el ancho del contenedor */
-.utility-bar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(197, 234, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(197, 234, 255, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 /* Texto centrado por encima de la cuadrícula */
 .utility-bar .page-width {
   position: relative;
@@ -1207,6 +1194,18 @@ h1, h2, .h0, .h1, .h2 {
 .footer__copyright--legal {
   display: block;
   margin-top: 0.2rem;
+}
+
+/* ============================================
+   PRODUCT CARDS — ocultar quick-add en mobile
+   ============================================ */
+
+@media screen and (max-width: 749px) {
+  .quick-add,
+  .card__footer .quick-add,
+  .card-information .quick-add {
+    display: none !important;
+  }
 }
 
 /* ============================================
