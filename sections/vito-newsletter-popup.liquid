@@ -322,13 +322,13 @@
     }
   }
 
-  /* --- Pestaña lateral (desktop) --- */
+  /* --- Pestaña lateral --- */
   .vp-popup-tab {
     display: none;
     position: fixed;
     left: 0;
     top: 50%;
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%);
     z-index: 9999;
     writing-mode: vertical-lr;
     background: #0C4433;
@@ -491,8 +491,10 @@
     if (!overlay) return;
 
     if (shouldShow()) {
+      if (tab) tab.style.display = 'flex';
       setTimeout(function () {
         overlay.classList.add('is-active');
+        if (tab) tab.style.display = 'none';
       }, DELAY_MS);
     }
 
