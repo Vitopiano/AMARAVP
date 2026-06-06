@@ -1202,11 +1202,16 @@ h1, h2, .h0, .h1, .h2 {
 
 @media screen and (max-width: 749px) {
   .quick-add,
-  quick-add-bulk,
   .card__footer .quick-add,
   .card-information .quick-add {
     display: none !important;
   }
+}
+
+/* Ocultar selector de cantidad bulk en todas las pantallas
+   (productos de variante única: cinturón, milano, etc.) */
+quick-add-bulk {
+  display: none !important;
 }
 
 /* ============================================
