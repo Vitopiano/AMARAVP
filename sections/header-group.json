@@ -42,7 +42,7 @@
         "a03b5515-776a-4538-9cc0-9defdff5c007"
       ],
       "settings": {
-        "color_scheme": "inverse",
+        "color_scheme": "scheme-d7fea8c2-5d52-4047-a802-4fe362949f18",
         "product_page_text": "Envío gratis en compras mayores a $600.000",
         "product_page_link": "",
         "show_line_separator": false,
@@ -56,7 +56,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-28.png",
+        "isotipo_image": "shopify://shop_images/VP_Logo_Isotipo-25.png",
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "mega",
