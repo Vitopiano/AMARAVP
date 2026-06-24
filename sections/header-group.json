@@ -30,18 +30,26 @@
             "highlight": false
           }
         },
-        "a03b5515-776a-4538-9cc0-9defdff5c007": {
+        "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30": {
           "type": "announcement",
           "settings": {
-            "text": "Colombian craftsmanship meets Italian precision",
+            "text": "Slow Fashion Store",
             "link": "",
             "highlight": false
           }
         },
-        "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30": {
+        "announcement_tCg8JY": {
           "type": "announcement",
           "settings": {
-            "text": "Italian & Colombian - Slow Fashion Store",
+            "text": "Envío gratis en compras superiores a $600.000",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "a03b5515-776a-4538-9cc0-9defdff5c007": {
+          "type": "announcement",
+          "settings": {
+            "text": "Colombian craftsmanship meets Italian precision",
             "link": "",
             "highlight": false
           }
@@ -53,23 +61,15 @@
             "link": "",
             "highlight": false
           }
-        },
-        "e1d9b3f7-5a2c-4e8d-9b6a-3c8f1d4a7e95": {
-          "type": "announcement",
-          "settings": {
-            "text": "Bogotá · Italia · 2026",
-            "link": "",
-            "highlight": false
-          }
         }
       },
       "block_order": [
         "announcement_YNPgLe",
         "9cb827b1-06e8-4378-8611-1e903c1f608e",
-        "a03b5515-776a-4538-9cc0-9defdff5c007",
         "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30",
-        "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02",
-        "e1d9b3f7-5a2c-4e8d-9b6a-3c8f1d4a7e95"
+        "announcement_tCg8JY",
+        "a03b5515-776a-4538-9cc0-9defdff5c007",
+        "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02"
       ],
       "settings": {
         "color_scheme": "inverse",
