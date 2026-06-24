@@ -10,7 +10,8 @@
 {
   "sections": {
     "vito_hero": {
-      "type": "vito-hero"
+      "type": "vito-hero",
+      "settings": {}
     },
     "vito_hero_product": {
       "type": "vito-hero-product",
@@ -37,7 +38,12 @@
           }
         }
       },
-      "block_order": ["attr_1", "attr_2", "attr_3"]
+      "block_order": [
+        "attr_1",
+        "attr_2",
+        "attr_3"
+      ],
+      "settings": {}
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -115,7 +121,13 @@
           }
         }
       },
-      "block_order": ["pilar_1", "pilar_2", "pilar_3", "pilar_4"]
+      "block_order": [
+        "pilar_1",
+        "pilar_2",
+        "pilar_3",
+        "pilar_4"
+      ],
+      "settings": {}
     },
     "1779403844c13cd9c6": {
       "type": "apps",
