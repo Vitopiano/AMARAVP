@@ -26,7 +26,7 @@
 {%- if marquee_mode -%}
   <style>
     #vito-ticker-{{ section.id }} {
-      background: {{ section.settings.ticker_bg_color }};
+      background: rgb(var(--color-background));
       overflow: hidden;
     }
     #vito-ticker-{{ section.id }} .vito-ticker__track {
@@ -43,15 +43,15 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       white-space: nowrap;
-      color: {{ section.settings.ticker_text_color }};
+      color: rgb(var(--color-foreground));
     }
     #vito-ticker-{{ section.id }} .vito-ticker__item--accent {
-      color: {{ section.settings.ticker_accent_color }};
+      color: rgb(var(--color-link));
     }
     #vito-ticker-{{ section.id }} .vito-ticker__dot {
       display: inline-block;
       margin: 0 2.4rem;
-      color: {{ section.settings.ticker_text_color }};
+      color: rgb(var(--color-foreground));
       opacity: 0.5;
     }
     @keyframes vito-ticker-scroll-{{ section.id }} {
@@ -76,7 +76,7 @@
   </style>
   <div
     id="vito-ticker-{{ section.id }}"
-    class="vito-ticker"
+    class="vito-ticker color-{{ section.settings.color_scheme }}"
     role="region"
     aria-label="{{ 'sections.header.announcement' | t }}"
     {{ block.shopify_attributes }}
@@ -184,7 +184,8 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "default": "scheme-4"
+      "info": "En modo ticker (2+ bloques) define fondo, texto y color de las frases resaltadas.",
+      "default": "vito-negro"
     },
     {
       "type": "header",
@@ -235,24 +236,6 @@
       "unit": "s",
       "label": "Duración del ciclo",
       "default": 40
-    },
-    {
-      "type": "color",
-      "id": "ticker_bg_color",
-      "label": "Color de fondo",
-      "default": "#1a1a1a"
-    },
-    {
-      "type": "color",
-      "id": "ticker_text_color",
-      "label": "Color de texto",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "ticker_accent_color",
-      "label": "Color de acento (frases resaltadas)",
-      "default": "#C5EAFF"
     },
     {
       "type": "header",

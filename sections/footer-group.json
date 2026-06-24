@@ -75,9 +75,7 @@
         "copyright_text": "© 2026 Vito Piano · Bogotá · Italia",
         "legal_text": "Casa Vito SAS · NIT 901930137-9",
         "bottom_tagline": "ITA & COL · Slow Fashion Store",
-        "bg_color": "#1a1a1a",
-        "text_color": "#FCF9F5",
-        "heading_color": "#C5EAFF"
+        "color_scheme": "vito-negro"
       }
     }
   },

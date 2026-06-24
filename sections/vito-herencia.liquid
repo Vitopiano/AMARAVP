@@ -1,6 +1,6 @@
 <style>
   .vhe {
-    background: var(--vhe-bg);
+    background: rgb(var(--color-background));
     padding: 7rem 2.4rem;
     font-family: 'Inter', sans-serif;
   }
@@ -16,7 +16,7 @@
 
   .vhe__image {
     aspect-ratio: 1;
-    background: var(--vhe-image-bg);
+    background: rgba(var(--color-link), 0.15);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -34,7 +34,7 @@
   .vhe__image-label {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    color: var(--vhe-heading);
+    color: rgb(var(--color-foreground));
     text-align: center;
     opacity: 0.65;
     padding: 0 2rem;
@@ -45,20 +45,20 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.6rem, 4vw, 3.4rem);
     line-height: 1.15;
-    color: var(--vhe-heading);
+    color: rgb(var(--color-foreground));
     margin: 0 0 2.4rem;
     font-weight: 500;
   }
 
   .vhe__heading em {
     font-style: italic;
-    color: var(--vhe-accent);
+    color: rgb(var(--color-link));
   }
 
   .vhe__body p {
     font-size: 1.6rem;
     line-height: 1.8;
-    color: var(--vhe-body);
+    color: rgba(var(--color-foreground), 0.7);
     margin: 0 0 1.6rem;
   }
 
@@ -71,19 +71,19 @@
 
   .vhe__pilar {
     padding: 1.4rem 0;
-    border-top: 1px solid var(--vhe-heading);
+    border-top: 1px solid rgb(var(--color-foreground));
   }
 
   .vhe__pilar-numero {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
-    color: var(--vhe-accent);
+    color: rgb(var(--color-link));
     margin-bottom: 0.3rem;
   }
 
   .vhe__pilar-texto {
     font-size: 1.3rem;
-    color: var(--vhe-pilar-text);
+    color: rgb(var(--color-foreground));
     line-height: 1.5;
   }
 
@@ -103,10 +103,7 @@
   }
 </style>
 
-<div
-  class="vhe"
-  style="--vhe-bg: {{ section.settings.bg_color }}; --vhe-image-bg: {{ section.settings.image_bg_color }}; --vhe-heading: {{ section.settings.heading_color }}; --vhe-accent: {{ section.settings.accent_color }}; --vhe-body: {{ section.settings.body_color }}; --vhe-pilar-text: {{ section.settings.pilar_text_color }};"
->
+<div class="vhe color-{{ section.settings.color_scheme }}">
   <div class="vhe__inner">
     <div class="vhe__image">
       {%- if section.settings.image != blank -%}
@@ -177,40 +174,11 @@
       "content": "Colores"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fondo",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "image_bg_color",
-      "label": "Fondo del recuadro de imagen",
-      "default": "#C5EAFF"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Título y líneas de pilares",
-      "default": "#0C4433"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Acento (cursivas y números)",
-      "default": "#E25027"
-    },
-    {
-      "type": "color",
-      "id": "body_color",
-      "label": "Párrafos",
-      "default": "#6b6b6b"
-    },
-    {
-      "type": "color",
-      "id": "pilar_text_color",
-      "label": "Texto de los pilares",
-      "default": "#1a1a1a"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de colores",
+      "info": "Fondo, texto y acento (cursivas, números de pilar, recuadro de imagen) vienen del esquema.",
+      "default": "vito-crema"
     }
   ],
   "blocks": [

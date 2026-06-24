@@ -1,7 +1,7 @@
 <style>
   .vn {
-    background: var(--vn-bg);
-    color: var(--vn-text);
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
     padding: 7rem 2.4rem;
     text-align: center;
     font-family: 'Inter', sans-serif;
@@ -18,7 +18,7 @@
     font-size: 1.3rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--vn-text);
+    color: rgb(var(--color-foreground));
     opacity: 0.6;
     margin: 0 0 2rem;
   }
@@ -34,7 +34,7 @@
   .vn__body p {
     font-size: 1.6rem;
     line-height: 1.8;
-    color: var(--vn-text);
+    color: rgb(var(--color-foreground));
     opacity: 0.88;
     margin: 0 0 2rem;
     text-align: left;
@@ -50,8 +50,8 @@
     font-size: 1.1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--vn-link);
-    border-bottom: 1px solid var(--vn-link);
+    color: rgb(var(--color-link));
+    border-bottom: 1px solid rgb(var(--color-link));
     display: inline-block;
     padding-bottom: 0.3rem;
     margin: 0 0 2rem;
@@ -62,12 +62,12 @@
   }
 
   .vn__link {
-    color: var(--vn-link);
+    color: rgb(var(--color-link));
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--vn-link);
+    border-bottom: 1px solid rgb(var(--color-link));
     padding-bottom: 0.4rem;
     display: inline-block;
     margin-top: 1.2rem;
@@ -95,7 +95,7 @@
   }
 </style>
 
-<div class="vn" style="--vn-bg: {{ section.settings.bg_color }}; --vn-text: {{ section.settings.text_color }}; --vn-link: {{ section.settings.link_color }};">
+<div class="vn color-{{ section.settings.color_scheme }}">
   <div class="vn__inner">
     {%- if section.settings.eyebrow != blank -%}
       <p class="vn__eyebrow">{{ section.settings.eyebrow }}</p>
@@ -192,22 +192,11 @@
       "content": "Colores"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fondo",
-      "default": "#431424"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Texto",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "link_color",
-      "label": "Enlace y botón \"leer más\"",
-      "default": "#C5EAFF"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de colores",
+      "info": "Fondo, texto y enlace (\"leer más\" / \"Conocer el taller\") vienen del esquema.",
+      "default": "vito-vinotinto"
     }
   ],
   "presets": [

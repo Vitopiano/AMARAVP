@@ -1,6 +1,6 @@
 <style>
   .vhp {
-    background: var(--vhp-bg);
+    background: rgb(var(--color-background));
     padding: 7rem 2.4rem;
     font-family: 'Inter', sans-serif;
   }
@@ -18,7 +18,7 @@
     font-size: 1.1rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--vhp-label);
+    color: rgb(var(--color-link));
     margin-bottom: 1.2rem;
     font-weight: 500;
   }
@@ -27,7 +27,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(3.2rem, 5vw, 4.6rem);
     line-height: 1;
-    color: var(--vhp-title);
+    color: rgb(var(--color-foreground));
     margin: 0 0 1.6rem;
     font-weight: 500;
   }
@@ -37,7 +37,7 @@
     font-style: italic;
     font-size: clamp(1.6rem, 2vw, 1.9rem);
     line-height: 1.4;
-    color: var(--vhp-aforismo);
+    color: rgb(var(--color-link));
     margin: 0 0 2rem;
     max-width: 32ch;
   }
@@ -45,7 +45,7 @@
   .vhp__desc {
     font-size: 1.6rem;
     line-height: 1.7;
-    color: var(--vhp-desc);
+    color: rgba(var(--color-foreground), 0.7);
     margin: 0 0 2.4rem;
     max-width: 46ch;
   }
@@ -56,30 +56,30 @@
     gap: 1.6rem;
     margin-bottom: 2.4rem;
     padding: 2rem 0;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid rgba(var(--color-foreground), 0.15);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.15);
   }
 
   .vhp__attr-label {
     font-size: 1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--vhp-desc);
+    color: rgba(var(--color-foreground), 0.7);
     margin-bottom: 0.4rem;
   }
 
   .vhp__attr-value {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
-    color: var(--vhp-title);
+    color: rgb(var(--color-foreground));
     font-style: italic;
   }
 
   .vhp__cta {
     display: inline-block;
     padding: 1.5rem 2.8rem;
-    background: var(--vhp-cta-bg);
-    color: var(--vhp-cta-text);
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 0.2em;
@@ -89,7 +89,7 @@
 
   .vhp__image {
     aspect-ratio: 4 / 5;
-    background: var(--vhp-title);
+    background: rgba(var(--color-foreground), 0.06);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -105,7 +105,7 @@
   }
 
   .vhp__image-label {
-    color: var(--vhp-bg);
+    color: rgb(var(--color-foreground));
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     text-align: center;
@@ -131,10 +131,7 @@
   }
 </style>
 
-<div
-  class="vhp"
-  style="--vhp-bg: {{ section.settings.bg_color }}; --vhp-label: {{ section.settings.label_color }}; --vhp-title: {{ section.settings.title_color }}; --vhp-aforismo: {{ section.settings.aforismo_color }}; --vhp-desc: {{ section.settings.desc_color }}; --vhp-cta-bg: {{ section.settings.cta_bg_color }}; --vhp-cta-text: {{ section.settings.cta_text_color }};"
->
+<div class="vhp color-{{ section.settings.color_scheme }}">
   <div class="vhp__inner">
     <div class="vhp__image">
       {%- if section.settings.image != blank -%}
@@ -234,46 +231,11 @@
       "content": "Colores"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fondo",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "label_color",
-      "label": "Etiqueta superior",
-      "default": "#E25027"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Título y valores",
-      "default": "#0C4433"
-    },
-    {
-      "type": "color",
-      "id": "aforismo_color",
-      "label": "Aforismo decorativo",
-      "default": "#431424"
-    },
-    {
-      "type": "color",
-      "id": "desc_color",
-      "label": "Descripción y etiquetas de atributo",
-      "default": "#6b6b6b"
-    },
-    {
-      "type": "color",
-      "id": "cta_bg_color",
-      "label": "Fondo del botón",
-      "default": "#0C4433"
-    },
-    {
-      "type": "color",
-      "id": "cta_text_color",
-      "label": "Texto del botón",
-      "default": "#FCF9F5"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de colores",
+      "info": "Fondo, texto, botón y acento (etiqueta + aforismo) vienen del esquema.",
+      "default": "vito-crema"
     }
   ],
   "blocks": [

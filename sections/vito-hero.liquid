@@ -1,7 +1,7 @@
 <style>
   .vh {
-    background: var(--vh-bg);
-    color: var(--vh-text);
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
     padding: 7rem 2.4rem 8rem;
     position: relative;
     overflow: hidden;
@@ -10,8 +10,8 @@
 
   .vh__grid-bg {
     background-image:
-      linear-gradient(rgba(252, 249, 245, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(252, 249, 245, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(var(--color-foreground), 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--color-foreground), 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
     position: absolute;
     inset: 0;
@@ -31,13 +31,13 @@
   .vh__tag {
     display: inline-block;
     padding: 0.6rem 1.6rem;
-    border: 1px solid var(--vh-text);
+    border: 1px solid rgb(var(--color-foreground));
     border-radius: 999px;
     font-size: 1rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 2.4rem;
-    color: var(--vh-text);
+    color: rgb(var(--color-foreground));
   }
 
   .vh__heading {
@@ -51,7 +51,7 @@
 
   .vh__heading em {
     font-style: italic;
-    color: var(--vh-accent);
+    color: rgb(var(--color-link));
   }
 
   .vh__subtitle {
@@ -59,7 +59,7 @@
     font-style: italic;
     font-size: clamp(1.6rem, 2vw, 2rem);
     line-height: 1.4;
-    color: var(--vh-text);
+    color: rgb(var(--color-foreground));
     opacity: 0.92;
     margin: 0 0 3.2rem;
     max-width: 36ch;
@@ -79,8 +79,8 @@
   .vh__cta {
     display: inline-block;
     padding: 1.5rem 2.8rem;
-    background: var(--vh-cta-bg);
-    color: var(--vh-cta-text);
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 0.2em;
@@ -94,19 +94,19 @@
   }
 
   .vh__cta-secondary {
-    color: var(--vh-text);
+    color: rgb(var(--color-foreground));
     text-decoration: none;
     font-size: 1.1rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--vh-text);
+    border-bottom: 1px solid rgb(var(--color-foreground));
     padding-bottom: 0.4rem;
   }
 
   .vh__image {
     aspect-ratio: 3 / 4;
-    background: var(--vh-bg);
-    border: 1px solid rgba(252, 249, 245, 0.15);
+    background: rgb(var(--color-background));
+    border: 1px solid rgba(var(--color-foreground), 0.15);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -124,7 +124,7 @@
   .vh__image-label {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
-    color: var(--vh-text);
+    color: rgb(var(--color-foreground));
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-align: center;
@@ -162,10 +162,7 @@
   }
 </style>
 
-<div
-  class="vh"
-  style="--vh-bg: {{ section.settings.bg_color }}; --vh-text: {{ section.settings.text_color }}; --vh-accent: {{ section.settings.accent_color }}; --vh-cta-bg: {{ section.settings.cta_bg_color }}; --vh-cta-text: {{ section.settings.cta_text_color }};"
->
+<div class="vh color-{{ section.settings.color_scheme }}">
   <div class="vh__grid-bg" aria-hidden="true"></div>
   <div class="vh__content">
     <div>
@@ -279,34 +276,11 @@
       "content": "Colores"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Fondo",
-      "default": "#0C4433"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Texto",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Acento (palabra en cursiva)",
-      "default": "#C5EAFF"
-    },
-    {
-      "type": "color",
-      "id": "cta_bg_color",
-      "label": "Fondo botón principal",
-      "default": "#FCF9F5"
-    },
-    {
-      "type": "color",
-      "id": "cta_text_color",
-      "label": "Texto botón principal",
-      "default": "#0C4433"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de colores",
+      "info": "Fondo, texto, botón principal y acento (palabra en cursiva) vienen del esquema.",
+      "default": "vito-verde"
     }
   ],
   "presets": [
