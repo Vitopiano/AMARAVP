@@ -10,7 +10,21 @@
 {
   "sections": {
     "vito_hero": {
-      "type": "vito-hero"
+      "type": "vito-hero",
+      "settings": {
+        "eyebrow": "_SLOW FASHION STORE",
+        "heading": "<p>La chaquetería <em>italiana</em> de Bogotá.</p>",
+        "subtitle": "<p>Tejer lo mejor de dos mundos.</p>",
+        "cta_primary_text": "Ver la colección",
+        "cta_primary_link": "",
+        "cta_secondary_text": "Nuestra historia",
+        "cta_secondary_link": "",
+        "image": "shopify://shop_images/Resize_image_project_6.jpg",
+        "image_label_small": "[ Foto editorial ]",
+        "image_label_big": "COCORA",
+        "image_label_caption": "verde · paño italiano",
+        "color_scheme": ""
+      }
     },
     "vito_hero_product": {
       "type": "vito-hero-product",
@@ -18,8 +32,8 @@
         "attr_1": {
           "type": "attribute",
           "settings": {
-            "label": "Paño",
-            "value": "Italiano"
+            "label": "Material",
+            "value": "drill"
           }
         },
         "attr_2": {
@@ -37,7 +51,22 @@
           }
         }
       },
-      "block_order": ["attr_1", "attr_2", "attr_3"]
+      "block_order": [
+        "attr_1",
+        "attr_2",
+        "attr_3"
+      ],
+      "settings": {
+        "label": "_Nuestra pieza icónica",
+        "title": "Chaqueta Cocora",
+        "aforismo": "Cada ola, un trazo. Cada palma, un diseño.",
+        "description": "Nuestra prenda hero. Tejida en drill 100% algodón  de 363g/m². Con seis variantes. Hecha en Bogotá. Una chaqueta que dura una década, no una temporada.",
+        "cta_text": "Descubre la Cocora",
+        "cta_link": "shopify://collections/familia-cocora",
+        "image": "shopify://shop_images/Amara-51-Cocora.jpg",
+        "image_label": "[ Foto producto ] · Cocora · contexto editorial",
+        "color_scheme": ""
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -115,7 +144,19 @@
           }
         }
       },
-      "block_order": ["pilar_1", "pilar_2", "pilar_3", "pilar_4"]
+      "block_order": [
+        "pilar_1",
+        "pilar_2",
+        "pilar_3",
+        "pilar_4"
+      ],
+      "settings": {
+        "heading": "<p>Italia <em>y</em> Bogotá.<br>Una sola <em>chaqueta</em>.</p>",
+        "body_1": "Trabajamos con paños seleccionados en Italia, los traemos a nuestro taller en Bogotá, y los convertimos en piezas atemporales con técnicas de sastrería heredadas.",
+        "body_2": "No producimos por temporada. Producimos por intención. Cada Vito Piano es resultado de decenas de decisiones invisibles que solo notarás con el tiempo.",
+        "image_label": "[ Ilustración línea azul cielo de palmas + máquina de coser ]",
+        "color_scheme": ""
+      }
     },
     "1779403844c13cd9c6": {
       "type": "apps",
