@@ -9,39 +9,6 @@
  */
 {
   "sections": {
-    "vito_hero": {
-      "type": "vito-hero"
-    },
-    "vito_hero_product": {
-      "type": "vito-hero-product",
-      "blocks": {
-        "attr_1": {
-          "type": "attribute",
-          "settings": {
-            "label": "Paño",
-            "value": "Italiano"
-          }
-        },
-        "attr_2": {
-          "type": "attribute",
-          "settings": {
-            "label": "Confección",
-            "value": "Artesanal"
-          }
-        },
-        "attr_3": {
-          "type": "attribute",
-          "settings": {
-            "label": "Garantía",
-            "value": "6 meses"
-          }
-        }
-      },
-      "block_order": ["attr_1", "attr_2", "attr_3"]
-    },
-    "vito_narrativa": {
-      "type": "vito-narrativa"
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -70,69 +37,21 @@
         "padding_bottom": 12
       }
     },
-    "vito_herencia": {
-      "type": "vito-herencia",
-      "blocks": {
-        "pilar_1": {
-          "type": "pilar",
-          "settings": {
-            "number": "01",
-            "text": "Paños italianos seleccionados a mano"
-          }
-        },
-        "pilar_2": {
-          "type": "pilar",
-          "settings": {
-            "number": "02",
-            "text": "Confección artesanal en Bogotá"
-          }
-        },
-        "pilar_3": {
-          "type": "pilar",
-          "settings": {
-            "number": "03",
-            "text": "Diseño atemporal, no de temporada"
-          }
-        },
-        "pilar_4": {
-          "type": "pilar",
-          "settings": {
-            "number": "04",
-            "text": "Garantía artesanal de por vida"
-          }
-        }
-      },
-      "block_order": ["pilar_1", "pilar_2", "pilar_3", "pilar_4"]
-    },
-    "vito_atelier": {
-      "type": "vito-atelier",
-      "blocks": {
-        "feature_1": {
-          "type": "feature",
-          "settings": {
-            "icon": "✂",
-            "title": "Cita privada",
-            "text": "60 minutos solo para ti, en la bodega del taller en Chicó."
-          }
-        },
-        "feature_2": {
-          "type": "feature",
-          "settings": {
-            "icon": "✦",
-            "title": "Selección curada",
-            "text": "Preparamos prendas según tu talla y tu estilo antes de tu llegada."
-          }
-        },
-        "feature_3": {
-          "type": "feature",
-          "settings": {
-            "icon": "☕",
-            "title": "Café espresso",
-            "text": "Acompañamos cada cita con un ritual italiano de hospitalidad."
-          }
-        }
-      },
-      "block_order": ["feature_1", "feature_2", "feature_3"]
+    "vito_narrativa_wMdYwP": {
+      "type": "vito-narrativa",
+      "name": "Vito · Narrativa",
+      "settings": {
+        "eyebrow": "— La herencia de dos mundos —",
+        "heading": "Tejer lo mejor de dos mundos.",
+        "paragraph_1": "En el corazón de Vito Piano late la historia de un sastre, forjado en la precisión y elegancia italiana, que encontró su verdadera alma en la vibrante esencia de Colombia.",
+        "paragraph_2": "Mis manos, expertas en el arte de la confección, se entrelazaron con la autenticidad y la riqueza de esta tierra, donde cada paisaje, el ritmo del mar y hasta la brisa de las palmas inspira un corte, una puntada, un diseño.",
+        "paragraph_3": "Vito Piano es la unión perfecta de dos mundos, una conversación constante entre la sofisticación europea y la pasión colombiana.",
+        "paragraph_4": "Cada pieza es un legado consciente, cuidadosamente confeccionado para acompañarte en tu propio viaje, reflejando un estilo que es tan auténtico como atemporal.",
+        "read_more_text": "Leer más",
+        "link_text": "Conocer el taller",
+        "link_url": "",
+        "color_scheme": "vito-vinotinto"
+      }
     },
     "1779403844c13cd9c6": {
       "type": "apps",
@@ -150,15 +69,55 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "vito_atelier_iDiNHB": {
+      "type": "vito-atelier",
+      "blocks": {
+        "feature_jW9CKU": {
+          "type": "feature",
+          "settings": {
+            "icon": "✂",
+            "title": "Cita privada",
+            "text": "60 minutos solo para ti, en la bodega de Vito."
+          }
+        },
+        "feature_gmaG9f": {
+          "type": "feature",
+          "settings": {
+            "icon": "✦",
+            "title": "Selección curada",
+            "text": "Preparamos prendas según tu talla y tu estilo antes de tu llegada."
+          }
+        },
+        "feature_wTYHat": {
+          "type": "feature",
+          "settings": {
+            "icon": "☕",
+            "title": "Café espresso",
+            "text": "Acompañamos cada cita con un ritual italiano de hospitalidad."
+          }
+        }
+      },
+      "block_order": [
+        "feature_jW9CKU",
+        "feature_gmaG9f",
+        "feature_wTYHat"
+      ],
+      "name": "Vito · Atelier",
+      "settings": {
+        "eyebrow": "_EXPERIENCIA PRIVADA",
+        "heading": "<p>El Atelier <em>te espera</em>.</p>",
+        "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
+        "cta_text": "Agendar tu cita",
+        "cta_link": "",
+        "color_scheme": ""
+      }
     }
   },
   "order": [
-    "vito_hero",
-    "vito_hero_product",
-    "vito_narrativa",
     "featured_collection",
-    "vito_herencia",
-    "vito_atelier",
-    "1779403844c13cd9c6"
+    "vito_narrativa_wMdYwP",
+    "1779403844c13cd9c6",
+    "vito_atelier_iDiNHB"
   ]
 }
