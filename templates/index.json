@@ -11,6 +11,7 @@
   "sections": {
     "vito_hero": {
       "type": "vito-hero",
+      "disabled": true,
       "settings": {
         "eyebrow": "_SLOW FASHION STORE",
         "heading": "<p>La chaquetería <em>italiana</em> de Bogotá.</p>",
@@ -31,6 +32,7 @@
       "blocks": {
         "attr_1": {
           "type": "attribute",
+          "disabled": true,
           "settings": {
             "label": "Material",
             "value": "drill"
@@ -38,6 +40,7 @@
         },
         "attr_2": {
           "type": "attribute",
+          "disabled": true,
           "settings": {
             "label": "Confección",
             "value": "Artesanal"
@@ -45,6 +48,7 @@
         },
         "attr_3": {
           "type": "attribute",
+          "disabled": true,
           "settings": {
             "label": "Garantía",
             "value": "6 meses"
