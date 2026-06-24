@@ -13,7 +13,7 @@
     "logo_width": 300,
     "favicon": "shopify://shop_images/VP_Logo_Isotipo-25.png",
     "type_header_font": "bricolage_grotesque_n4",
-    "heading_scale": 100,
+    "heading_scale": 115,
     "type_body_font": "chivo_n4",
     "body_scale": 100,
     "page_width": 1200,
@@ -234,20 +234,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "15683396631634586217": {
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
-        "settings": {
-          "button_color": "#375b4c",
-          "secondary_color": "#ffffff",
-          "ternary_color": "#375b4c",
-          "button_icon": "chat_bubble",
-          "button_text": "assistance",
-          "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
-          "greeting_message": "👋 ¡Hola! \nGracias por contactar Vito Piano. ¿En qué podemos ayudarte hoy?\n\nNuestro equipo te responderá en el menor tiempo posible."
-        }
-      },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
@@ -314,43 +300,43 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#C5EAFF",
-          "button": "#FCF9F5",
+          "text": "#c5eaff",
+          "button": "#fcf9f5",
           "button_label": "#fcf9f5",
-          "secondary_button_label": "#E25027",
-          "shadow": "#E25027"
+          "secondary_button_label": "#e25027",
+          "shadow": "#e25027"
         }
       },
       "vito-negro": {
         "settings": {
           "background": "#1a1a1a",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#c5eaff",
           "button_label": "#1a1a1a",
-          "secondary_button_label": "#C5EAFF",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-verde": {
         "settings": {
-          "background": "#0C4433",
+          "background": "#0c4433",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#FCF9F5",
-          "button_label": "#0C4433",
-          "secondary_button_label": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#fcf9f5",
+          "button_label": "#0c4433",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-verde-atelier": {
         "settings": {
-          "background": "#0C4433",
+          "background": "#0c4433",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#E25027",
-          "button_label": "#FCF9F5",
-          "secondary_button_label": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#e25027",
+          "button_label": "#fcf9f5",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
@@ -358,22 +344,22 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#FCF9F5",
+          "text": "#fcf9f5",
+          "button": "#fcf9f5",
           "button_label": "#431424",
-          "secondary_button_label": "#C5EAFF",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-crema": {
         "settings": {
-          "background": "#FCF9F5",
+          "background": "#fcf9f5",
           "background_gradient": "",
-          "text": "#0C4433",
-          "button": "#0C4433",
-          "button_label": "#FCF9F5",
-          "secondary_button_label": "#E25027",
-          "shadow": "#0C4433"
+          "text": "#0c4433",
+          "button": "#0c4433",
+          "button_label": "#fcf9f5",
+          "secondary_button_label": "#e25027",
+          "shadow": "#0c4433"
         }
       }
     }
