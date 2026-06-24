@@ -27,7 +27,7 @@
           "settings": {
             "text": "El origen de tu estilo",
             "link": "",
-            "highlight": true
+            "highlight": false
           }
         },
         "a03b5515-776a-4538-9cc0-9defdff5c007": {
@@ -41,9 +41,9 @@
         "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30": {
           "type": "announcement",
           "settings": {
-            "text": "Italian & Colombian Slow Fashion Store",
+            "text": "Italian & Colombian - Slow Fashion Store",
             "link": "",
-            "highlight": true
+            "highlight": false
           }
         },
         "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02": {
@@ -59,7 +59,7 @@
           "settings": {
             "text": "Bogotá · Italia · 2026",
             "link": "",
-            "highlight": true
+            "highlight": false
           }
         }
       },
@@ -79,8 +79,8 @@
         "show_social": false,
         "ticker_speed": 40,
         "ticker_bg_color": "#1a1a1a",
-        "ticker_text_color": "#FCF9F5",
-        "ticker_accent_color": "#C5EAFF",
+        "ticker_text_color": "#fcf9f5",
+        "ticker_accent_color": "#c5eaff",
         "enable_country_selector": false,
         "enable_language_selector": false
       }
