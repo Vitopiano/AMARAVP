@@ -9,6 +9,36 @@
  */
 {
   "sections": {
+    "vito_hero": {
+      "type": "vito-hero"
+    },
+    "vito_hero_product": {
+      "type": "vito-hero-product",
+      "blocks": {
+        "attr_1": {
+          "type": "attribute",
+          "settings": {
+            "label": "Paño",
+            "value": "Italiano"
+          }
+        },
+        "attr_2": {
+          "type": "attribute",
+          "settings": {
+            "label": "Confección",
+            "value": "Artesanal"
+          }
+        },
+        "attr_3": {
+          "type": "attribute",
+          "settings": {
+            "label": "Garantía",
+            "value": "6 meses"
+          }
+        }
+      },
+      "block_order": ["attr_1", "attr_2", "attr_3"]
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -52,6 +82,40 @@
         "link_url": "",
         "color_scheme": "vito-vinotinto"
       }
+    },
+    "vito_herencia": {
+      "type": "vito-herencia",
+      "blocks": {
+        "pilar_1": {
+          "type": "pilar",
+          "settings": {
+            "number": "01",
+            "text": "Paños italianos seleccionados a mano"
+          }
+        },
+        "pilar_2": {
+          "type": "pilar",
+          "settings": {
+            "number": "02",
+            "text": "Confección artesanal en Bogotá"
+          }
+        },
+        "pilar_3": {
+          "type": "pilar",
+          "settings": {
+            "number": "03",
+            "text": "Diseño atemporal, no de temporada"
+          }
+        },
+        "pilar_4": {
+          "type": "pilar",
+          "settings": {
+            "number": "04",
+            "text": "Garantía artesanal de por vida"
+          }
+        }
+      },
+      "block_order": ["pilar_1", "pilar_2", "pilar_3", "pilar_4"]
     },
     "1779403844c13cd9c6": {
       "type": "apps",
@@ -110,13 +174,16 @@
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
         "cta_link": "",
-        "color_scheme": ""
+        "color_scheme": "vito-verde-atelier"
       }
     }
   },
   "order": [
+    "vito_hero",
+    "vito_hero_product",
     "featured_collection",
     "vito_narrativa_wMdYwP",
+    "vito_herencia",
     "1779403844c13cd9c6",
     "vito_atelier_iDiNHB"
   ]
