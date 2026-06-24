@@ -1,0 +1,248 @@
+<style>
+  .vhe {
+    background: var(--vhe-bg);
+    padding: 7rem 2.4rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .vhe__inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .vhe__image {
+    aspect-ratio: 1;
+    background: var(--vhe-image-bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vhe__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vhe__image-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--vhe-heading);
+    text-align: center;
+    opacity: 0.65;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+  }
+
+  .vhe__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--vhe-heading);
+    margin: 0 0 2.4rem;
+    font-weight: 500;
+  }
+
+  .vhe__heading em {
+    font-style: italic;
+    color: var(--vhe-accent);
+  }
+
+  .vhe__body p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--vhe-body);
+    margin: 0 0 1.6rem;
+  }
+
+  .vhe__pilares {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+    margin-top: 2.4rem;
+  }
+
+  .vhe__pilar {
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--vhe-heading);
+  }
+
+  .vhe__pilar-numero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--vhe-accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .vhe__pilar-texto {
+    font-size: 1.3rem;
+    color: var(--vhe-pilar-text);
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vhe {
+      padding: 4.8rem 1.6rem;
+    }
+
+    .vhe__inner {
+      grid-template-columns: 1fr;
+      gap: 3.2rem;
+    }
+
+    .vhe__pilares {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<div
+  class="vhe"
+  style="--vhe-bg: {{ section.settings.bg_color }}; --vhe-image-bg: {{ section.settings.image_bg_color }}; --vhe-heading: {{ section.settings.heading_color }}; --vhe-accent: {{ section.settings.accent_color }}; --vhe-body: {{ section.settings.body_color }}; --vhe-pilar-text: {{ section.settings.pilar_text_color }};"
+>
+  <div class="vhe__inner">
+    <div class="vhe__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.image.alt }}
+      {%- else -%}
+        <div class="vhe__image-label">{{ section.settings.image_label }}</div>
+      {%- endif -%}
+    </div>
+    <div>
+      <h2 class="vhe__heading">{{ section.settings.heading }}</h2>
+      <div class="vhe__body">
+        {%- if section.settings.body_1 != blank -%}<p>{{ section.settings.body_1 }}</p>{%- endif -%}
+        {%- if section.settings.body_2 != blank -%}<p>{{ section.settings.body_2 }}</p>{%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <div class="vhe__pilares">
+          {%- for block in section.blocks -%}
+            <div class="vhe__pilar" {{ block.shopify_attributes }}>
+              <div class="vhe__pilar-numero">{{ block.settings.number }}</div>
+              <div class="vhe__pilar-texto">{{ block.settings.text }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vito · Herencia de dos mundos",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Título",
+      "default": "<p>Italia <em>y</em> Bogotá.<br>Una sola <em>chaqueta</em>.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "body_1",
+      "label": "Párrafo 1",
+      "default": "Trabajamos con paños seleccionados en Italia, los traemos a nuestro taller en Bogotá, y los convertimos en piezas atemporales con técnicas de sastrería heredadas."
+    },
+    {
+      "type": "textarea",
+      "id": "body_2",
+      "label": "Párrafo 2",
+      "default": "No producimos por temporada. Producimos por intención. Cada Vito Piano es resultado de decenas de decisiones invisibles que solo notarás con el tiempo."
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Ilustración"
+    },
+    {
+      "type": "text",
+      "id": "image_label",
+      "label": "Texto placeholder (sin imagen)",
+      "default": "[ Ilustración línea azul cielo de palmas + máquina de coser ]"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "image_bg_color",
+      "label": "Fondo del recuadro de imagen",
+      "default": "#C5EAFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Título y líneas de pilares",
+      "default": "#0C4433"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Acento (cursivas y números)",
+      "default": "#E25027"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Párrafos",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "color",
+      "id": "pilar_text_color",
+      "label": "Texto de los pilares",
+      "default": "#1a1a1a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pilar",
+      "name": "Pilar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Número",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "Paños italianos seleccionados a mano"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Herencia de dos mundos",
+      "blocks": [
+        { "type": "pilar", "settings": { "number": "01", "text": "Paños italianos seleccionados a mano" } },
+        { "type": "pilar", "settings": { "number": "02", "text": "Confección artesanal en Bogotá" } },
+        { "type": "pilar", "settings": { "number": "03", "text": "Diseño atemporal, no de temporada" } },
+        { "type": "pilar", "settings": { "number": "04", "text": "Garantía artesanal de por vida" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

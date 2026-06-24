@@ -15,37 +15,69 @@
       "type": "footer",
       "blocks": {
         "6df3aef3-6003-42c8-aa02-589798e8e4a1": {
-          "type": "text",
+          "type": "brand",
           "settings": {
-            "heading": "VITO PIANO",
-            "subtext": "<p>ITA & COL · Slow Fashion Store</p><p>ciao@vitopiano.com</p><p><a href=\"https://wa.me/573189151143\" target=\"_blank\" title=\"WhatsApp Vito Piano\">(+57) 318 915 1143</a></p><p><a href=\"https://vitopiano.com/pages/trabaja-con-nosotros\" title=\"https://vitopiano.com/pages/trabaja-con-nosotros\">Trabaja con nosotros</a></p>"
+            "brand_name": "VITO PIANO",
+            "tagline": "El origen de tu estilo",
+            "description": "Slow Fashion Store italiano-colombiano. Chaquetería artesanal con paño italiano y alma de Bogotá. Hecho con tiempo, hecho para durar."
           }
         },
         "footer-0": {
-          "type": "link_list",
+          "type": "link_column",
           "settings": {
-            "heading": "Políticas",
-            "menu": "footer"
+            "heading": "Comprar",
+            "link_1_text": "Chaquetas",
+            "link_1_url": "",
+            "link_2_text": "Blazers",
+            "link_2_url": "",
+            "link_3_text": "Camisas",
+            "link_3_url": "",
+            "link_4_text": "Accesorios",
+            "link_4_url": ""
+          }
+        },
+        "footer-1": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Vito Piano",
+            "link_1_text": "El taller",
+            "link_1_url": "",
+            "link_2_text": "Atelier privado",
+            "link_2_url": "",
+            "link_3_text": "Journal",
+            "link_3_url": "",
+            "link_4_text": "Trabaja con nosotros",
+            "link_4_url": "https://vitopiano.com/pages/trabaja-con-nosotros"
+          }
+        },
+        "footer-2": {
+          "type": "link_column",
+          "settings": {
+            "heading": "Contacto",
+            "link_1_text": "ciao@vitopiano.com",
+            "link_1_url": "mailto:ciao@vitopiano.com",
+            "link_2_text": "WhatsApp",
+            "link_2_url": "https://wa.me/573189151143",
+            "link_3_text": "Instagram",
+            "link_3_url": "",
+            "link_4_text": "Cambios y envíos",
+            "link_4_url": ""
           }
         }
       },
       "block_order": [
         "6df3aef3-6003-42c8-aa02-589798e8e4a1",
-        "footer-0"
+        "footer-0",
+        "footer-1",
+        "footer-2"
       ],
       "settings": {
-        "color_scheme": "inverse",
-        "newsletter_enable": true,
-        "newsletter_heading": "Únete al mundo de VITO PIANO.",
-        "enable_follow_on_shop": false,
-        "show_social": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "payment_enable": false,
-        "show_policy": false,
-        "margin_top": 0,
-        "padding_top": 0,
-        "padding_bottom": 36
+        "copyright_text": "© 2026 Vito Piano · Bogotá · Italia",
+        "legal_text": "Casa Vito SAS · NIT 901930137-9",
+        "bottom_tagline": "ITA & COL · Slow Fashion Store",
+        "bg_color": "#1a1a1a",
+        "text_color": "#FCF9F5",
+        "heading_color": "#C5EAFF"
       }
     }
   },

@@ -1,0 +1,231 @@
+<style>
+  .va {
+    background: var(--va-bg);
+    color: var(--va-text);
+    padding: 7rem 2.4rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .va__eyebrow {
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--va-accent);
+    margin: 0 0 1.6rem;
+    font-weight: 600;
+  }
+
+  .va__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.1;
+    max-width: 24ch;
+    margin: 0 auto 2rem;
+    font-weight: 500;
+  }
+
+  .va__heading em {
+    font-style: italic;
+  }
+
+  .va__desc {
+    max-width: 56ch;
+    margin: 0 auto 3.2rem;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--va-text);
+    opacity: 0.9;
+  }
+
+  .va__features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.2rem;
+    max-width: 900px;
+    margin: 0 auto 4rem;
+  }
+
+  .va__feature-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--va-accent);
+    margin-bottom: 1.2rem;
+  }
+
+  .va__feature-title {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .va__feature-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--va-text);
+    opacity: 0.9;
+  }
+
+  .va__cta {
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    background: var(--va-cta-bg);
+    color: var(--va-cta-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 749px) {
+    .va {
+      padding: 4.8rem 1.6rem;
+    }
+
+    .va__features {
+      grid-template-columns: 1fr;
+      gap: 2.4rem;
+    }
+  }
+</style>
+
+<div
+  class="va"
+  style="--va-bg: {{ section.settings.bg_color }}; --va-text: {{ section.settings.text_color }}; --va-accent: {{ section.settings.accent_color }}; --va-cta-bg: {{ section.settings.cta_bg_color }}; --va-cta-text: {{ section.settings.cta_text_color }};"
+>
+  {%- if section.settings.eyebrow != blank -%}
+    <div class="va__eyebrow">{{ section.settings.eyebrow }}</div>
+  {%- endif -%}
+  <h2 class="va__heading">{{ section.settings.heading }}</h2>
+  {%- if section.settings.description != blank -%}
+    <p class="va__desc">{{ section.settings.description }}</p>
+  {%- endif -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="va__features">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="va__feature-icon" aria-hidden="true">{{ block.settings.icon }}</div>
+          <div class="va__feature-text">
+            <span class="va__feature-title">{{ block.settings.title }}</span>
+            {{ block.settings.text }}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+  {%- if section.settings.cta_text != blank -%}
+    <a href="{{ section.settings.cta_link | default: '#' }}" class="va__cta">{{ section.settings.cta_text }}</a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Vito · Atelier",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Etiqueta superior",
+      "default": "_EXPERIENCIA PRIVADA"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Título",
+      "default": "<p>El Atelier <em>te espera</em>.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano."
+    },
+    {
+      "type": "header",
+      "content": "Botón"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto del botón",
+      "default": "Agendar tu cita"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Enlace del botón"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#0C4433"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Acento (eyebrow e iconos)",
+      "default": "#C5EAFF"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Fondo del botón",
+      "default": "#E25027"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Texto del botón",
+      "default": "#FCF9F5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Característica",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Ícono (símbolo decorativo)",
+          "default": "✦"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Cita privada"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto",
+          "default": "60 minutos solo para ti, en la bodega del taller en Chicó."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Atelier",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "✂", "title": "Cita privada", "text": "60 minutos solo para ti, en la bodega del taller en Chicó." } },
+        { "type": "feature", "settings": { "icon": "✦", "title": "Selección curada", "text": "Preparamos prendas según tu talla y tu estilo antes de tu llegada." } },
+        { "type": "feature", "settings": { "icon": "☕", "title": "Café espresso", "text": "Acompañamos cada cita con un ritual italiano de hospitalidad." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,318 @@
+<style>
+  .vh {
+    background: var(--vh-bg);
+    color: var(--vh-text);
+    padding: 7rem 2.4rem 8rem;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .vh__grid-bg {
+    background-image:
+      linear-gradient(rgba(252, 249, 245, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(252, 249, 245, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .vh__content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .vh__tag {
+    display: inline-block;
+    padding: 0.6rem 1.6rem;
+    border: 1px solid var(--vh-text);
+    border-radius: 999px;
+    font-size: 1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2.4rem;
+    color: var(--vh-text);
+  }
+
+  .vh__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.6rem, 6vw, 7rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0 0 2.4rem;
+  }
+
+  .vh__heading em {
+    font-style: italic;
+    color: var(--vh-accent);
+  }
+
+  .vh__subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    line-height: 1.4;
+    color: var(--vh-text);
+    opacity: 0.92;
+    margin: 0 0 3.2rem;
+    max-width: 36ch;
+  }
+
+  .vh__subtitle p {
+    margin: 0;
+  }
+
+  .vh__ctas {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  .vh__cta {
+    display: inline-block;
+    padding: 1.5rem 2.8rem;
+    background: var(--vh-cta-bg);
+    color: var(--vh-cta-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+
+  .vh__cta:hover {
+    opacity: 0.85;
+  }
+
+  .vh__cta-secondary {
+    color: var(--vh-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--vh-text);
+    padding-bottom: 0.4rem;
+  }
+
+  .vh__image {
+    aspect-ratio: 3 / 4;
+    background: var(--vh-bg);
+    border: 1px solid rgba(252, 249, 245, 0.15);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vh__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vh__image-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--vh-text);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  .vh__image-label .vh__image-label-big {
+    display: block;
+    font-size: 3rem;
+    margin-top: 0.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vh {
+      padding: 4.8rem 1.6rem 5.6rem;
+    }
+
+    .vh__content {
+      grid-template-columns: 1fr;
+      gap: 3.2rem;
+    }
+
+    .vh__heading {
+      font-size: clamp(3rem, 11vw, 4.2rem);
+    }
+
+    .vh__subtitle {
+      max-width: none;
+    }
+
+    .vh__image {
+      order: -1;
+    }
+  }
+</style>
+
+<div
+  class="vh"
+  style="--vh-bg: {{ section.settings.bg_color }}; --vh-text: {{ section.settings.text_color }}; --vh-accent: {{ section.settings.accent_color }}; --vh-cta-bg: {{ section.settings.cta_bg_color }}; --vh-cta-text: {{ section.settings.cta_text_color }};"
+>
+  <div class="vh__grid-bg" aria-hidden="true"></div>
+  <div class="vh__content">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="vh__tag">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h1 class="vh__heading">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <div class="vh__subtitle">{{ section.settings.subtitle }}</div>
+      {%- endif -%}
+      <div class="vh__ctas">
+        {%- if section.settings.cta_primary_text != blank -%}
+          <a href="{{ section.settings.cta_primary_link | default: '#' }}" class="vh__cta">{{ section.settings.cta_primary_text }}</a>
+        {%- endif -%}
+        {%- if section.settings.cta_secondary_text != blank -%}
+          <a href="{{ section.settings.cta_secondary_link | default: '#' }}" class="vh__cta-secondary">{{ section.settings.cta_secondary_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="vh__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: section.settings.image.alt }}
+      {%- else -%}
+        <div class="vh__image-label">
+          {{ section.settings.image_label_small }}
+          <span class="vh__image-label-big">{{ section.settings.image_label_big }}</span>
+          {{ section.settings.image_label_caption }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vito · Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Etiqueta superior (eyebrow)",
+      "default": "_ITALIAN & COLOMBIAN SLOW FASHION STORE"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Título (H1)",
+      "default": "<p>La chaquetería <em>italiana</em> de Bogotá.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "<p>Tejer lo mejor de dos mundos.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Botones"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Texto botón principal",
+      "default": "Ver la colección"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Enlace botón principal"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Texto enlace secundario",
+      "default": "Nuestra historia"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Enlace secundario"
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen del hero"
+    },
+    {
+      "type": "text",
+      "id": "image_label_small",
+      "label": "Texto placeholder (sin imagen) — línea superior",
+      "default": "[ Foto editorial ]"
+    },
+    {
+      "type": "text",
+      "id": "image_label_big",
+      "label": "Texto placeholder — línea grande",
+      "default": "COCORA"
+    },
+    {
+      "type": "text",
+      "id": "image_label_caption",
+      "label": "Texto placeholder — línea inferior",
+      "default": "verde · paño italiano"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#0C4433"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Acento (palabra en cursiva)",
+      "default": "#C5EAFF"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Fondo botón principal",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Texto botón principal",
+      "default": "#0C4433"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Hero"
+    }
+  ]
+}
+{% endschema %}

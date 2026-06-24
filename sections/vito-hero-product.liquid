@@ -1,0 +1,310 @@
+<style>
+  .vhp {
+    background: var(--vhp-bg);
+    padding: 7rem 2.4rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .vhp__inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .vhp__label {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vhp-label);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .vhp__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+    line-height: 1;
+    color: var(--vhp-title);
+    margin: 0 0 1.6rem;
+    font-weight: 500;
+  }
+
+  .vhp__aforismo {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
+    line-height: 1.4;
+    color: var(--vhp-aforismo);
+    margin: 0 0 2rem;
+    max-width: 32ch;
+  }
+
+  .vhp__desc {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--vhp-desc);
+    margin: 0 0 2.4rem;
+    max-width: 46ch;
+  }
+
+  .vhp__attrs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    margin-bottom: 2.4rem;
+    padding: 2rem 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .vhp__attr-label {
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vhp-desc);
+    margin-bottom: 0.4rem;
+  }
+
+  .vhp__attr-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--vhp-title);
+    font-style: italic;
+  }
+
+  .vhp__cta {
+    display: inline-block;
+    padding: 1.5rem 2.8rem;
+    background: var(--vhp-cta-bg);
+    color: var(--vhp-cta-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .vhp__image {
+    aspect-ratio: 4 / 5;
+    background: var(--vhp-title);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vhp__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .vhp__image-label {
+    color: var(--vhp-bg);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 1.4rem;
+    padding: 0 2rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vhp {
+      padding: 4.8rem 1.6rem;
+    }
+
+    .vhp__inner {
+      grid-template-columns: 1fr;
+      gap: 3.2rem;
+    }
+
+    .vhp__attrs {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+  }
+</style>
+
+<div
+  class="vhp"
+  style="--vhp-bg: {{ section.settings.bg_color }}; --vhp-label: {{ section.settings.label_color }}; --vhp-title: {{ section.settings.title_color }}; --vhp-aforismo: {{ section.settings.aforismo_color }}; --vhp-desc: {{ section.settings.desc_color }}; --vhp-cta-bg: {{ section.settings.cta_bg_color }}; --vhp-cta-text: {{ section.settings.cta_text_color }};"
+>
+  <div class="vhp__inner">
+    <div class="vhp__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.image.alt }}
+      {%- else -%}
+        <div class="vhp__image-label">{{ section.settings.image_label }}</div>
+      {%- endif -%}
+    </div>
+    <div>
+      {%- if section.settings.label != blank -%}
+        <div class="vhp__label">{{ section.settings.label }}</div>
+      {%- endif -%}
+      <h2 class="vhp__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.aforismo != blank -%}
+        <p class="vhp__aforismo">{{ section.settings.aforismo }}</p>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="vhp__desc">{{ section.settings.description }}</div>
+      {%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="vhp__attrs">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <div class="vhp__attr-label">{{ block.settings.label }}</div>
+              <div class="vhp__attr-value">{{ block.settings.value }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.cta_text != blank -%}
+        <a href="{{ section.settings.cta_link | default: '#' }}" class="vhp__cta">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vito · Hero Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Etiqueta superior",
+      "default": "La pieza icónica"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título del producto",
+      "default": "Chaqueta Cocora"
+    },
+    {
+      "type": "text",
+      "id": "aforismo",
+      "label": "Aforismo decorativo (cursiva)",
+      "default": "Cada ola, un trazo. Cada palma, un diseño."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Nuestra prenda hero. Tejida en paño italiano 100% lana de 380g/m². Cortada en seis variantes. Cosida en Bogotá con técnicas de sastrería italiana. Una chaqueta que dura una década, no una temporada."
+    },
+    {
+      "type": "header",
+      "content": "Botón"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto del botón",
+      "default": "Descubrir la Cocora"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Enlace del botón"
+    },
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen del producto"
+    },
+    {
+      "type": "text",
+      "id": "image_label",
+      "label": "Texto placeholder (sin imagen)",
+      "default": "[ Foto producto ] · Cocora · contexto editorial"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Etiqueta superior",
+      "default": "#E25027"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Título y valores",
+      "default": "#0C4433"
+    },
+    {
+      "type": "color",
+      "id": "aforismo_color",
+      "label": "Aforismo decorativo",
+      "default": "#431424"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Descripción y etiquetas de atributo",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Fondo del botón",
+      "default": "#0C4433"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Texto del botón",
+      "default": "#FCF9F5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "attribute",
+      "name": "Atributo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Paño"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Valor",
+          "default": "Italiano"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Hero Product",
+      "blocks": [
+        { "type": "attribute", "settings": { "label": "Paño", "value": "Italiano" } },
+        { "type": "attribute", "settings": { "label": "Confección", "value": "Artesanal" } },
+        { "type": "attribute", "settings": { "label": "Garantía", "value": "6 meses" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -17,29 +17,59 @@
         "announcement_YNPgLe": {
           "type": "announcement",
           "settings": {
-            "text": "· Hecho en Colombia, con precisión italiana",
-            "link": ""
+            "text": "Envío gratis en compras superiores a $600.000",
+            "link": "",
+            "highlight": false
           }
         },
         "9cb827b1-06e8-4378-8611-1e903c1f608e": {
           "type": "announcement",
           "settings": {
-            "text": "Envíos gratis con compras superiores a $600,000",
-            "link": ""
+            "text": "El origen de tu estilo",
+            "link": "",
+            "highlight": true
           }
         },
         "a03b5515-776a-4538-9cc0-9defdff5c007": {
           "type": "announcement",
           "settings": {
-            "text": "Slow Fashion Store",
-            "link": ""
+            "text": "Colombian craftsmanship meets Italian precision",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30": {
+          "type": "announcement",
+          "settings": {
+            "text": "Italian & Colombian Slow Fashion Store",
+            "link": "",
+            "highlight": true
+          }
+        },
+        "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02": {
+          "type": "announcement",
+          "settings": {
+            "text": "Tejer lo mejor de dos mundos",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "e1d9b3f7-5a2c-4e8d-9b6a-3c8f1d4a7e95": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bogotá · Italia · 2026",
+            "link": "",
+            "highlight": true
           }
         }
       },
       "block_order": [
         "announcement_YNPgLe",
         "9cb827b1-06e8-4378-8611-1e903c1f608e",
-        "a03b5515-776a-4538-9cc0-9defdff5c007"
+        "a03b5515-776a-4538-9cc0-9defdff5c007",
+        "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30",
+        "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02",
+        "e1d9b3f7-5a2c-4e8d-9b6a-3c8f1d4a7e95"
       ],
       "settings": {
         "color_scheme": "scheme-d7fea8c2-5d52-4047-a802-4fe362949f18",
@@ -47,8 +77,10 @@
         "product_page_link": "",
         "show_line_separator": false,
         "show_social": false,
-        "auto_rotate": true,
-        "change_slides_speed": 3,
+        "ticker_speed": 40,
+        "ticker_bg_color": "#1a1a1a",
+        "ticker_text_color": "#FCF9F5",
+        "ticker_accent_color": "#C5EAFF",
         "enable_country_selector": false,
         "enable_language_selector": false
       }

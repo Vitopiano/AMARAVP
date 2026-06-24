@@ -1,6 +1,3 @@
-{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-
 {%- liquid
   assign social_icons = true
   if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -16,12 +13,84 @@
   if section.blocks.size > 0 or is_product_page
     assign announcement_bar = true
   endif
+  assign marquee_mode = false
+  if section.blocks.size > 1
+    assign marquee_mode = true
+  endif
 -%}
 
 {% if social_icons %}
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
+{%- if marquee_mode -%}
+  <style>
+    #vito-ticker-{{ section.id }} {
+      background: {{ section.settings.ticker_bg_color }};
+      overflow: hidden;
+    }
+    #vito-ticker-{{ section.id }} .vito-ticker__track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: vito-ticker-scroll-{{ section.id }} {{ section.settings.ticker_speed }}s linear infinite;
+    }
+    #vito-ticker-{{ section.id }} .vito-ticker__item {
+      display: inline-flex;
+      align-items: center;
+      padding: 1.4rem 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: {{ section.settings.ticker_text_color }};
+    }
+    #vito-ticker-{{ section.id }} .vito-ticker__item--accent {
+      color: {{ section.settings.ticker_accent_color }};
+    }
+    #vito-ticker-{{ section.id }} .vito-ticker__dot {
+      display: inline-block;
+      margin: 0 2.4rem;
+      color: {{ section.settings.ticker_text_color }};
+      opacity: 0.5;
+    }
+    @keyframes vito-ticker-scroll-{{ section.id }} {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media screen and (max-width: 749px) {
+      #vito-ticker-{{ section.id }} .vito-ticker__item {
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+      }
+      #vito-ticker-{{ section.id }} .vito-ticker__dot {
+        margin: 0 1.6rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #vito-ticker-{{ section.id }} .vito-ticker__track {
+        animation: none;
+        overflow-x: auto;
+      }
+    }
+  </style>
+  <div
+    id="vito-ticker-{{ section.id }}"
+    class="vito-ticker"
+    role="region"
+    aria-label="{{ 'sections.header.announcement' | t }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="vito-ticker__track">
+      {%- for i in (1..2) -%}
+        {%- for ticker_block in section.blocks -%}
+          <span class="vito-ticker__item{% if ticker_block.settings.highlight %} vito-ticker__item--accent{% endif %}"{% if i == 2 %} aria-hidden="true"{% endif %} {{ ticker_block.shopify_attributes }}>{{ ticker_block.settings.text | escape }}</span>
+          <span class="vito-ticker__dot" aria-hidden="true">&middot;</span>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- else -%}
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
   {{ block.shopify_attributes }}
@@ -74,92 +143,6 @@
           {%- endif -%}
         {%- endif -%}
       </div>
-    {%- elsif section.blocks.size > 1 -%}
-      <slideshow-component
-        class="announcement-bar"
-        role="region"
-        aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
-        aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
-      >
-        <div class="announcement-bar-slider slider-buttons">
-          <button
-            type="button"
-            class="slider-button slider-button--prev"
-            name="previous"
-            aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
-            aria-controls="Slider-{{ section.id }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-          <div
-            class="grid grid--1-col slider slider--everywhere"
-            id="Slider-{{ section.id }}"
-            aria-live="polite"
-            aria-atomic="true"
-            data-autoplay="{{ section.settings.auto_rotate }}"
-            data-speed="{{ section.settings.change_slides_speed }}"
-          >
-            {%- for block in section.blocks -%}
-              <div
-                class="slideshow__slide slider__slide grid__item grid--1-col"
-                id="Slide-{{ section.id }}-{{ forloop.index }}"
-                {{ block.shopify_attributes }}
-                role="group"
-                aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
-                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                tabindex="-1"
-              >
-                <div
-                  class="announcement-bar__announcement"
-                  role="region"
-                  aria-label="{{ 'sections.header.announcement' | t }}"
-                  {{ block.shopify_attributes }}
-                >
-                  {%- if block.settings.text != blank -%}
-                    {%- if block.settings.link != blank -%}
-                      <a
-                        href="{{ block.settings.link }}"
-                        class="announcement-bar__link link link--text focus-inset animate-arrow"
-                      >
-                    {%- endif -%}
-                    <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape }}</span>
-                      {%- if block.settings.link != blank -%}
-                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                      {%- endif -%}
-                    </p>
-                    {%- if block.settings.link != blank -%}
-                      </a>
-                    {%- endif -%}
-                  {%- endif -%}
-                </div>
-              </div>
-            {%- endfor -%}
-          </div>
-          <button
-            type="button"
-            class="slider-button slider-button--next"
-            name="next"
-            aria-label="{{ 'sections.announcements.next_announcement' | t }}"
-            aria-controls="Slider-{{ section.id }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-        </div>
-      </slideshow-component>
-      {%- if request.design_mode -%}
-        <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
-        <style>
-          /* theme editor power preview fix */
-          .announcement-bar-slider .slider__slide[aria-hidden='true'] {
-            visibility: hidden;
-          }
-        </style>
-      {%- endif -%}
     {%- endif -%}
     <div class="localization-wrapper">
       {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -186,6 +169,7 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -236,23 +220,39 @@
     },
     {
       "type": "header",
-      "content": "t:sections.announcement-bar.settings.header__2.content"
+      "content": "Ticker (2 o más bloques)"
     },
     {
-      "type": "checkbox",
-      "id": "auto_rotate",
-      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
-      "default": false
+      "type": "paragraph",
+      "content": "Con 2 o más bloques de anuncio, la barra se vuelve una marquesina continua en lugar de un carrusel."
     },
     {
       "type": "range",
-      "id": "change_slides_speed",
-      "min": 3,
-      "max": 10,
-      "step": 1,
+      "id": "ticker_speed",
+      "min": 10,
+      "max": 90,
+      "step": 5,
       "unit": "s",
-      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
-      "default": 5
+      "label": "Duración del ciclo",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "ticker_bg_color",
+      "label": "Color de fondo",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "ticker_text_color",
+      "label": "Color de texto",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "ticker_accent_color",
+      "label": "Color de acento (frases resaltadas)",
+      "default": "#C5EAFF"
     },
     {
       "type": "header",
@@ -292,6 +292,12 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Resaltar en color de acento (solo modo ticker)",
+          "default": false
         }
       ]
     }
@@ -301,7 +307,43 @@
       "name": "t:sections.announcement-bar.presets.name",
       "blocks": [
         {
-          "type": "announcement"
+          "type": "announcement",
+          "settings": {
+            "text": "Envío gratis en compras superiores a $600.000"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "El origen de tu estilo",
+            "highlight": true
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Colombian craftsmanship meets Italian precision"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Italian & Colombian Slow Fashion Store",
+            "highlight": true
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Tejer lo mejor de dos mundos"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Bogotá · Italia · 2026",
+            "highlight": true
+          }
         }
       ]
     }

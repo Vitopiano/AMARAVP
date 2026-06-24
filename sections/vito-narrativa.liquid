@@ -1,0 +1,219 @@
+<style>
+  .vn {
+    background: var(--vn-bg);
+    color: var(--vn-text);
+    padding: 7rem 2.4rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .vn__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .vn__eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vn-text);
+    opacity: 0.6;
+    margin: 0 0 2rem;
+  }
+
+  .vn__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 400;
+    margin: 0 0 3.2rem;
+  }
+
+  .vn__body p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--vn-text);
+    opacity: 0.88;
+    margin: 0 0 2rem;
+    text-align: left;
+  }
+
+  .vn__more {
+    margin-bottom: 2rem;
+  }
+
+  .vn__more > summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vn-link);
+    border-bottom: 1px solid var(--vn-link);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    margin: 0 0 2rem;
+  }
+
+  .vn__more > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .vn__link {
+    color: var(--vn-link);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--vn-link);
+    padding-bottom: 0.4rem;
+    display: inline-block;
+    margin-top: 1.2rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vn {
+      padding: 4.8rem 1.6rem;
+    }
+
+    .vn__body p,
+    .vn__more p {
+      text-align: left;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .vn__more > summary {
+      display: none;
+    }
+
+    .vn__more > .vn__more-content {
+      display: block !important;
+    }
+  }
+</style>
+
+<div class="vn" style="--vn-bg: {{ section.settings.bg_color }}; --vn-text: {{ section.settings.text_color }}; --vn-link: {{ section.settings.link_color }};">
+  <div class="vn__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="vn__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="vn__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    <div class="vn__body">
+      {%- if section.settings.paragraph_1 != blank -%}<p>{{ section.settings.paragraph_1 }}</p>{%- endif -%}
+      {%- if section.settings.paragraph_2 != blank -%}<p>{{ section.settings.paragraph_2 }}</p>{%- endif -%}
+    </div>
+    {%- if section.settings.paragraph_3 != blank or section.settings.paragraph_4 != blank -%}
+      <details class="vn__more">
+        <summary>{{ section.settings.read_more_text | default: 'Leer más' }}</summary>
+        <div class="vn__more-content">
+          {%- if section.settings.paragraph_3 != blank -%}<p>{{ section.settings.paragraph_3 }}</p>{%- endif -%}
+          {%- if section.settings.paragraph_4 != blank -%}<p>{{ section.settings.paragraph_4 }}</p>{%- endif -%}
+        </div>
+      </details>
+    {%- endif -%}
+    {%- if section.settings.link_text != blank -%}
+      <a href="{{ section.settings.link_url | default: '#' }}" class="vn__link">{{ section.settings.link_text }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Vito · Narrativa",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Etiqueta superior",
+      "default": "— La herencia de dos mundos —"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Tejer lo mejor de dos mundos."
+    },
+    {
+      "type": "header",
+      "content": "Manifiesto (Cinco Sillas, ago. 2025)"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "Párrafo 1",
+      "default": "En el corazón de Vito Piano late la historia de un sastre, forjado en la precisión y elegancia italiana, que encontró su verdadera alma en la vibrante esencia de Colombia."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Párrafo 2",
+      "default": "Mis manos, expertas en el arte de la confección, se entrelazaron con la autenticidad y la riqueza de esta tierra, donde cada paisaje, el ritmo del mar y hasta la brisa de las palmas inspira un corte, una puntada, un diseño."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_3",
+      "label": "Párrafo 3 (oculto en mobile bajo \"Leer más\")",
+      "default": "Vito Piano es la unión perfecta de dos mundos, una conversación constante entre la sofisticación europea y la pasión colombiana."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_4",
+      "label": "Párrafo 4 (oculto en mobile bajo \"Leer más\")",
+      "default": "Cada pieza es un legado consciente, cuidadosamente confeccionado para acompañarte en tu propio viaje, reflejando un estilo que es tan auténtico como atemporal."
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Texto del botón \"leer más\" (mobile)",
+      "default": "Leer más"
+    },
+    {
+      "type": "header",
+      "content": "Enlace"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Texto del enlace",
+      "default": "Conocer el taller"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Enlace"
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#431424"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#FCF9F5"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Enlace y botón \"leer más\"",
+      "default": "#C5EAFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Narrativa"
+    }
+  ]
+}
+{% endschema %}

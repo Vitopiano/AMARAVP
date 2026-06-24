@@ -9,6 +9,39 @@
  */
 {
   "sections": {
+    "vito_hero": {
+      "type": "vito-hero"
+    },
+    "vito_hero_product": {
+      "type": "vito-hero-product",
+      "blocks": {
+        "attr_1": {
+          "type": "attribute",
+          "settings": {
+            "label": "Paño",
+            "value": "Italiano"
+          }
+        },
+        "attr_2": {
+          "type": "attribute",
+          "settings": {
+            "label": "Confección",
+            "value": "Artesanal"
+          }
+        },
+        "attr_3": {
+          "type": "attribute",
+          "settings": {
+            "label": "Garantía",
+            "value": "6 meses"
+          }
+        }
+      },
+      "block_order": ["attr_1", "attr_2", "attr_3"]
+    },
+    "vito_narrativa": {
+      "type": "vito-narrativa"
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -37,6 +70,70 @@
         "padding_bottom": 12
       }
     },
+    "vito_herencia": {
+      "type": "vito-herencia",
+      "blocks": {
+        "pilar_1": {
+          "type": "pilar",
+          "settings": {
+            "number": "01",
+            "text": "Paños italianos seleccionados a mano"
+          }
+        },
+        "pilar_2": {
+          "type": "pilar",
+          "settings": {
+            "number": "02",
+            "text": "Confección artesanal en Bogotá"
+          }
+        },
+        "pilar_3": {
+          "type": "pilar",
+          "settings": {
+            "number": "03",
+            "text": "Diseño atemporal, no de temporada"
+          }
+        },
+        "pilar_4": {
+          "type": "pilar",
+          "settings": {
+            "number": "04",
+            "text": "Garantía artesanal de por vida"
+          }
+        }
+      },
+      "block_order": ["pilar_1", "pilar_2", "pilar_3", "pilar_4"]
+    },
+    "vito_atelier": {
+      "type": "vito-atelier",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "✂",
+            "title": "Cita privada",
+            "text": "60 minutos solo para ti, en la bodega del taller en Chicó."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "✦",
+            "title": "Selección curada",
+            "text": "Preparamos prendas según tu talla y tu estilo antes de tu llegada."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "☕",
+            "title": "Café espresso",
+            "text": "Acompañamos cada cita con un ritual italiano de hospitalidad."
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3"]
+    },
     "1779403844c13cd9c6": {
       "type": "apps",
       "blocks": {
@@ -56,7 +153,12 @@
     }
   },
   "order": [
+    "vito_hero",
+    "vito_hero_product",
+    "vito_narrativa",
     "featured_collection",
+    "vito_herencia",
+    "vito_atelier",
     "1779403844c13cd9c6"
   ]
 }
