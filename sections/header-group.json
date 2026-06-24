@@ -72,15 +72,12 @@
         "e1d9b3f7-5a2c-4e8d-9b6a-3c8f1d4a7e95"
       ],
       "settings": {
-        "color_scheme": "vito-negro",
+        "color_scheme": "inverse",
         "product_page_text": "Envío gratis en compras mayores a $600.000",
         "product_page_link": "",
         "show_line_separator": false,
         "show_social": false,
         "ticker_speed": 40,
-        "ticker_bg_color": "#1a1a1a",
-        "ticker_text_color": "#FCF9F5",
-        "ticker_accent_color": "#C5EAFF",
         "enable_country_selector": false,
         "enable_language_selector": false
       }
