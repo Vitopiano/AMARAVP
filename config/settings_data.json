@@ -160,20 +160,11 @@
               "heading": "Políticas",
               "menu": "footer"
             }
-          },
-          "e6eedd27-6f08-4501-8c99-4a4acabc4ab1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/logotipo_Footer-04_23f95af2-bb7f-4bd8-9e62-3fd95de3d975.png",
-              "image_width": 200,
-              "alignment": "center"
-            }
           }
         },
         "block_order": [
           "6df3aef3-6003-42c8-aa02-589798e8e4a1",
-          "footer-0",
-          "e6eedd27-6f08-4501-8c99-4a4acabc4ab1"
+          "footer-0"
         ],
         "settings": {
           "color_scheme": "inverse",
