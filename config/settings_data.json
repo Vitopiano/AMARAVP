@@ -13,7 +13,7 @@
     "logo_width": 300,
     "favicon": "shopify://shop_images/VP_Logo_Isotipo-25.png",
     "type_header_font": "bricolage_grotesque_n4",
-    "heading_scale": 115,
+    "heading_scale": 100,
     "type_body_font": "chivo_n4",
     "body_scale": 100,
     "page_width": 1200,
@@ -300,43 +300,43 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#c5eaff",
-          "button": "#fcf9f5",
+          "text": "#C5EAFF",
+          "button": "#FCF9F5",
           "button_label": "#fcf9f5",
-          "secondary_button_label": "#e25027",
-          "shadow": "#e25027"
+          "secondary_button_label": "#E25027",
+          "shadow": "#E25027"
         }
       },
       "vito-negro": {
         "settings": {
           "background": "#1a1a1a",
           "background_gradient": "",
-          "text": "#fcf9f5",
-          "button": "#c5eaff",
+          "text": "#FCF9F5",
+          "button": "#C5EAFF",
           "button_label": "#1a1a1a",
-          "secondary_button_label": "#c5eaff",
+          "secondary_button_label": "#C5EAFF",
           "shadow": "#000000"
         }
       },
       "vito-verde": {
         "settings": {
-          "background": "#0c4433",
+          "background": "#0C4433",
           "background_gradient": "",
-          "text": "#fcf9f5",
-          "button": "#fcf9f5",
-          "button_label": "#0c4433",
-          "secondary_button_label": "#c5eaff",
+          "text": "#FCF9F5",
+          "button": "#FCF9F5",
+          "button_label": "#0C4433",
+          "secondary_button_label": "#C5EAFF",
           "shadow": "#000000"
         }
       },
       "vito-verde-atelier": {
         "settings": {
-          "background": "#0c4433",
+          "background": "#0C4433",
           "background_gradient": "",
-          "text": "#fcf9f5",
-          "button": "#e25027",
-          "button_label": "#fcf9f5",
-          "secondary_button_label": "#c5eaff",
+          "text": "#FCF9F5",
+          "button": "#E25027",
+          "button_label": "#FCF9F5",
+          "secondary_button_label": "#C5EAFF",
           "shadow": "#000000"
         }
       },
@@ -344,22 +344,22 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#fcf9f5",
-          "button": "#fcf9f5",
+          "text": "#FCF9F5",
+          "button": "#FCF9F5",
           "button_label": "#431424",
-          "secondary_button_label": "#c5eaff",
+          "secondary_button_label": "#C5EAFF",
           "shadow": "#000000"
         }
       },
       "vito-crema": {
         "settings": {
-          "background": "#fcf9f5",
+          "background": "#FCF9F5",
           "background_gradient": "",
-          "text": "#0c4433",
-          "button": "#0c4433",
-          "button_label": "#fcf9f5",
-          "secondary_button_label": "#e25027",
-          "shadow": "#0c4433"
+          "text": "#0C4433",
+          "button": "#0C4433",
+          "button_label": "#FCF9F5",
+          "secondary_button_label": "#E25027",
+          "shadow": "#0C4433"
         }
       }
     }
