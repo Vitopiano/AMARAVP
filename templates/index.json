@@ -79,7 +79,7 @@
         "paragraph_4": "Cada pieza es un legado consciente, cuidadosamente confeccionado para acompañarte en tu propio viaje, reflejando un estilo que es tan auténtico como atemporal.",
         "read_more_text": "Leer más",
         "link_text": "Conocer el taller",
-        "link_url": "",
+        "link_url": "shopify://pages/vito-piano-el-sastre",
         "color_scheme": "vito-vinotinto"
       }
     },
@@ -167,6 +167,7 @@
         "feature_gmaG9f",
         "feature_wTYHat"
       ],
+      "disabled": true,
       "name": "Vito · Atelier",
       "settings": {
         "eyebrow": "_EXPERIENCIA PRIVADA",
