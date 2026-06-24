@@ -69,11 +69,55 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "vito_atelier_iDiNHB": {
+      "type": "vito-atelier",
+      "blocks": {
+        "feature_jW9CKU": {
+          "type": "feature",
+          "settings": {
+            "icon": "✂",
+            "title": "Cita privada",
+            "text": "60 minutos solo para ti, en la bodega del taller en Chicó."
+          }
+        },
+        "feature_gmaG9f": {
+          "type": "feature",
+          "settings": {
+            "icon": "✦",
+            "title": "Selección curada",
+            "text": "Preparamos prendas según tu talla y tu estilo antes de tu llegada."
+          }
+        },
+        "feature_wTYHat": {
+          "type": "feature",
+          "settings": {
+            "icon": "☕",
+            "title": "Café espresso",
+            "text": "Acompañamos cada cita con un ritual italiano de hospitalidad."
+          }
+        }
+      },
+      "block_order": [
+        "feature_jW9CKU",
+        "feature_gmaG9f",
+        "feature_wTYHat"
+      ],
+      "name": "Vito · Atelier",
+      "settings": {
+        "eyebrow": "_EXPERIENCIA PRIVADA",
+        "heading": "<p>El Atelier <em>te espera</em>.</p>",
+        "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
+        "cta_text": "Agendar tu cita",
+        "cta_link": "",
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "featured_collection",
     "vito_narrativa_wMdYwP",
-    "1779403844c13cd9c6"
+    "1779403844c13cd9c6",
+    "vito_atelier_iDiNHB"
   ]
 }
