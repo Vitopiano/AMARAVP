@@ -11,6 +11,7 @@
   "sections": {
     "vito_hero": {
       "type": "vito-hero",
+      "disabled": true,
       "settings": {
         "eyebrow": "_SLOW FASHION STORE",
         "heading": "<p>La chaquetería <em>italiana</em> de Bogotá.</p>",
