@@ -39,6 +39,7 @@
         },
         "footer-1": {
           "type": "link_column",
+          "disabled": true,
           "settings": {
             "heading": "Vito Piano",
             "link_1_text": "El taller",
