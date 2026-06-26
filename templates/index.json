@@ -132,7 +132,6 @@
     },
     "vito_herencia": {
       "type": "vito-herencia",
-      "disabled": true,
       "blocks": {
         "pilar_1": {
           "type": "pilar",
@@ -218,7 +217,7 @@
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
         "cta_link": "",
-        "color_scheme": "vito-verde-atelier"
+        "color_scheme": "background-2"
       }
     }
   },
