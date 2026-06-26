@@ -9,10 +9,28 @@
   .vf__grid {
     max-width: 1300px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 3.2rem;
     margin-bottom: 4.8rem;
+  }
+
+  .vf__brand {
+    flex: 1 1 32rem;
+    max-width: 32rem;
+  }
+
+  .vf__links {
+    display: flex;
+    gap: 3.2rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .vf__col {
+    flex: 0 0 auto;
+    min-width: 14rem;
   }
 
   .vf__logo {
@@ -91,12 +109,17 @@
     }
 
     .vf__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 3.2rem 1.6rem;
+      flex-direction: column;
+      gap: 3.2rem;
     }
 
-    .vf__grid > :first-child {
-      grid-column: 1 / -1;
+    .vf__brand {
+      max-width: none;
+    }
+
+    .vf__links {
+      justify-content: flex-start;
+      gap: 2.4rem 1.6rem;
     }
 
     .vf__bottom {
@@ -108,22 +131,25 @@
 <footer class="vf color-{{ section.settings.color_scheme }}">
   <div class="vf__grid">
     {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'brand' -%}
-          <div {{ block.shopify_attributes }}>
-            {%- if block.settings.logo != blank -%}
-              <div class="vf__logo">{{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.brand_name }}</div>
-            {%- else -%}
-              <p class="vf__logo">{{ block.settings.brand_name }}</p>
-            {%- endif -%}
-            {%- if block.settings.tagline != blank -%}
-              <p class="vf__tagline">{{ block.settings.tagline }}</p>
-            {%- endif -%}
-            {%- if block.settings.description != blank -%}
-              <p class="vf__desc">{{ block.settings.description }}</p>
-            {%- endif -%}
-          </div>
-        {%- when 'link_column' -%}
+      {%- if block.type == 'brand' -%}
+        <div class="vf__brand" {{ block.shopify_attributes }}>
+          {%- if block.settings.logo != blank -%}
+            <div class="vf__logo">{{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.brand_name }}</div>
+          {%- else -%}
+            <p class="vf__logo">{{ block.settings.brand_name }}</p>
+          {%- endif -%}
+          {%- if block.settings.tagline != blank -%}
+            <p class="vf__tagline">{{ block.settings.tagline }}</p>
+          {%- endif -%}
+          {%- if block.settings.description != blank -%}
+            <p class="vf__desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <div class="vf__links">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_column' -%}
           <div class="vf__col" {{ block.shopify_attributes }}>
             <h4>{{ block.settings.heading }}</h4>
             {%- for i in (1..4) -%}
@@ -148,8 +174,9 @@
               {%- endif -%}
             {%- endfor -%}
           </div>
-      {%- endcase -%}
-    {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
   <div class="vf__bottom">
     <div class="vf__bottom-left">
