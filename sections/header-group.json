@@ -14,14 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_aGWmte": {
-          "type": "announcement",
-          "settings": {
-            "text": "Bogotá - Compra antes de las 3 pm y recibe el mismo día",
-            "link": "",
-            "highlight": false
-          }
-        },
         "announcement_YNPgLe": {
           "type": "announcement",
           "settings": {
@@ -30,18 +22,26 @@
             "highlight": false
           }
         },
-        "9cb827b1-06e8-4378-8611-1e903c1f608e": {
-          "type": "announcement",
-          "settings": {
-            "text": "El origen de tu estilo",
-            "link": "",
-            "highlight": false
-          }
-        },
         "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30": {
           "type": "announcement",
           "settings": {
             "text": "Slow Fashion Store",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "announcement_aGWmte": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bogotá - Compra antes de las 3 pm y recibe el mismo día",
+            "link": "",
+            "highlight": false
+          }
+        },
+        "9cb827b1-06e8-4378-8611-1e903c1f608e": {
+          "type": "announcement",
+          "settings": {
+            "text": "El origen de tu estilo",
             "link": "",
             "highlight": false
           }
@@ -64,10 +64,10 @@
         }
       },
       "block_order": [
-        "announcement_aGWmte",
         "announcement_YNPgLe",
-        "9cb827b1-06e8-4378-8611-1e903c1f608e",
         "f3b6e7a1-2c4d-4e9a-8b1f-6a2d9c5e7b30",
+        "announcement_aGWmte",
+        "9cb827b1-06e8-4378-8611-1e903c1f608e",
         "a03b5515-776a-4538-9cc0-9defdff5c007",
         "c8a4d2e6-9f1b-4a3c-8d5e-1b7f4a6c9e02"
       ],
