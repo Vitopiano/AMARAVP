@@ -112,7 +112,7 @@
     </div>
   {%- endif -%}
   {%- if section.settings.cta_text != blank -%}
-    <a href="{{ section.settings.cta_link | default: '#' }}" class="va__cta">{{ section.settings.cta_text }}</a>
+    <a href="{{ section.settings.cta_link | default: '#' }}" class="va__cta" target="_blank" rel="noopener">{{ section.settings.cta_text }}</a>
   {%- endif -%}
 </div>
 
