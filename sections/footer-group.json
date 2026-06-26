@@ -19,7 +19,7 @@
           "settings": {
             "brand_name": "VITO PIANO",
             "tagline": "El origen de tu estilo",
-            "description": "Slow Fashion Store. Hecho con tiempo, hecho para durar."
+            "description": "Slow Fashion Store italiano-colombiano. Chaquetería artesanal con paño italiano y alma de Bogotá. Hecho con tiempo, hecho para durar."
           }
         },
         "footer-0": {
@@ -59,7 +59,7 @@
             "link_2_text": "WhatsApp",
             "link_2_url": "https://wa.me/573189151143",
             "link_3_text": "Instagram",
-            "link_3_url": "https://www.instagram.com/vitopiano.co/",
+            "link_3_url": "",
             "link_4_text": "Cambios y envíos",
             "link_4_url": ""
           }
@@ -72,10 +72,10 @@
         "footer-2"
       ],
       "settings": {
-        "copyright_text": "© 2026 Vito Piano · Bogotá · Italia",
+        "copyright_text": "© 2026 Vito Piano ·",
         "legal_text": "Casa Vito SAS · NIT 901930137-9",
-        "bottom_tagline": "ITA & COL · Slow Fashion Store",
-        "color_scheme": "vito-verde"
+        "bottom_tagline": "",
+        "color_scheme": "vito-negro"
       }
     }
   },
