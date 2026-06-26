@@ -1564,11 +1564,11 @@ quick-add-bulk {
     padding: 0 !important;
   }
 
-  /* Columna fotos: 70% del total (35% izq sticky + 35% centro scroll) */
+  /* Columna fotos: 65% del total (32.5% izq sticky + 32.5% centro scroll) */
   .vp-product-editorial .product__media-wrapper {
-    flex: 0 0 70% !important;
-    width: 70% !important;
-    max-width: 70% !important;
+    flex: 0 0 65% !important;
+    width: 65% !important;
+    max-width: 65% !important;
     /* flex row interno: izquierda sticky 50% | scroll center 50% */
     display: flex !important;
     flex-direction: row;
@@ -1577,14 +1577,14 @@ quick-add-bulk {
     overflow: visible;
   }
 
-  /* Columna info: 28% del total.
+  /* Columna info: 35% del total.
      El WRAPPER es el elemento sticky (no el container interno).
      align-self: flex-start es crítico: permite que el wrapper tenga su
      altura natural (contenido) en vez de estirarse, lo que da rango al sticky. */
   .vp-product-editorial .product__info-wrapper {
-    flex: 0 0 30% !important;
-    width: 30% !important;
-    max-width: 30% !important;
+    flex: 0 0 35% !important;
+    width: 35% !important;
+    max-width: 35% !important;
     align-self: flex-start !important;
     position: sticky !important;
     top: var(--header-group-height, 5rem) !important;
@@ -1600,7 +1600,7 @@ quick-add-bulk {
     transition: none !important;
   }
 
-  /* Imagen izquierda fija: 50% del 80% = 40% del total */
+  /* Imagen izquierda fija: 50% del 65% = 32.5% del total */
   .vp-editorial__sticky {
     display: block;
     flex: 0 0 50%;
@@ -1619,7 +1619,7 @@ quick-add-bulk {
     object-position: center top;
   }
 
-  /* Imágenes que scrollean: 50% del 80% = 40% del total */
+  /* Imágenes que scrollean: 50% del 65% = 32.5% del total */
   .vp-editorial__scroll {
     display: flex;
     flex: 1 1 auto;
