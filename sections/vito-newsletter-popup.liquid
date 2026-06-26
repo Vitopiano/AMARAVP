@@ -325,47 +325,90 @@
   /* --- Pestaña lateral --- */
   .vp-popup-tab {
     display: none;
+    flex-direction: column;
+    align-items: center;
     position: fixed;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 9999;
-    writing-mode: vertical-lr;
     background: #0C4433;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+  }
+
+  .vp-popup-tab__label {
+    writing-mode: vertical-lr;
+    background: transparent;
+    border: none;
     color: #FCF9F5;
     font-family: 'Chivo Mono', monospace;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    padding: 1.6rem 0.9rem;
+    padding: 1.8rem 1.0rem 1.2rem;
     cursor: pointer;
-    border: none;
-    border-radius: 0 3px 3px 0;
     transition: background-color 0.2s;
   }
 
-  .vp-popup-tab:hover {
+  .vp-popup-tab__label:hover {
     background: #431424;
+  }
+
+  .vp-popup-tab__close {
+    writing-mode: horizontal-tb;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(252, 249, 245, 0.18);
+    color: rgba(252, 249, 245, 0.6);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0.7rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .vp-popup-tab__close:hover {
+    background: #431424;
+    color: #FCF9F5;
   }
 
   /* --- Pestaña en mobile: horizontal, esquina inferior izquierda --- */
   @media screen and (max-width: 749px) {
     .vp-popup-tab {
-      writing-mode: horizontal-tb;
+      flex-direction: row;
+      align-items: stretch;
       transform: none;
       top: auto;
       bottom: 7.6rem;
       left: 0;
       border-radius: 0 4px 4px 0;
-      font-size: 1.0rem;
-      padding: 0.9rem 1.2rem;
+    }
+
+    .vp-popup-tab__label {
+      writing-mode: horizontal-tb;
+      font-size: 1.1rem;
+      padding: 1.0rem 1.3rem;
       letter-spacing: 0.14em;
+    }
+
+    .vp-popup-tab__close {
+      writing-mode: horizontal-tb;
+      width: auto;
+      border-top: none;
+      border-left: 1px solid rgba(252, 249, 245, 0.18);
+      padding: 0 1.2rem;
     }
   }
 </style>
 
-<button id="vp-popup-tab" class="vp-popup-tab" aria-label="Abrir oferta de bienvenida">10% OFF</button>
+<div id="vp-popup-tab" class="vp-popup-tab">
+  <button id="vp-popup-tab-open" class="vp-popup-tab__label" aria-label="Abrir oferta de bienvenida">10% OFF</button>
+  <button id="vp-popup-tab-close" class="vp-popup-tab__close" aria-label="Cerrar oferta de bienvenida">&#215;</button>
+</div>
 
 <div id="vp-popup-overlay" class="vp-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="vp-popup-heading">
   <div class="vp-popup">
@@ -509,7 +552,16 @@
       if (e.key === 'Escape' && overlay.classList.contains('is-active')) minimize();
     });
 
-    if (tab) tab.addEventListener('click', reopen);
+    var tabOpenBtn = document.getElementById('vp-popup-tab-open');
+    if (tabOpenBtn) tabOpenBtn.addEventListener('click', reopen);
+
+    var tabCloseBtn = document.getElementById('vp-popup-tab-close');
+    if (tabCloseBtn) {
+      tabCloseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dismissForever();
+      });
+    }
 
     var form = document.getElementById('vp-popup-form');
     if (form) {
