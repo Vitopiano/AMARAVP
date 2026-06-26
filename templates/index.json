@@ -11,6 +11,7 @@
   "sections": {
     "vito_hero": {
       "type": "vito-hero",
+      "disabled": true,
       "settings": {
         "eyebrow": "_SLOW FASHION STORE",
         "heading": "<p>La chaquetería <em>italiana</em> de Bogotá.</p>",
@@ -46,8 +47,8 @@
         "attr_3": {
           "type": "attribute",
           "settings": {
-            "label": "Garantía",
-            "value": "6 meses"
+            "label": "Broches",
+            "value": "De por vida"
           }
         }
       },
@@ -114,6 +115,7 @@
     },
     "vito_herencia": {
       "type": "vito-herencia",
+      "disabled": true,
       "blocks": {
         "pilar_1": {
           "type": "pilar",
@@ -208,14 +210,13 @@
         "feature_gmaG9f",
         "feature_wTYHat"
       ],
-      "disabled": true,
       "name": "Vito · Atelier",
       "settings": {
         "eyebrow": "_EXPERIENCIA PRIVADA",
         "heading": "<p>El Atelier <em>te espera</em>.</p>",
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
-        "cta_link": "",
+        "cta_link": "https://calendar.app.google/1K3HKU23k18Amtwx7",
         "color_scheme": "vito-verde-atelier"
       }
     }

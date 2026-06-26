@@ -811,6 +811,25 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   TÍTULO DE PRODUCTO — mismo tratamiento que
+   "Chaqueta Cocora" en el home (Vito · Hero Product)
+   ============================================ */
+
+.product__title {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
+.product__title .h1 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(3.2rem, 5vw, 4.6rem) !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  word-break: break-word;
+}
+
+/* ============================================
    WHATSAPP — Botón flotante
    ============================================ */
 
