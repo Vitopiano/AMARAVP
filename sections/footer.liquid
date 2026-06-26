@@ -9,28 +9,16 @@
   .vf__grid {
     max-width: 1300px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 3.2rem;
     margin-bottom: 4.8rem;
   }
 
-  .vf__brand {
-    flex: 1 1 32rem;
-    max-width: 32rem;
-  }
-
-  .vf__links {
-    display: flex;
-    gap: 3.2rem;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-  }
-
-  .vf__col {
-    flex: 0 0 auto;
-    min-width: 14rem;
+  @media screen and (min-width: 750px) {
+    .vf__col {
+      grid-column: var(--col);
+    }
   }
 
   .vf__logo {
@@ -109,17 +97,12 @@
     }
 
     .vf__grid {
-      flex-direction: column;
-      gap: 3.2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.2rem 1.6rem;
     }
 
     .vf__brand {
-      max-width: none;
-    }
-
-    .vf__links {
-      justify-content: flex-start;
-      gap: 2.4rem 1.6rem;
+      grid-column: 1 / -1;
     }
 
     .vf__bottom {
@@ -130,6 +113,11 @@
 
 <footer class="vf color-{{ section.settings.color_scheme }}">
   <div class="vf__grid">
+    {%- liquid
+      assign link_columns = section.blocks | where: 'type', 'link_column'
+      assign col_cursor = 5 | minus: link_columns.size
+      assign col_cursor = col_cursor | at_least: 2
+    -%}
     {%- for block in section.blocks -%}
       {%- if block.type == 'brand' -%}
         <div class="vf__brand" {{ block.shopify_attributes }}>
@@ -147,36 +135,33 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
-    <div class="vf__links">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'link_column' -%}
-          <div class="vf__col" {{ block.shopify_attributes }}>
-            <h4>{{ block.settings.heading }}</h4>
-            {%- for i in (1..4) -%}
-              {%- liquid
-                case i
-                  when 1
-                    assign link_text = block.settings.link_1_text
-                    assign link_url = block.settings.link_1_url
-                  when 2
-                    assign link_text = block.settings.link_2_text
-                    assign link_url = block.settings.link_2_url
-                  when 3
-                    assign link_text = block.settings.link_3_text
-                    assign link_url = block.settings.link_3_url
-                  when 4
-                    assign link_text = block.settings.link_4_text
-                    assign link_url = block.settings.link_4_url
-                endcase
-              -%}
-              {%- if link_text != blank -%}
-                <a href="{{ link_url | default: '#' }}">{{ link_text }}</a>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
+    {%- for block in link_columns -%}
+      <div class="vf__col" style="--col: {{ col_cursor }};" {{ block.shopify_attributes }}>
+        <h4>{{ block.settings.heading }}</h4>
+        {%- for i in (1..4) -%}
+          {%- liquid
+            case i
+              when 1
+                assign link_text = block.settings.link_1_text
+                assign link_url = block.settings.link_1_url
+              when 2
+                assign link_text = block.settings.link_2_text
+                assign link_url = block.settings.link_2_url
+              when 3
+                assign link_text = block.settings.link_3_text
+                assign link_url = block.settings.link_3_url
+              when 4
+                assign link_text = block.settings.link_4_text
+                assign link_url = block.settings.link_4_url
+            endcase
+          -%}
+          {%- if link_text != blank -%}
+            <a href="{{ link_url | default: '#' }}">{{ link_text }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- assign col_cursor = col_cursor | plus: 1 -%}
+    {%- endfor -%}
   </div>
   <div class="vf__bottom">
     <div class="vf__bottom-left">
