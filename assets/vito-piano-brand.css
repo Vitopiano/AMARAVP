@@ -811,7 +811,8 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
-   TÍTULO DE PRODUCTO — más compacto, tracking ajustado
+   TÍTULO DE PRODUCTO — mismo tratamiento que
+   "Chaqueta Cocora" en el home (Vito · Hero Product)
    ============================================ */
 
 .product__title {
@@ -820,15 +821,12 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 .product__title .h1 {
-  font-size: 2.2rem !important;
-  letter-spacing: -0.02em !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(3.2rem, 5vw, 4.6rem) !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
   word-break: break-word;
-}
-
-@media only screen and (min-width: 750px) {
-  .product__title .h1 {
-    font-size: 2.8rem !important;
-  }
 }
 
 /* ============================================
