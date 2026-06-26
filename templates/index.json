@@ -115,7 +115,6 @@
     },
     "vito_herencia": {
       "type": "vito-herencia",
-      "disabled": true,
       "blocks": {
         "pilar_1": {
           "type": "pilar",
@@ -152,6 +151,7 @@
         "pilar_3",
         "pilar_4"
       ],
+      "disabled": true,
       "settings": {
         "heading": "<p>Italia <em>y</em> Bogotá.<br>Una sola <em>chaqueta</em>.</p>",
         "body_1": "Trabajamos con paños seleccionados en Italia, los traemos a nuestro taller en Bogotá, y los convertimos en piezas atemporales con técnicas de sastrería heredadas.",
@@ -217,7 +217,7 @@
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
         "cta_link": "https://calendar.app.google/1K3HKU23k18Amtwx7",
-        "color_scheme": "vito-verde-atelier"
+        "color_scheme": "vito-crema"
       }
     }
   },
