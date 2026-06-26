@@ -146,19 +146,28 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {},
-        "block_order": [],
+        "blocks": {
+          "6df3aef3-6003-42c8-aa02-589798e8e4a1": {
+            "type": "text",
+            "settings": {
+              "heading": "Contáctanos",
+              "subtext": "<p>El Chicó · Bogotá, Colombia</p><p>info.vitopiano@gmail.com</p><p>WhatsApp: +579151143</p>"
+            }
+          },
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Políticas",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "6df3aef3-6003-42c8-aa02-589798e8e4a1",
+          "footer-0"
+        ],
         "settings": {
-          "color_scheme": "inverse",
-          "newsletter_enable": true,
-          "newsletter_heading": "Únete al mundo Vito Piano",
-          "show_social": true,
-          "enable_country_selector": false,
-          "enable_language_selector": false,
-          "payment_enable": true,
-          "margin_top": 0,
-          "padding_top": 20,
-          "padding_bottom": 20
+          "color_scheme": "inverse"
         }
       },
       "main-password-header": {
@@ -227,7 +236,7 @@
       },
       "background-2": {
         "settings": {
-          "background": "#f0ede8",
+          "background": "#FCF9F5",
           "background_gradient": "",
           "text": "#0c4433",
           "button": "#e25027",
@@ -273,43 +282,43 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#C5EAFF",
-          "button": "#FCF9F5",
+          "text": "#c5eaff",
+          "button": "#fcf9f5",
           "button_label": "#fcf9f5",
-          "secondary_button_label": "#E25027",
-          "shadow": "#E25027"
+          "secondary_button_label": "#e25027",
+          "shadow": "#e25027"
         }
       },
       "vito-negro": {
         "settings": {
           "background": "#1a1a1a",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#c5eaff",
           "button_label": "#1a1a1a",
-          "secondary_button_label": "#C5EAFF",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-verde": {
         "settings": {
-          "background": "#0C4433",
+          "background": "#0c4433",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#FCF9F5",
-          "button_label": "#0C4433",
-          "secondary_button_label": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#fcf9f5",
+          "button_label": "#0c4433",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-verde-atelier": {
         "settings": {
-          "background": "#0C4433",
+          "background": "#0c4433",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#E25027",
-          "button_label": "#FCF9F5",
-          "secondary_button_label": "#C5EAFF",
+          "text": "#fcf9f5",
+          "button": "#e25027",
+          "button_label": "#fcf9f5",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
@@ -317,22 +326,22 @@
         "settings": {
           "background": "#431424",
           "background_gradient": "",
-          "text": "#FCF9F5",
-          "button": "#FCF9F5",
+          "text": "#fcf9f5",
+          "button": "#fcf9f5",
           "button_label": "#431424",
-          "secondary_button_label": "#C5EAFF",
+          "secondary_button_label": "#c5eaff",
           "shadow": "#000000"
         }
       },
       "vito-crema": {
         "settings": {
-          "background": "#FCF9F5",
+          "background": "#fcf9f5",
           "background_gradient": "",
-          "text": "#0C4433",
-          "button": "#0C4433",
-          "button_label": "#FCF9F5",
-          "secondary_button_label": "#E25027",
-          "shadow": "#0C4433"
+          "text": "#0c4433",
+          "button": "#0c4433",
+          "button_label": "#fcf9f5",
+          "secondary_button_label": "#e25027",
+          "shadow": "#0c4433"
         }
       }
     }

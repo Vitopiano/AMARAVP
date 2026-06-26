@@ -47,8 +47,8 @@
         "attr_3": {
           "type": "attribute",
           "settings": {
-            "label": "Broches",
-            "value": "De por vida"
+            "label": "Garantía",
+            "value": "6 meses"
           }
         }
       },
@@ -60,7 +60,7 @@
       "settings": {
         "label": "_Nuestra pieza icónica",
         "title": "Chaqueta Cocora",
-        "aforismo": "Cada ola, un trazo. Cada palma, un diseño.",
+        "aforismo": "",
         "description": "Nuestra prenda hero. Tejida en drill 100% algodón  de 363g/m². Con seis variantes. Hecha en Bogotá. Una chaqueta que dura una década, no una temporada.",
         "cta_text": "Descubre la Cocora",
         "cta_link": "shopify://collections/familia-cocora",
@@ -95,6 +95,23 @@
         "swipe_on_mobile": true,
         "padding_top": 20,
         "padding_bottom": 12
+      }
+    },
+    "1779403844c13cd9c6": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_gXfiDM": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1300
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_gXfiDM"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "vito_narrativa_wMdYwP": {
@@ -152,29 +169,13 @@
         "pilar_3",
         "pilar_4"
       ],
+      "disabled": true,
       "settings": {
         "heading": "<p>Italia <em>y</em> Bogotá.<br>Una sola <em>chaqueta</em>.</p>",
         "body_1": "Trabajamos con paños seleccionados en Italia, los traemos a nuestro taller en Bogotá, y los convertimos en piezas atemporales con técnicas de sastrería heredadas.",
         "body_2": "No producimos por temporada. Producimos por intención. Cada Vito Piano es resultado de decenas de decisiones invisibles que solo notarás con el tiempo.",
         "image_label": "[ Ilustración línea azul cielo de palmas + máquina de coser ]",
         "color_scheme": ""
-      }
-    },
-    "1779403844c13cd9c6": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_featured_carousel_gXfiDM": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "maxwidth": 1300
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_featured_carousel_gXfiDM"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "vito_atelier_iDiNHB": {
@@ -216,7 +217,7 @@
         "heading": "<p>El Atelier <em>te espera</em>.</p>",
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
-        "cta_link": "https://calendar.app.google/1K3HKU23k18Amtwx7",
+        "cta_link": "",
         "color_scheme": "vito-verde-atelier"
       }
     }
@@ -225,9 +226,9 @@
     "vito_hero",
     "vito_hero_product",
     "featured_collection",
+    "1779403844c13cd9c6",
     "vito_narrativa_wMdYwP",
     "vito_herencia",
-    "1779403844c13cd9c6",
     "vito_atelier_iDiNHB"
   ]
 }
