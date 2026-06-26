@@ -811,6 +811,27 @@ h1, h2, .h0, .h1, .h2 {
 }
 
 /* ============================================
+   TÍTULO DE PRODUCTO — más compacto, tracking ajustado
+   ============================================ */
+
+.product__title {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
+.product__title .h1 {
+  font-size: 2.2rem !important;
+  letter-spacing: -0.02em !important;
+  word-break: break-word;
+}
+
+@media only screen and (min-width: 750px) {
+  .product__title .h1 {
+    font-size: 2.8rem !important;
+  }
+}
+
+/* ============================================
    WHATSAPP — Botón flotante
    ============================================ */
 
