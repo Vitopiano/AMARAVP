@@ -158,7 +158,9 @@
         <span>{{ section.settings.legal_text }}</span>
       {%- endif -%}
     </div>
-    <span>{{ section.settings.bottom_tagline }}</span>
+    {%- if section.settings.bottom_tagline != blank -%}
+      <span>{{ section.settings.bottom_tagline }}</span>
+    {%- endif -%}
   </div>
 </footer>
 
@@ -170,7 +172,7 @@
       "type": "text",
       "id": "copyright_text",
       "label": "Texto de copyright (izquierda)",
-      "default": "© 2026 Vito Piano · Bogotá · Italia"
+      "default": "© 2026 Vito Piano ·"
     },
     {
       "type": "text",
