@@ -97,22 +97,6 @@
         "padding_bottom": 12
       }
     },
-    "vito_narrativa_wMdYwP": {
-      "type": "vito-narrativa",
-      "name": "Vito · Narrativa",
-      "settings": {
-        "eyebrow": "— La herencia de dos mundos —",
-        "heading": "Tejer lo mejor de dos mundos.",
-        "paragraph_1": "En el corazón de Vito Piano late la historia de un sastre, forjado en la precisión y elegancia italiana, que encontró su verdadera alma en la vibrante esencia de Colombia.",
-        "paragraph_2": "Mis manos, expertas en el arte de la confección, se entrelazaron con la autenticidad y la riqueza de esta tierra, donde cada paisaje, el ritmo del mar y hasta la brisa de las palmas inspira un corte, una puntada, un diseño.",
-        "paragraph_3": "Vito Piano es la unión perfecta de dos mundos, una conversación constante entre la sofisticación europea y la pasión colombiana.",
-        "paragraph_4": "Cada pieza es un legado consciente, cuidadosamente confeccionado para acompañarte en tu propio viaje, reflejando un estilo que es tan auténtico como atemporal.",
-        "read_more_text": "Leer más",
-        "link_text": "Conocer el taller",
-        "link_url": "shopify://pages/vito-piano-el-sastre",
-        "color_scheme": "vito-vinotinto"
-      }
-    },
     "1779403844c13cd9c6": {
       "type": "apps",
       "blocks": {
@@ -128,6 +112,22 @@
       ],
       "settings": {
         "include_margins": true
+      }
+    },
+    "vito_narrativa_wMdYwP": {
+      "type": "vito-narrativa",
+      "name": "Vito · Narrativa",
+      "settings": {
+        "eyebrow": "— La herencia de dos mundos —",
+        "heading": "Tejer lo mejor de dos mundos.",
+        "paragraph_1": "En el corazón de Vito Piano late la historia de un sastre, forjado en la precisión y elegancia italiana, que encontró su verdadera alma en la vibrante esencia de Colombia.",
+        "paragraph_2": "Mis manos, expertas en el arte de la confección, se entrelazaron con la autenticidad y la riqueza de esta tierra, donde cada paisaje, el ritmo del mar y hasta la brisa de las palmas inspira un corte, una puntada, un diseño.",
+        "paragraph_3": "Vito Piano es la unión perfecta de dos mundos, una conversación constante entre la sofisticación europea y la pasión colombiana.",
+        "paragraph_4": "Cada pieza es un legado consciente, cuidadosamente confeccionado para acompañarte en tu propio viaje, reflejando un estilo que es tan auténtico como atemporal.",
+        "read_more_text": "Leer más",
+        "link_text": "Conocer el taller",
+        "link_url": "shopify://pages/vito-piano-el-sastre",
+        "color_scheme": "vito-vinotinto"
       }
     },
     "vito_herencia": {
@@ -217,7 +217,7 @@
         "description": "Una hora contigo en nuestro taller. Espresso italiano, prendas pre-seleccionadas según tu estilo, conversación sin afán. La forma más íntima de conocer Vito Piano.",
         "cta_text": "Agendar tu cita",
         "cta_link": "https://calendar.app.google/1K3HKU23k18Amtwx7",
-        "color_scheme": "vito-crema"
+        "color_scheme": "background-1"
       }
     }
   },
