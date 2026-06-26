@@ -113,6 +113,23 @@
         "color_scheme": "vito-vinotinto"
       }
     },
+    "1779403844c13cd9c6": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_gXfiDM": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1300
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_gXfiDM"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "vito_herencia": {
       "type": "vito-herencia",
       "blocks": {
@@ -158,23 +175,6 @@
         "body_2": "No producimos por temporada. Producimos por intención. Cada Vito Piano es resultado de decenas de decisiones invisibles que solo notarás con el tiempo.",
         "image_label": "[ Ilustración línea azul cielo de palmas + máquina de coser ]",
         "color_scheme": ""
-      }
-    },
-    "1779403844c13cd9c6": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_featured_carousel_gXfiDM": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "maxwidth": 1300
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_featured_carousel_gXfiDM"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "vito_atelier_iDiNHB": {
@@ -225,9 +225,9 @@
     "vito_hero",
     "vito_hero_product",
     "featured_collection",
+    "1779403844c13cd9c6",
     "vito_narrativa_wMdYwP",
     "vito_herencia",
-    "1779403844c13cd9c6",
     "vito_atelier_iDiNHB"
   ]
 }
