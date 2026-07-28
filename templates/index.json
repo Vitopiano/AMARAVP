@@ -73,7 +73,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Colección destacada",
+        "title": "",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
