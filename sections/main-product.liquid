@@ -1277,7 +1277,7 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "Solo aparece en productos con el metacampo custom.set_precio (precio del set en COP, sin puntos). Opcionales: custom.set_cantidad y custom.set_nombre_plural. El precio se cobra con un descuento automático en Shopify."
+          "content": "Solo aparece si el producto o la colección de su familia (etiqueta familia-xxx) tiene el metacampo custom.set_precio (precio del set en COP, sin puntos). Opcionales: custom.set_cantidad y custom.set_nombre_plural. El precio se cobra con un descuento automático en Shopify."
         },
         {
           "type": "select",
@@ -1310,12 +1310,19 @@
         },
         {
           "type": "paragraph",
-          "content": "[cantidad] se reemplaza por la cantidad en letras (tres) y [prendas] por el nombre en plural (camisetas)."
+          "content": "[cantidad] se reemplaza por la cantidad en letras (tres), [prendas] por el nombre en plural (camisetas) y [opcion] por color o modelo."
         },
         { "type": "text", "id": "individual_label", "label": "Opción individual", "default": "Individual" },
         { "type": "text", "id": "set_label", "label": "Opción set", "default": "Set de [cantidad]" },
-        { "type": "text", "id": "set_subtitle", "label": "Subtítulo del set", "default": "Elige color y talla de cada pieza" },
-        { "type": "text", "id": "set_subtitle_no_size", "label": "Subtítulo del set (productos sin talla)", "default": "Elige el color de cada pieza" },
+        { "type": "text", "id": "set_subtitle", "label": "Subtítulo del set", "default": "Elige [opcion] y talla de cada pieza" },
+        { "type": "text", "id": "set_subtitle_no_size", "label": "Subtítulo del set (productos de una sola talla)", "default": "Elige el [opcion] de cada pieza" },
+        {
+          "type": "text",
+          "id": "family_label",
+          "label": "Nombre de la opción en familias sin color",
+          "default": "Modelo",
+          "info": "Se usa cuando los productos de la familia no tienen el metacampo custom.color_hex (ej. cinturones)."
+        },
         { "type": "text", "id": "set_rows_heading", "label": "Título de las filas", "default": "Tus [cantidad] [prendas]" },
         { "type": "text", "id": "cta_set", "label": "Botón en formato set", "default": "Añadir el set" },
         { "type": "text", "id": "cta_added", "label": "Botón tras añadir", "default": "Añadido a tu bolsa" },

@@ -1,5 +1,7 @@
 /* Vito Piano — Bloque "Selector de set" (snippets/vp-set-selector.liquid)
-   En formato set toma el botón de compra de la ficha y añade todas las piezas en una sola llamada. */
+   Cada pieza del set elige una opción ("choice": un producto de la familia o un color del producto)
+   y, si hace falta, una talla. En formato set toma el botón de compra de la ficha y añade todas
+   las piezas en una sola llamada. */
 
 if (!customElements.get('vp-set-selector')) {
   customElements.define(
@@ -11,11 +13,18 @@ if (!customElements.get('vp-set-selector')) {
 
         this.data = JSON.parse(this.querySelector('[data-vps-json]').textContent);
         this.t = this.data.strings;
+        this.choices = new Map(this.data.choices.map((c) => [c.k, c]));
+        this.shortNames = this.buildShortNames();
         this.rows = [...this.querySelectorAll('[data-row]')];
         this.form = document.getElementById(this.dataset.form);
         this.submitBtn = this.form?.querySelector('[name="add"]');
         this.btnLabel = this.submitBtn?.querySelector('span');
         this.stickyPrice = document.getElementById('vp-sticky-price');
+
+        this.querySelectorAll('[data-vps-name]').forEach((label) => {
+          const input = document.getElementById(label.htmlFor);
+          if (input) label.textContent = this.shortNames.get(input.value) ?? label.textContent;
+        });
 
         this.note = document.createElement('p');
         this.note.className = 'vps__note';
@@ -23,15 +32,17 @@ if (!customElements.get('vp-set-selector')) {
         const buttons = this.form?.querySelector('.product-form__buttons');
         if (buttons) buttons.after(this.note);
 
-        const available = this.data.colors.filter((c) => !this.colorOut(c));
-        const pick = (i) => (available.length ? available[i % available.length] : this.data.colors[0] ?? null);
-        const start = this.data.initialColor && !this.colorOut(this.data.initialColor) ? this.data.initialColor : pick(0);
-        const colorsFor = this.rows.map((_, i) => (i === 0 ? start : pick(available.indexOf(start) + i)));
-
+        const keys = this.data.choices.map((c) => c.k);
+        const available = keys.filter((k) => !this.choiceOut(k));
+        const start = this.choices.has(this.data.initial) && !this.choiceOut(this.data.initial) ? this.data.initial : available[0] ?? keys[0];
+        const from = Math.max(available.indexOf(start), 0);
         this.state = {
           mode: this.dataset.mode === 'ind' ? 'ind' : 'set',
           open: 0,
-          set: this.rows.map((_, i) => ({ c: colorsFor[i], s: this.onlySize() })),
+          set: this.rows.map((_, i) => {
+            const k = i === 0 || !available.length ? start : available[(from + i) % available.length];
+            return { k, s: this.autoSize(k) };
+          }),
         };
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -47,35 +58,57 @@ if (!customElements.get('vp-set-selector')) {
       }
 
       /* ——— Datos ——— */
-      onlySize() {
-        if (!this.data.hasSize) return null;
-        const sizes = [...new Set(this.data.variants.map((v) => v.s))];
+
+      /* "Cinturón Trenzado Elástico Positano" → "Positano" cuando todas las opciones comparten el inicio. */
+      buildShortNames() {
+        const names = this.data.choices.map((c) => c.n);
+        const words = names.map((n) => n.split(/\s+/));
+        let common = 0;
+        if (names.length > 1) {
+          while (words.every((w) => w.length > common + 1 && w[common].toLowerCase() === words[0][common].toLowerCase())) common++;
+        }
+        return new Map(this.data.choices.map((c, i) => [c.k, words[i].slice(common).join(' ')]));
+      }
+
+      sizesOf(k) {
+        const c = this.choices.get(k);
+        return c ? [...new Set(c.v.map((v) => v.s).filter((s) => s != null))] : [];
+      }
+
+      needsSize(k) {
+        return this.sizesOf(k).length > 1;
+      }
+
+      autoSize(k) {
+        const sizes = this.sizesOf(k);
         return sizes.length === 1 ? sizes[0] : null;
       }
 
-      find(c, s) {
-        return this.data.variants.find((v) => (!this.data.hasColor || v.c === c) && (!this.data.hasSize || v.s === s));
+      variantFor(sel) {
+        const c = this.choices.get(sel.k);
+        if (!c) return null;
+        if (!this.sizesOf(sel.k).length) return c.v[0];
+        return c.v.find((v) => v.s === sel.s) || null;
       }
 
-      colorOut(c) {
-        return !this.data.variants.some((v) => (!this.data.hasColor || v.c === c) && v.a);
+      choiceOut(k) {
+        return !this.choices.get(k)?.v.some((v) => v.a);
       }
 
-      sizeOut(c, s) {
-        const v = this.find(c, s);
+      sizeOut(k, s) {
+        const v = this.choices.get(k)?.v.find((x) => x.s === s);
         return !v || !v.a;
       }
 
       complete(sel) {
-        if (this.data.hasSize && !sel.s) return false;
-        const v = this.find(sel.c, sel.s);
+        const v = this.variantFor(sel);
         return Boolean(v && v.a);
       }
 
-      swatchOf(scope, c) {
-        const input = [...scope.querySelectorAll('[data-vps-color]')].find((i) => i.value === c);
+      swatchOf(scope, k) {
+        const input = [...scope.querySelectorAll('[data-vps-choice]')].find((i) => i.value === k);
         const sw = input?.nextElementSibling?.querySelector('.swatch');
-        return sw ? sw.style.getPropertyValue('--swatch--background') : 'transparent';
+        return sw ? sw.style.getPropertyValue('--swatch--background') : '';
       }
 
       /* ——— Render ——— */
@@ -93,29 +126,44 @@ if (!customElements.get('vp-set-selector')) {
           row.querySelector('[data-row-toggle]').setAttribute('aria-expanded', open);
           row.querySelector('.vps-row__body').inert = !open;
 
-          scope.querySelectorAll('[data-vps-color]').forEach((input) => {
-            const out = this.colorOut(input.value);
-            input.checked = input.value === sel.c;
+          scope.querySelectorAll('[data-vps-choice]').forEach((input) => {
+            const out = this.choiceOut(input.value);
+            const isSwatch = input.classList.contains('swatch-input__input');
+            input.checked = input.value === sel.k;
             input.disabled = out;
-            input.classList.toggle('visually-disabled', out && input.classList.contains('swatch-input__input'));
-            input.classList.toggle('disabled', out && !input.classList.contains('swatch-input__input'));
+            input.classList.toggle('visually-disabled', out && isSwatch);
+            input.classList.toggle('disabled', out && !isSwatch);
           });
+
+          const sizes = this.sizesOf(sel.k);
+          const sizeSet = scope.querySelector('[data-vps-sizes]');
+          if (sizeSet) sizeSet.style.display = this.needsSize(sel.k) ? '' : 'none';
           scope.querySelectorAll('[data-vps-size]').forEach((input) => {
-            const out = this.sizeOut(sel.c, input.value);
+            const present = sizes.includes(input.value);
+            input.style.display = present ? '' : 'none';
+            input.nextElementSibling.style.display = present ? '' : 'none';
+            const out = this.sizeOut(sel.k, input.value);
             input.checked = input.value === sel.s;
             input.disabled = out;
             input.classList.toggle('disabled', out);
           });
-          const cname = scope.querySelector('[data-cname]');
-          if (cname) cname.textContent = sel.c ?? '';
 
-          row.querySelector('.vps-row__dot').style.setProperty('--c', this.swatchOf(scope, sel.c));
+          const name = this.shortNames.get(sel.k) ?? '';
+          const cname = scope.querySelector('[data-cname]');
+          if (cname) cname.textContent = name;
+
+          const dot = row.querySelector('.vps-row__dot');
+          const swatch = this.swatchOf(scope, sel.k);
+          dot.style.setProperty('--c', swatch || 'transparent');
+          dot.hidden = !swatch;
+
           const sum = row.querySelector('[data-row-sum]');
-          sum.textContent = this.data.hasColor ? sel.c ?? '' : '';
-          if (!this.data.hasSize) return;
-          if (this.data.hasColor) sum.append(' · ');
+          sum.textContent = this.data.choices.length > 1 || !this.needsSize(sel.k) ? name : '';
+          if (!this.needsSize(sel.k)) return;
+          if (sum.textContent) sum.append(' · ');
           if (sel.s) {
-            sum.append(`${this.data.sizeName} ${sel.s}`);
+            const label = this.data.sizeName.length <= 8 ? `${this.data.sizeName} ` : '';
+            sum.append(`${label}${sel.s}`);
           } else {
             const em = document.createElement('em');
             em.textContent = `Elige ${this.data.sizeName.toLowerCase()}`;
@@ -172,19 +220,27 @@ if (!customElements.get('vp-set-selector')) {
         const i = Number(scope.dataset.scope);
         const sel = this.state.set[i];
 
-        if (input.hasAttribute('data-vps-color')) {
-          sel.c = input.value;
-          if (sel.s && this.sizeOut(sel.c, sel.s)) sel.s = null;
-          return this.update();
+        if (input.hasAttribute('data-vps-choice')) {
+          sel.k = input.value;
+          const auto = this.autoSize(sel.k);
+          if (auto) sel.s = auto;
+          else if (sel.s && (!this.sizesOf(sel.k).includes(sel.s) || this.sizeOut(sel.k, sel.s))) sel.s = null;
+          if (this.needsSize(sel.k)) return this.update();
+          return this.advance(i);
         }
 
         if (input.hasAttribute('data-vps-size')) {
           sel.s = input.value;
-          const next = i + 1 < this.rows.length ? i + 1 : -1;
-          this.state.open = next;
-          this.update();
-          this.rows[next >= 0 ? next : i].querySelector('[data-row-toggle]').focus({ preventScroll: true });
+          this.advance(i);
         }
+      }
+
+      /* Cierra la fila completa y abre la siguiente. */
+      advance(i) {
+        const next = i + 1 < this.rows.length ? i + 1 : -1;
+        this.state.open = next;
+        this.update();
+        this.rows[next >= 0 ? next : i].querySelector('[data-row-toggle]').focus({ preventScroll: true });
       }
 
       onSubmit(e) {
@@ -207,7 +263,7 @@ if (!customElements.get('vp-set-selector')) {
 
         const qty = new Map();
         this.state.set.forEach((p) => {
-          const id = this.find(p.c, p.s).id;
+          const id = this.variantFor(p).id;
           qty.set(id, (qty.get(id) || 0) + 1);
         });
         const body = { items: [...qty].map(([id, quantity]) => ({ id, quantity })) };

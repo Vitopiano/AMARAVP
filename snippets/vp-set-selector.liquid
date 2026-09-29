@@ -1,13 +1,20 @@
 {% comment %}
   Bloque "Selector de set" de la ficha de producto (sections/main-product.liquid).
-  Solo aparece en productos que tienen precio de set. Se configura por producto con metacampos:
-  - custom.set_precio          Número entero. Precio del set en COP, sin puntos (ej. 229800).
+
+  Hay dos tipos de set:
+  1. Familia: el producto tiene la etiqueta "familia-xxx" y existe la colección con ese identificador.
+     Cada pieza del set se elige entre los productos de la familia (ej. cinturones Positano, Siena…).
+     Solo entran los productos de la familia con el mismo precio que el producto abierto.
+  2. Un solo producto: cada pieza se elige entre los colores (variantes) del producto.
+
+  Configuración con metacampos (primero se busca en el producto y luego en la colección de la familia):
+  - custom.set_precio          Número entero. Precio del set en COP, sin puntos (ej. 229800). Obligatorio.
   - custom.set_cantidad        Número entero. Piezas por set (2 a 6). Si falta, se usa el valor del bloque.
   - custom.set_nombre_plural   Texto. Nombre de las piezas en plural (ej. "camisetas", "cinturones").
 
   En formato "Individual" la ficha funciona como siempre. En formato "Set" se ocultan el selector
-  de variantes, la cantidad y el botón de pago rápido, y el botón de compra añade todas las piezas.
-  El precio del set se cobra con un descuento automático configurado en el admin de Shopify.
+  de variantes, la navegación de familia, la cantidad y el pago rápido, y el botón de compra añade
+  todas las piezas. El precio del set se cobra con un descuento automático configurado en Shopify.
 
   Accepts:
   - product: {Object}
@@ -17,40 +24,27 @@
 {% endcomment %}
 
 {%- liquid
-  assign set_price = product.metafields.custom.set_precio.value | default: 0 | plus: 0
+  assign fam = null
+  for tag in product.tags
+    if tag contains 'familia-'
+      assign fam_candidate = collections[tag]
+      if fam_candidate != blank and fam_candidate.products_count > 1
+        assign fam = fam_candidate
+      endif
+      break
+    endif
+  endfor
+
+  assign set_price = product.metafields.custom.set_precio.value | default: fam.metafields.custom.set_precio.value | default: 0 | plus: 0
   assign set_cents = set_price | times: 100
 -%}
 
-{%- if set_cents > 0 and product.has_only_default_variant == false -%}
+{%- if set_cents > 0 -%}
   {%- liquid
-    assign color_option = null
-    assign size_option = null
-    for option in product.options_with_values
-      assign option_name = option.name | downcase
-      if option_name contains 'color' or option_name contains 'colour' or option_name contains 'tono' or option_name contains 'acabado'
-        assign color_option = option
-      elsif option_name contains 'talla' or option_name contains 'size' or option_name contains 'tamaño' or option_name contains 'medida' or option_name contains 'largo'
-        assign size_option = option
-      endif
-    endfor
-
-    assign color_idx = 0
-    assign size_idx = 0
-    assign color_as_swatch = false
-    if color_option
-      assign color_idx = color_option.position | minus: 1
-      if color_option.values.first.swatch.color or color_option.values.first.swatch.image
-        assign color_as_swatch = true
-      endif
-    endif
-    if size_option
-      assign size_idx = size_option.position | minus: 1
-    endif
-
     assign current = product.selected_or_first_available_variant
     assign unit_cents = current.price
 
-    assign set_qty = product.metafields.custom.set_cantidad.value | default: block.settings.set_quantity | plus: 0
+    assign set_qty = product.metafields.custom.set_cantidad.value | default: fam.metafields.custom.set_cantidad.value | default: block.settings.set_quantity | plus: 0
     if set_qty < 2
       assign set_qty = 2
     elsif set_qty > 6
@@ -68,7 +62,199 @@
       else
         assign qty_word = 'seis'
     endcase
-    assign plural = product.metafields.custom.set_nombre_plural.value | default: block.settings.item_plural | downcase
+    assign plural = product.metafields.custom.set_nombre_plural.value | default: fam.metafields.custom.set_nombre_plural.value | default: block.settings.item_plural | downcase
+
+    comment
+      Opciones de cada pieza ("choices"). Se arma una sola vez con __ROW__ como marcador y luego
+      se repite por fila. Cada choice: clave, nombre, muestra de color y sus variantes (id, talla, disponible).
+    endcomment
+    assign choices_json = ''
+    assign choices_swatch_html = ''
+    assign choices_pill_html = ''
+    assign all_sizes = ''
+    assign size_name = ''
+    assign all_swatches = true
+    assign initial_key = ''
+    assign n = 0
+
+    if fam
+      for p in fam.products
+        if p.price != product.price
+          continue
+        endif
+
+        assign p_size_idx = -1
+        for option in p.options_with_values
+          assign option_name = option.name | downcase
+          if option_name contains 'talla' or option_name contains 'size' or option_name contains 'tamaño' or option_name contains 'medida' or option_name contains 'largo'
+            assign p_size_idx = option.position | minus: 1
+            if size_name == blank
+              assign size_name = option.name
+            endif
+          endif
+        endfor
+
+        assign c1 = p.metafields.custom.color_hex
+        assign c2 = p.metafields.custom.color_hex_2
+        if c1 == blank
+          assign all_swatches = false
+          assign sw = ''
+        elsif c2 != blank
+          assign sw = 'linear-gradient(135deg, ' | append: c1 | append: ' 50%, ' | append: c2 | append: ' 50%)'
+        else
+          assign sw = c1
+        endif
+
+        capture variants_json
+          for v in p.variants
+            if p_size_idx >= 0
+              assign vs = v.options[p_size_idx] | json
+            else
+              assign vs = 'null'
+            endif
+            echo '{"id":' | append: v.id | append: ',"s":' | append: vs | append: ',"a":' | append: v.available | append: '}'
+            unless forloop.last
+              echo ','
+            endunless
+            if p_size_idx >= 0
+              assign all_sizes = all_sizes | append: '|~|' | append: v.options[p_size_idx]
+            endif
+          endfor
+        endcapture
+
+        assign key = p.id | append: ''
+        assign key_json = key | json
+        assign name_json = p.title | json
+        assign name_esc = p.title | escape
+        if p.id == product.id
+          assign initial_key = key
+        endif
+        assign sep = ''
+        if n > 0
+          assign sep = ','
+        endif
+        assign choices_json = choices_json | append: sep | append: '{"k":' | append: key_json | append: ',"n":' | append: name_json | append: ',"v":[' | append: variants_json | append: ']}'
+
+        capture swatch_input
+          echo '<input type="radio" id="__ROW__-c-' | append: n | append: '" name="__ROW__-choice" value="' | append: key | append: '" form="vps-no-form" class="swatch-input__input" data-vps-choice>'
+          echo '<label for="__ROW__-c-' | append: n | append: '" title="' | append: name_esc | append: '" class="swatch-input__label"><span class="swatch" style="--swatch--background: ' | append: sw | append: ';"></span><span class="visually-hidden">' | append: name_esc | append: '</span></label>'
+        endcapture
+        capture pill_input
+          echo '<input type="radio" id="__ROW__-c-' | append: n | append: '" name="__ROW__-choice" value="' | append: key | append: '" form="vps-no-form" data-vps-choice>'
+          echo '<label for="__ROW__-c-' | append: n | append: '" data-vps-name>' | append: name_esc | append: '</label>'
+        endcapture
+        assign choices_swatch_html = choices_swatch_html | append: swatch_input
+        assign choices_pill_html = choices_pill_html | append: pill_input
+        assign n = n | plus: 1
+      endfor
+
+      if all_swatches
+        assign choice_label = 'Color'
+      else
+        assign choice_label = block.settings.family_label
+      endif
+    else
+      assign color_option = null
+      assign size_option = null
+      for option in product.options_with_values
+        assign option_name = option.name | downcase
+        if option_name contains 'color' or option_name contains 'colour' or option_name contains 'tono' or option_name contains 'acabado'
+          assign color_option = option
+        elsif option_name contains 'talla' or option_name contains 'size' or option_name contains 'tamaño' or option_name contains 'medida' or option_name contains 'largo'
+          assign size_option = option
+        endif
+      endfor
+      if size_option
+        assign size_idx = size_option.position | minus: 1
+        assign size_name = size_option.name
+      endif
+
+      if color_option
+        assign color_idx = color_option.position | minus: 1
+        assign choice_label = color_option.name
+        assign initial_key = current.options[color_idx]
+        for value in color_option.values
+          assign key = value | append: ''
+          assign key_json = key | json
+          assign key_esc = key | escape
+          if value.swatch.image
+            assign sw = value.swatch.image | image_url: width: 80 | prepend: 'url(' | append: ')'
+          elsif value.swatch.color
+            assign sw = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+          else
+            assign all_swatches = false
+            assign sw = ''
+          endif
+
+          capture variants_json
+            assign first_v = true
+            for v in product.variants
+              if v.options[color_idx] != key
+                continue
+              endif
+              unless first_v
+                echo ','
+              endunless
+              assign first_v = false
+              if size_option
+                assign vs = v.options[size_idx] | json
+                assign all_sizes = all_sizes | append: '|~|' | append: v.options[size_idx]
+              else
+                assign vs = 'null'
+              endif
+              echo '{"id":' | append: v.id | append: ',"s":' | append: vs | append: ',"a":' | append: v.available | append: '}'
+            endfor
+          endcapture
+
+          assign sep = ''
+          if n > 0
+            assign sep = ','
+          endif
+          assign choices_json = choices_json | append: sep | append: '{"k":' | append: key_json | append: ',"n":' | append: key_json | append: ',"v":[' | append: variants_json | append: ']}'
+
+          capture swatch_input
+            echo '<input type="radio" id="__ROW__-c-' | append: n | append: '" name="__ROW__-choice" value="' | append: key_esc | append: '" form="vps-no-form" class="swatch-input__input" data-vps-choice>'
+            echo '<label for="__ROW__-c-' | append: n | append: '" title="' | append: key_esc | append: '" class="swatch-input__label"><span class="swatch" style="--swatch--background: ' | append: sw | append: ';"></span><span class="visually-hidden">' | append: key_esc | append: '</span></label>'
+          endcapture
+          capture pill_input
+            echo '<input type="radio" id="__ROW__-c-' | append: n | append: '" name="__ROW__-choice" value="' | append: key_esc | append: '" form="vps-no-form" data-vps-choice>'
+            echo '<label for="__ROW__-c-' | append: n | append: '" data-vps-name>' | append: key_esc | append: '</label>'
+          endcapture
+          assign choices_swatch_html = choices_swatch_html | append: swatch_input
+          assign choices_pill_html = choices_pill_html | append: pill_input
+          assign n = n | plus: 1
+        endfor
+      else
+        comment
+          Producto sin opción de color: una sola opción (el propio producto), solo se elige la talla.
+        endcomment
+        assign choice_label = ''
+        assign initial_key = product.id | append: ''
+        assign key_json = initial_key | json
+        assign name_json = product.title | json
+        capture variants_json
+          for v in product.variants
+            if size_option
+              assign vs = v.options[size_idx] | json
+              assign all_sizes = all_sizes | append: '|~|' | append: v.options[size_idx]
+            else
+              assign vs = 'null'
+            endif
+            echo '{"id":' | append: v.id | append: ',"s":' | append: vs | append: ',"a":' | append: v.available | append: '}'
+            unless forloop.last
+              echo ','
+            endunless
+          endfor
+        endcapture
+        assign choices_json = '{"k":' | append: key_json | append: ',"n":' | append: name_json | append: ',"v":[' | append: variants_json | append: ']}'
+        assign n = 1
+      endif
+    endif
+
+    assign sizes = all_sizes | remove_first: '|~|' | split: '|~|' | uniq
+    if size_name == blank
+      assign size_name = 'Talla'
+    endif
 
     assign full_cents = unit_cents | times: set_qty
     assign saving_cents = full_cents | minus: set_cents
@@ -77,12 +263,13 @@
     assign unit_money = unit_cents | money
 
     assign t_set_label = block.settings.set_label | replace: '[cantidad]', qty_word | replace: '[prendas]', plural
-    if size_option
+    if sizes.size > 1
       assign t_set_sub = block.settings.set_subtitle
     else
       assign t_set_sub = block.settings.set_subtitle_no_size
     endif
-    assign t_set_sub = t_set_sub | replace: '[cantidad]', qty_word | replace: '[prendas]', plural
+    assign opcion = choice_label | default: 'modelo' | downcase
+    assign t_set_sub = t_set_sub | replace: '[cantidad]', qty_word | replace: '[prendas]', plural | replace: '[opcion]', opcion
     assign t_rows = block.settings.set_rows_heading | replace: '[cantidad]', qty_word | replace: '[prendas]', plural
     assign t_note_set = block.settings.note_set | replace: '[cantidad]', qty_word | replace: '[prendas]', plural
     assign t_note_ind = block.settings.note_individual | replace: '[cantidad]', qty_word | replace: '[prendas]', plural
@@ -91,135 +278,105 @@
     assign mode = block.settings.default_format
   -%}
 
-  {{ 'vp-set-selector.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'vp-set-selector.js' | asset_url }}" defer="defer"></script>
+  {%- if n > 0 -%}
+    {{ 'vp-set-selector.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'vp-set-selector.js' | asset_url }}" defer="defer"></script>
 
-  <vp-set-selector
-    class="vps"
-    data-mode="{{ mode }}"
-    data-form="{{ product_form_id }}"
-    {{ block.shopify_attributes }}
-  >
-    <script type="application/json" data-vps-json>
-      {
-        "hasColor": {% if color_option %}true{% else %}false{% endif %},
-        "hasSize": {% if size_option %}true{% else %}false{% endif %},
-        "sizeName": {{ size_option.name | default: 'Talla' | json }},
-        "initialColor": {% if color_option %}{{ current.options[color_idx] | json }}{% else %}null{% endif %},
-        "colors": [{% for value in color_option.values %}{{ value | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
-        "variants": [
-          {%- for variant in product.variants -%}
-            {
-              "id": {{ variant.id }},
-              "c": {% if color_option %}{{ variant.options[color_idx] | json }}{% else %}null{% endif %},
-              "s": {% if size_option %}{{ variant.options[size_idx] | json }}{% else %}null{% endif %},
-              "a": {{ variant.available }},
-              "m": {{ variant.featured_media.id | default: 'null' }}
-            }{% unless forloop.last %},{% endunless %}
-          {%- endfor -%}
-        ],
-        "strings": {
-          "priceSet": {{ set_money | json }},
-          "ctaSet": {{ t_cta_set | json }},
-          "added": {{ block.settings.cta_added | json }},
-          "noteSet": {{ t_note_set | json }},
-          "noteInd": {{ t_note_ind | json }},
-          "missingRow": {{ block.settings.missing_row | json }},
-          "error": {{ 'sections.cart.cart_error' | t | json }}
+    <vp-set-selector
+      class="vps"
+      data-mode="{{ mode }}"
+      data-form="{{ product_form_id }}"
+      {{ block.shopify_attributes }}
+    >
+      <script type="application/json" data-vps-json>
+        {
+          "sizeName": {{ size_name | json }},
+          "initial": {{ initial_key | json }},
+          "choices": [{{ choices_json }}],
+          "strings": {
+            "priceSet": {{ set_money | json }},
+            "ctaSet": {{ t_cta_set | json }},
+            "added": {{ block.settings.cta_added | json }},
+            "noteSet": {{ t_note_set | json }},
+            "noteInd": {{ t_note_ind | json }},
+            "missingRow": {{ block.settings.missing_row | json }},
+            "error": {{ 'sections.cart.cart_error' | t | json }}
+          }
         }
-      }
-    </script>
+      </script>
 
-    <div class="vps__fmts" role="radiogroup" aria-label="{{ product.title | escape }}">
-      <button type="button" class="vps-fmt" role="radio" data-fmt="ind" aria-checked="{% if mode == 'ind' %}true{% else %}false{% endif %}">
-        <span class="vps-fmt__t">{{ block.settings.individual_label }}</span>
-        <span class="vps-fmt__p">{{ unit_money }}</span>
-      </button>
-      <button type="button" class="vps-fmt" role="radio" data-fmt="set" aria-checked="{% if mode == 'set' %}true{% else %}false{% endif %}">
-        <span class="vps-fmt__t">{{ t_set_label }}</span>
-        <span class="vps-fmt__p">{{ set_money }}</span>
-        <span class="vps-fmt__s">{{ t_set_sub }}</span>
-        <span class="vps-fmt__x">
-          {{- per_unit_cents | money }} c/u
-          {%- if saving_cents > 0 %} · ahorro total de {{ saving_cents | money }}{% endif -%}
-        </span>
-      </button>
-    </div>
+      <div class="vps__fmts" role="radiogroup" aria-label="{{ product.title | escape }}">
+        <button type="button" class="vps-fmt" role="radio" data-fmt="ind" aria-checked="{% if mode == 'ind' %}true{% else %}false{% endif %}">
+          <span class="vps-fmt__t">{{ block.settings.individual_label }}</span>
+          <span class="vps-fmt__p">{{ unit_money }}</span>
+        </button>
+        <button type="button" class="vps-fmt" role="radio" data-fmt="set" aria-checked="{% if mode == 'set' %}true{% else %}false{% endif %}">
+          <span class="vps-fmt__t">{{ t_set_label }}</span>
+          <span class="vps-fmt__p">{{ set_money }}</span>
+          <span class="vps-fmt__s">{{ t_set_sub }}</span>
+          <span class="vps-fmt__x">
+            {{- per_unit_cents | money }} c/u
+            {%- if saving_cents > 0 %} · ahorro total de {{ saving_cents | money }}{% endif -%}
+          </span>
+        </button>
+      </div>
 
-    <div class="vps__set" data-vps-set{% if mode != 'set' %} hidden{% endif %}>
-      {%- if t_rows != blank -%}
-        <p class="form__label vps__rows-label">{{ t_rows }}</p>
-      {%- endif -%}
-      <div class="vps-rows">
-        {%- for i in (1..set_qty) -%}
-          {%- assign idx = forloop.index0 -%}
-          {%- capture uid -%}vps-{{ section_id }}-{{ idx }}{%- endcapture -%}
-          <div class="vps-row" data-row="{{ idx }}">
-            <button
-              type="button"
-              class="vps-row__head"
-              id="{{ uid }}-head"
-              aria-controls="{{ uid }}-body"
-              aria-expanded="false"
-              data-row-toggle="{{ idx }}"
-            >
-              <span class="vps-row__num">{% if i < 10 %}0{% endif %}{{ i }}</span>
-              <span class="vps-row__dot" aria-hidden="true"></span>
-              <span class="vps-row__sum" data-row-sum></span>
-              <span class="vps-pm" aria-hidden="true"></span>
-            </button>
-            <div class="vps-row__body" id="{{ uid }}-body" role="region" aria-labelledby="{{ uid }}-head">
-              <div class="vps-row__inner" data-scope="{{ idx }}">
-                {%- if color_option -%}
-                  {%- if color_as_swatch -%}
-                    <fieldset class="product-form__input product-form__input--swatch">
-                      <legend class="form__label">{{ color_option.name }}: <span data-cname></span></legend>
-                      {%- for value in color_option.values -%}
-                        {%- capture input_id -%}{{ uid }}-c-{{ forloop.index0 }}{%- endcapture -%}
-                        {%- capture input_name -%}{{ uid }}-color{%- endcapture -%}
-                        {%- capture help_text -%}<span class="visually-hidden">{{ value | escape }}</span>{%- endcapture -%}
-                        {% render 'swatch-input',
-                          id: input_id,
-                          name: input_name,
-                          value: value,
-                          swatch: value.swatch,
-                          product_form_id: 'vps-no-form',
-                          checked: false,
-                          shape: 'circle',
-                          help_text: help_text,
-                          additional_props: 'data-vps-color'
-                        %}
-                      {%- endfor -%}
-                    </fieldset>
-                  {%- else -%}
-                    <fieldset class="product-form__input product-form__input--pill">
-                      <legend class="form__label">{{ color_option.name }}</legend>
-                      {%- for value in color_option.values -%}
-                        {%- capture input_id -%}{{ uid }}-c-{{ forloop.index0 }}{%- endcapture -%}
-                        <input type="radio" id="{{ input_id }}" name="{{ uid }}-color" value="{{ value | escape }}" form="vps-no-form" data-vps-color>
-                        <label for="{{ input_id }}">{{ value }}</label>
+      <div class="vps__set" data-vps-set{% if mode != 'set' %} hidden{% endif %}>
+        {%- if t_rows != blank -%}
+          <p class="form__label vps__rows-label">{{ t_rows }}</p>
+        {%- endif -%}
+        <div class="vps-rows">
+          {%- for i in (1..set_qty) -%}
+            {%- assign idx = forloop.index0 -%}
+            {%- capture uid -%}vps-{{ section_id }}-{{ idx }}{%- endcapture -%}
+            <div class="vps-row" data-row="{{ idx }}">
+              <button
+                type="button"
+                class="vps-row__head"
+                id="{{ uid }}-head"
+                aria-controls="{{ uid }}-body"
+                aria-expanded="false"
+                data-row-toggle="{{ idx }}"
+              >
+                <span class="vps-row__num">{% if i < 10 %}0{% endif %}{{ i }}</span>
+                <span class="vps-row__dot" aria-hidden="true"></span>
+                <span class="vps-row__sum" data-row-sum></span>
+                <span class="vps-pm" aria-hidden="true"></span>
+              </button>
+              <div class="vps-row__body" id="{{ uid }}-body" role="region" aria-labelledby="{{ uid }}-head">
+                <div class="vps-row__inner" data-scope="{{ idx }}">
+                  {%- if n > 1 -%}
+                    {%- if all_swatches -%}
+                      <fieldset class="product-form__input product-form__input--swatch">
+                        <legend class="form__label">{{ choice_label }}: <span data-cname></span></legend>
+                        {{ choices_swatch_html | replace: '__ROW__', uid }}
+                      </fieldset>
+                    {%- else -%}
+                      <fieldset class="product-form__input product-form__input--pill">
+                        <legend class="form__label">{{ choice_label }}</legend>
+                        {{ choices_pill_html | replace: '__ROW__', uid }}
+                      </fieldset>
+                    {%- endif -%}
+                  {%- endif -%}
+                  {%- if sizes.size > 0 -%}
+                    <fieldset class="product-form__input product-form__input--pill" data-vps-sizes>
+                      <legend class="form__label">{{ size_name }}</legend>
+                      {%- for s in sizes -%}
+                        {%- capture input_id -%}{{ uid }}-s-{{ forloop.index0 }}{%- endcapture -%}
+                        <input type="radio" id="{{ input_id }}" name="{{ uid }}-size" value="{{ s | escape }}" form="vps-no-form" data-vps-size>
+                        <label for="{{ input_id }}">
+                          {{- s -}}
+                          <span class="visually-hidden label-unavailable">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
+                        </label>
                       {%- endfor -%}
                     </fieldset>
                   {%- endif -%}
-                {%- endif -%}
-                {%- if size_option -%}
-                  <fieldset class="product-form__input product-form__input--pill">
-                    <legend class="form__label">{{ size_option.name }}</legend>
-                    {%- for value in size_option.values -%}
-                      {%- capture input_id -%}{{ uid }}-s-{{ forloop.index0 }}{%- endcapture -%}
-                      <input type="radio" id="{{ input_id }}" name="{{ uid }}-size" value="{{ value | escape }}" form="vps-no-form" data-vps-size>
-                      <label for="{{ input_id }}">
-                        {{- value -}}
-                        <span class="visually-hidden label-unavailable">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
-                      </label>
-                    {%- endfor -%}
-                  </fieldset>
-                {%- endif -%}
+                </div>
               </div>
             </div>
-          </div>
-        {%- endfor -%}
+          {%- endfor -%}
+        </div>
       </div>
-    </div>
-  </vp-set-selector>
+    </vp-set-selector>
+  {%- endif -%}
 {%- endif -%}

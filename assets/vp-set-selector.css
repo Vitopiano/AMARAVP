@@ -120,6 +120,10 @@
   border: 0.1rem solid rgba(0, 0, 0, 0.15);
 }
 
+.vps-row__dot[hidden] {
+  display: none;
+}
+
 .vps-row__sum {
   font-size: 1.4rem;
 }
@@ -197,6 +201,7 @@
 
 /* ——— En formato set se ocultan los controles de la compra individual ——— */
 .product__info-container:has(vp-set-selector[data-mode='set']) variant-selects,
+.product__info-container:has(vp-set-selector[data-mode='set']) .vp-color-nav,
 .product__info-container:has(vp-set-selector[data-mode='set']) .vp-qty-row quantity-input,
 .product__info-container:has(vp-set-selector[data-mode='set']) .product-form__quantity,
 .product__info-container:has(vp-set-selector[data-mode='set']) .shopify-payment-button {
