@@ -84,6 +84,24 @@
           "settings": {
             "share_label": "Compartir"
           }
+        },
+        "set_selector": {
+          "type": "set_selector",
+          "settings": {
+            "default_format": "set",
+            "set_quantity": 3,
+            "item_plural": "piezas",
+            "individual_label": "Individual",
+            "set_label": "Set de [cantidad]",
+            "set_subtitle": "Elige color y talla de cada pieza",
+            "set_subtitle_no_size": "Elige el color de cada pieza",
+            "set_rows_heading": "Tus [cantidad] [prendas]",
+            "cta_set": "Añadir el set",
+            "cta_added": "Añadido a tu bolsa",
+            "note_set": "El precio del set se aplica automáticamente en tu bolsa.",
+            "note_individual": "Si llevas [cantidad], el precio del set se aplica automáticamente en tu bolsa.",
+            "missing_row": "Elige la talla de la pieza [n]."
+          }
         }
       },
       "block_order": [
@@ -91,6 +109,7 @@
         "rating_VGGndE",
         "judge_me_reviews_preview_badge_zMzfar",
         "price_FURHcA",
+        "set_selector",
         "variant_picker",
         "buy_buttons",
         "description",

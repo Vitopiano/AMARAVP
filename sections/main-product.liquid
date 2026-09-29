@@ -661,6 +661,13 @@
                     </div>
                   </dialog>
                 {%- endif -%}
+              {%- when 'set_selector' -%}
+                {%- render 'vp-set-selector',
+                  product: product,
+                  block: block,
+                  section_id: section.id,
+                  product_form_id: product_form_id
+                -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -1260,6 +1267,66 @@
           "id": "size_guide_text",
           "label": "Texto del botón de guía de tallas",
           "default": "Guía de tallas"
+        }
+      ]
+    },
+    {
+      "type": "set_selector",
+      "name": "Selector de set",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Solo aparece en productos con el metacampo custom.set_precio (precio del set en COP, sin puntos). Opcionales: custom.set_cantidad y custom.set_nombre_plural. El precio se cobra con un descuento automático en Shopify."
+        },
+        {
+          "type": "select",
+          "id": "default_format",
+          "label": "Opción seleccionada al abrir la ficha",
+          "options": [
+            { "value": "set", "label": "Set" },
+            { "value": "ind", "label": "Individual" }
+          ],
+          "default": "set"
+        },
+        {
+          "type": "range",
+          "id": "set_quantity",
+          "label": "Piezas por set (si el producto no lo define)",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "text",
+          "id": "item_plural",
+          "label": "Nombre de las piezas en plural (si el producto no lo define)",
+          "default": "piezas"
+        },
+        {
+          "type": "header",
+          "content": "Textos"
+        },
+        {
+          "type": "paragraph",
+          "content": "[cantidad] se reemplaza por la cantidad en letras (tres) y [prendas] por el nombre en plural (camisetas)."
+        },
+        { "type": "text", "id": "individual_label", "label": "Opción individual", "default": "Individual" },
+        { "type": "text", "id": "set_label", "label": "Opción set", "default": "Set de [cantidad]" },
+        { "type": "text", "id": "set_subtitle", "label": "Subtítulo del set", "default": "Elige color y talla de cada pieza" },
+        { "type": "text", "id": "set_subtitle_no_size", "label": "Subtítulo del set (productos sin talla)", "default": "Elige el color de cada pieza" },
+        { "type": "text", "id": "set_rows_heading", "label": "Título de las filas", "default": "Tus [cantidad] [prendas]" },
+        { "type": "text", "id": "cta_set", "label": "Botón en formato set", "default": "Añadir el set" },
+        { "type": "text", "id": "cta_added", "label": "Botón tras añadir", "default": "Añadido a tu bolsa" },
+        { "type": "text", "id": "note_set", "label": "Nota bajo el botón (set)", "default": "El precio del set se aplica automáticamente en tu bolsa." },
+        { "type": "text", "id": "note_individual", "label": "Nota bajo el botón (individual)", "default": "Si llevas [cantidad], el precio del set se aplica automáticamente en tu bolsa." },
+        {
+          "type": "text",
+          "id": "missing_row",
+          "label": "Aviso de talla pendiente",
+          "default": "Elige la talla de la pieza [n].",
+          "info": "[n] se reemplaza por el número de la fila."
         }
       ]
     },

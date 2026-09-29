@@ -1,0 +1,223 @@
+/* Vito Piano — Bloque "Selector de set" (snippets/vp-set-selector.liquid)
+   Vive dentro de la ficha estándar: los círculos de color y los botones de talla usan
+   las clases del tema (product-form__input), así que heredan el estilo de marca. */
+
+.vps {
+  display: block;
+  margin: 2rem 0 0.5rem;
+}
+
+/* ——— Opciones Individual / Set ——— */
+.vps__fmts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.vps .vps-fmt {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 1.6rem;
+  align-items: baseline;
+  width: 100%;
+  padding: 1.6rem 1.8rem;
+  text-align: left;
+  font: inherit;
+  color: rgb(var(--color-foreground));
+  background: transparent;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.vps .vps-fmt:hover {
+  border-color: rgba(var(--color-foreground), 0.5);
+}
+
+.vps .vps-fmt[aria-checked='true'] {
+  border-color: rgb(var(--color-foreground));
+  box-shadow: inset 0 0 0 0.05rem rgb(var(--color-foreground));
+}
+
+.vps-fmt__t {
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.vps-fmt__p {
+  justify-self: end;
+  font-family: var(--vp-font-mono);
+  font-size: 1.3rem;
+  letter-spacing: var(--vp-letter-spacing-normal);
+  font-variant-numeric: tabular-nums;
+}
+
+.vps-fmt__s {
+  font-size: 1.25rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.vps-fmt__x {
+  justify-self: end;
+  font-family: var(--vp-font-mono);
+  font-size: 1.05rem;
+  letter-spacing: var(--vp-letter-spacing-normal);
+  color: rgba(var(--color-foreground), 0.7);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ——— Filas del set ——— */
+.vps__set {
+  margin-top: 2.4rem;
+}
+
+.vps__set[hidden] {
+  display: none;
+}
+
+.vps__rows-label {
+  margin: 0 0 1rem;
+}
+
+.vps-rows {
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.vps-row {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.vps .vps-row__head {
+  display: grid;
+  grid-template-columns: 3rem 1.4rem 1fr 1.2rem;
+  gap: 1.4rem;
+  align-items: center;
+  width: 100%;
+  padding: 1.6rem 0;
+  font: inherit;
+  color: rgb(var(--color-foreground));
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.vps-row__num {
+  font-family: var(--vp-font-mono);
+  font-size: 1.1rem;
+  letter-spacing: var(--vp-letter-spacing-wide);
+  font-variant-numeric: tabular-nums;
+}
+
+.vps-row__dot {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--c, transparent);
+  background-size: cover;
+  border: 0.1rem solid rgba(0, 0, 0, 0.15);
+}
+
+.vps-row__sum {
+  font-size: 1.4rem;
+}
+
+.vps-row__sum em {
+  font-style: normal;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.vps-pm {
+  position: relative;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.vps-pm::before,
+.vps-pm::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 0.1rem;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.vps-pm::after {
+  transform: rotate(90deg);
+}
+
+.vps-row.is-open .vps-pm::after {
+  transform: rotate(0);
+}
+
+.vps-row__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.vps-row.is-open .vps-row__body {
+  grid-template-rows: 1fr;
+}
+
+.vps-row__inner {
+  overflow: hidden;
+  min-height: 0;
+  padding-left: 4.4rem;
+}
+
+.vps-row__inner .product-form__input {
+  margin-bottom: 1.6rem;
+}
+
+.vps-row__inner .product-form__input:first-child {
+  margin-top: 0.2rem;
+}
+
+.vps-row__inner .product-form__input:last-child {
+  margin-bottom: 2.4rem;
+}
+
+/* Nota bajo el botón de compra (la inserta el JS) */
+.vps__note {
+  margin: 1.2rem 0 0;
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.vps__note:empty {
+  display: none;
+}
+
+/* ——— En formato set se ocultan los controles de la compra individual ——— */
+.product__info-container:has(vp-set-selector[data-mode='set']) variant-selects,
+.product__info-container:has(vp-set-selector[data-mode='set']) .vp-qty-row quantity-input,
+.product__info-container:has(vp-set-selector[data-mode='set']) .product-form__quantity,
+.product__info-container:has(vp-set-selector[data-mode='set']) .shopify-payment-button {
+  display: none !important;
+}
+
+@media screen and (max-width: 749px) {
+  .vps-fmt__x {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .vps-row__inner {
+    padding-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vps-row__body,
+  .vps-pm::before,
+  .vps-pm::after {
+    transition: none;
+  }
+}
