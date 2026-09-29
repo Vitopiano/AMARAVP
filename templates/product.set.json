@@ -1,0 +1,114 @@
+{
+  "sections": {
+    "main": {
+      "type": "vp-set-product",
+      "blocks": {
+        "detalles": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Detalles",
+            "use_product_description": true,
+            "content": "",
+            "page": ""
+          }
+        },
+        "cuidados": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Cuidados",
+            "use_product_description": false,
+            "content": "<ul><li>Lavar a máquina en agua fría, por el revés y con colores similares.</li><li>No usar blanqueador.</li><li>Secar a la sombra. Evitar la secadora.</li><li>Planchar a temperatura media, por el revés.</li></ul>",
+            "page": ""
+          }
+        },
+        "envios": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Envíos y cambios",
+            "use_product_description": false,
+            "content": "<p>Bogotá y alrededores: 1 a 2 días hábiles. En Bogotá, compra antes de las 3 p. m. y recibe el mismo día.</p><p>Resto del país: 3 a 4 días hábiles. Envío gratis en compras superiores a $600.000.</p><p>Cambios y devoluciones en 20 días. Las camisetas de un set se pueden cambiar por separado.</p>",
+            "page": ""
+          }
+        },
+        "guia": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Guía de tallas",
+            "use_product_description": false,
+            "content": "",
+            "page": "guia-de-tallas"
+          }
+        }
+      },
+      "block_order": [
+        "detalles",
+        "cuidados",
+        "envios",
+        "guia"
+      ],
+      "settings": {
+        "set_price": 229800,
+        "set_quantity": 3,
+        "default_format": "set",
+        "eyebrow": "Camisetas",
+        "short_description": "",
+        "format_heading": "Formato",
+        "individual_label": "Individual",
+        "set_label": "Set de tres",
+        "set_subtitle": "Elige color y talla de cada una",
+        "set_rows_heading": "Tus tres camisetas",
+        "cta_set": "Añadir el set",
+        "cta_individual": "Añadir a la bolsa",
+        "cta_added": "Añadido a tu bolsa",
+        "note_set": "El precio del set se aplica automáticamente en tu bolsa.",
+        "note_individual": "Si llevas tres, el precio del set se aplica automáticamente en tu bolsa.",
+        "missing_row": "Elige la talla de la camiseta [n].",
+        "missing_individual": "Elige una talla.",
+        "size_guide_url": ""
+      }
+    },
+    "177939536913734d5a": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_PrreRg": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "hide_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_PrreRg"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Te puede interesar también",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "177939536913734d5a",
+    "related-products"
+  ]
+}

@@ -1,0 +1,82 @@
+{% comment %}
+  Selector de color y talla para la ficha de set (sección vp-set-product).
+  Accepts:
+  - scope: {String} 'ind' o el índice de la fila del set (0, 1, 2…)
+  - color_option: {Object} opción de producto de color (product_option)
+  - size_option: {Object} opción de producto de talla (product_option)
+  - size_guide_url: {String} enlace opcional a la guía de tallas
+
+  Usage:
+  {% render 'vp-set-picker', scope: 'ind', color_option: color_option, size_option: size_option %}
+{% endcomment %}
+
+<div class="vps-picker" data-scope="{{ scope }}">
+  {%- if color_option -%}
+    <p class="vps-plabel">
+      <span><b>{{ color_option.name }}</b> — <span data-cname></span></span>
+    </p>
+    <div class="vps-sws" role="group" aria-label="{{ color_option.name | escape }}">
+      {%- for value in color_option.values -%}
+        {%- liquid
+          assign swatch = ''
+          if value.swatch.image
+            assign swatch = value.swatch.image | image_url: width: 80 | prepend: 'url(' | append: ')'
+          elsif value.swatch.color
+            assign swatch = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+          else
+            assign color_handle = value | handleize
+            case color_handle
+              when 'negro', 'black'
+                assign swatch = '#1E1E1E'
+              when 'blanco', 'white'
+                assign swatch = '#FBFAF6'
+              when 'marfil', 'crudo', 'hueso'
+                assign swatch = '#ECE3D2'
+              when 'gris', 'gris-jaspe', 'gris-melange'
+                assign swatch = '#B8B5AF'
+              when 'arena', 'beige'
+                assign swatch = '#D4C2A6'
+              when 'camel'
+                assign swatch = '#A97F58'
+              when 'oliva', 'verde-oliva'
+                assign swatch = '#666646'
+              when 'salvia', 'verde-salvia'
+                assign swatch = '#9CA792'
+              when 'azul-marino', 'marino', 'navy'
+                assign swatch = '#1F2A3C'
+              when 'vino', 'burdeos'
+                assign swatch = '#57202A'
+              else
+                assign swatch = '#CFC8BC'
+            endcase
+          endif
+        -%}
+        <button
+          type="button"
+          class="vps-sw"
+          data-color="{{ value | escape }}"
+          style="--c: {{ swatch }};"
+          aria-pressed="false"
+          aria-label="{{ value | escape }}"
+          title="{{ value | escape }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if size_option -%}
+    <p class="vps-plabel vps-plabel--size">
+      <b>{{ size_option.name }}</b>
+      {%- if size_guide_url != blank -%}
+        <a href="{{ size_guide_url }}">Guía de tallas</a>
+      {%- endif -%}
+    </p>
+    <div class="vps-szs" role="group" aria-label="{{ size_option.name | escape }}">
+      {%- for value in size_option.values -%}
+        <button type="button" class="vps-sz" data-size="{{ value | escape }}" aria-pressed="false">
+          {{- value -}}
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
