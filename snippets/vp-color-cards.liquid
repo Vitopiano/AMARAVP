@@ -1,0 +1,97 @@
+{% comment %}
+  Vito Piano: muestra un producto como una tarjeta por color en la grilla de colección.
+  Se activa con la etiqueta "separar-colores" en el producto (ej. Camiseta Giotto).
+  Cada tarjeta usa la foto de la variante de ese color y enlaza a la ficha con ese color elegido.
+
+  Accepts:
+  - product: {Object}
+  - state: {String} 'available' pinta los colores con alguna talla disponible; 'sold_out' los agotados
+  - color_filter: {String} colores filtrados activos, en minúsculas, separados por "|" (ej. "|negro|rosa|")
+  - start_index: {Number} posición de la primera tarjeta en la grilla (para carga diferida y animación)
+  - media_aspect_ratio, image_shape, show_secondary_image, show_vendor, show_rating,
+    skip_styles, quick_add, section_id: se pasan tal cual a card-product
+
+  Usage:
+  {% render 'vp-color-cards', product: product, state: 'available', color_filter: vp_color_filter, start_index: vp_card_index, ... %}
+{% endcomment %}
+
+{%- liquid
+  assign color_option = null
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'color' or option_name contains 'colour'
+      assign color_option = option
+      break
+    endif
+  endfor
+  assign index = start_index | default: 0
+-%}
+
+{%- if color_option -%}
+  {%- assign color_idx = color_option.position | minus: 1 -%}
+  {%- for value in color_option.values -%}
+    {%- liquid
+      assign color = value | append: ''
+      assign color_key = '|' | append: color | downcase | append: '|'
+      if color_filter != blank
+        unless color_filter contains color_key
+          continue
+        endunless
+      endif
+
+      assign first_variant = null
+      assign color_available = false
+      for v in product.variants
+        if v.options[color_idx] == color
+          if first_variant == null
+            assign first_variant = v
+          endif
+          if v.available
+            assign color_available = true
+            assign first_variant = v
+            break
+          endif
+        endif
+      endfor
+
+      if first_variant == null
+        continue
+      endif
+      if state == 'available' and color_available == false
+        continue
+      endif
+      if state == 'sold_out' and color_available
+        continue
+      endif
+
+      assign index = index | plus: 1
+      assign lazy_load = true
+      if index <= 2 and state == 'available'
+        assign lazy_load = false
+      endif
+    -%}
+    <li
+      class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: {{ index }};"
+      {% endif %}
+    >
+      {% render 'card-product',
+        card_product: product,
+        card_variant: first_variant,
+        card_color: color,
+        card_color_available: color_available,
+        media_aspect_ratio: media_aspect_ratio,
+        image_shape: image_shape,
+        show_secondary_image: show_secondary_image,
+        show_vendor: show_vendor,
+        show_rating: show_rating,
+        lazy_load: lazy_load,
+        skip_styles: skip_styles,
+        quick_add: quick_add,
+        section_id: section_id
+      %}
+    </li>
+  {%- endfor -%}
+{%- endif -%}

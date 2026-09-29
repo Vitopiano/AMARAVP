@@ -155,8 +155,43 @@
             >
               {% assign skip_card_product_styles = false %}
               {% assign vp_card_index = 0 %}
+              {%- liquid
+                comment
+                  Vito Piano: colores filtrados activos, para que los productos con la etiqueta
+                  "separar-colores" solo muestren las tarjetas de esos colores.
+                endcomment
+                assign vp_color_filter = ''
+                for filter in collection.filters
+                  assign filter_label = filter.label | downcase
+                  if filter_label contains 'color'
+                    for filter_value in filter.active_values
+                      assign vp_color_filter = vp_color_filter | append: '|' | append: filter_value.label | downcase
+                    endfor
+                  endif
+                endfor
+                if vp_color_filter != blank
+                  assign vp_color_filter = vp_color_filter | append: '|'
+                endif
+              -%}
               {%- for product in collection.products -%}
-                {%- if product.available -%}
+                {%- if product.tags contains 'separar-colores' -%}
+                  {% render 'vp-color-cards',
+                    product: product,
+                    state: 'available',
+                    color_filter: vp_color_filter,
+                    start_index: vp_card_index,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    skip_styles: skip_card_product_styles,
+                    quick_add: section.settings.quick_add,
+                    section_id: section.id
+                  %}
+                  {%- assign vp_card_index = vp_card_index | plus: 2 -%}
+                  {%- assign skip_card_product_styles = true -%}
+                {%- elsif product.available -%}
                   {%- assign vp_card_index = vp_card_index | plus: 1 -%}
                   {%- if vp_card_index > 2 -%}
                     {%- assign lazy_load = true -%}
@@ -187,6 +222,23 @@
                 {%- endif -%}
               {%- endfor -%}
               {%- for product in collection.products -%}
+                {%- if product.tags contains 'separar-colores' -%}
+                  {% render 'vp-color-cards',
+                    product: product,
+                    state: 'sold_out',
+                    color_filter: vp_color_filter,
+                    start_index: vp_card_index,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    skip_styles: skip_card_product_styles,
+                    quick_add: section.settings.quick_add,
+                    section_id: section.id
+                  %}
+                  {%- continue -%}
+                {%- endif -%}
                 {%- unless product.available -%}
                   {%- assign vp_card_index = vp_card_index | plus: 1 -%}
                   <li
