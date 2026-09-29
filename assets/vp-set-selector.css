@@ -58,8 +58,12 @@
   color: rgba(var(--color-foreground), 0.7);
 }
 
+.vps-fmt__s {
+  grid-column: 1 / -1;
+}
+
 .vps-fmt__x {
-  justify-self: end;
+  margin-left: 0.6rem;
   font-family: var(--vp-font-mono);
   font-size: 1.05rem;
   letter-spacing: var(--vp-letter-spacing-normal);
@@ -209,11 +213,6 @@
 }
 
 @media screen and (max-width: 749px) {
-  .vps-fmt__x {
-    grid-column: 1 / -1;
-    justify-self: start;
-  }
-
   .vps-row__inner {
     padding-left: 0;
   }

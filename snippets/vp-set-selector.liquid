@@ -309,12 +309,12 @@
           <span class="vps-fmt__p">{{ unit_money }}</span>
         </button>
         <button type="button" class="vps-fmt" role="radio" data-fmt="set" aria-checked="{% if mode == 'set' %}true{% else %}false{% endif %}">
-          <span class="vps-fmt__t">{{ t_set_label }}</span>
+          <span class="vps-fmt__t">
+            {{- t_set_label -}}
+            {%- if saving_cents > 0 %} <span class="vps-fmt__x">ahorra {{ saving_cents | money }}</span>{% endif -%}
+          </span>
           <span class="vps-fmt__p">{{ set_money }}</span>
           <span class="vps-fmt__s">{{ t_set_sub }}</span>
-          <span class="vps-fmt__x">
-            {%- if saving_cents > 0 -%}ahorra {{ saving_cents | money }}{%- endif -%}
-          </span>
         </button>
       </div>
 
