@@ -10,7 +10,7 @@
   Configuración con metacampos (primero se busca en el producto y luego en la colección de la familia):
   - custom.set_precio          Número entero. Precio del set en COP, sin puntos (ej. 229800). Obligatorio.
   - custom.set_cantidad        Número entero. Piezas por set (2 a 6). Si falta, se usa el valor del bloque.
-  - custom.set_nombre_plural   Texto. Nombre de las piezas en plural (ej. "camisetas", "cinturones").
+  - custom.set_nombre_plural   Texto. Nombre del set tal como se muestra (ej. "pack Giotto x 3"): "Tu pack Giotto x 3".
 
   En formato "Individual" la ficha funciona como siempre. En formato "Set" se ocultan el selector
   de variantes, la navegación de familia, la cantidad y el pago rápido, y el botón de compra añade
@@ -62,7 +62,7 @@
       else
         assign qty_word = 'seis'
     endcase
-    assign plural = product.metafields.custom.set_nombre_plural.value | default: fam.metafields.custom.set_nombre_plural.value | default: block.settings.item_plural | downcase
+    assign plural = product.metafields.custom.set_nombre_plural.value | default: fam.metafields.custom.set_nombre_plural.value | default: block.settings.item_plural
 
     comment
       Opciones de cada pieza ("choices"). Se arma una sola vez con __ROW__ como marcador y luego

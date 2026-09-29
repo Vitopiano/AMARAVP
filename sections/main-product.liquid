@@ -1301,8 +1301,8 @@
         {
           "type": "text",
           "id": "item_plural",
-          "label": "Nombre de las piezas en plural (si el producto no lo define)",
-          "default": "piezas"
+          "label": "Nombre del set (si el producto no lo define)",
+          "default": "set"
         },
         {
           "type": "header",
@@ -1310,7 +1310,7 @@
         },
         {
           "type": "paragraph",
-          "content": "[cantidad] se reemplaza por la cantidad en letras (tres), [prendas] por el nombre en plural (camisetas) y [opcion] por color o modelo."
+          "content": "[cantidad] se reemplaza por la cantidad en letras (tres), [prendas] por el nombre del set (custom.set_nombre_plural, ej. "pack Giotto x 3") y [opcion] por color o modelo."
         },
         { "type": "text", "id": "individual_label", "label": "Opción individual", "default": "Individual" },
         { "type": "text", "id": "set_label", "label": "Opción set", "default": "Set de [cantidad]" },
@@ -1323,7 +1323,7 @@
           "default": "Modelo",
           "info": "Se usa cuando los productos de la familia no tienen el metacampo custom.color_hex (ej. cinturones)."
         },
-        { "type": "text", "id": "set_rows_heading", "label": "Título de las filas", "default": "Tus [cantidad] [prendas]" },
+        { "type": "text", "id": "set_rows_heading", "label": "Título de las filas", "default": "Tu [prendas]" },
         { "type": "text", "id": "cta_set", "label": "Botón en formato set", "default": "Añadir el set" },
         { "type": "text", "id": "cta_added", "label": "Botón tras añadir", "default": "Añadido al carrito" },
         { "type": "text", "id": "note_set", "label": "Nota bajo el botón (set)", "default": "El precio del set se aplica automáticamente en tu carrito." },
