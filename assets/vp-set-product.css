@@ -1,19 +1,24 @@
 /* Vito Piano — Ficha con set (sections/vp-set-product.liquid)
    Foto editorial a sangre (55%) + columna de compra; en móvil, foto arriba y selector debajo.
+   Usa los tokens de marca de vito-piano-brand.css (crema, negro suave, verde botella; Cormorant, Bricolage, Chivo Mono).
    Nota: el tema usa html { font-size: 62.5% }, por eso las medidas van en px. */
 
 .vps {
-  --vps-ivory: #F6F3EE;
-  --vps-ink: #1A1A1A;
-  --vps-line: #DDD6CB;
+  --vps-ivory: var(--vp-crema, #FCF9F5);
+  --vps-ink: var(--vp-negro-suave, #1C1C1A);
+  --vps-line: rgba(28, 28, 26, 0.15);
   --vps-muted: #5A554D;
   --vps-paper: #FFFFFF;
-  --vps-photo: #EAE4D9;
+  --vps-photo: var(--vp-gris-calido, #F0EDE8);
   --vps-faint: #ADA597;
+  --vps-accent: var(--vp-verde-botella, #0C4433);
+  --vps-accent-hover: var(--vp-azul-hielo, #C5EAFF);
+  --vps-link: var(--vp-terracota, #E25027);
   --vps-serif: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
-  --vps-sans: 'Jost', 'Futura', 'Century Gothic', 'Avenir Next', system-ui, sans-serif;
+  --vps-sans: var(--vp-font-body, 'Bricolage Grotesque', system-ui, sans-serif);
+  --vps-mono: var(--vp-font-mono, 'Chivo Mono', 'Courier New', monospace);
   --vps-label: 11px;
-  --vps-track: 0.2em;
+  --vps-track: var(--vp-letter-spacing-wide, 0.12em);
 
   display: block;
   background: var(--vps-ivory);
@@ -104,7 +109,8 @@
 }
 
 .vps__count {
-  font-size: 12px;
+  font-family: var(--vps-mono);
+  font-size: 11px;
   letter-spacing: 0.14em;
   font-variant-numeric: tabular-nums;
 }
@@ -157,6 +163,7 @@
 
 .vps__eyebrow,
 .vps__label {
+  font-family: var(--vps-mono);
   font-size: var(--vps-label);
   letter-spacing: var(--vps-track);
   text-transform: uppercase;
@@ -165,10 +172,10 @@
 
 .vps .vps__title {
   font-family: var(--vps-serif);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 58px;
   line-height: 0.98;
-  letter-spacing: -0.005em;
+  letter-spacing: normal;
   text-transform: none;
   margin: 0;
   color: var(--vps-ink);
@@ -179,8 +186,9 @@
   display: flex;
   gap: 12px;
   align-items: baseline;
-  font-size: 16px;
-  letter-spacing: 0.04em;
+  font-family: var(--vps-mono);
+  font-size: 15px;
+  letter-spacing: var(--vp-letter-spacing-normal, 0.04em);
   font-variant-numeric: tabular-nums;
 }
 
@@ -238,6 +246,10 @@
   background: var(--vps-paper);
 }
 
+.vps-acc__body a {
+  color: var(--vps-link);
+}
+
 .vps-fmt__t,
 .vps-fmt__p {
   font-size: 15px;
@@ -246,6 +258,8 @@
 
 .vps-fmt__p {
   justify-self: end;
+  font-family: var(--vps-mono);
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -257,7 +271,8 @@
 
 .vps-fmt__x {
   justify-self: end;
-  font-size: 11.5px;
+  font-family: var(--vps-mono);
+  font-size: 10.5px;
   font-weight: 300;
   color: var(--vps-muted);
   font-variant-numeric: tabular-nums;
@@ -375,18 +390,19 @@
 }
 
 .vps-plabel b {
+  font-family: var(--vps-mono);
   font-weight: 400;
   font-size: var(--vps-label);
   letter-spacing: var(--vps-track);
   text-transform: uppercase;
 }
 
-.vps-plabel [data-cname],
-.vps-plabel a {
+.vps-plabel [data-cname] {
   color: var(--vps-muted);
 }
 
 .vps-plabel a {
+  color: var(--vps-link);
   font-size: 12px;
   text-underline-offset: 3px;
 }
@@ -412,12 +428,12 @@
   border-radius: 50%;
   background: var(--c);
   background-size: cover;
-  box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
 }
 
 .vps .vps-sw.is-on {
-  outline: 1px solid var(--vps-ink);
-  outline-offset: 4px;
+  outline: 1.5px solid var(--vps-ink);
+  outline-offset: 3px;
 }
 
 .vps .vps-sw:disabled {
@@ -446,14 +462,16 @@
   height: 54px;
   padding: 0;
   background: transparent;
-  border: 1px solid var(--vps-line);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  transition: border-color 0.2s;
+  border: 1px solid var(--vps-ink);
+  font-family: var(--vps-mono);
+  font-size: 11px;
+  letter-spacing: var(--vps-track);
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.vps .vps-sz:hover:not(:disabled) {
-  border-color: var(--vps-ink);
+.vps .vps-sz:hover:not(:disabled):not(.is-on) {
+  background: rgba(28, 28, 26, 0.05);
 }
 
 .vps .vps-sz.is-on {
@@ -463,8 +481,7 @@
 }
 
 .vps .vps-sz:disabled {
-  color: var(--vps-faint);
-  border-color: #E7E1D7;
+  opacity: 0.32;
   text-decoration: line-through;
   text-decoration-thickness: 1px;
   cursor: not-allowed;
@@ -481,19 +498,22 @@
   width: 100%;
   height: 60px;
   padding: 0 16px;
-  background: var(--vps-ink);
+  background: var(--vps-accent);
   color: var(--vps-ivory);
-  border: 0;
-  font-size: 12.5px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  border: 1px solid var(--vps-accent);
+  font-family: var(--vps-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: var(--vps-track);
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
-  transition: background-color 0.2s, opacity 0.2s;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, opacity 0.2s;
 }
 
-.vps .vps__cta:hover {
-  background: #000;
+.vps .vps__cta:hover:not(:disabled) {
+  background: var(--vps-accent-hover);
+  border-color: var(--vps-accent-hover);
+  color: var(--vps-accent);
 }
 
 .vps .vps__cta[aria-busy='true'] {
@@ -530,6 +550,7 @@
   padding: 19px 0;
   list-style: none;
   cursor: pointer;
+  font-family: var(--vps-mono);
   font-size: var(--vps-label);
   letter-spacing: var(--vps-track);
   text-transform: uppercase;
@@ -643,8 +664,6 @@
 
   .vps .vps__cta {
     height: 56px;
-    font-size: 12px;
-    letter-spacing: 0.16em;
   }
 }
 
