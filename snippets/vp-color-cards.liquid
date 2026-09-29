@@ -94,4 +94,37 @@
       %}
     </li>
   {%- endfor -%}
+{%- else -%}
+  {%- comment -%} Sin opción de color: tarjeta normal, para que el producto no desaparezca. {%- endcomment -%}
+  {%- liquid
+    assign show = false
+    if state == 'available' and product.available
+      assign show = true
+    elsif state == 'sold_out' and product.available == false
+      assign show = true
+    endif
+    assign index = index | plus: 1
+  -%}
+  {%- if show -%}
+    <li
+      class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: {{ index }};"
+      {% endif %}
+    >
+      {% render 'card-product',
+        card_product: product,
+        media_aspect_ratio: media_aspect_ratio,
+        image_shape: image_shape,
+        show_secondary_image: show_secondary_image,
+        show_vendor: show_vendor,
+        show_rating: show_rating,
+        lazy_load: true,
+        skip_styles: skip_styles,
+        quick_add: quick_add,
+        section_id: section_id
+      %}
+    </li>
+  {%- endif -%}
 {%- endif -%}
