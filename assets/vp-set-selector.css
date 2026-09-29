@@ -213,6 +213,10 @@
 }
 
 @media screen and (max-width: 749px) {
+  .vps-fmt__s {
+    font-size: 1.1rem;
+  }
+
   .vps-row__inner {
     padding-left: 0;
   }
