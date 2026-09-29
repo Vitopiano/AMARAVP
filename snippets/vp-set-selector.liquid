@@ -256,9 +256,7 @@
       assign size_name = 'Talla'
     endif
 
-    assign full_cents = unit_cents | times: set_qty
-    assign saving_cents = full_cents | minus: set_cents
-    assign per_unit_cents = set_cents | divided_by: set_qty
+    assign saving_cents = unit_cents | times: set_qty | minus: set_cents
     assign set_money = set_cents | money
     assign unit_money = unit_cents | money
 
@@ -315,8 +313,7 @@
           <span class="vps-fmt__p">{{ set_money }}</span>
           <span class="vps-fmt__s">{{ t_set_sub }}</span>
           <span class="vps-fmt__x">
-            {{- per_unit_cents | money }} c/u
-            {%- if saving_cents > 0 %} · ahorro total de {{ saving_cents | money }}{% endif -%}
+            {%- if saving_cents > 0 -%}ahorra {{ saving_cents | money }}{%- endif -%}
           </span>
         </button>
       </div>
