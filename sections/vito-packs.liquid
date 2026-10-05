@@ -122,11 +122,6 @@
     white-space: nowrap;
   }
 
-  .vpk-card__meta {
-    font-size: 1.3rem;
-    opacity: 0.7;
-  }
-
   .vpk-card__cta {
     margin-top: 0.6rem;
     font-size: 1.1rem;
@@ -203,8 +198,6 @@
       endif
 
       assign set_cents = set_price | times: 100
-      assign set_qty = product.metafields.custom.set_cantidad.value | default: fam.metafields.custom.set_cantidad.value | default: 3 | plus: 0
-      assign saving_cents = product.price | times: set_qty | minus: set_cents
       assign set_name = product.metafields.custom.set_nombre_plural.value | default: fam.metafields.custom.set_nombre_plural.value | default: product.title
       assign first_char = set_name | slice: 0 | upcase
       assign rest = set_name | slice: 1, 200
@@ -235,9 +228,6 @@
             <h3 class="vpk-card__title">{{ set_name }}</h3>
             <span class="vpk-card__price">{{ set_cents | money }}</span>
           </div>
-          {%- if saving_cents > 0 -%}
-            <span class="vpk-card__meta">ahorra {{ saving_cents | money }}</span>
-          {%- endif -%}
           {%- if section.settings.cta_text != blank -%}
             <span class="vpk-card__cta">{{ section.settings.cta_text }}</span>
           {%- endif -%}
