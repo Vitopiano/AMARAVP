@@ -137,7 +137,7 @@
         "collection": "packs",
         "eyebrow": "_PACKS",
         "heading": "<p>Básicos para tener <em>en varios colores</em>.</p>",
-        "description": "Elige el color y la talla de cada prenda. El precio del pack se aplica automáticamente en tu carrito.",
+        "description": "Elige el color y la talla de cada prenda.",
         "cta_text": "Armar mi pack",
         "color_scheme": "background-1"
       }
