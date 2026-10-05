@@ -94,8 +94,7 @@
 }
 
 .vps .vps-row__head {
-  display: grid;
-  grid-template-columns: 3rem 1.4rem 1fr 1.2rem;
+  display: flex;
   gap: 1.4rem;
   align-items: center;
   width: 100%;
@@ -128,7 +127,17 @@
   display: none;
 }
 
+.vps-row__num {
+  flex: 0 0 3rem;
+}
+
+.vps-row__dot {
+  flex: 0 0 auto;
+}
+
 .vps-row__sum {
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 1.4rem;
 }
 
@@ -138,6 +147,7 @@
 }
 
 .vps-pm {
+  flex: 0 0 auto;
   position: relative;
   width: 1.2rem;
   height: 1.2rem;
