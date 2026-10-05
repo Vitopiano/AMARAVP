@@ -69,6 +69,17 @@
         "color_scheme": ""
       }
     },
+    "vito_packs": {
+      "type": "vito-packs",
+      "settings": {
+        "collection": "packs",
+        "eyebrow": "_PACKS",
+        "heading": "<p>Básicos para tener <em>en varios colores</em>.</p>",
+        "description": "Elige el color y la talla de cada prenda.",
+        "cta_text": "Armar mi pack",
+        "color_scheme": "vito-crema"
+      }
+    },
     "featured_collection_yrXLk3": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -129,17 +140,6 @@
         "link_text": "Conocer el taller",
         "link_url": "shopify://pages/vito-piano-el-sastre",
         "color_scheme": "vito-vinotinto"
-      }
-    },
-    "vito_packs": {
-      "type": "vito-packs",
-      "settings": {
-        "collection": "packs",
-        "eyebrow": "_PACKS",
-        "heading": "<p>Básicos para tener <em>en varios colores</em>.</p>",
-        "description": "Elige el color y la talla de cada prenda.",
-        "cta_text": "Armar mi pack",
-        "color_scheme": "vito-crema"
       }
     },
     "vito_herencia": {
@@ -236,8 +236,8 @@
   "order": [
     "vito_hero",
     "vito_hero_product",
-    "featured_collection_yrXLk3",
     "vito_packs",
+    "featured_collection_yrXLk3",
     "1779403844c13cd9c6",
     "vito_narrativa_wMdYwP",
     "vito_herencia",
