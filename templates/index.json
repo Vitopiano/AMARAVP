@@ -220,6 +220,17 @@
         "cta_link": "",
         "color_scheme": "background-2"
       }
+    },
+    "vito_packs": {
+      "type": "vito-packs",
+      "settings": {
+        "collection": "packs",
+        "eyebrow": "_PACKS",
+        "heading": "<p>Básicos para tener <em>en varios colores</em>.</p>",
+        "description": "Elige el color y la talla de cada prenda. El precio del pack se aplica automáticamente en tu carrito.",
+        "cta_text": "Armar mi pack",
+        "color_scheme": "background-1"
+      }
     }
   },
   "order": [
@@ -229,6 +240,7 @@
     "1779403844c13cd9c6",
     "vito_narrativa_wMdYwP",
     "vito_herencia",
+    "vito_packs",
     "vito_atelier_iDiNHB"
   ]
 }

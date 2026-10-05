@@ -1,0 +1,316 @@
+{% comment %}
+  Vito · Packs — franja de la página principal con los productos que se venden en set.
+
+  Muestra los productos de la colección elegida que tengan precio de set
+  (metacampo custom.set_precio en el producto o en la colección de su familia "familia-xxx").
+  De cada familia se muestra una sola tarjeta. Cada tarjeta lleva a la ficha, donde el set
+  ya viene seleccionado.
+
+  Foto de la tarjeta: metacampo custom.set_imagen (archivo) del producto o de la familia;
+  si no hay, la foto principal del producto.
+{% endcomment %}
+
+{%- style -%}
+  .vpk {
+    padding: 7rem 2.4rem;
+  }
+
+  .vpk__head {
+    text-align: center;
+    margin: 0 auto 4rem;
+  }
+
+  .vpk__eyebrow {
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgb(var(--color-link));
+    margin: 0 0 1.6rem;
+    font-weight: 600;
+  }
+
+  .vpk__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: normal;
+    max-width: 24ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  .vpk__heading p {
+    margin: 0;
+  }
+
+  .vpk__desc {
+    max-width: 52ch;
+    margin: 1.6rem auto 0;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .vpk__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+    gap: 3.2rem 2.4rem;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .vpk__grid--few {
+    max-width: 92rem;
+  }
+
+  .vpk-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .vpk-card__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: rgba(var(--color-foreground), 0.04);
+  }
+
+  .vpk-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .vpk-card:hover .vpk-card__media img {
+    transform: scale(1.03);
+  }
+
+  .vpk-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .vpk-card__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.6rem;
+  }
+
+  .vpk-card__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .vpk-card__price {
+    font-family: var(--vp-font-mono);
+    font-size: 1.3rem;
+    letter-spacing: var(--vp-letter-spacing-normal);
+    white-space: nowrap;
+  }
+
+  .vpk-card__meta {
+    font-family: var(--vp-font-mono);
+    font-size: 1.05rem;
+    letter-spacing: var(--vp-letter-spacing-normal);
+    opacity: 0.7;
+  }
+
+  .vpk-card__cta {
+    margin-top: 0.6rem;
+    font-family: var(--vp-font-mono);
+    font-size: 1.05rem;
+    letter-spacing: var(--vp-letter-spacing-wide);
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+  }
+
+  .vpk-card:hover .vpk-card__cta {
+    color: rgb(var(--color-link));
+  }
+
+  .vpk__empty {
+    text-align: center;
+    opacity: 0.7;
+    font-size: 1.4rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .vpk {
+      padding: 5rem 1.6rem;
+    }
+
+    .vpk__head {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .vpk-card__media img {
+      transition: none;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign seen_families = '|'
+  assign cards = 0
+  assign source = section.settings.collection
+-%}
+
+{%- capture cards_html -%}
+  {%- for product in source.products limit: 24 -%}
+    {%- liquid
+      assign fam = null
+      assign fam_tag = ''
+      for tag in product.tags
+        if tag contains 'familia-'
+          assign fam_candidate = collections[tag]
+          if fam_candidate != blank and fam_candidate.products_count > 1
+            assign fam = fam_candidate
+            assign fam_tag = tag
+          endif
+          break
+        endif
+      endfor
+
+      if fam_tag != blank
+        assign fam_key = '|' | append: fam_tag | append: '|'
+        if seen_families contains fam_key
+          continue
+        endif
+      endif
+
+      assign set_price = product.metafields.custom.set_precio.value | default: fam.metafields.custom.set_precio.value | default: 0 | plus: 0
+      if set_price <= 0
+        continue
+      endif
+
+      if fam_tag != blank
+        assign seen_families = seen_families | append: fam_tag | append: '|'
+      endif
+
+      assign set_cents = set_price | times: 100
+      assign set_qty = product.metafields.custom.set_cantidad.value | default: fam.metafields.custom.set_cantidad.value | default: 3 | plus: 0
+      assign saving_cents = product.price | times: set_qty | minus: set_cents
+      assign set_name = product.metafields.custom.set_nombre_plural.value | default: fam.metafields.custom.set_nombre_plural.value | default: product.title
+      assign first_char = set_name | slice: 0 | upcase
+      assign rest = set_name | slice: 1, 200
+      assign set_name = first_char | append: rest
+
+      assign img = product.metafields.custom.set_imagen.value | default: fam.metafields.custom.set_imagen.value | default: product.featured_media
+      assign cards = cards | plus: 1
+    -%}
+    <li>
+      <a class="vpk-card" href="{{ product.url }}">
+        <div class="vpk-card__media">
+          {%- if img -%}
+            {{
+              img
+              | image_url: width: 1200
+              | image_tag:
+                widths: '400, 600, 800, 1000, 1200',
+                sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw',
+                loading: 'lazy',
+                alt: set_name
+            }}
+          {%- else -%}
+            {{ 'product-apparel-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+        <div class="vpk-card__body">
+          <div class="vpk-card__row">
+            <h3 class="vpk-card__title">{{ set_name }}</h3>
+            <span class="vpk-card__price">{{ set_cents | money }}</span>
+          </div>
+          {%- if saving_cents > 0 -%}
+            <span class="vpk-card__meta">ahorra {{ saving_cents | money }}</span>
+          {%- endif -%}
+          {%- if section.settings.cta_text != blank -%}
+            <span class="vpk-card__cta">{{ section.settings.cta_text }}</span>
+          {%- endif -%}
+        </div>
+      </a>
+    </li>
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if cards > 0 or request.design_mode -%}
+  <div class="vpk color-{{ section.settings.color_scheme }} gradient">
+    <div class="vpk__head{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="vpk__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="vpk__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="vpk__desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if cards > 0 -%}
+      <ul class="vpk__grid{% if cards < 3 %} vpk__grid--few{% endif %}" role="list">
+        {{ cards_html }}
+      </ul>
+    {%- else -%}
+      <p class="vpk__empty">
+        Elige una colección con productos que tengan precio de set (custom.set_precio). Esta sección no se muestra en la tienda mientras esté vacía.
+      </p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Vito · Packs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de packs",
+      "info": "Se muestran los productos de esta colección que tengan precio de set. De cada familia aparece una sola tarjeta."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "_PACKS" },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Título",
+      "default": "<p>Básicos para tener <em>en varios colores</em>.</p>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Elige el color y la talla de cada prenda. El precio del pack se aplica automáticamente en tu carrito."
+    },
+    { "type": "text", "id": "cta_text", "label": "Texto del enlace", "default": "Armar mi pack" },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vito · Packs"
+    }
+  ]
+}
+{% endschema %}
