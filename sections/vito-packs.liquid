@@ -21,21 +21,22 @@
     margin: 0 auto 2.8rem;
   }
 
+  /* Mismos estilos de texto que Vito · Hero Product (vhp__label, vhp__title, vhp__desc, vhp__cta) */
   .vpk__eyebrow {
-    font-size: 1rem;
-    letter-spacing: 0.25em;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgb(var(--color-link));
-    margin: 0 0 1.6rem;
-    font-weight: 600;
+    margin: 0 0 1.2rem;
+    font-weight: 500;
   }
 
   .vpk__heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 5vw, 4rem);
-    line-height: 1.1;
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+    line-height: 1;
+    color: rgb(var(--color-foreground));
     font-weight: 500;
-    letter-spacing: normal;
     max-width: 24ch;
     margin: 0 auto;
     text-wrap: balance;
@@ -48,9 +49,9 @@
   .vpk__desc {
     max-width: 52ch;
     margin: 1.6rem auto 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     line-height: 1.7;
-    opacity: 0.85;
+    color: rgba(var(--color-foreground), 0.7);
   }
 
   .vpk__grid {
@@ -111,29 +112,33 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.4rem;
     line-height: 1.1;
+    color: rgb(var(--color-foreground));
     font-weight: 500;
     margin: 0;
   }
 
   .vpk-card__price {
-    font-family: var(--vp-font-mono);
-    font-size: 1.3rem;
-    letter-spacing: var(--vp-letter-spacing-normal);
+    font-size: 1.6rem;
+    color: rgba(var(--color-foreground), 0.7);
     white-space: nowrap;
   }
 
   .vpk-card__cta {
-    margin-top: 0.6rem;
+    align-self: flex-start;
+    margin-top: 1rem;
+    padding: 1.5rem 2.8rem;
+    background: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 0.4rem;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   .vpk-card:hover .vpk-card__cta {
-    color: rgb(var(--color-link));
+    background: var(--vp-azul-hielo, #C5EAFF);
+    color: var(--vp-verde-botella, #0C4433);
   }
 
   .vpk__empty {
