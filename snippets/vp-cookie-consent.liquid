@@ -1,3 +1,10 @@
+{% comment %}
+  Vito Piano — Aviso de cookies (versión 2, 01/11/26)
+  Un solo botón: "Aceptar y continuar".
+  Al aceptar, registra el consentimiento en Shopify (Customer Privacy API)
+  para que quede constancia demostrable de cada autorización.
+{% endcomment %}
+
 <style>
   #vp-cookie-banner {
     position: fixed;
@@ -88,18 +95,6 @@
     color: #431424;
   }
 
-  .vp-cookie__btn--essential {
-    background: transparent;
-    color: rgba(252, 249, 245, 0.75);
-    border: 1px solid rgba(252, 249, 245, 0.35);
-  }
-
-  .vp-cookie__btn--essential:hover {
-    border-color: rgba(197, 234, 255, 0.65);
-    color: rgba(197, 234, 255, 0.90);
-    opacity: 1;
-  }
-
   @media screen and (max-width: 749px) {
     #vp-cookie-banner {
       padding: 2.4rem 2rem;
@@ -112,35 +107,31 @@
 
     .vp-cookie__actions {
       min-width: 0;
-      flex-direction: row;
     }
 
     .vp-cookie__btn {
-      flex: 1;
       padding: 1.2rem 1rem;
       font-size: 0.9rem;
     }
   }
 </style>
 
-<div id="vp-cookie-banner" role="dialog" aria-label="Consentimiento de cookies" aria-modal="true">
+<div id="vp-cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
   <div class="vp-cookie__inner">
     <div class="vp-cookie__content">
       <div class="vp-cookie__header">
         <p class="vp-cookie__title">Cookies · Vito Piano</p>
       </div>
       <p class="vp-cookie__body">
-        Usamos cookies para mejorar tu experiencia, analizar el tráfico y ofrecerte contenido relevante.
-        Puedes aceptar todas o quedarte solo con las esenciales.
-        Consulta nuestra <a href="/policies/privacy-policy">política de privacidad</a>.
+        Usamos cookies propias y de terceros para que la tienda funcione, analizar el tráfico y medir nuestra publicidad.
+        Al hacer clic en "Aceptar y continuar" autorizas este uso según nuestra
+        <a href="/policies/privacy-policy">política de privacidad</a>.
+        Si no quieres que se usen, puedes bloquearlas o borrarlas desde tu navegador.
       </p>
     </div>
     <div class="vp-cookie__actions">
-      <button class="vp-cookie__btn vp-cookie__btn--accept" id="vp-cookie-accept">
-        Aceptar todas
-      </button>
-      <button class="vp-cookie__btn vp-cookie__btn--essential" id="vp-cookie-essential">
-        Solo esenciales
+      <button type="button" class="vp-cookie__btn vp-cookie__btn--accept" id="vp-cookie-accept">
+        Aceptar y continuar
       </button>
     </div>
   </div>
@@ -148,36 +139,43 @@
 
 <script>
   (function () {
-    var STORAGE_KEY = 'vp_cookie_consent';
+    // Clave nueva: quienes eligieron "Solo esenciales" en la versión anterior verán el aviso otra vez.
+    var STORAGE_KEY = 'vp_cookie_consent_v2';
     var banner = document.getElementById('vp-cookie-banner');
+    if (!banner) return;
 
     function hasConsent() {
-      try { return !!localStorage.getItem(STORAGE_KEY); } catch (e) { return true; }
+      try { return localStorage.getItem(STORAGE_KEY) === 'accepted'; } catch (e) { return false; }
     }
 
-    function setConsent(value) {
-      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
-      banner.classList.remove('is-visible');
+    // Registra el consentimiento en Shopify para que quede constancia.
+    function registerShopifyConsent() {
+      if (!window.Shopify || typeof window.Shopify.loadFeatures !== 'function') return;
+      window.Shopify.loadFeatures(
+        [{ name: 'consent-tracking-api', version: '0.1' }],
+        function (error) {
+          if (error || !window.Shopify.customerPrivacy) return;
+          window.Shopify.customerPrivacy.setTrackingConsent(
+            { analytics: true, marketing: true, preferences: true, sale_of_data: false },
+            function () {}
+          );
+        }
+      );
+    }
 
-      if (window.Shopify && window.Shopify.customerPrivacy) {
-        var analyticsConsent = value === 'all' ? 'yes' : 'no';
-        window.Shopify.customerPrivacy.setTrackingConsent(
-          { analytics: analyticsConsent, marketing: analyticsConsent, preferences: analyticsConsent, sale_of_data: 'no' },
-          function () {}
-        );
-      }
+    function accept() {
+      try {
+        localStorage.setItem(STORAGE_KEY, 'accepted');
+        localStorage.setItem(STORAGE_KEY + '_date', new Date().toISOString());
+      } catch (e) {}
+      banner.classList.remove('is-visible');
+      registerShopifyConsent();
     }
 
     if (!hasConsent()) {
       banner.classList.add('is-visible');
     }
 
-    document.getElementById('vp-cookie-accept').addEventListener('click', function () {
-      setConsent('all');
-    });
-
-    document.getElementById('vp-cookie-essential').addEventListener('click', function () {
-      setConsent('essential');
-    });
+    document.getElementById('vp-cookie-accept').addEventListener('click', accept);
   })();
 </script>
