@@ -188,7 +188,7 @@
           "welcome": "a Vito Piano.",
           "message": "Tu 10% de bienvenida está activo.\n Lo verás aplicado en tu carrito de compras.",
           "button_text": "Entrar a la colección →",
-          "button_url": "https://vitopiano.com/discount/CIAO10?redirect=/collections/all",
+          "button_url": "/discount/Benvenuto10?redirect=/collections/all",
           "tagline_1": "La herencia de dos mundos",
           "tagline_2": "ITA & COL · Slow Fashion Store"
         }
