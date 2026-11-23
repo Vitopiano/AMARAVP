@@ -44,9 +44,13 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true,
             "show_trust_bar": true,
-            "shipping_text": "",
-            "returns_text": "Cambios y devoluciones en 30 días calendario",
-            "origin_text": "Hecho a mano en Colombia"
+            "shipping_text": "Envío gratis desde $600.000 · Bogotá en 2 a 3 días",
+            "returns_text": "Cambios de talla o color en 30 días, con envío por nuestra cuenta",
+            "origin_text": "Hecho a mano en Colombia",
+            "payment_text": "Paga en cuotas con Addi o con tarjeta vía Bold",
+            "show_whatsapp": true,
+            "whatsapp_number": "573189151143",
+            "whatsapp_label": "¿Tu talla ideal? Te asesoramos por WhatsApp"
           }
         },
         "description": {

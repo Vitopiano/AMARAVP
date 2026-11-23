@@ -114,6 +114,14 @@
       font-size: 0.9rem;
     }
   }
+  /* Móvil: aviso compacto para que el producto siga visible (nov 2026) */
+  @media screen and (max-width: 749px) {
+    #vp-cookie-banner { padding: 1.4rem 1.6rem calc(1.4rem + env(safe-area-inset-bottom)); }
+    .vp-cookie__inner { gap: 1.2rem; }
+    .vp-cookie__header { display: none; }
+    .vp-cookie__body { font-size: 1.15rem; line-height: 1.45; }
+    .vp-cookie__btn { padding: 1rem; }
+  }
 </style>
 
 <div id="vp-cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">

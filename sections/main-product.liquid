@@ -558,17 +558,6 @@
                   </button>
                 </modal-opener>
               {%- when 'share' -%}
-                {%- assign buy_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
-                {%- if buy_block.settings.show_trust_bar -%}
-                  <div class="vp-trust-bar">
-                    {%- if buy_block.settings.returns_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ buy_block.settings.returns_text }}</div>
-                    {%- endif -%}
-                    {%- if buy_block.settings.origin_text != blank -%}
-                      <div class="vp-trust-bar__item">{{ buy_block.settings.origin_text }}</div>
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
                 {% liquid
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
@@ -676,6 +665,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'vp-trust-block', bb: block, product: product -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -1310,7 +1300,7 @@
         },
         {
           "type": "paragraph",
-          "content": "[cantidad] se reemplaza por la cantidad en letras (tres), [prendas] por el nombre del set (custom.set_nombre_plural, ej. "pack Giotto x 3") y [opcion] por color o modelo."
+          "content": "[cantidad] se reemplaza por la cantidad en letras (tres), [prendas] por el nombre del set (custom.set_nombre_plural, ej. «pack Giotto x 3») y [opcion] por color o modelo."
         },
         { "type": "text", "id": "individual_label", "label": "Opción individual", "default": "Individual" },
         { "type": "text", "id": "set_label", "label": "Opción set", "default": "Set de [cantidad]" },
@@ -1370,19 +1360,43 @@
           "type": "text",
           "id": "shipping_text",
           "label": "Texto de envío",
-          "default": "Envío gratis en compras mayores a $400.000"
+          "default": "Envío gratis desde $600.000 · Bogotá en 2 a 3 días"
         },
         {
           "type": "text",
           "id": "returns_text",
           "label": "Texto de cambios",
-          "default": "Cambios y devoluciones en 30 días calendario"
+          "default": "Cambios de talla o color en 30 días, con envío por nuestra cuenta"
         },
         {
           "type": "text",
           "id": "origin_text",
           "label": "Texto de origen",
           "default": "Hecho a mano en Colombia"
+        }
+        ,{
+          "type": "text",
+          "id": "payment_text",
+          "label": "Texto de medios de pago",
+          "default": "Paga en cuotas con Addi o con tarjeta vía Bold"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_whatsapp",
+          "default": true,
+          "label": "Mostrar botón de asesoría por WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_number",
+          "label": "Número de WhatsApp (código de país + número, solo dígitos)",
+          "default": "573189151143"
+        },
+        {
+          "type": "text",
+          "id": "whatsapp_label",
+          "label": "Texto del botón de WhatsApp",
+          "default": "¿Tu talla ideal? Te asesoramos por WhatsApp"
         }
       ]
     },

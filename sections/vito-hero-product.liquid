@@ -142,7 +142,7 @@
   <div class="vhp__inner">
     <div class="vhp__image">
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.image.alt }}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '480, 750, 1000, 1200, 1600', sizes: '(min-width: 750px) 50vw, 100vw', alt: section.settings.image.alt }}
       {%- else -%}
         <div class="vhp__image-label">{{ section.settings.image_label }}</div>
       {%- endif -%}

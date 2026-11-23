@@ -184,7 +184,7 @@
     </div>
     <div class="vh__image">
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', alt: section.settings.image.alt }}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 750, 1000, 1200, 1600', sizes: '(min-width: 750px) 45vw, 100vw', alt: section.settings.image.alt }}
       {%- else -%}
         <div class="vh__image-label">
           {{ section.settings.image_label_small }}
